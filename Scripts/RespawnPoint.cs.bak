@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RespawnPoint : MonoBehaviour
+{
+    [SerializeField] 
+    private Transform player;
+
+    [SerializeField]
+    private Transform respawnPoint;
+    [SerializeField]
+    private GameObject deadBody;
+    private Rigidbody rb;
+
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            deadBody.transform.position = player.transform.position;
+            player.transform.position = respawnPoint.transform.position;
+
+            Instantiate(deadBody);
+            // rb = GetComponent<Rigidbody>();
+
+            // rb.AddForce(0, 0, 1f, ForceMode.Impulse);
+        }
+    }
+}

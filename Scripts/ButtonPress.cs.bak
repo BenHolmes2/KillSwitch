@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ButtonPress : MonoBehaviour
+{
+    public GameObject doorGameObjectR;
+    public GameObject doorGameObjectL;
+    private IDoor doorR;
+    private IDoor doorL;
+
+    void Awake()
+    {
+        doorR = doorGameObjectR.GetComponent<IDoor>();
+        doorL = doorGameObjectL.GetComponent<IDoor>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))//PlayerIsOn == true
+        {
+            doorR.ToggleDoor();
+            doorL.ToggleDoor();
+        }
+        
+    }
+
+    private void OnCollisionEnter(Collider collider)
+    {
+        // if (collider.GetComponent<CharacterController>() != null)
+        // {
+            doorR.ToggleDoor();
+            doorL.ToggleDoor();
+        // }
+    }
+
+
+
+    private void OnCollisionExit(Collider collider)
+    {
+        // if (collider.GetComponent<CharacterController>() != null)
+        // {
+            doorR.ToggleDoor();
+            doorL.ToggleDoor();
+        // }
+    }
+}
