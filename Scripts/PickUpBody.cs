@@ -28,11 +28,19 @@ public class PickUpBody : MonoBehaviour
 
     private Rigidbody heldObjRb;
     private bool canThrow = true;
-
+    CharacterController controller;
 
     //Rough script to enable the picking up and dropping of bodies
     //Will need a bunch more work to eliminate collisions between the body and the player
     //Waiting until we have our own model for the rag doll before i proceed further
+
+
+
+
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
@@ -80,6 +88,7 @@ public class PickUpBody : MonoBehaviour
 
             //finding all of the colliders so we can ignore collsions from them
             //move this to a function
+            // dont think these do anything
             hips = heldObj;
             leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
             leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
@@ -98,19 +107,41 @@ public class PickUpBody : MonoBehaviour
             rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
             head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
             head = head.transform.Find("QuickRigCharacter_Head").gameObject;
-
-
-
-
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
+            // dont think these do anything
             //not sure how to ignore collisions on the player since it is made up of multiple colliders
-            //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), true);
         }
     }
     void DropObject()
     {
-        //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        // dont think these do anything
+        Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), false);
         //heldObj.transform.parent = null;
         heldObj = null;
     }

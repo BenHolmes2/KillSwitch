@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
             cameraHolder.transform.rotation = Quaternion.Lerp(cameraHolder.transform.rotation, cameraPosition.transform.rotation, percentComplete); 
         }
     }
-    IEnumerator respawnPlayer()
+    public IEnumerator respawnPlayer()
     {
         isLerping = true;
         deadBody.transform.position = spawnedPlayer.transform.position;

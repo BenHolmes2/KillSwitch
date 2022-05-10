@@ -6,12 +6,11 @@ public class DeathTrigger : MonoBehaviour
 {
     [SerializeField] private Transform Player;
     [SerializeField] private Transform respawnPoint;
+    public GameController Controller;
 
-
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        Player.transform.position = respawnPoint.transform.position;
-        Debug.Log("Test");
+        Controller.StartCoroutine(Controller.respawnPlayer());
     }
 }
 
