@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     private GameObject spawnedPlayer;
     public AudioClip Music;
     private AudioSource MusicSource;
+    private GameObject[] ragdollObjects;
 
     void Start()
     {
@@ -54,12 +55,20 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        //ragdollObjects = GameObject.FindGameObjectsWithTag("Ragdoll");
+
         if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
         }
         if (cameraHolder.transform.parent == null)
         {
+            //for (int i = 0; i < ragdollObjects.Length; i++)
+            //{
+            //    ragdollObjects[i].GetComponent<CapsuleCollider>().enabled = false;
+
+            //}
+
             if (isLerping)
             {
                 isRespawning = true;
@@ -81,6 +90,12 @@ public class GameController : MonoBehaviour
                 isRespawning = false;
                 //allows the player to move again
                 spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
+
+                //for (int i = 0; i < ragdollObjects.Length; i++)
+                //{
+                //    ragdollObjects[i].GetComponent<CapsuleCollider>().enabled = true;
+
+                //}
             }
 
             float percentComplete = currentLerpTime / followSpeed;

@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2991827091871806209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.02}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.005996704, y: 1.7039995, z: 3.153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4230794279862692947}
-  m_RootOrder: 0
+  m_Father: {fileID: 9736755115809877}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7033958078361622809
 GameObject:
@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 6121963808065449267}
   - component: {fileID: 6328740197921282032}
   - component: {fileID: 3816144765926320298}
-  - component: {fileID: 6214473034912405932}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -93,8 +92,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2847173396550656955}
+  m_Children: []
   m_Father: {fileID: 9135722277341782096}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,23 +161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 400
   playerBody: {fileID: 9736755115809877}
---- !u!114 &6214473034912405932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7033958078361622809}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d6581d2955b2c49bd841716cfd22ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 5654093745029620114}
-  holdPos: {fileID: 2847173396550656955}
-  camera1: {fileID: 7033958078361622809}
-  throwForce: 100
-  pickUpRange: 500
 --- !u!1 &7697846014020230232
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +225,7 @@ Transform:
   - {fileID: 4989056969606167336}
   - {fileID: 2692909945240932441}
   - {fileID: 6082680921375352286}
+  - {fileID: 2847173396550656955}
   - {fileID: 9135722277341782096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -312,7 +294,7 @@ Transform:
   m_Children:
   - {fileID: 4230794279862692947}
   m_Father: {fileID: 9736755115809877}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1418362564625507189
 MonoBehaviour:
@@ -329,7 +311,7 @@ MonoBehaviour:
   player: {fileID: 5654093745029620114}
   holdPos: {fileID: 2847173396550656955}
   camera1: {fileID: 7033958078361622809}
-  throwForce: 500
+  throwForce: 50
   pickUpRange: 50
 --- !u!1001 &5010387534921669186
 PrefabInstance:

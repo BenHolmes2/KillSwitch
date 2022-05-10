@@ -11,6 +11,10 @@ public class PickUpBody : MonoBehaviour
     public float pickUpRange = 20f;
 
     private GameObject heldObj;
+    private GameObject temp;
+    private GameObject temp1;
+    private GameObject temp2;
+    private GameObject temp3;
     private Rigidbody heldObjRb;
     private bool canThrow = true;
 
@@ -30,9 +34,9 @@ public class PickUpBody : MonoBehaviour
                 if (Physics.Raycast(camera1.transform.position, camera1.transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
                     Debug.DrawLine(camera1.transform.position, hit.point, Color.white, 5f);
-                    //Debug.Log(hit.transform.gameObject.tag);
-                    //Debug.Log(hit.transform.gameObject.name);
-                    if (hit.transform.gameObject.tag == "Ragdoll")
+                    Debug.Log(hit.transform.gameObject.tag);
+                    Debug.Log(hit.transform.gameObject.name);
+                    if (hit.transform.gameObject.tag == "canPickUp" || hit.transform.gameObject.tag == "canPickUpHips")
                     {
                         PickUpObject(hit.transform.gameObject);
                     }
@@ -58,9 +62,12 @@ public class PickUpBody : MonoBehaviour
         if (pickUpObj.GetComponent<Rigidbody>())
         {
             heldObj = pickUpObj;
-            heldObjRb = pickUpObj.GetComponent<Rigidbody>();
-            heldObjRb.transform.parent = holdPos.transform;
-
+            heldObj = heldObj.transform.root.gameObject;
+            heldObj = heldObj.transform.Find("riggedd body 04").gameObject;
+            heldObj = heldObj.transform.Find("QuickRigCharacter_Reference").gameObject;
+            heldObj = heldObj.transform.Find("QuickRigCharacter_Hips").gameObject;
+            heldObjRb = heldObj.GetComponent<Rigidbody>();
+            heldObjRb.transform.position = holdPos.transform.position;
             //not sure how to ignore collisions on the player since it is made up of multiple colliders
             //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
@@ -68,7 +75,7 @@ public class PickUpBody : MonoBehaviour
     void DropObject()
     {
         //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.transform.parent = null;
+        //heldObj.transform.parent = null;
         heldObj = null;
     }
     void MoveObject()
@@ -79,7 +86,7 @@ public class PickUpBody : MonoBehaviour
     void ThrowObject()
     {
         //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.transform.parent = null;
+        //heldObj.transform.parent = null;
         heldObjRb.AddForce(transform.forward * throwForce);
         heldObj = null;
     }
