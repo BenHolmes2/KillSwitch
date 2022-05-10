@@ -11,10 +11,21 @@ public class PickUpBody : MonoBehaviour
     public float pickUpRange = 20f;
 
     private GameObject heldObj;
+    private GameObject hips;
+    private GameObject leftUpLeg;
+    private GameObject leftLeg;
+    private GameObject rightUpLeg;
+    private GameObject rightLeg;
+    private GameObject spine;
+    private GameObject leftArm;
+    private GameObject leftForeArm;
+    private GameObject leftHand;
+    private GameObject rightArm;
+    private GameObject rightForeArm;
+    private GameObject rightHand;
+    private GameObject head;
     private GameObject temp;
-    private GameObject temp1;
-    private GameObject temp2;
-    private GameObject temp3;
+
     private Rigidbody heldObjRb;
     private bool canThrow = true;
 
@@ -36,7 +47,7 @@ public class PickUpBody : MonoBehaviour
                     Debug.DrawLine(camera1.transform.position, hit.point, Color.white, 5f);
                     Debug.Log(hit.transform.gameObject.tag);
                     Debug.Log(hit.transform.gameObject.name);
-                    if (hit.transform.gameObject.tag == "canPickUp" || hit.transform.gameObject.tag == "canPickUpHips")
+                    if (hit.transform.gameObject.tag == "canPickUp")
                     {
                         PickUpObject(hit.transform.gameObject);
                     }
@@ -66,6 +77,31 @@ public class PickUpBody : MonoBehaviour
             heldObj = heldObj.transform.Find("riggedd body 04").gameObject;
             heldObj = heldObj.transform.Find("QuickRigCharacter_Reference").gameObject;
             heldObj = heldObj.transform.Find("QuickRigCharacter_Hips").gameObject;
+
+            //finding all of the colliders so we can ignore collsions from them
+            //move this to a function
+            hips = heldObj;
+            leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
+            leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
+            rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
+            rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
+            spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
+            spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
+            spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
+            leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
+            leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
+            leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
+            leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
+            rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
+            rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
+            rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
+            rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
+            head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
+            head = head.transform.Find("QuickRigCharacter_Head").gameObject;
+
+
+
+
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
             //not sure how to ignore collisions on the player since it is made up of multiple colliders
