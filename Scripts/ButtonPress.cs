@@ -4,48 +4,42 @@ using UnityEngine;
 
 public class ButtonPress : MonoBehaviour
 {
-    public GameObject doorGameObjectR;
-    public GameObject doorGameObjectL;
+    public GameObject doorGameObject;
     public GameObject buttonGameObject;
-    private IDoor doorR;
-    private IDoor doorL;
+    private IDoor door;
     private IDoor button;
+    private int counter = 0;
 
     void Awake()
     {
-        doorR = doorGameObjectR.GetComponent<IDoor>();
-        doorL = doorGameObjectL.GetComponent<IDoor>();
+        door = doorGameObject.GetComponent<IDoor>();
         button = buttonGameObject.GetComponent<IDoor>();
+        counter = 0;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))//PlayerIsOn == true
+        if (counter == 0)//PlayerIsOn == true
         {
-            doorR.ToggleDoor();
-            doorL.ToggleDoor();
+            door.CloseDoor();
+            button.CloseDoor();
+        }
+        else
+        {
+            door.OpenDoor();
+            button.OpenDoor();
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        // if (collider.GetComponent<CharacterController>() != null)
-        // {
-            doorR.ToggleDoor();
-            doorL.ToggleDoor();
-            button.ToggleDoor();
-        // }
+        counter++;
     }
 
     //private void OnCollisionEmpty(Collision collision)
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
-        // if (collider.GetComponent<CharacterController>() != null)
-        // {
-            doorR.ToggleDoor();
-            doorL.ToggleDoor();
-            button.ToggleDoor();
-        // }
+        counter--;
     }
 }
