@@ -24,6 +24,8 @@ public class PlayerMoveSlide : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
     }
+
+
     void Update()
     {
 

@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     private GameObject spawnedPlayer;
     public AudioClip Music;
     private AudioSource MusicSource;
-    private GameObject[] ragdollObjects;
+    private GameObject tempObj;
 
     void Start()
     {
@@ -55,19 +55,13 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        //ragdollObjects = GameObject.FindGameObjectsWithTag("Ragdoll");
-
         if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
         }
         if (cameraHolder.transform.parent == null)
         {
-            //for (int i = 0; i < ragdollObjects.Length; i++)
-            //{
-            //    ragdollObjects[i].GetComponent<CapsuleCollider>().enabled = false;
 
-            //}
 
             if (isLerping)
             {
@@ -90,12 +84,7 @@ public class GameController : MonoBehaviour
                 isRespawning = false;
                 //allows the player to move again
                 spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
-
-                //for (int i = 0; i < ragdollObjects.Length; i++)
-                //{
-                //    ragdollObjects[i].GetComponent<CapsuleCollider>().enabled = true;
-
-                //}
+                tempObj.GetComponentInChildren<MouseLook>().enabled = true;
             }
 
             float percentComplete = currentLerpTime / followSpeed;
@@ -105,13 +94,15 @@ public class GameController : MonoBehaviour
             cameraHolder.transform.rotation = Quaternion.Lerp(cameraHolder.transform.rotation, cameraPosition.transform.rotation, percentComplete); 
         }
     }
-    IEnumerator respawnPlayer()
+    public IEnumerator respawnPlayer()
     {
         isLerping = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+        tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+        tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
-        spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false; //stops the player from moving while they are being respawned and the camera is moving
+        spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
         yield return new WaitForSeconds(0.1f);
