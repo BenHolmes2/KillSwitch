@@ -21,6 +21,7 @@ public class ChangeRespawnPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // look at pick up body when you want to implement this
         //This is broken, cant acces top parent game object of the collider picked up
         //if (other.gameObject.tag == "Ragdoll"  || other.gameObject.tag == "Item"  )
         //{

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class DeathTrigger : MonoBehaviour
 {
-    [SerializeField] private Transform Player;
-    [SerializeField] private Transform respawnPoint;
+    //[SerializeField] private Transform Player;
+    //[SerializeField] private Transform respawnPoint;
     public GameController Controller;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        Controller.StartCoroutine(Controller.respawnPlayer());
+        if (other.gameObject.tag == "Player")
+        {
+            Controller.StartCoroutine(Controller.respawnPlayer());
+            Debug.Log("you should have died");
+        }
     }
 }
 
