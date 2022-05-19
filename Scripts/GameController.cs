@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//need to change the way the lerp time is calculated, maybe using the distance
+//currently there are issues between lerp time when in scene and when the game is built
+
 public class GameController : MonoBehaviour
 {
-    //Still some bugs that need to be worked out with when a player tries to move while the camera is moving
     public GameObject player;
     public GameObject initialSpawnPos;
     public GameObject cameraHolder;
@@ -13,7 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject deadBody;
     //use ditance calulations
     //why has this lerp time changedf from 2f to 4f????????????????????????????
-    public float followSpeed = 100f; // probably a good idea to have this change based on what room the player is in, the larger the room the larger the number needs to be in order to slow down the camera movement for larger distances
+    public float followSpeed; // probably a good idea to have this change based on what room the player is in, the larger the room the larger the number needs to be in order to slow down the camera movement for larger distances
     private bool isLerping = true;
     private bool isRespawning = false;
     private float currentLerpTime;
