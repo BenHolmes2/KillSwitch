@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpBody : MonoBehaviour
+public class PickUp : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
@@ -57,6 +57,10 @@ public class PickUpBody : MonoBehaviour
                     Debug.Log(hit.transform.gameObject.name);
                     if (hit.transform.gameObject.tag == "canPickUp")
                     {
+                        PickUpBody(hit.transform.gameObject);
+                    }
+                    if (hit.transform.gameObject.tag == "canPickUpObject")
+                    {
                         PickUpObject(hit.transform.gameObject);
                     }
                 }
@@ -76,7 +80,7 @@ public class PickUpBody : MonoBehaviour
 
         }
     }
-    void PickUpObject(GameObject pickUpObj)
+    void PickUpBody(GameObject pickUpObj)
     {
         if (pickUpObj.GetComponent<Rigidbody>())
         {
@@ -124,6 +128,18 @@ public class PickUpBody : MonoBehaviour
             //Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), true);
             //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), true);
             //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), true);
+        }
+    }
+
+    void PickUpObject(GameObject pickUpObj)
+    {
+        if (pickUpObj.GetComponent<Rigidbody>())
+        {
+            heldObj = pickUpObj;
+            Debug.Log(heldObj);
+            heldObjRb = heldObj.GetComponent<Rigidbody>();
+            heldObjRb.transform.position = holdPos.transform.position;
+
         }
     }
     void DropObject()
