@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6261997784782181431}
   - component: {fileID: 8867298632862853923}
   - component: {fileID: 2119228190942317517}
+  - component: {fileID: 4870033271962992864}
   m_Layer: 0
   m_Name: room
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4870033271962992864
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5513757547069522185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3580058529086509294, guid: 1881f18d3fbb5ab4f94fa75633921f51, type: 3}
 --- !u!1 &7762764451236701505
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +109,7 @@ GameObject:
   - component: {fileID: 1291232183431046855}
   - component: {fileID: 6839653245921924379}
   - component: {fileID: 9039912090501472598}
+  - component: {fileID: 793011860835488184}
   m_Layer: 0
   m_Name: button
   m_TagString: Untagged
@@ -166,6 +182,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &793011860835488184
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7762764451236701505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6686669030262739812, guid: 1881f18d3fbb5ab4f94fa75633921f51, type: 3}
 --- !u!1 &8463179763258433831
 GameObject:
   m_ObjectHideFlags: 0
