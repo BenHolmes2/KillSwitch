@@ -5,9 +5,11 @@ using UnityEngine;
 public class ChangeRespawnPoint : MonoBehaviour
 {
     public GameObject spawnPos;
+    public GameObject player;
     public float cameraFollowSpeed = 100; //maybe for really long rooms have a seperate collider for just this
     public GameObject GameController;
     private int i = 0;
+    public int jumpForce;
 
     void OnTriggerExit(Collider other)
     {
@@ -15,6 +17,9 @@ public class ChangeRespawnPoint : MonoBehaviour
         {
             GameController.GetComponent<GameController>().followSpeed = cameraFollowSpeed; //changes the speed of the camera transition when the player respawns
             GameController.GetComponent<GameController>().respawnPoint = spawnPos;
+            player = GameController.GetComponent<GameController>().spawnedPlayer;
+            player.GetComponent<PlayerMoveSlide>().jumpForce = jumpForce;
+
             i++; //iterator to make the spawn change only work once
         }
     }

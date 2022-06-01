@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private bool isRespawning = false;
     private float currentLerpTime;
     public float lerpTime = 2f;
-    private GameObject spawnedPlayer;
+    public GameObject spawnedPlayer;
     public AudioClip Music;
     private AudioSource MusicSource;
     private GameObject tempObj;
