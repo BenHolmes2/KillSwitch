@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4076460046264099837}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.048782, y: 350.2625, z: 168.12016}
+  m_LocalPosition: {x: 9.048782, y: 350, z: 168.12016}
   m_LocalScale: {x: 127.50171, y: 127.50171, z: 127.50171}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,6 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6095119170943848994}
+  - component: {fileID: 4978284487254312763}
   m_Layer: 0
   m_Name: GearBox
   m_TagString: Untagged
@@ -221,6 +222,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4978284487254312763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907930545296525464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 253.63777, y: 189.07831, z: 676.86926}
+  m_Center: {x: -14.507298, y: 469.96027, z: -17.650282}
 --- !u!1 &7853708967688597856
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7853708967688597856}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6415558, y: 370.6125, z: -190.09242}
+  m_LocalPosition: {x: 2.6415558, y: 350, z: -190.09242}
   m_LocalScale: {x: 127.50171, y: 127.50171, z: 127.50171}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -17,7 +17,7 @@ public class RespawnPoint : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             
-            z//having trouble getting the player to spawn in a new postion each time the key is pressed, currently it only works sometimes
+            //having trouble getting the player to spawn in a new postion each time the key is pressed, currently it only works sometimes
             //player.transform.position = respawnPoint.transform.position;
             //player.GetComponent<PlayerMovement>().enabled = false;
             //player.GetComponent<Transform>().position = respawnPoint.transform.position;
