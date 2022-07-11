@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class RespawnPoint : MonoBehaviour
 {
-    [SerializeField] 
-    private Transform player;
+    public GameObject player;
+    public Transform respawnPoint;
 
-    [SerializeField]
-    private Transform respawnPoint;
     [SerializeField]
     private GameObject deadBody;
     private Rigidbody rb;
@@ -18,13 +16,56 @@ public class RespawnPoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            deadBody.transform.position = player.transform.position;
-            player.transform.position = respawnPoint.transform.position;
+            
+            //having trouble getting the player to spawn in a new postion each time the key is pressed, currently it only works sometimes
+            player.transform.position = respawnpoint.transform.position;
+            player.getcomponent<playermovement>().enabled = false;
+            player.getcomponent<transform>().position = respawnpoint.transform.position;
+            startcoroutine(example());
+            instantiate(deadbody);
+            player.getcomponent<playermovement>().enabled = true;
+            
 
-            Instantiate(deadBody);
-            // rb = GetComponent<Rigidbody>();
+            startcoroutine(examplecoroutine());
+            //new waitforseconds(6);
 
-            // rb.AddForce(0, 0, 1f, ForceMode.Impulse);
+            
+            rb = getcomponent<rigidbody>();
+
+            rb.addforce(0, 0, 1f, forcemode.impulse);
         }
     }
+
+    IEnumerator ExampleCoroutine()
+    {
+       //Print the time of when the function is first called.
+       Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+       //yield on a new YieldInstruction that waits for 5 seconds.
+       yield return new WaitForSeconds(5);
+
+       //After we have waited 5 seconds print the time again.
+       Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+    }
+
+
+
+
+
+    IEnumerator Example()
+    {
+        Debug.Log("Hello");
+        //wait 3 seconds
+        deadBody.transform.position = player.transform.position;
+
+        player.GetComponent<PlayerMoveSlide>().enabled = false;
+        player.GetComponent<Transform>().position = respawnPoint.transform.position;
+        yield return new WaitForSeconds(0.2f);
+        player.GetComponent<PlayerMoveSlide>().enabled = true;
+        Instantiate(deadBody);
+        
+
+        Debug.Log("Goodbye");
+    }
 }
+
