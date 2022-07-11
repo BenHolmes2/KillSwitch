@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // this is the current temporary escape code
-        if (Input.GetKeyDown(KeyCode.Escape)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("Menu");
         }
