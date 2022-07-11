@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //need to change the way the lerp time is calculated, maybe using the distance
 //currently there are issues between lerp time when in scene and when the game is built
@@ -57,6 +58,11 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        // this is the current temporary escape code
+        if (Input.GetKeyDown(KeyCode.Escape)
+        {
+            SceneManager.LoadScene("Menu");
+        }
         if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());

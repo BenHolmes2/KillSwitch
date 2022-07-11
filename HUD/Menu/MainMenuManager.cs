@@ -10,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("PLaytest");
+        SceneManager.LoadScene("PLaytest_New");
     }
 
     public void Controls()
