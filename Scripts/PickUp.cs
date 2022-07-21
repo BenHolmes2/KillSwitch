@@ -55,7 +55,7 @@ public class PickUp : MonoBehaviour
                     Debug.DrawLine(camera1.transform.position, hit.point, Color.white, 5f);
                     Debug.Log(hit.transform.gameObject.tag);
                     Debug.Log(hit.transform.gameObject.name);
-                    if (hit.transform.gameObject.tag == "canPickUp")
+                    if (hit.transform.gameObject.tag == "canPickUp" || hit.transform.gameObject.tag == "canPickUpElec")
                     {
                         PickUpBody(hit.transform.gameObject);
                     }

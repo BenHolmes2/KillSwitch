@@ -83,7 +83,19 @@ public class RagdollScript : MonoBehaviour
             rightHand.GetComponent<RagdollScript>().isElectrified = true;
             head.GetComponent<RagdollScript>().isElectrified = true;
 
-
+            hips.tag = "canPickUpElec";
+            leftUpLeg.tag = "canPickUpElec";
+            leftLeg.tag = "canPickUpElec";
+            rightUpLeg.tag = "canPickUpElec";
+            rightLeg.tag = "canPickUpElec";
+            spine.tag = "canPickUpElec";
+            leftArm.tag = "canPickUpElec";
+            leftForeArm.tag = "canPickUpElec";
+            leftHand.tag = "canPickUpElec";
+            rightArm.tag = "canPickUpElec";
+            rightForeArm.tag = "canPickUpElec";
+            rightHand.tag = "canPickUpElec";
+            head.tag = "canPickUpElec";
         }
 
         //will need to figure out how to get every body part to have their boolean changed too
