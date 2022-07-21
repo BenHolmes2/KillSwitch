@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+
         if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
