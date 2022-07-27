@@ -64,14 +64,19 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            deadBody.transform.position = respawnPoint.transform.position;
+            deadBody.transform.rotation = respawnPoint.transform.rotation;
+            Instantiate(deadBody);
+        }
+
         if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
         }
         if (cameraHolder.transform.parent == null)
         {
-
-
             if (isLerping)
             {
                 isRespawning = true;
@@ -105,6 +110,8 @@ public class GameController : MonoBehaviour
     }
     public IEnumerator respawnPlayer()
     {
+        //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false); // camera seems to be colliding with the player 
+        //but i dont understand how that is possible
         isLerping = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
