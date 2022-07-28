@@ -106,6 +106,7 @@ public class GameController : MonoBehaviour
             // might want to slow them down a bit, but this can be done later
             cameraHolder.transform.position = Vector3.Lerp(cameraHolder.transform.position, cameraPosition.transform.position, percentComplete);
             cameraHolder.transform.rotation = Quaternion.Lerp(cameraHolder.transform.rotation, cameraPosition.transform.rotation, percentComplete); 
+
         }
     }
     public IEnumerator respawnPlayer()
