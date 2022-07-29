@@ -98,7 +98,6 @@ public class RagdollScript : MonoBehaviour
             head.tag = "canPickUpElec";
         }
 
-        //will need to figure out how to get every body part to have their boolean changed too
     }
 
 
