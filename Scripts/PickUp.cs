@@ -9,8 +9,8 @@ public class PickUp : MonoBehaviour
     public GameObject camera1;
     public float throwForce = 500f;
     public float pickUpRange = 20f;
-
-    private GameObject heldObj;
+    
+    public GameObject heldObj;
     private GameObject hips;
     private GameObject leftUpLeg;
     private GameObject leftLeg;
@@ -28,7 +28,7 @@ public class PickUp : MonoBehaviour
 
     private Rigidbody heldObjRb;
     private bool canThrow = true;
-    CharacterController controller;
+    public CharacterController controller;
 
     //Rough script to enable the picking up and dropping of bodies
     //Will need a bunch more work to eliminate collisions between the body and the player
@@ -39,7 +39,7 @@ public class PickUp : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -92,42 +92,42 @@ public class PickUp : MonoBehaviour
 
             //finding all of the colliders so we can ignore collsions from them
             //move this to a function
-            // dont think these do anything
-            //hips = heldObj;
-            //leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
-            //leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
-            //rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
-            //rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
-            //spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
-            //spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
-            //spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
-            //leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
-            //leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
-            //leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
-            //leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
-            //rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
-            //rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
-            //rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
-            //rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
-            //head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
-            //head = head.transform.Find("QuickRigCharacter_Head").gameObject;
+           //dont think these do anything
+            hips = heldObj;
+            leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
+            leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
+            rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
+            rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
+            spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
+            spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
+            spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
+            leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
+            leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
+            leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
+            leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
+            rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
+            rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
+            rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
+            rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
+            head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
+            head = head.transform.Find("QuickRigCharacter_Head").gameObject;
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
-            //// dont think these do anything
-            ////not sure how to ignore collisions on the player since it is made up of multiple colliders
-            //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), true);
+            // dont think these do anything
+            //not sure how to ignore collisions on the player since it is made up of multiple colliders
+            Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), true);
         }
     }
 

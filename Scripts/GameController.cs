@@ -120,6 +120,7 @@ public class GameController : MonoBehaviour
         tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
         spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
+        tempObj.GetComponent<PickUp>().heldObj = null;
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
         yield return new WaitForSeconds(0.1f);
