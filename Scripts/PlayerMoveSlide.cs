@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMoveSlide : MonoBehaviour
-{ 
+{
     public float speed = 10.0f;
     public float jumpForce = 10.0f;
     public float gravity = 20.0f;
@@ -11,13 +11,14 @@ public class PlayerMoveSlide : MonoBehaviour
     private Vector3 movementDir = Vector3.zero;
     private Vector3 airMovementDir = Vector3.zero;
     //what is this for? is it needed?
-    private Vector3 LatestRecordedMovementDir = Vector3.zero;       
+    private Vector3 LatestRecordedMovementDir = Vector3.zero;
 
     //what are these for? are they needed?
     //private float velocityX = 0f;
     //private float velocityZ = 0f;
-    
+
     CharacterController controller;
+    //public GameController gameController;
 
 
     private void Start()
@@ -96,4 +97,12 @@ public class PlayerMoveSlide : MonoBehaviour
         movementDir.x -= gravity * Time.deltaTime;
         movementDir.z -= gravity * Time.deltaTime;
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "LightningPoles")
+    //    {
+    //        gameController.StartCoroutine(gameController.respawnPlayer());
+    //    }
+    //}
 }
