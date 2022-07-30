@@ -7,7 +7,7 @@ public class GeneratorDoor : MonoBehaviour
     public GameObject doorGameObject;
     public GameObject electricityArc;
     private GameObject electricityArc1;
-    public GameObject colliderObject;
+    public GameObject arcStart;
     public GameObject aObject;
     private Vector3 midPoint;
     private IDoor door;
@@ -24,7 +24,7 @@ public class GeneratorDoor : MonoBehaviour
         elecCounter = 0;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (counter == 0)//PlayerIsOn == true
         {
@@ -37,27 +37,46 @@ public class GeneratorDoor : MonoBehaviour
 
         if (elecCounter == 2)
         {
-            midPoint = (pos.transform.position + colliderObject.transform.position) / 2;
+            midPoint = (pos.transform.position + arcStart.transform.position) / 2;
             electricityArc1.transform.position = midPoint;
             electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
-            electricityArc1.GetComponent<LineRenderer>().SetPosition(1, colliderObject.transform.position);
+            electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
         }
-
-
-
-        ////cameraHolder.transform.rotation = Quaternion.Lerp(cameraHolder.transform.rotation, cameraPosition.transform.rotation, percentComplete);
-
-        ////electricityArc.transform.s = midPoint;
-
-        //electricityArc.transform.localScale = Vector3.Lerp(pos.transform.position, colliderObject.transform.position, 1f);
-        //electricityArc.transform.position = midPoint;
-
     }
+
+    //void Update()
+    //{
+    //    if (counter == 0)//PlayerIsOn == true
+    //    {
+    //        door.CloseDoor();
+    //    }
+    //    else
+    //    {
+    //        door.OpenDoor();
+    //    }
+
+    //    if (elecCounter == 2)
+    //    {
+    //        midPoint = (pos.transform.position + arcStart.transform.position) / 2;
+    //        electricityArc1.transform.position = midPoint;
+    //        electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
+    //        electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
+    //    }
+
+
+
+    //    ////cameraHolder.transform.rotation = Quaternion.Lerp(cameraHolder.transform.rotation, cameraPosition.transform.rotation, percentComplete);
+
+    //    ////electricityArc.transform.s = midPoint;
+
+    //    //electricityArc.transform.localScale = Vector3.Lerp(pos.transform.position, colliderObject.transform.position, 1f);
+    //    //electricityArc.transform.position = midPoint;
+
+    //}
 
     private void OnTriggerEnter(Collider collision)
     {
-
-        if (collision.gameObject.GetComponent<RagdollScript>() != null)
+        if (collision.gameObject.name == "QuickRigCharacter_Hips")
         {
             if (collision.gameObject.GetComponent<RagdollScript>().isElectrified)
             {
@@ -69,15 +88,27 @@ public class GeneratorDoor : MonoBehaviour
             }
         }
 
+        //if (collision.gameObject.GetComponent<RagdollScript>() != null)
+        //{
+        //    if (collision.gameObject.GetComponent<RagdollScript>().isElectrified)
+        //    {
+        //        counter++;
+        //        if (elecCounter == 0)
+        //        {
+        //            elecCounter = 1;
+        //        }
+        //    }
+        //}
+
         if (elecCounter == 1)
         {
             pos = collision.gameObject;
-            midPoint = (pos.transform.position + colliderObject.transform.position) / 2;
+            midPoint = (pos.transform.position + arcStart.transform.position) / 2;
             electricityArc.transform.position = midPoint;
             //electricityArc.transform.position = pos.transform.position;
             electricityArc1 = Instantiate(electricityArc);
             electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
-            electricityArc1.GetComponent<LineRenderer>().SetPosition(1, colliderObject.transform.position);
+            electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
             elecCounter = 2;
         }
 
