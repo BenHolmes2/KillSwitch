@@ -18,12 +18,15 @@ public class PlayerMoveSlide : MonoBehaviour
     //private float velocityZ = 0f;
 
     CharacterController controller;
-    //public GameController gameController;
+    public GameController gameController;
+    private GameObject tempObj;
 
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        tempObj = GameObject.Find("GameController");
+        gameController = tempObj.GetComponent<GameController>();
     }
 
 
@@ -98,11 +101,11 @@ public class PlayerMoveSlide : MonoBehaviour
         movementDir.z -= gravity * Time.deltaTime;
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "LightningPoles")
-    //    {
-    //        gameController.StartCoroutine(gameController.respawnPlayer());
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "LightningPoles")
+        {
+            gameController.StartCoroutine(gameController.respawnPlayer());
+        }
+    }
 }
