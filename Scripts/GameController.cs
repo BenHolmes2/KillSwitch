@@ -10,9 +10,9 @@ public class GameController : MonoBehaviour
 {
     public GameObject player;
     public GameObject initialSpawnPos;
+    public GameObject respawnPoint;
     public GameObject cameraHolder;
     public GameObject cameraPosition;
-    public GameObject respawnPoint;
     public GameObject deadBody;
     //use ditance calulations
     //why has this lerp time changedf from 2f to 4f????????????????????????????
@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour
     public AudioClip Music;
     private AudioSource MusicSource;
     private GameObject tempObj;
+    private Vector3 lerpThreshold;
+    private Vector3 lerpCheck;
 
     void Start()
     {
@@ -38,6 +40,7 @@ public class GameController : MonoBehaviour
             MusicSource.clip = Music;
         MusicSource.volume = 0.1f;
         MusicSource.Play();
+        lerpThreshold.Set(0, 0, 0);
     }
 
     void CheckExistence()
@@ -82,7 +85,14 @@ public class GameController : MonoBehaviour
                 isRespawning = true;
                 //increment timer once per frame
                 currentLerpTime += Time.deltaTime;
+                lerpCheck = cameraHolder.transform.position - cameraPosition.transform.position;
                 if (currentLerpTime > lerpTime)
+                {
+                    currentLerpTime = 0;
+                    isLerping = false;
+                }
+                //if (lerpCheck.x == lerpThreshold.x && lerpCheck.y == lerpThreshold.y && lerpCheck.z == lerpThreshold.z)
+                if (lerpCheck.sqrMagnitude < 0.0000006)
                 {
                     currentLerpTime = 0;
                     isLerping = false;
@@ -91,9 +101,9 @@ public class GameController : MonoBehaviour
             if (!isLerping)
             {
                 //reparents the camera to the player
-                cameraHolder.transform.parent = spawnedPlayer.transform;
                 cameraHolder.transform.position = cameraPosition.transform.position;
                 cameraHolder.transform.rotation = cameraPosition.transform.rotation;
+                cameraHolder.transform.parent = spawnedPlayer.transform;
                 //allows the player to respawn again
                 isRespawning = false;
                 //allows the player to move again

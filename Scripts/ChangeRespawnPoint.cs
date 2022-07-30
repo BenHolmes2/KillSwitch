@@ -10,7 +10,7 @@ public class ChangeRespawnPoint : MonoBehaviour
     public float cameraFollowSpeed = 100; //maybe for really long rooms have a seperate collider for just this
     private int i = 0;
     public bool changeJumpForce = false;
-    public int jumpForce;
+    public float jumpForce;
 
     void OnTriggerExit(Collider other)
     {
