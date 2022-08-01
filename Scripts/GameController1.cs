@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 //need to change the way the lerp time is calculated, maybe using the distance
 //currently there are issues between lerp time when in scene and when the game is built
 
-public class GameController : MonoBehaviour
+public class GameController1 : MonoBehaviour
 {
     public GameObject player;
     public GameObject initialSpawnPos;
@@ -17,16 +17,19 @@ public class GameController : MonoBehaviour
     //use ditance calulations
     //why has this lerp time changedf from 2f to 4f????????????????????????????
     public float followSpeed; // probably a good idea to have this change based on what room the player is in, the larger the room the larger the number needs to be in order to slow down the camera movement for larger distances
-    private bool isLerping = true;
     private bool isRespawning = false;
-    private float currentLerpTime;
     public float lerpTime = 2f;
     public GameObject spawnedPlayer;
     public AudioClip Music;
     private AudioSource MusicSource;
     private GameObject tempObj;
     private Vector3 lerpThreshold;
-    private Vector3 lerpCheck;
+    private GameObject tempBody;
+    private GameObject temp;
+    private GameObject hips;
+    private GameObject spine;
+    private GameObject head;
+    public int i;
 
     void Start()
     {
@@ -41,6 +44,7 @@ public class GameController : MonoBehaviour
         MusicSource.volume = 0.1f;
         MusicSource.Play();
         lerpThreshold.Set(0, 0, 0);
+        i = 0;
     }
 
     void CheckExistence()
@@ -78,52 +82,40 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(respawnPlayer());
         }
-        if (cameraHolder.transform.parent == null)
+        if (cameraHolder.transform.parent == null && tempBody != null)
         {
-            if (isLerping)
-            {
-                isRespawning = true;
-                //increment timer once per frame
-                currentLerpTime += Time.deltaTime;
-                lerpCheck = cameraHolder.transform.position - cameraPosition.transform.position;
-                if (currentLerpTime > lerpTime)
-                {
-                    currentLerpTime = 0;
-                    isLerping = false;
-                }
-                //if (lerpCheck.x == lerpThreshold.x && lerpCheck.y == lerpThreshold.y && lerpCheck.z == lerpThreshold.z)
-                if (lerpCheck.sqrMagnitude < 0.0000006)
-                {
-                    currentLerpTime = 0;
-                    isLerping = false;
-                }
-            }
-            if (!isLerping)
-            {
-                //reparents the camera to the player
-                cameraHolder.transform.position = cameraPosition.transform.position;
-                cameraHolder.transform.rotation = cameraPosition.transform.rotation;
-                cameraHolder.transform.parent = spawnedPlayer.transform;
-                //allows the player to respawn again
-                isRespawning = false;
-                //allows the player to move again
-                spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
-                tempObj.GetComponentInChildren<MouseLook>().enabled = true;
-            }
+            
+            //temp = tempBody.transform.Find("CameraPos").gameObject;
 
-            float percentComplete = currentLerpTime / followSpeed;
-            //moves and roates the camera to the from the old body to the new
-            // might want to slow them down a bit, but this can be done later
-            cameraHolder.transform.position = Vector3.Lerp(cameraHolder.transform.position, cameraPosition.transform.position, percentComplete);
-            cameraHolder.transform.rotation = Quaternion.Lerp(cameraHolder.transform.rotation, cameraPosition.transform.rotation, percentComplete); 
+            tempObj = tempBody.transform.Find("riggedd body 04").gameObject;
+            tempObj = tempObj.transform.Find("QuickRigCharacter_Reference").gameObject;
+            tempObj = tempObj.transform.Find("QuickRigCharacter_Hips").gameObject;
 
+            hips = tempObj;
+            spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
+            spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
+            spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
+            head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
+            head = head.transform.Find("QuickRigCharacter_Head").gameObject;
+            temp = head.transform.Find("CameraPos").gameObject;
+            cameraHolder.transform.parent = temp.transform;
         }
+        if (i == 1)
+        {
+            cameraHolder.transform.parent = spawnedPlayer.transform;
+            cameraHolder.transform.position = cameraPosition.transform.position;
+            cameraHolder.transform.rotation = cameraPosition.transform.rotation;
+            tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+            tempObj.GetComponentInChildren<MouseLook>().enabled = true;//stops the player from moving while they are being respawned and the camera is moving
+            spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
+            i = 0;
+            tempBody = null;
+        }
+
+
     }
     public IEnumerator respawnPlayer()
     {
-        //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false); // camera seems to be colliding with the player 
-        //but i dont understand how that is possible
-        isLerping = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
@@ -134,6 +126,6 @@ public class GameController : MonoBehaviour
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
         yield return new WaitForSeconds(0.1f);
-        Instantiate(deadBody);
+        tempBody = Instantiate(deadBody);
     }
 }

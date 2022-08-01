@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683888291193174260}
   - component: {fileID: 683888291193174261}
+  - component: {fileID: 1529017003655832836}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -39,17 +40,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683888291193174258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83d1db5c379097c4c8537b22ebc61573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7840343121114172749, guid: dcdaff5f70b280a4e9e993132956f21f, type: 3}
   initialSpawnPos: {fileID: 0}
+  respawnPoint: {fileID: 0}
   cameraHolder: {fileID: 0}
   cameraPosition: {fileID: 0}
-  respawnPoint: {fileID: 0}
   deadBody: {fileID: 4396509345454594153, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
   followSpeed: 100
   lerpTime: 4
+  spawnedPlayer: {fileID: 0}
+  Music: {fileID: 0}
+--- !u!114 &1529017003655832836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683888291193174258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834955e4e1bccc440a5277c5435dd5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7840343121114172749, guid: dcdaff5f70b280a4e9e993132956f21f, type: 3}
+  initialSpawnPos: {fileID: 0}
+  respawnPoint: {fileID: 0}
+  cameraHolder: {fileID: 0}
+  cameraPosition: {fileID: 0}
+  deadBody: {fileID: 0}
+  followSpeed: 0
+  lerpTime: 2
+  spawnedPlayer: {fileID: 0}
   Music: {fileID: 0}
