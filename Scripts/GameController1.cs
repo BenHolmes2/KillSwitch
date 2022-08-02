@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //need to change the way the lerp time is calculated, maybe using the distance
 //currently there are issues between lerp time when in scene and when the game is built
@@ -29,7 +30,16 @@ public class GameController1 : MonoBehaviour
     private GameObject hips;
     private GameObject spine;
     private GameObject head;
-    public int i;
+    public bool hitGround;
+    public float j;
+    private bool bodyMoved = false;
+    public GameObject blackOutSquare;
+    public bool fadeOut = true;
+    public Color objectColor;
+    public float fadeSpeed = 0.1f;
+
+
+    float fadeAmount;
 
     void Start()
     {
@@ -44,7 +54,8 @@ public class GameController1 : MonoBehaviour
         MusicSource.volume = 0.1f;
         MusicSource.Play();
         lerpThreshold.Set(0, 0, 0);
-        i = 0;
+        hitGround = false;
+        objectColor = blackOutSquare.GetComponent<Image>().color;
     }
 
     void CheckExistence()
@@ -71,13 +82,6 @@ public class GameController1 : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
 
-        //if (Input.GetKeyDown(KeyCode.T))
-        //{
-        //    deadBody.transform.position = respawnPoint.transform.position;
-        //    deadBody.transform.rotation = respawnPoint.transform.rotation;
-        //    Instantiate(deadBody);
-        //}
-
         if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
@@ -100,18 +104,74 @@ public class GameController1 : MonoBehaviour
             temp = head.transform.Find("CameraPos").gameObject;
             cameraHolder.transform.parent = temp.transform;
         }
-        if (i == 1)
+        if (hitGround)
         {
-            cameraHolder.transform.parent = spawnedPlayer.transform;
-            cameraHolder.transform.position = cameraPosition.transform.position;
-            cameraHolder.transform.rotation = cameraPosition.transform.rotation;
-            tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-            tempObj.GetComponentInChildren<MouseLook>().enabled = true;//stops the player from moving while they are being respawned and the camera is moving
-            spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
-            i = 0;
-            tempBody = null;
+            if (fadeOut)
+            {
+                fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
+
+                objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColor;
+                j = blackOutSquare.GetComponent<Image>().color.a;
+                //Debug.Log(j);
+                if (j > 1)
+                {
+                    fadeOut = false;
+                }
+            }
+            if (bodyMoved)
+            {
+                if (!fadeOut)
+                {
+                    fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
+
+                    objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+                    blackOutSquare.GetComponent<Image>().color = objectColor;
+                    j = blackOutSquare.GetComponent<Image>().color.a;
+                    //Debug.Log(j);
+                    if (j < 0)
+                    {
+                        fadeOut = true;
+                        bodyMoved = false;
+                        hitGround = false;
+                    }
+                }
+            }
+            if (j >= 1) //this check probably needs to be changed as it is based on the alpha value, should probably be a boolean !!!
+            {
+                cameraHolder.transform.parent = spawnedPlayer.transform;
+                cameraHolder.transform.position = cameraPosition.transform.position;
+                cameraHolder.transform.rotation = cameraPosition.transform.rotation;
+                tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+                tempObj.GetComponentInChildren<MouseLook>().enabled = true;//stops the player from moving while they are being respawned and the camera is moving
+                spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
+                tempBody = null;
+                bodyMoved = true;
+            }
+
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            deadBody.transform.position = respawnPoint.transform.position;
+            Instantiate(deadBody);
+        }
+
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    StartCoroutine(FadeBlackOutSqaure(true, 5));
+        //}
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    StartCoroutine(FadeBlackOutSqaure(false, 5));
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    deadBody.transform.position = respawnPoint.transform.position;
+        //    deadBody.transform.rotation = respawnPoint.transform.rotation;
+        //    Instantiate(deadBody);
+        //}
 
     }
     public IEnumerator respawnPlayer()
@@ -128,4 +188,37 @@ public class GameController1 : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         tempBody = Instantiate(deadBody);
     }
+
+    //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)
+    //{
+    //    Color objectColor = blackOutSquare.GetComponent<Image>().color;
+    //    float fadeAmount;
+
+    //    if (fadeToBlack)
+    //    {
+    //        j = blackOutSquare.GetComponent<Image>().color.a;
+    //        while (blackOutSquare.GetComponent<Image>().color.a < 1)
+    //        {
+    //            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
+
+    //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+    //            blackOutSquare.GetComponent<Image>().color = objectColor;
+    //            j = blackOutSquare.GetComponent<Image>().color.a;
+    //            yield return null;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        while (blackOutSquare.GetComponent<Image>().color.a > 0)
+    //        {
+    //            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
+
+    //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+    //            blackOutSquare.GetComponent<Image>().color = objectColor;
+    //            j = blackOutSquare.GetComponent<Image>().color.a;
+    //            yield return null;
+    //        }
+    //    }
+    //}
+
 }

@@ -22,7 +22,7 @@ public class HeadScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Head")
         {
-            gameController.GetComponent<GameController1>().i = 1;
+            gameController.GetComponent<GameController1>().hitGround = true;
         }
     }
 }
