@@ -29,13 +29,6 @@ public class PickUp : MonoBehaviour
     private bool canThrow = true;
     public CharacterController controller;
 
-    //Rough script to enable the picking up and dropping of bodies
-    //Will need a bunch more work to eliminate collisions between the body and the player
-    //Waiting until we have our own model for the rag doll before i proceed further
-
-
-
-
     private void Start()
     {
         //controller = GetComponent<CharacterController>();
@@ -48,7 +41,7 @@ public class PickUp : MonoBehaviour
             if (heldObj == null)
             {
 
-                RaycastHit hit; // why is this casting out of the characters feet
+                RaycastHit hit;
                 if (Physics.Raycast(camera1.transform.position, camera1.transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
                     Debug.DrawLine(camera1.transform.position, hit.point, Color.white, 5f);
@@ -113,21 +106,6 @@ public class PickUp : MonoBehaviour
             head = head.transform.Find("QuickRigCharacter_Head").gameObject;
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
-            // dont think these do anything
-            //not sure how to ignore collisions on the player since it is made up of multiple colliders
-            //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), true);
-            //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), true);
 
             ToggleCollisions(true);
         }
@@ -146,23 +124,7 @@ public class PickUp : MonoBehaviour
     }
     void DropObject()
     {
-        // dont think these do anything
-        //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), false);
-        //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), false);
-
         ToggleCollisions(false);
-        //heldObj.transform.parent = null;
         heldObj = null;
     }
     void MoveObject()
