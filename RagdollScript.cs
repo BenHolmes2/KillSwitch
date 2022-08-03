@@ -34,12 +34,29 @@ public class RagdollScript : MonoBehaviour
         currObj = currObj.transform.Find("riggedd body 04").gameObject;
         currObj = currObj.transform.Find("QuickRigCharacter_Reference").gameObject;
         hips = currObj.transform.Find("QuickRigCharacter_Hips").gameObject;
+        leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
+        leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
+        rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
+        rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
+        spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
+        spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
+        spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
+        leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
+        leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
+        leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
+        leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
+        rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
+        rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
+        rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
+        rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
+        head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
+        head = head.transform.Find("QuickRigCharacter_Head").gameObject;
     }
 
     //// Update is called once per frame
     void Update()
     {
-        if (head != null)
+        if (head.GetComponent<RagdollScript>().isElectrified)
         {
             head.GetComponent<VisualEffect>().enabled = true;
         }
@@ -50,24 +67,6 @@ public class RagdollScript : MonoBehaviour
         if (other.gameObject.tag == "LightningPoles")
         {
             isElectrified = true;
-
-            leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
-            leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
-            rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
-            rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
-            spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
-            spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
-            spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
-            leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
-            leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
-            leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
-            leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
-            rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
-            rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
-            rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
-            rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
-            head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
-            head = head.transform.Find("QuickRigCharacter_Head").gameObject;
 
             hips.GetComponent<RagdollScript>().isElectrified = true;
             leftUpLeg.GetComponent<RagdollScript>().isElectrified = true;

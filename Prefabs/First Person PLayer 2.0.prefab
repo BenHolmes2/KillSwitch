@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2991827091871806209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005996704, y: 1.7039995, z: 3.153}
+  m_LocalPosition: {x: 0.005996704, y: 1.43, z: 3.153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -370,6 +370,7 @@ MonoBehaviour:
   speed: 15
   jumpForce: 10
   gravity: 45
+  gameController: {fileID: 0}
 --- !u!143 &7330968184672451848
 CharacterController:
   m_ObjectHideFlags: 0
@@ -413,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7907653331560319188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005996704, y: 2.531, z: 0.97}
+  m_LocalPosition: {x: 0.005996704, y: 2.531, z: 0.676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -436,7 +437,7 @@ MonoBehaviour:
   player: {fileID: 7840343121114172749}
   holdPos: {fileID: 2847173396550656955}
   camera1: {fileID: 7033958078361622809}
-  throwForce: 10
+  throwForce: 500
   pickUpRange: 50
   heldObj: {fileID: 0}
   controller: {fileID: 7330968184672451848}
