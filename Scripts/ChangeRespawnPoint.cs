@@ -16,9 +16,8 @@ public class ChangeRespawnPoint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && i == 0)
         {
-            GameController.GetComponent<GameController>().followSpeed = cameraFollowSpeed; //changes the speed of the camera transition when the player respawns
-            GameController.GetComponent<GameController>().respawnPoint = spawnPos;
-            player = GameController.GetComponent<GameController>().spawnedPlayer;
+            GameController.GetComponent<GameController1>().respawnPoint = spawnPos;
+            player = GameController.GetComponent<GameController1>().spawnedPlayer;
 
             if (changeJumpForce)
             {

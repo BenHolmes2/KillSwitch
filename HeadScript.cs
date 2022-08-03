@@ -10,6 +10,11 @@ public class HeadScript : MonoBehaviour
     {
         gameController = GameObject.Find("GameController");
 
+        if (gameObject.tag == "canPickUpDeath")
+        {
+
+        }
+
     }
 
     //// Update is called once per frame
@@ -20,9 +25,13 @@ public class HeadScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Head")
+        if (gameObject.tag == "canPickUpDeath")
         {
-            gameController.GetComponent<GameController1>().hitGround = true;
+            if (collision.gameObject.tag == "Head")
+            {
+                gameController.GetComponent<GameController1>().hitGround = true;
+            }
         }
+
     }
 }

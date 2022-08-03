@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 40.06305, g: 29.747555, b: 22.469423, a: 1}
+  m_IndirectSpecularColor: {r: 41.815628, g: 31.628666, b: 24.916721, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -573,18 +573,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27449623707780259, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 941970614}
+    - target: {fileID: 27449623898896017, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 941970614}
+    - target: {fileID: 27449624239757830, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 941970614}
+    - target: {fileID: 27449624311781967, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 941970614}
     - target: {fileID: 27449624501621007, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970614}
+    - target: {fileID: 27449625521246695, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 941970614}
     - target: {fileID: 142689493278784844, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970614}
     - target: {fileID: 827928474245482199, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970614}
     - target: {fileID: 2429428479357256159, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -636,19 +656,19 @@ PrefabInstance:
     - target: {fileID: 5790204749125229452, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970614}
     - target: {fileID: 6166746480453833435, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970619}
     - target: {fileID: 6561404689950124065, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970614}
     - target: {fileID: 7937287650523175280, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941970614}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
 --- !u!1 &941970614 stripped
@@ -671,6 +691,17 @@ MonoBehaviour:
   blackOutSquare: {fileID: 153454310}
   fadeAmount: 0
   fadeSpeed: 1
+--- !u!114 &941970619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
+  m_PrefabInstance: {fileID: 1688756345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941970614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834955e4e1bccc440a5277c5435dd5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173919933 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1842392199178198432, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
@@ -749,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 4396509345454594153, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: fadeSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: m_Enabled
@@ -767,7 +798,8 @@ PrefabInstance:
       propertyPath: initialSpawnPos
       value: 
       objectReference: {fileID: 1787357806}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 683888291193174261, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
 --- !u!1 &1787357806 stripped
 GameObject:

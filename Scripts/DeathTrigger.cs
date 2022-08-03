@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathTrigger : MonoBehaviour
 {
-    public GameController Controller;
+    public GameController1 Controller;
 
     void OnTriggerEnter(Collider other)
     {

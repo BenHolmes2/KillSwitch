@@ -21,19 +21,19 @@ public class RagdollScript : MonoBehaviour
     private GameObject rightForeArm;
     private GameObject rightHand;
     private GameObject head;
+    private GameObject gameController;
+
 
     //// Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
         ragdoll = gameObject;
-        //rename these
         currObj = ragdoll;
         currObj = currObj.transform.root.gameObject;
         currObj = currObj.transform.Find("riggedd body 04").gameObject;
         currObj = currObj.transform.Find("QuickRigCharacter_Reference").gameObject;
         hips = currObj.transform.Find("QuickRigCharacter_Hips").gameObject;
-
-
     }
 
     //// Update is called once per frame
@@ -82,27 +82,12 @@ public class RagdollScript : MonoBehaviour
             rightForeArm.GetComponent<RagdollScript>().isElectrified = true;
             rightHand.GetComponent<RagdollScript>().isElectrified = true;
             head.GetComponent<RagdollScript>().isElectrified = true;
-
-            hips.tag = "canPickUpElec";
-            leftUpLeg.tag = "canPickUpElec";
-            leftLeg.tag = "canPickUpElec";
-            rightUpLeg.tag = "canPickUpElec";
-            rightLeg.tag = "canPickUpElec";
-            spine.tag = "canPickUpElec";
-            leftArm.tag = "canPickUpElec";
-            leftForeArm.tag = "canPickUpElec";
-            leftHand.tag = "canPickUpElec";
-            rightArm.tag = "canPickUpElec";
-            rightForeArm.tag = "canPickUpElec";
-            rightHand.tag = "canPickUpElec";
-            head.tag = "canPickUpElec";
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        //how do i get it to ignore the respawn tube 
         if (collision.gameObject.tag == "RespawnTube")
         {
             Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), hips.GetComponent<Collider>(), true);
@@ -119,8 +104,16 @@ public class RagdollScript : MonoBehaviour
             Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), rightHand.GetComponent<Collider>(), true);
             Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), head.GetComponent<Collider>(), true);
         }
+
+        if (collision.gameObject != gameObject)
+        {
+            if (gameObject.tag == "canPickUpDeath")
+            {
+                if ((collision.gameObject.tag == "DeathSurface" || collision.gameObject.tag == "RespawnTube" || collision.gameObject.tag == "canPickUp") && gameController.GetComponent<GameController1>().hitGround == false)
+                {
+                    gameController.GetComponent<GameController1>().hitGround = true;
+                }
+            }
+        }
     }
-
-
-
 }

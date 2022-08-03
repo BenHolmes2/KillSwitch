@@ -18,7 +18,7 @@ public class PlayerMoveSlide : MonoBehaviour
     //private float velocityZ = 0f;
 
     CharacterController controller;
-    public GameController gameController;
+    public GameController1 gameController;
     private GameObject tempObj;
 
 
@@ -26,7 +26,7 @@ public class PlayerMoveSlide : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         tempObj = GameObject.Find("GameController");
-        gameController = tempObj.GetComponent<GameController>();
+        gameController = tempObj.GetComponent<GameController1>();
     }
 
 

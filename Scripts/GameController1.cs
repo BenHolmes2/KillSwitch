@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//need to change the way the lerp time is calculated, maybe using the distance
-//currently there are issues between lerp time when in scene and when the game is built
 
 public class GameController1 : MonoBehaviour
 {
@@ -15,31 +13,28 @@ public class GameController1 : MonoBehaviour
     public GameObject cameraHolder;
     public GameObject cameraPosition;
     public GameObject deadBody;
-    //use ditance calulations
-    //why has this lerp time changedf from 2f to 4f????????????????????????????
-    public float followSpeed; // probably a good idea to have this change based on what room the player is in, the larger the room the larger the number needs to be in order to slow down the camera movement for larger distances
-    private bool isRespawning = false;
-    public float lerpTime = 2f;
-    public GameObject spawnedPlayer;
-    public AudioClip Music;
-    private AudioSource MusicSource;
-    private GameObject tempObj;
-    private Vector3 lerpThreshold;
     private GameObject tempBody;
     private GameObject temp;
     private GameObject hips;
     private GameObject spine;
     private GameObject head;
-    public bool hitGround;
-    public float j;
-    private bool bodyMoved = false;
+    private GameObject tempObj;
+    public GameObject spawnedPlayer;
     public GameObject blackOutSquare;
+
+    private bool isRespawn = false;
+    private bool bodyMoved = false;
     public bool fadeOut = true;
+    public bool hitGround;
+
+    public AudioClip Music;
+    private AudioSource MusicSource;
+
     public Color objectColor;
-    public float fadeSpeed = 0.1f;
 
-
-    float fadeAmount;
+    public float j;
+    public float fadeSpeed = 2;
+    private float fadeAmount;
 
     void Start()
     {
@@ -53,7 +48,6 @@ public class GameController1 : MonoBehaviour
             MusicSource.clip = Music;
         MusicSource.volume = 0.1f;
         MusicSource.Play();
-        lerpThreshold.Set(0, 0, 0);
         hitGround = false;
         objectColor = blackOutSquare.GetComponent<Image>().color;
     }
@@ -82,7 +76,7 @@ public class GameController1 : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && !isRespawning) //isRespawning makes sure the player cant respawn until the camera has finished moving
+        if (Input.GetKeyDown(KeyCode.R) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
         }
@@ -104,7 +98,7 @@ public class GameController1 : MonoBehaviour
             temp = head.transform.Find("CameraPos").gameObject;
             cameraHolder.transform.parent = temp.transform;
         }
-        if (hitGround)
+        if (hitGround && isRespawn)
         {
             if (fadeOut)
             {
@@ -133,7 +127,9 @@ public class GameController1 : MonoBehaviour
                     {
                         fadeOut = true;
                         bodyMoved = false;
+                        //because the ragdoll has multiple colliders this gets set to true multiple times and cant be set back to false, needs to be fixed!!!!!!!!!!!!!
                         hitGround = false;
+                        isRespawn = false;
                     }
                 }
             }
@@ -149,6 +145,10 @@ public class GameController1 : MonoBehaviour
                 bodyMoved = true;
             }
 
+        }
+        else
+        {
+            hitGround = false;
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -166,12 +166,16 @@ public class GameController1 : MonoBehaviour
         //    StartCoroutine(FadeBlackOutSqaure(false, 5));
         //}
 
-        //if (Input.GetKeyDown(KeyCode.T))
-        //{
-        //    deadBody.transform.position = respawnPoint.transform.position;
-        //    deadBody.transform.rotation = respawnPoint.transform.rotation;
-        //    Instantiate(deadBody);
-        //}
+        //debug respawn 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            deadBody.transform.position = spawnedPlayer.transform.position;
+            deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+            spawnedPlayer.transform.position = respawnPoint.transform.position;
+            spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+            Instantiate(deadBody);
+
+        }
 
     }
     public IEnumerator respawnPlayer()
@@ -187,6 +191,7 @@ public class GameController1 : MonoBehaviour
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
         yield return new WaitForSeconds(0.1f);
         tempBody = Instantiate(deadBody);
+        isRespawn = true;
     }
 
     //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)
