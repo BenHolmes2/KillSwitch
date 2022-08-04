@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 41.87226, g: 31.69017, b: 25.005566, a: 1}
+  m_IndirectSpecularColor: {r: 41.83334, g: 31.646454, b: 24.940521, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -517,6 +517,11 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &220929054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5820819793404533563, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &250061996 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8329573668956339303, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
@@ -591,11 +596,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &827064213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5108812571072555563, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-  m_PrefabInstance: {fileID: 929331694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &929331694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,9 +699,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2511080244479495825, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_TagString
+      value: DeathSurface
+      objectReference: {fileID: 0}
     - target: {fileID: 3097562815477504869, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_Name
       value: 'All_Rooms '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757936293784336162, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757936293784336162, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757936293784336162, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5790204749125229452, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
@@ -715,10 +731,50 @@ PrefabInstance:
       propertyPath: GameController
       value: 
       objectReference: {fileID: 941970614}
+    - target: {fileID: 6660552630075235754, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660552630075235754, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660552630075235754, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660552630075235754, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660552630075235754, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
     - target: {fileID: 7937287650523175280, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
       objectReference: {fileID: 941970614}
+    - target: {fileID: 8040667269205474049, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Height
+      value: 1108.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040667269205474049, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Radius
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040667269205474049, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040667269205474049, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329573668956339303, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_TagString
+      value: DeathSurface
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
 --- !u!1 &941970614 stripped
@@ -737,6 +793,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834955e4e1bccc440a5277c5435dd5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &956998206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7557854060302581090, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &956998208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956998206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf168733884a6034caa53052d53f416b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 941970619}
+  bloodEffect: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
 --- !u!1 &1608164297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2511080244479495825, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
@@ -824,7 +899,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 827064213}
+      objectReference: {fileID: 220929054}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: blackOutSquare
       value: 
@@ -832,7 +907,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 827064213}
+      objectReference: {fileID: 220929054}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
 --- !u!1 &2013410473

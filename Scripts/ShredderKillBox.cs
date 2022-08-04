@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShredderKillBox : MonoBehaviour
 {
-    public GameController Controller;
+    public GameController1 Controller;
     public GameObject bloodEffect;
     private Transform pos;
 
@@ -18,11 +18,15 @@ public class ShredderKillBox : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "canPickUp")
+        if (other.gameObject.tag == "canPickUp" || other.gameObject.tag == "canPickUpDeath")
         {
-            bloodEffect.transform.position = other.transform.position;
-            Destroy(other.gameObject.transform.root.gameObject);
-            Instantiate(bloodEffect);
+
+            if (!Controller.isRespawn)
+            {
+                bloodEffect.transform.position = other.transform.position;
+                Destroy(other.gameObject.transform.root.gameObject);
+                Instantiate(bloodEffect);
+            }
         }
     }
 }

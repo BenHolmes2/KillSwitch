@@ -22,7 +22,7 @@ public class GameController1 : MonoBehaviour
     public GameObject spawnedPlayer;
     public GameObject blackOutSquare;
 
-    private bool isRespawn = false;
+    public bool isRespawn = false;
     private bool bodyMoved = false;
     public bool fadeOut = true;
     public bool hitGround;
