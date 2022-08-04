@@ -71,15 +71,16 @@ public class GameController1 : MonoBehaviour
     void Update()
     {
         // this is the current temporary escape code
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Menu");
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    SceneManager.LoadScene("Menu");
+        //}
 
         if (Input.GetKeyDown(KeyCode.R) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
         }
+
         if (cameraHolder.transform.parent == null && tempBody != null)
         {
             

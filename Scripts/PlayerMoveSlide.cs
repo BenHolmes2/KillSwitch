@@ -29,7 +29,6 @@ public class PlayerMoveSlide : MonoBehaviour
         gameController = tempObj.GetComponent<GameController1>();
     }
 
-
     void Update()
     {
 
