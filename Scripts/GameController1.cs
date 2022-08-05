@@ -97,6 +97,7 @@ public class GameController1 : MonoBehaviour
             head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
             head = head.transform.Find("QuickRigCharacter_Head").gameObject;
             temp = head.transform.Find("CameraPos").gameObject;
+            cameraHolder.transform.position = temp.transform.position;
             cameraHolder.transform.parent = temp.transform;
         }
         if (hitGround && isRespawn)

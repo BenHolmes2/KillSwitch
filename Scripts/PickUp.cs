@@ -138,7 +138,8 @@ public class PickUp : MonoBehaviour
         //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         //heldObj.transform.parent = null;
         heldObj = null;
-        heldObjRb.AddForce(transform.right * throwForce);
+        //heldObjRb.AddForce(transform.right * throwForce);
+        heldObjRb.velocity = (transform.forward * throwForce);
 
     }
 
