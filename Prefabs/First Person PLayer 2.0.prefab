@@ -155,7 +155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033958078361622809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e0a93cf07b17f845a01dfdcd8e01fa4, type: 3}
   m_Name: 
@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 9736755115809877}
   - component: {fileID: -8676112321346163549}
   - component: {fileID: 7330968184672451848}
+  - component: {fileID: 947748989702681783}
   m_Layer: 0
   m_Name: First Person PLayer 2.0
   m_TagString: Player
@@ -362,7 +363,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7840343121114172749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29916146cfd77bd4d925f41c3940b939, type: 3}
   m_Name: 
@@ -389,6 +390,31 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &947748989702681783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840343121114172749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c83f3e89eef68249adcecaaa4c32d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  holdPos: {fileID: 2847173396550656955}
+  throwForce: 500
+  pickUpRange: 20
+  heldObj: {fileID: 0}
+  controller: {fileID: 0}
+  mouseSensitivity: 100
+  playerBody: {fileID: 9736755115809877}
+  cameraObj: {fileID: 7033958078361622809}
+  speed: 15
+  jumpForce: 10
+  gravity: 45
+  gameController: {fileID: 0}
 --- !u!1 &7907653331560319188
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7907653331560319188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9d6581d2955b2c49bd841716cfd22ea, type: 3}
   m_Name: 

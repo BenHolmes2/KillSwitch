@@ -9,15 +9,25 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject controlsMenu;
     public GameObject settingsMenu;
-    public GameObject sliderObj;
-    private Slider slider;
+    //public GameObject sliderObj;
+    public Slider volumeSlider;
+    public Slider mouseSlider;
+    public Slider jumpSlider;
+    public Slider playerSlider;
+    public Slider gravitySlider;
+    public Slider respawnSlider;
     private GameObject cameraObj;
     private GameObject cameraHolder;
     public GameController1 gameController;
+    public Text volume;
     public Text mouseSensitivity;
+    public Text jumpForce;
+    public Text playerSpeed;
+    public Text gravity;
+    public Text respawnSpeed;
     void Start()
     {
-        slider = sliderObj.GetComponent<Slider>();
+        //mouseSlider = sliderObj.GetComponent<Slider>();
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
@@ -33,8 +43,18 @@ public class Pause : MonoBehaviour
         //{
         //    ResumeGame();
         //}
-        gameController.cameraHolder.GetComponentInChildren<MouseLook>().mouseSensitivity = slider.value;
-        mouseSensitivity.text = slider.value.ToString();
+        gameController.spawnedPlayer.GetComponent<PlayerController>().mouseSensitivity = mouseSlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerController>().jumpForce = jumpSlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerController>().speed = playerSlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerController>().gravity = gravitySlider.value;
+        gameController.fadeSpeed = respawnSlider.value;
+        gameController.MusicSource.volume = volumeSlider.value;
+        volume.text = volumeSlider.value.ToString();
+        mouseSensitivity.text = mouseSlider.value.ToString();
+        jumpForce.text = jumpSlider.value.ToString();
+        playerSpeed.text = playerSlider.value.ToString();
+        gravity.text = gravitySlider.value.ToString();
+        respawnSpeed.text = respawnSlider.value.ToString();
     }
 
     public void ResumeGame()

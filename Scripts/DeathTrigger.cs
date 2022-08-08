@@ -10,7 +10,7 @@ public class DeathTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Controller.StartCoroutine(Controller.respawnPlayer());
+            Controller.respawnPlayer();
             Debug.Log("you should have died");
         }
     }

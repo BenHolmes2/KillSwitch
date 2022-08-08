@@ -75,11 +75,13 @@ public class PlayerMoveSlide : MonoBehaviour
         movementDir.z -= gravity * Time.deltaTime;
     }
 
+    //move this to the death collider script
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "LightningPoles")
         {
-            gameController.StartCoroutine(gameController.respawnPlayer());
+            //gameController.StartCoroutine(gameController.respawnPlayer());
+            gameController.respawnPlayer();
         }
     }
 }
