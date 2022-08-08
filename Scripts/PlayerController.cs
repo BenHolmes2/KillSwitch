@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
-    public GameObject camera1;
     public float throwForce = 500f;
     public float pickUpRange = 20f;
-    
+
     public GameObject heldObj;
     private GameObject hips;
     private GameObject leftUpLeg;
@@ -29,22 +28,49 @@ public class PickUp : MonoBehaviour
     private bool canThrow = true;
     public CharacterController controller;
 
-    private void Start()
+    public float mouseSensitivity = 100f;
+
+    public Transform playerBody;
+    public GameObject cameraObj;
+
+    float xRotation = 0f;
+
+    public float speed = 10.0f;
+    public float jumpForce = 10.0f;
+    public float gravity = 20.0f;
+    private Vector3 movementInput = Vector3.zero;
+    private Vector3 movementDir = Vector3.zero;
+    private Vector3 airMovementDir = Vector3.zero;
+
+    public GameController1 gameController;
+    private GameObject tempObj;
+
+
+    void Start()
     {
-        //controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+        tempObj = GameObject.Find("GameController");
+        gameController = tempObj.GetComponent<GameController1>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // Update is called once per frame
     void Update()
     {
+
+        PlayerLook();
+        PlayerMove();
+
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (heldObj == null)
             {
 
                 RaycastHit hit;
-                if (Physics.Raycast(camera1.transform.position, camera1.transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+                if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
-                    Debug.DrawLine(camera1.transform.position, hit.point, Color.white, 5f);
+                    Debug.DrawLine(cameraObj.transform.position, hit.point, Color.white, 5f);
                     Debug.Log(hit.transform.gameObject.tag);
                     Debug.Log(hit.transform.gameObject.name);
                     if (hit.transform.gameObject.tag == "canPickUp" || hit.transform.gameObject.tag == "canPickUpDeath")
@@ -66,13 +92,14 @@ public class PickUp : MonoBehaviour
         if (heldObj != null)
         {
             MoveObject();
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canThrow == true) 
+            if (Input.GetKeyDown(KeyCode.Mouse0) && canThrow == true)
             {
                 ThrowObject();
             }
 
         }
     }
+
     void PickUpBody(GameObject pickUpObj)
     {
         if (pickUpObj.GetComponent<Rigidbody>())
@@ -85,7 +112,7 @@ public class PickUp : MonoBehaviour
 
             //finding all of the colliders so we can ignore collsions from them
             //move this to a function
-           //dont think these do anything
+            //dont think these do anything
             hips = heldObj;
             leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
             leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
@@ -109,6 +136,64 @@ public class PickUp : MonoBehaviour
 
             ToggleCollisions(true);
         }
+    }
+
+    void PlayerMove()
+    {
+        movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+
+        if (movementInput.magnitude > 1.0f)
+        {
+            movementInput = movementInput.normalized;
+        }
+
+        // When player is in the air
+        if (!controller.isGrounded)
+        {
+            airMovementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
+
+            airMovementDir.x *= speed;
+            airMovementDir.z *= speed;
+
+            movementDir.x = airMovementDir.x;
+            movementDir.z = airMovementDir.z;
+
+        }
+
+
+        if (controller.isGrounded)
+        {
+            movementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
+
+            if (Input.GetButton("Jump"))
+            {
+                movementDir.y = jumpForce;
+            }
+
+            movementDir.x *= speed;
+            movementDir.z *= speed;
+
+        }
+
+        movementDir = transform.TransformDirection(movementDir);
+        controller.Move(movementDir * Time.deltaTime);
+
+        movementDir.y -= gravity * Time.deltaTime;
+        movementDir.x -= gravity * Time.deltaTime;
+        movementDir.z -= gravity * Time.deltaTime;
+    }
+
+    void PlayerLook()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+
+        cameraObj.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX);
     }
 
     void PickUpObject(GameObject pickUpObj)

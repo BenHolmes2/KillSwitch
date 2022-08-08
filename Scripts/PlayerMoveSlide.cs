@@ -29,7 +29,6 @@ public class PlayerMoveSlide : MonoBehaviour
         gameController = tempObj.GetComponent<GameController1>();
     }
 
-
     void Update()
     {
 
@@ -47,19 +46,6 @@ public class PlayerMoveSlide : MonoBehaviour
 
             airMovementDir.x *= speed;
             airMovementDir.z *= speed;
-
-            //these blocks are breaking the movement, what do they do/ are meant to do?
-            //if (movementInput.magnitude != 0f)
-            //{
-            //    LatestRecordedMovementDir.x = airMovementDir.x;
-            //    LatestRecordedMovementDir.z = airMovementDir.z;
-            //}
-
-            //if (movementInput.magnitude == 0f)
-            //{
-            //    airMovementDir.x = LatestRecordedMovementDir.x;
-            //    airMovementDir.z = LatestRecordedMovementDir.z;
-            //}
 
             movementDir.x = airMovementDir.x;
             movementDir.z = airMovementDir.z;
@@ -79,18 +65,6 @@ public class PlayerMoveSlide : MonoBehaviour
             movementDir.x *= speed;
             movementDir.z *= speed;
 
-            //these blocks are breaking the movement, what do they do/are meant to do?
-            //if (movementInput.magnitude != 0f)
-            //{
-            //    LatestRecordedMovementDir.x = movementDir.x;
-            //    LatestRecordedMovementDir.z = movementDir.z;
-            //}
-            //if (movementInput.magnitude == 0f)
-            //{
-
-            //    movementDir.x = LatestRecordedMovementDir.x;
-            //    movementDir.z = LatestRecordedMovementDir.z;
-            //}
         }
 
         movementDir = transform.TransformDirection(movementDir);
@@ -101,11 +75,13 @@ public class PlayerMoveSlide : MonoBehaviour
         movementDir.z -= gravity * Time.deltaTime;
     }
 
+    //move this to the death collider script
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "LightningPoles")
         {
-            gameController.StartCoroutine(gameController.respawnPlayer());
+            //gameController.StartCoroutine(gameController.respawnPlayer());
+            gameController.respawnPlayer();
         }
     }
 }

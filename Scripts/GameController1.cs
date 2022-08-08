@@ -22,13 +22,13 @@ public class GameController1 : MonoBehaviour
     public GameObject spawnedPlayer;
     public GameObject blackOutSquare;
 
-    private bool isRespawn = false;
+    public bool isRespawn = false;
     private bool bodyMoved = false;
     public bool fadeOut = true;
     public bool hitGround;
 
     public AudioClip Music;
-    private AudioSource MusicSource;
+    public AudioSource MusicSource;
 
     public Color objectColor;
 
@@ -71,15 +71,17 @@ public class GameController1 : MonoBehaviour
     void Update()
     {
         // this is the current temporary escape code
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Menu");
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    SceneManager.LoadScene("Menu");
+        //}
 
         if (Input.GetKeyDown(KeyCode.R) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
-            StartCoroutine(respawnPlayer());
+            //StartCoroutine(respawnPlayer());
+            respawnPlayer();
         }
+
         if (cameraHolder.transform.parent == null && tempBody != null)
         {
             
@@ -96,6 +98,7 @@ public class GameController1 : MonoBehaviour
             head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
             head = head.transform.Find("QuickRigCharacter_Head").gameObject;
             temp = head.transform.Find("CameraPos").gameObject;
+            cameraHolder.transform.position = temp.transform.position;
             cameraHolder.transform.parent = temp.transform;
         }
         if (hitGround && isRespawn)
@@ -139,8 +142,9 @@ public class GameController1 : MonoBehaviour
                 cameraHolder.transform.position = cameraPosition.transform.position;
                 cameraHolder.transform.rotation = cameraPosition.transform.rotation;
                 tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-                tempObj.GetComponentInChildren<MouseLook>().enabled = true;//stops the player from moving while they are being respawned and the camera is moving
-                spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
+                //tempObj.GetComponentInChildren<MouseLook>().enabled = true;//stops the player from moving while they are being respawned and the camera is moving
+                //spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
+                spawnedPlayer.GetComponent<PlayerController>().enabled = true;
                 tempBody = null;
                 bodyMoved = true;
             }
@@ -151,12 +155,14 @@ public class GameController1 : MonoBehaviour
             hitGround = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            deadBody.transform.position = respawnPoint.transform.position;
-            Instantiate(deadBody);
-        }
+        //debug respawn
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    deadBody.transform.position = respawnPoint.transform.position;
+        //    Instantiate(deadBody);
+        //}
 
+        //debug inputs for testing the fade to black canvas
         //if (Input.GetKeyDown(KeyCode.P))
         //{
         //    StartCoroutine(FadeBlackOutSqaure(true, 5));
@@ -178,18 +184,35 @@ public class GameController1 : MonoBehaviour
         }
 
     }
-    public IEnumerator respawnPlayer()
+    //public IEnumerator respawnPlayer()
+    //{
+    //    deadBody.transform.position = spawnedPlayer.transform.position;
+    //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+    //    tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+    //    //tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
+    //    cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
+    //    //spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
+    //    spawnedPlayer.GetComponent<PlayerController>().enabled = false;
+    //    tempObj.GetComponent<PickUp>().heldObj = null;
+    //    spawnedPlayer.transform.position = respawnPoint.transform.position;
+    //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+    //    yield return new WaitForSeconds(0.0001f);
+    //    tempBody = Instantiate(deadBody);
+    //    isRespawn = true;
+    //}
+
+    public void respawnPlayer()
     {
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-        tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
+        //tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
-        spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
+        //spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
+        spawnedPlayer.GetComponent<PlayerController>().enabled = false;
         tempObj.GetComponent<PickUp>().heldObj = null;
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
-        yield return new WaitForSeconds(0.1f);
         tempBody = Instantiate(deadBody);
         isRespawn = true;
     }

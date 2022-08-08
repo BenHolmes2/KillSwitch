@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 683888291193174260}
-  - component: {fileID: 683888291193174261}
   - component: {fileID: 1529017003655832836}
+  - component: {fileID: 941970618}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -33,28 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &683888291193174261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683888291193174258}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83d1db5c379097c4c8537b22ebc61573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 7840343121114172749, guid: dcdaff5f70b280a4e9e993132956f21f, type: 3}
-  initialSpawnPos: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  cameraHolder: {fileID: 0}
-  cameraPosition: {fileID: 0}
-  deadBody: {fileID: 4396509345454594153, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
-  followSpeed: 100
-  lerpTime: 4
-  spawnedPlayer: {fileID: 0}
-  Music: {fileID: 0}
 --- !u!114 &1529017003655832836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,8 +50,29 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   cameraHolder: {fileID: 0}
   cameraPosition: {fileID: 0}
-  deadBody: {fileID: 0}
-  followSpeed: 0
-  lerpTime: 2
+  deadBody: {fileID: 4396509345454594153, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
   spawnedPlayer: {fileID: 0}
-  Music: {fileID: 0}
+  blackOutSquare: {fileID: 0}
+  isRespawn: 0
+  fadeOut: 1
+  hitGround: 0
+  Music: {fileID: 8300000, guid: 63e2c1e340b3dbb49a4a08471e5f623a, type: 3}
+  MusicSource: {fileID: 0}
+  objectColor: {r: 0, g: 0, b: 0, a: 0}
+  j: 0
+  fadeSpeed: 2
+--- !u!114 &941970618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683888291193174258}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1057c20462a03c84b803fe141a094b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackOutSquare: {fileID: 0}
+  fadeAmount: 0
+  fadeSpeed: 1
