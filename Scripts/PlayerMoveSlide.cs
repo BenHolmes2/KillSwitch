@@ -80,7 +80,6 @@ public class PlayerMoveSlide : MonoBehaviour
     {
         if (other.gameObject.tag == "LightningPoles")
         {
-            //gameController.StartCoroutine(gameController.respawnPlayer());
             gameController.respawnPlayer();
         }
     }

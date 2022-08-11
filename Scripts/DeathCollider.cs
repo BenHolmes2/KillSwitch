@@ -23,7 +23,6 @@ public class DeathCollider : MonoBehaviour
 
             if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
             {
-
                 if (!Controller.isRespawn)
                 {
                     bloodEffect.transform.position = other.transform.position;
@@ -40,6 +39,14 @@ public class DeathCollider : MonoBehaviour
                 //Controller.StartCoroutine(Controller.respawnPlayer());
                 Controller.respawnPlayer();
                 Debug.Log("you should have died");
+            }
+        }
+
+        if (gameObject.CompareTag("LightningPoles"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Controller.respawnPlayer();
             }
         }
 

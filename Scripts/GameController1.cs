@@ -70,12 +70,6 @@ public class GameController1 : MonoBehaviour
 
     void Update()
     {
-        // this is the current temporary escape code
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    SceneManager.LoadScene("Menu");
-        //}
-
         if (Input.GetKeyDown(KeyCode.R) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             //StartCoroutine(respawnPlayer());
@@ -84,13 +78,9 @@ public class GameController1 : MonoBehaviour
 
         if (cameraHolder.transform.parent == null && tempBody != null)
         {
-            
-            //temp = tempBody.transform.Find("CameraPos").gameObject;
-
             tempObj = tempBody.transform.Find("riggedd body 04").gameObject;
             tempObj = tempObj.transform.Find("QuickRigCharacter_Reference").gameObject;
             tempObj = tempObj.transform.Find("QuickRigCharacter_Hips").gameObject;
-
             hips = tempObj;
             spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
             spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
@@ -130,7 +120,6 @@ public class GameController1 : MonoBehaviour
                     {
                         fadeOut = true;
                         bodyMoved = false;
-                        //because the ragdoll has multiple colliders this gets set to true multiple times and cant be set back to false, needs to be fixed!!!!!!!!!!!!!
                         hitGround = false;
                         isRespawn = false;
                     }
@@ -142,13 +131,10 @@ public class GameController1 : MonoBehaviour
                 cameraHolder.transform.position = cameraPosition.transform.position;
                 cameraHolder.transform.rotation = cameraPosition.transform.rotation;
                 tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-                //tempObj.GetComponentInChildren<MouseLook>().enabled = true;//stops the player from moving while they are being respawned and the camera is moving
-                //spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = true;
                 spawnedPlayer.GetComponent<PlayerController>().enabled = true;
                 tempBody = null;
                 bodyMoved = true;
             }
-
         }
         else
         {
@@ -180,37 +166,17 @@ public class GameController1 : MonoBehaviour
             spawnedPlayer.transform.position = respawnPoint.transform.position;
             spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
             Instantiate(deadBody);
-
         }
-
     }
-    //public IEnumerator respawnPlayer()
-    //{
-    //    deadBody.transform.position = spawnedPlayer.transform.position;
-    //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
-    //    tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-    //    //tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
-    //    cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
-    //    //spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
-    //    spawnedPlayer.GetComponent<PlayerController>().enabled = false;
-    //    tempObj.GetComponent<PickUp>().heldObj = null;
-    //    spawnedPlayer.transform.position = respawnPoint.transform.position;
-    //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
-    //    yield return new WaitForSeconds(0.0001f);
-    //    tempBody = Instantiate(deadBody);
-    //    isRespawn = true;
-    //}
 
     public void respawnPlayer()
     {
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-        //tempObj.GetComponentInChildren<MouseLook>().enabled = false;//stops the player from moving while they are being respawned and the camera is moving
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
-        //spawnedPlayer.GetComponent<PlayerMoveSlide>().enabled = false;
+        spawnedPlayer.GetComponent<PlayerController>().heldObj = null;
         spawnedPlayer.GetComponent<PlayerController>().enabled = false;
-        tempObj.GetComponent<PickUp>().heldObj = null;
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
         tempBody = Instantiate(deadBody);
@@ -228,7 +194,6 @@ public class GameController1 : MonoBehaviour
     //        while (blackOutSquare.GetComponent<Image>().color.a < 1)
     //        {
     //            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
-
     //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
     //            blackOutSquare.GetComponent<Image>().color = objectColor;
     //            j = blackOutSquare.GetComponent<Image>().color.a;
@@ -240,7 +205,6 @@ public class GameController1 : MonoBehaviour
     //        while (blackOutSquare.GetComponent<Image>().color.a > 0)
     //        {
     //            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-
     //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
     //            blackOutSquare.GetComponent<Image>().color = objectColor;
     //            j = blackOutSquare.GetComponent<Image>().color.a;
