@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movementDir = Vector3.zero;
     private Vector3 airMovementDir = Vector3.zero;
 
-    public GameController1 gameController;
+    public GameController gameController;
     private GameObject tempObj;
 
 
@@ -50,23 +50,20 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         tempObj = GameObject.Find("GameController");
-        gameController = tempObj.GetComponent<GameController1>();
+        gameController = tempObj.GetComponent<GameController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         PlayerLook();
         PlayerMove();
-
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (heldObj == null)
             {
-
                 RaycastHit hit;
                 if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
@@ -96,7 +93,6 @@ public class PlayerController : MonoBehaviour
             {
                 ThrowObject();
             }
-
         }
     }
 
@@ -225,7 +221,6 @@ public class PlayerController : MonoBehaviour
         heldObj = null;
         //heldObjRb.AddForce(transform.right * throwForce);
         heldObjRb.velocity = (transform.forward * throwForce);
-
     }
 
     void ToggleCollisions(bool toggle)
