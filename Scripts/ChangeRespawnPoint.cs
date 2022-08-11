@@ -16,13 +16,14 @@ public class ChangeRespawnPoint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && i == 0)
         {
-            GameController.GetComponent<GameController1>().respawnPoint = spawnPos;
-            player = GameController.GetComponent<GameController1>().spawnedPlayer;
+            GameController.GetComponent<GameController>().respawnPoint = spawnPos;
+            player = GameController.GetComponent<GameController>().spawnedPlayer;
 
-            if (changeJumpForce)
-            {
-                player.GetComponent<PlayerMoveSlide>().jumpForce = jumpForce;
-            }
+            //reimplement this code if we need to change how much the player can jump in certain places 
+            //if (changeJumpForce)
+            //{
+            //    player.GetComponent<PlayerController>().jumpForce = jumpForce;
+            //}
 
             i++; //iterator to make the spawn change only work once
         }

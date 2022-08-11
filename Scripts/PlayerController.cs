@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movementDir = Vector3.zero;
     private Vector3 airMovementDir = Vector3.zero;
 
-    public GameController1 gameController;
+    public GameController gameController;
     private GameObject tempObj;
 
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         tempObj = GameObject.Find("GameController");
-        gameController = tempObj.GetComponent<GameController1>();
+        gameController = tempObj.GetComponent<GameController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 

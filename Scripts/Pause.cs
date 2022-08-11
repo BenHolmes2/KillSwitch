@@ -16,7 +16,7 @@ public class Pause : MonoBehaviour
     public Slider playerSlider;
     public Slider gravitySlider;
     public Slider respawnSlider;
-    public GameController1 gameController;
+    public GameController gameController;
     public Text volume;
     public Text mouseSensitivity;
     public Text jumpForce;

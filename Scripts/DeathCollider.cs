@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathCollider : MonoBehaviour
 {
-    public GameController1 Controller;
+    public GameController Controller;
     public GameObject bloodEffect;
     private Transform pos;
 
