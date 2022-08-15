@@ -17,6 +17,7 @@ public class ChangeRespawnPoint : MonoBehaviour
         if (other.gameObject.tag == "Player" && i == 0)
         {
             GameController.GetComponent<GameController>().respawnPoint = spawnPos;
+            GameController.GetComponent<GameData>().exitRoom = true;
             player = GameController.GetComponent<GameController>().spawnedPlayer;
 
             //reimplement this code if we need to change how much the player can jump in certain places 

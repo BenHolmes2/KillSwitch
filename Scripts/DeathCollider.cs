@@ -15,8 +15,9 @@ public class DeathCollider : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 bloodEffect.transform.position = other.transform.position;
-                //Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.respawnPlayer();
+                Controller.StartCoroutine(Controller.respawnPlayer());
+                Controller.deathByShreddersCount++;
+                //Controller.respawnPlayer();
                 Instantiate(bloodEffect);
 
             }
@@ -36,8 +37,9 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                //Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.respawnPlayer();
+                Controller.StartCoroutine(Controller.respawnPlayer());
+                Controller.deathBySpikesCount++;
+                //Controller.respawnPlayer();
                 Debug.Log("you should have died");
             }
         }
@@ -46,7 +48,9 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Controller.respawnPlayer();
+                //Controller.respawnPlayer();
+                Controller.StartCoroutine(Controller.respawnPlayer());
+                Controller.deathByElectricityCount++;
             }
         }
 

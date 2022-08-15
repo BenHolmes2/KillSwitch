@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject cameraPosition;
     public GameObject deadBody;
     private GameObject tempBody;
+    private GameObject tempBody1;
     private GameObject temp;
     private GameObject hips;
     private GameObject spine;
@@ -36,6 +37,12 @@ public class GameController : MonoBehaviour
     public float fadeSpeed = 2;
     private float fadeAmount;
 
+    public int bodyCount;
+    public int deathBySpikesCount;
+    public int deathByShreddersCount;
+    public int deathByElectricityCount;
+
+
     void Start()
     {
         Instantiate(player, initialSpawnPos.transform.position, initialSpawnPos.transform.rotation);
@@ -50,6 +57,7 @@ public class GameController : MonoBehaviour
         MusicSource.Play();
         hitGround = false;
         objectColor = blackOutSquare.GetComponent<Image>().color;
+        bodyCount = 0;
     }
 
     void CheckExistence()
@@ -72,9 +80,18 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
-            //StartCoroutine(respawnPlayer());
-            respawnPlayer();
+            StartCoroutine(respawnPlayer());
+            //respawnPlayer();
         }
+
+        //use this as a base if we want to implement the colour changing for the player
+        //if (Input.GetKeyDown(KeyCode.M) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
+        //{
+        //    tempBody1 = tempBody1.transform.Find("riggedd body 04").gameObject;
+        //    tempBody1 = tempBody1.transform.Find("Layer_1").gameObject;
+        //    tempBody1.GetComponent<Renderer>().material.color = Color.green;
+        //}
+
 
         if (cameraHolder.transform.parent == null && tempBody != null)
         {
@@ -134,6 +151,7 @@ public class GameController : MonoBehaviour
                 spawnedPlayer.GetComponent<PlayerController>().enabled = true;
                 tempBody = null;
                 bodyMoved = true;
+                bodyCount++;
             }
         }
         else
@@ -169,7 +187,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void respawnPlayer()
+    public IEnumerator respawnPlayer()
     {
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
@@ -179,7 +197,9 @@ public class GameController : MonoBehaviour
         spawnedPlayer.GetComponent<PlayerController>().enabled = false;
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+        yield return new WaitForSeconds(0.1f); // change this to the lowest pissible value without breaking it or change it to ignore collisions?????
         tempBody = Instantiate(deadBody);
+        tempBody1 = tempBody;
         isRespawn = true;
     }
 
