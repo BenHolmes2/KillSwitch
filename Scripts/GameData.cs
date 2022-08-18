@@ -56,6 +56,8 @@ public class GameData : MonoBehaviour
 
     private void OnDestroy()
     {
+        //add total time
+        //add deaths per room
         string timeStr = "";
         string bodyStr = "";
         string totalBodyStr = "Total Bodies Used: ";

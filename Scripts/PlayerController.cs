@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private GameObject rightForeArm;
     private GameObject rightHand;
     private GameObject head;
+    //public GameObject reticleCanvas;
+    //public GameObject pickUpCanvas;
+
 
     private Rigidbody heldObjRb;
     private bool canThrow = true;
@@ -45,6 +48,9 @@ public class PlayerController : MonoBehaviour
     public GameController gameController;
     private GameObject tempObj;
 
+    private RaycastHit pickUpHit;
+    private RaycastHit cursorHit;
+
 
     void Start()
     {
@@ -60,19 +66,34 @@ public class PlayerController : MonoBehaviour
         PlayerLook();
         PlayerMove();
 
+        if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
+        {
+            if (cursorHit.transform.gameObject.tag == "canPickUp" || cursorHit.transform.gameObject.tag == "canPickUpDeath")
+            {
+                Debug.Log(cursorHit.transform.gameObject.name);
+                gameController.reticleCanvas.SetActive(false);
+                gameController.pickUpCanvas.SetActive(true);
+            }
+            else
+            {
+                gameController.reticleCanvas.SetActive(true);
+                gameController.pickUpCanvas.SetActive(false);
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (heldObj == null)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+                if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out pickUpHit, pickUpRange))
                 {
-                    Debug.DrawLine(cameraObj.transform.position, hit.point, Color.white, 5f);
-                    Debug.Log(hit.transform.gameObject.tag);
-                    Debug.Log(hit.transform.gameObject.name);
-                    if (hit.transform.gameObject.tag == "canPickUp" || hit.transform.gameObject.tag == "canPickUpDeath")
+                    Debug.DrawLine(cameraObj.transform.position, pickUpHit.point, Color.white, 5f);
+                    Debug.Log(pickUpHit.transform.gameObject.tag);
+                    Debug.Log(pickUpHit.transform.gameObject.name);
+                    if (pickUpHit.transform.gameObject.tag == "canPickUp" || pickUpHit.transform.gameObject.tag == "canPickUpDeath")
                     {
-                        PickUpBody(hit.transform.gameObject);
+                        PickUpBody(pickUpHit.transform.gameObject);
                     }
                     //currently not needed, reimplement if we want to be able to pick up objects again
                     //if (hit.transform.gameObject.tag == "canPickUpObject")

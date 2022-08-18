@@ -11,6 +11,12 @@ public class ChangeRespawnPoint : MonoBehaviour
     private int i = 0;
     public bool changeJumpForce = false;
     public float jumpForce;
+    public int bodyLimit;
+
+    private void Start()
+    {
+        bodyLimit = 9999;
+    }
 
     void OnTriggerExit(Collider other)
     {
@@ -19,6 +25,8 @@ public class ChangeRespawnPoint : MonoBehaviour
             GameController.GetComponent<GameController>().respawnPoint = spawnPos;
             GameController.GetComponent<GameData>().exitRoom = true;
             player = GameController.GetComponent<GameController>().spawnedPlayer;
+            GameController.GetComponent<GameController>().bodyLimit = bodyLimit;
+            GameController.GetComponent<GameController>().bodiesUsed = 0;
 
             //reimplement this code if we need to change how much the player can jump in certain places 
             //if (changeJumpForce)

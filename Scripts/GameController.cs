@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     private GameObject tempObj;
     public GameObject spawnedPlayer;
     public GameObject blackOutSquare;
+    public GameObject reticleCanvas;
+    public GameObject pickUpCanvas;
 
     public bool isRespawn = false;
     private bool bodyMoved = false;
@@ -41,6 +43,8 @@ public class GameController : MonoBehaviour
     public int deathBySpikesCount;
     public int deathByShreddersCount;
     public int deathByElectricityCount;
+    public int bodyLimit = 9999;
+    public int bodiesUsed;
 
 
     void Start()
@@ -78,7 +82,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
+        if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             StartCoroutine(respawnPlayer());
             //respawnPlayer();
@@ -152,6 +156,7 @@ public class GameController : MonoBehaviour
                 tempBody = null;
                 bodyMoved = true;
                 bodyCount++;
+                bodiesUsed++;
             }
         }
         else

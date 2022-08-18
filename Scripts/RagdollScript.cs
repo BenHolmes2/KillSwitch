@@ -106,6 +106,8 @@ public class RagdollScript : MonoBehaviour
 
         if (collision.gameObject != gameObject)
         {
+            Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
+            Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
             if (gameObject.tag == "canPickUpDeath")
             {
                 if ((collision.gameObject.tag == "DeathSurface" || collision.gameObject.tag == "RespawnTube" || collision.gameObject.tag == "canPickUp") && gameController.GetComponent<GameController>().hitGround == false)
