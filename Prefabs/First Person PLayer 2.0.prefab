@@ -55,12 +55,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2991827091871806209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005996704, y: 1.43, z: 3.153}
+  m_LocalPosition: {x: 0, y: -1.101001, z: 2.403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9736755115809877}
-  m_RootOrder: 3
+  m_Father: {fileID: 4230794279862692947}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7033958078361622809
 GameObject:
@@ -92,7 +92,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2847173396550656955}
   m_Father: {fileID: 9135722277341782096}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -335,7 +336,6 @@ Transform:
   - {fileID: 4989056969606167336}
   - {fileID: 2692909945240932441}
   - {fileID: 6082680921375352286}
-  - {fileID: 2847173396550656955}
   - {fileID: 9135722277341782096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   holdPos: {fileID: 2847173396550656955}
-  throwForce: 500
+  throwForce: 150
   pickUpRange: 20
   heldObj: {fileID: 0}
   controller: {fileID: 0}
@@ -413,7 +413,7 @@ Transform:
   m_Children:
   - {fileID: 4230794279862692947}
   m_Father: {fileID: 9736755115809877}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5010387534921669186
 PrefabInstance:
