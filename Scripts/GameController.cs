@@ -57,8 +57,8 @@ public class GameController : MonoBehaviour
         MusicSource.playOnAwake = true;
         if (Music != null)
             MusicSource.clip = Music;
-        MusicSource.volume = 0.1f;
-        MusicSource.Play();
+        MusicSource.volume = 0.0001f;
+        //MusicSource.Play();
         hitGround = false;
         objectColor = blackOutSquare.GetComponent<Image>().color;
         bodyCount = 0;
