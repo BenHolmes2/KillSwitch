@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     public int deathBySpikesCount;
     public int deathByShreddersCount;
     public int deathByElectricityCount;
+    public int deathByBuzzSawCount;
     public int bodyLimit = 9999;
     public int bodiesUsed;
 

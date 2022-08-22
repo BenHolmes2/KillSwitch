@@ -54,5 +54,20 @@ public class DeathCollider : MonoBehaviour
             }
         }
 
+s        if (gameObject.CompareTag("BuzzSaw"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Controller.StartCoroutine(Controller.respawnPlayer());
+                Controller.deathByBuzzSawCount++;
+            }
+
+            if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
+            {
+                bloodEffect.transform.position = other.transform.position;
+                Destroy(other.gameObject.transform.root.gameObject);
+                Instantiate(bloodEffect);
+            }
+        }
     }
 }

@@ -63847,6 +63847,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6461394801260444302}
     m_Modifications:
+    - target: {fileID: 142498975016905288, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -63869,7 +63873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.54
+      value: 1.489
       objectReference: {fileID: 0}
     - target: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63911,6 +63915,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6267451825496712267, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
 --- !u!4 &142498975879838961 stripped
@@ -63918,31 +63926,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
   m_PrefabInstance: {fileID: 877428347}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7175334634699029689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7175334634358997698, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
-  m_PrefabInstance: {fileID: 877428347}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1296782678843766636
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7175334634699029689}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 067a381af3a6e9d4682ad7cb5e88a86d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1038719090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65959,6 +65942,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6461394801260444302}
     m_Modifications:
+    - target: {fileID: 100770194582751493, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 2005699638555858581, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -66015,10 +66002,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2434010203466712270, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106602327936299216, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 4094155563913664192, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_Name
       value: SawTrio
       objectReference: {fileID: 0}
+    - target: {fileID: 6225722770255955718, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8558918781461121741, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8943280731575877331, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents:
     - {fileID: 1527039219654266061, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
@@ -66281,6 +66288,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6461394801260444302}
     m_Modifications:
+    - target: {fileID: 100770194582751493, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 1527039219654266061, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_Controller
       value: 
@@ -66341,10 +66352,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2434010203466712270, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106602327936299216, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 4094155563913664192, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_Name
       value: SawTrio (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6225722770255955718, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8558918781461121741, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8943280731575877331, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
 --- !u!4 &3380633201250045041 stripped
@@ -66359,6 +66390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6461394801260444302}
     m_Modifications:
+    - target: {fileID: 100770194582751493, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 1527039219654266061, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_Controller
       value: 
@@ -66419,10 +66454,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2434010203466712270, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106602327936299216, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 4094155563913664192, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_Name
       value: SawTrio (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6225722770255955718, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8558918781461121741, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8943280731575877331, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
 --- !u!4 &3211781164762083435 stripped
@@ -67232,10 +67287,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6902796502019021549}
     m_Modifications:
+    - target: {fileID: 263307534591198075, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678281007048074800, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253127841884554798, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 3683954459391552495, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
       propertyPath: m_Name
       value: SawGroup1
       objectReference: {fileID: 0}
+    - target: {fileID: 4632593805697427507, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 6099915569549118840, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     - target: {fileID: 6851856958824549444, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.7
@@ -67284,6 +67359,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8801540706571241517, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents:
     - {fileID: 5470806903366202219, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
@@ -68158,6 +68237,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6461394801260444302}
     m_Modifications:
+    - target: {fileID: 100770194582751493, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 2005699638555858581, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -68214,10 +68297,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2434010203466712270, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106602327936299216, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 4094155563913664192, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
       propertyPath: m_Name
       value: SawTrio (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6225722770255955718, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8558918781461121741, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8943280731575877331, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents:
     - {fileID: 1527039219654266061, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8e892c52ef187a4aa6b45dc2b02eaee, type: 3}
@@ -68443,10 +68546,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6902796502019021549}
     m_Modifications:
+    - target: {fileID: 263307534591198075, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678281007048074800, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253127841884554798, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253127841884554835, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253127841884554835, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3683954459391552495, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
       propertyPath: m_Name
       value: SawGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 4632593805697427507, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 6099915569549118840, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     - target: {fileID: 8059552179184993563, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -68491,6 +68622,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8801540706571241517, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
 --- !u!4 &4042222707320634564 stripped
@@ -68498,6 +68633,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8059552179184993563, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
   m_PrefabInstance: {fileID: 6323498233302694367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8855478378013622257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3253127841884554798, guid: d034209917181f945bcb0493f6c0e1f1, type: 3}
+  m_PrefabInstance: {fileID: 6323498233302694367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &108782214
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855478378013622257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9181064053092408459, guid: 01646472dcc809f478d620d576020767, type: 3}
 --- !u!1001 &6464065695224766141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69229,6 +69383,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6461394801260444302}
     m_Modifications:
+    - target: {fileID: 142498975016905288, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
+      propertyPath: m_TagString
+      value: BuzzSaw
+      objectReference: {fileID: 0}
     - target: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -69251,7 +69409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.54
+      value: 1.4889996
       objectReference: {fileID: 0}
     - target: {fileID: 142498976621445770, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69293,6 +69451,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6267451825496712267, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0357025c53bd8a54ca4dae6d5aa64712, type: 3}
 --- !u!4 &7379771867333565346 stripped
