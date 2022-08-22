@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7903861681052557832}
   - component: {fileID: 7501378287533336386}
   - component: {fileID: 2301851632211201322}
+  - component: {fileID: 507884567511332734}
   m_Layer: 0
   m_Name: polySurface1
   m_TagString: Untagged
@@ -104,6 +105,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &507884567511332734
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4076460046264099837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6329158148709259305, guid: e60fadf6d6861e544a393fe00a6fc220, type: 3}
 --- !u!1 &5714497699201821877
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +130,7 @@ GameObject:
   - component: {fileID: 5743857344389856}
   - component: {fileID: 908943234521877226}
   - component: {fileID: 7977364567302628180}
+  - component: {fileID: 3549597390024232255}
   m_Layer: 0
   m_Name: polySurface2
   m_TagString: Untagged
@@ -187,6 +203,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3549597390024232255
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714497699201821877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5597002278806442958, guid: e60fadf6d6861e544a393fe00a6fc220, type: 3}
 --- !u!1 &6907930545296525464
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +277,7 @@ GameObject:
   - component: {fileID: 4600239961969613148}
   - component: {fileID: 8468126467924721253}
   - component: {fileID: 2858254530463685544}
+  - component: {fileID: 7896917511136094185}
   m_Layer: 0
   m_Name: polySurface5
   m_TagString: Untagged
@@ -339,3 +370,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &7896917511136094185
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853708967688597856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4545423930167495100, guid: e60fadf6d6861e544a393fe00a6fc220, type: 3}
