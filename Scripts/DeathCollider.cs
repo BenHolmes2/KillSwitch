@@ -54,7 +54,7 @@ public class DeathCollider : MonoBehaviour
             }
         }
 
-s        if (gameObject.CompareTag("BuzzSaw"))
+        if (gameObject.CompareTag("BuzzSaw"))
         {
             if (other.gameObject.CompareTag("Player"))
             {
