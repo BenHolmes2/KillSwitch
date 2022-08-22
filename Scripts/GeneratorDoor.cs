@@ -8,7 +8,6 @@ public class GeneratorDoor : MonoBehaviour
     public GameObject electricityArc;
     private GameObject electricityArc1;
     public GameObject arcStart;
-    public GameObject aObject;
     private Vector3 midPoint;
     private IDoor door;
     //private IDoor button;

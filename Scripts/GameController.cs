@@ -84,6 +84,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
+            //add timer in to stop soft lock
             StartCoroutine(respawnPlayer());
             //respawnPlayer();
         }
@@ -188,7 +189,11 @@ public class GameController : MonoBehaviour
             deadBody.transform.rotation = spawnedPlayer.transform.rotation;
             spawnedPlayer.transform.position = respawnPoint.transform.position;
             spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
-            Instantiate(deadBody);
+
+            for (int i = 0; i < 10; i++)
+            {
+                Instantiate(deadBody);
+            }
         }
     }
 
