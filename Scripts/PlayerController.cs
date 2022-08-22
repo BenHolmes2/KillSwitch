@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     private RaycastHit pickUpHit;
     private RaycastHit cursorHit;
 
+    public AudioClip Footsteps;
+    public AudioSource MusicSource;
+
 
     void Start()
     {
@@ -58,11 +61,20 @@ public class PlayerController : MonoBehaviour
         tempObj = GameObject.Find("GameController");
         gameController = tempObj.GetComponent<GameController>();
         Cursor.lockState = CursorLockMode.Locked;
+
+
+        MusicSource = this.gameObject.AddComponent<AudioSource>();
+        MusicSource.loop = true;
+        MusicSource.playOnAwake = true;
+        if (Footsteps != null)
+            MusicSource.clip = Footsteps;
+        MusicSource.volume = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         PlayerLook();
         PlayerMove();
 
@@ -194,10 +206,30 @@ public class PlayerController : MonoBehaviour
 
         movementDir = transform.TransformDirection(movementDir);
         controller.Move(movementDir * Time.deltaTime);
+        //Debug.Log(movementDir);
+        Debug.Log(controller.velocity.magnitude);
+        Debug.Log(controller.velocity);
+
+        //float stepsOffset = 0.5f;
+        //float time = Time.deltaTime;
+        //if ((movementDir.x > 2.0f || movementDir.x < -2.0f || movementDir.z > 2.0f || movementDir.z < -2.0f) && )
+
+
+        if (controller.velocity.magnitude > 2f && MusicSource.isPlaying == false)
+        {
+            MusicSource.PlayOneShot(Footsteps);
+            //float time = Time.deltaTime;
+        }
+        //else
+        //{
+
+        //}
 
         movementDir.y -= gravity * Time.deltaTime;
         movementDir.x -= gravity * Time.deltaTime;
         movementDir.z -= gravity * Time.deltaTime;
+        //Debug.Log(movementDir);
+
     }
 
     void PlayerLook()

@@ -5,9 +5,10 @@ using System.IO;
 
 public class GameData : MonoBehaviour
 {
-    public double startTime;
-    public double runningTime;
-    public double tempTime;
+    private double startTime;
+    private double runningTime;
+    private double tempTime;
+    private double endTime;
     //public float[] roomTimes;
     public bool exitRoom;
     private int roomCount;
@@ -16,8 +17,19 @@ public class GameData : MonoBehaviour
     private GameController controller;
     int[] bodyCountRooms = new int[6];
     double[] roomTimes = new double[6];
+    private string timeStr = "";
+    private string timeTotalStr = "";
+    private string bodyStr = "";
+    private string totalBodyStr = "Total Bodies Used: ";
+    private string electricityDeathStr = "Total Deaths from Electricity: ";
+    private string spikesDeathStr = "Total Deaths from Spikes: ";
+    private string shreddersDeathStr = "Total Deaths from Shredders: ";
+    private string totalDeathStr = "Total Deaths: ";
+    private string totalRespawnStr = "Total Times Respawned: ";
+    private int totalRespawn;
+    private int totalDeaths;
+    private int room;
 
-    // Start is called before the first frame update
     void Start()
     {
         //Debug.Log(Time.time);
@@ -41,7 +53,7 @@ public class GameData : MonoBehaviour
             runningTime += tempTime;
             tempTime = Time.timeAsDouble - runningTime;
             bodyCountTemp = bodyCountTotal - bodyCountTemp;
-            roomTimes[roomCount] = tempTime; //subtract start time? is start time getting the right time since its getting the time at the start of each frame
+            roomTimes[roomCount] = tempTime; 
             bodyCountRooms[roomCount] = bodyCountTemp;
             //Debug.Log("---------------------------------------------------------------------------------");
             //Debug.Log(roomTimes[roomCount]);
@@ -56,19 +68,10 @@ public class GameData : MonoBehaviour
 
     private void OnDestroy()
     {
-        //add total time
-        //add deaths per room
-        string timeStr = "";
-        string bodyStr = "";
-        string totalBodyStr = "Total Bodies Used: ";
-        string electricityDeathStr = "Total Deaths from Electricity: ";
-        string spikesDeathStr = "Total Deaths from Spikes: ";
-        string shreddersDeathStr = "Total Deaths from Shredders: ";
-        string totalDeathStr = "Total Deaths: ";
-        string totalRespawnStr = "Total Times Respawned: ";
-        int totalDeaths = controller.deathByElectricityCount + controller.deathByShreddersCount + controller.deathBySpikesCount;
-        int totalRespawn = bodyCountTotal - totalDeaths;
-        int room = 0;
+        endTime = Time.timeAsDouble - startTime;
+        totalDeaths = controller.deathByElectricityCount + controller.deathByShreddersCount + controller.deathBySpikesCount;
+        totalRespawn = bodyCountTotal - totalDeaths;
+        room = 0;
 
         for (int roomNum = 1; roomNum < roomTimes.Length + 1; roomNum++)
         {
@@ -78,6 +81,8 @@ public class GameData : MonoBehaviour
             //Debug.Log(temp1);
             room++;
         }
+
+        timeTotalStr = endTime.ToString();
         electricityDeathStr += controller.deathByElectricityCount.ToString() + "\n";
         spikesDeathStr += controller.deathBySpikesCount.ToString() + "\n";
         shreddersDeathStr += controller.deathByShreddersCount.ToString() + "\n";
@@ -87,6 +92,7 @@ public class GameData : MonoBehaviour
 
         File.AppendAllText("GameData.txt", "---------------------------------------------------------------------------------\n");
         File.AppendAllText("GameData.txt", timeStr);
+        File.AppendAllText("GameData.txt", timeTotalStr);
         File.AppendAllText("GameData.txt", bodyStr);
         File.AppendAllText("GameData.txt", totalBodyStr);
         File.AppendAllText("GameData.txt", totalRespawnStr);
@@ -95,6 +101,5 @@ public class GameData : MonoBehaviour
         File.AppendAllText("GameData.txt", electricityDeathStr);
         File.AppendAllText("GameData.txt", spikesDeathStr);
         File.AppendAllText("GameData.txt", "---------------------------------------------------------------------------------\n");
-
     }
 }
