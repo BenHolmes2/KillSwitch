@@ -64,9 +64,12 @@ public class DeathCollider : MonoBehaviour
 
             if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
             {
-                bloodEffect.transform.position = other.transform.position;
-                Destroy(other.gameObject.transform.root.gameObject);
-                Instantiate(bloodEffect);
+                if (!Controller.isRespawn)
+                {
+                    bloodEffect.transform.position = other.transform.position;
+                    Destroy(other.gameObject.transform.root.gameObject);
+                    Instantiate(bloodEffect);
+                }
             }
         }
     }
