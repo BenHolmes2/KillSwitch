@@ -18,15 +18,18 @@ public class Catapultcontrol : MonoBehaviour
     {
         if (counter == 0)//PlayerIsOn == true
         {
-            
+            if (anim.speed == 0)
+            {
                 anim.speed = 1;
+            }
             
         }
         else
         {
-            
+            if (anim.speed == 1)
+            {
                 anim.speed = 0;
-            
+            }
         }
     }
 
