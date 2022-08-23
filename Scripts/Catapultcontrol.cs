@@ -35,13 +35,19 @@ public class Catapultcontrol : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        counter++;
+        if (collision.gameObject.name == "QuickRigCharacter_Hips")
+        {
+            counter++;
+        }
     }
 
     //private void OnCollisionEmpty(Collision collision)
 
     private void OnTriggerExit(Collider collision)
     {
-        counter--;
+        if (collision.gameObject.name == "QuickRigCharacter_Hips")
+        {
+            counter--;
+        }
     }
 }
