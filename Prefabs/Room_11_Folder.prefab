@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 1559292199928987584}
   - component: {fileID: 5766085069895564013}
   m_Layer: 0
-  m_Name: polySurface6950
+  m_Name: CatapultArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 5070693084013117048}
   - component: {fileID: 1886786287794199204}
   m_Layer: 0
-  m_Name: polySurface6954
+  m_Name: CatapultPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1364,7 +1364,7 @@ GameObject:
   - component: {fileID: 216258108972699213}
   - component: {fileID: 277571847078485081}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Catapult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1789,6 +1789,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6095119170943848994, guid: bb96d9428cdb63b4dbb416b3b05117c3, type: 3}
   m_PrefabInstance: {fileID: 4669436522674267481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2238515498063261121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6907930545296525464, guid: bb96d9428cdb63b4dbb416b3b05117c3, type: 3}
+  m_PrefabInstance: {fileID: 4669436522674267481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1996994644008990201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238515498063261121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bc8bce5d5725e4d9d06d4703253db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catapult: {fileID: 9059199549586191475}
 --- !u!1001 &5718316061637098408
 PrefabInstance:
   m_ObjectHideFlags: 0
