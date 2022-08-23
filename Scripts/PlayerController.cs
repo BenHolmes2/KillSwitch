@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
         //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), toggle);
         //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), toggle);
 
-        hips.GetComponent<Collider>().enabled = toggle;
+        //hips.GetComponent<Collider>().enabled = toggle;
         leftUpLeg.GetComponent<Collider>().enabled = toggle;
         leftLeg.GetComponent<Collider>().enabled = toggle;
         rightUpLeg.GetComponent<Collider>().enabled = toggle;
