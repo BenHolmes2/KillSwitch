@@ -277,6 +277,8 @@ public class PlayerController : MonoBehaviour
 
     void ToggleCollisions(bool toggle)
     {
+
+        //Physics.IgnoreLayerCollision()
         //these ignore collisions stop the ragdoll from clipping with the player and itself when being held
         Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), toggle);
         Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), toggle);
