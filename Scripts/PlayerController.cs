@@ -277,110 +277,24 @@ public class PlayerController : MonoBehaviour
 
     void ToggleCollisions(bool toggle)
     {
-        //these ignore collisions stop the ragdoll from clipping with the player and itself when being held
-        Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), toggle);
+        //this ignores collisions between the body and the envrionment but not the gearbox
+        Physics.IgnoreLayerCollision(6, 0, toggle);
 
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), leftUpLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), leftLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), rightUpLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), rightLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), spine.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(hips.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
+        //these ignore collisions stop the ragdoll from clipping with the player and itself when being held, but casue issues
+        //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), toggle);
+        //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), toggle);
 
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), leftLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), rightUpLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), rightLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), spine.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftUpLeg.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), rightUpLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), rightLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), spine.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftLeg.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), rightLeg.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), spine.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightUpLeg.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), spine.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightLeg.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), leftArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(spine.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(leftArm.GetComponent<Collider>(), leftForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftArm.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftArm.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftArm.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftArm.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftArm.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(leftForeArm.GetComponent<Collider>(), leftHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftForeArm.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftForeArm.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftForeArm.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftForeArm.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(leftHand.GetComponent<Collider>(), rightArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftHand.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftHand.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(leftHand.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(rightArm.GetComponent<Collider>(), rightForeArm.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightArm.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightArm.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(rightForeArm.GetComponent<Collider>(), rightHand.GetComponent<Collider>(), toggle);
-        Physics.IgnoreCollision(rightForeArm.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
-
-        Physics.IgnoreCollision(rightHand.GetComponent<Collider>(), head.GetComponent<Collider>(), toggle);
 
         //this does the same as above but can casue issues with gearboxes
         //hips.GetComponent<Collider>().enabled = toggle;
