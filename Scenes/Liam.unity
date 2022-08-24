@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &127000156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 344052543477216521, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &153454310 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6744416400916830942, guid: 38976cc6f84128446a39bfa52e8de071, type: 3}
@@ -904,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 2007471587}
+      objectReference: {fileID: 127000156}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: reticleCanvas
       value: 
@@ -916,7 +921,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 2007471587}
+      objectReference: {fileID: 127000156}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
 --- !u!1 &1978528433
@@ -1136,11 +1141,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 287.053, y: 102.142, z: -130.468}
---- !u!1 &2007471587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8198890185482229455, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-  m_PrefabInstance: {fileID: 929331694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
@@ -1243,6 +1243,10 @@ PrefabInstance:
     - target: {fileID: 4396509345454594153, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
       propertyPath: m_Name
       value: Ragdoll2.0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396509345454594153, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8472f5563c54454b9bcdc8bb272b822, type: 3}
