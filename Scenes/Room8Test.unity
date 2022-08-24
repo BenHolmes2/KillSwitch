@@ -145,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &391345166
 Light:
   m_ObjectHideFlags: 0
@@ -480,6 +480,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
+      propertyPath: cameraHolder
+      value: 
+      objectReference: {fileID: 7840343121114172749, guid: dcdaff5f70b280a4e9e993132956f21f, type: 3}
+    - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 203611881}
@@ -710,6 +714,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 670740152818536772, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 670740152818536772, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 670740152818536772, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 670740152818536772, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 186.56067
       objectReference: {fileID: 0}
@@ -759,7 +775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8945811225692664796, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0175
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8945811225692664796, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
       propertyPath: m_LocalPosition.z
