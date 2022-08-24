@@ -86,6 +86,8 @@ public class RagdollScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
+        Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
         //how do i get it to ignore the respawn tube 
         if (collision.gameObject.tag == "RespawnTube")
         {
