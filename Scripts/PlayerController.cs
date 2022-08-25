@@ -280,7 +280,21 @@ public class PlayerController : MonoBehaviour
         ToggleCollisions(0);
         heldObj = null;
         heldObjRb.transform.rotation = cameraObj.transform.rotation;
-        heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
+        //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
+        hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        leftUpLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        leftLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        rightUpLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        rightLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        spine.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        leftArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        leftForeArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        leftHand.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        rightArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        rightForeArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        rightHand.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+        head.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
     }
 
     void ToggleCollisions(int toggle)

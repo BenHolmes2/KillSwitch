@@ -18,7 +18,7 @@ public class GameData : MonoBehaviour
     int[] bodyCountRooms = new int[10]; //change these based on number of rooms in the build
     double[] roomTimes = new double[10];
     private string timeStr = "";
-    private string timeTotalStr = "";
+    private string timeTotalStr = "Total Time Take: ";
     private string bodyStr = "";
     private string totalBodyStr = "Total Bodies Used: ";
     private string electricityDeathStr = "Total Deaths from Electricity: ";
@@ -83,7 +83,7 @@ public class GameData : MonoBehaviour
             room++;
         }
 
-        timeTotalStr = endTime.ToString();
+        timeTotalStr += runningTime.ToString() + "\n";
         electricityDeathStr += controller.deathByElectricityCount.ToString() + "\n";
         spikesDeathStr += controller.deathBySpikesCount.ToString() + "\n";
         shreddersDeathStr += controller.deathByShreddersCount.ToString() + "\n";
