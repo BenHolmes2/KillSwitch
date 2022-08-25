@@ -163,7 +163,10 @@ public class PlayerController : MonoBehaviour
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
 
-            ToggleCollisions(true);
+            //heldObj.gameObject.transform.root.gameObject.layer = 6;
+
+            
+            ToggleCollisions(6);
         }
     }
 
@@ -256,10 +259,14 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    void DropObject()
+    public void DropObject()
     {
-        ToggleCollisions(false);
-        heldObj = null;
+        if (heldObj != null)
+        {
+            //heldObj.gameObject.layer.Equals(0);
+            ToggleCollisions(0);
+            heldObj = null;
+        }
     }
     void MoveObject()
     {
@@ -269,16 +276,32 @@ public class PlayerController : MonoBehaviour
 
     void ThrowObject()
     {
-        ToggleCollisions(false);
+        //heldObj.gameObject.layer.Equals(0);
+        ToggleCollisions(0);
         heldObj = null;
         heldObjRb.transform.rotation = cameraObj.transform.rotation;
         heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
     }
 
-    void ToggleCollisions(bool toggle)
+    void ToggleCollisions(int toggle)
     {
+        hips.layer = toggle;
+        leftUpLeg.layer = toggle;
+        leftLeg.layer = toggle;
+        rightUpLeg.layer = toggle;
+        rightLeg.layer = toggle;
+        spine.layer = toggle;
+        leftArm.layer = toggle;
+        leftForeArm.layer = toggle;
+        leftHand.layer = toggle;
+        rightArm.layer = toggle;
+        rightForeArm.layer = toggle;
+        hips.layer = toggle;
+        rightHand.layer = toggle;
+        head.layer = toggle;
+
         //this ignores collisions between the body and the envrionment but not the gearbox
-        Physics.IgnoreLayerCollision(6, 0, toggle);
+        //Physics.IgnoreLayerCollision(6, 0, toggle);
 
         //these ignore collisions stop the ragdoll from clipping with the player and itself when being held, but casue issues
         //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), toggle);
