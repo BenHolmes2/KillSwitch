@@ -91,6 +91,7 @@ public class RagdollScript : MonoBehaviour
         //how do i get it to ignore the respawn tube 
         if (collision.gameObject.tag == "RespawnTube")
         {
+            //these need to be turned off at somepoint
             Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), hips.GetComponent<Collider>(), true);
             Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftUpLeg.GetComponent<Collider>(), true);
             Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftLeg.GetComponent<Collider>(), true);
