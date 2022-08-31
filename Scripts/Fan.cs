@@ -25,7 +25,9 @@ public class Fan : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<CharacterController>().Move(this.transform.forward * fanForcePlayer);
+            //this currently doesnt work very well when the fan is trying to push the player upwards
+            //player.GetComponent<CharacterController>().Move(this.transform.forward * fanForcePlayer);
+            player.GetComponent<PlayerController>().movementDir += this.transform.forward * fanForcePlayer;
         }
         if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
         {

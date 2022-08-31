@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10.0f;
     public float gravity = 20.0f;
     private Vector3 movementInput = Vector3.zero;
-    private Vector3 movementDir = Vector3.zero;
+    public Vector3 movementDir = Vector3.zero;
     private Vector3 airMovementDir = Vector3.zero;
 
     public GameController gameController;
