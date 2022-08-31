@@ -162,6 +162,8 @@ public class PlayerController : MonoBehaviour
             head = head.transform.Find("QuickRigCharacter_Head").gameObject;
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
+            Debug.Log(heldObj);
+            Debug.Log(heldObjRb);
 
             //heldObj.gameObject.transform.root.gameObject.layer = 6;
 
