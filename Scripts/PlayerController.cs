@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private GameObject rightUpLeg;
     private GameObject rightLeg;
     private GameObject spine;
+    private GameObject spineTemp;
     private GameObject leftArm;
     private GameObject leftForeArm;
     private GameObject leftHand;
@@ -135,39 +136,44 @@ public class PlayerController : MonoBehaviour
         {
             heldObj = pickUpObj;
             heldObj = heldObj.transform.root.gameObject;
-            heldObj = heldObj.transform.Find("riggedd body 04").gameObject;
-            heldObj = heldObj.transform.Find("QuickRigCharacter_Reference").gameObject;
-            heldObj = heldObj.transform.Find("QuickRigCharacter_Hips").gameObject;
-
             //finding all of the colliders so we can ignore collsions from them
             //move this to a function
-            //dont think these do anything
-            hips = heldObj;
-            leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
-            leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
-            rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
-            rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
-            spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
-            spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
-            spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
-            leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
-            leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
-            leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
-            leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
-            rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
-            rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
-            rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
-            rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
-            head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
-            head = head.transform.Find("QuickRigCharacter_Head").gameObject;
+            hips = heldObj.transform.Find("Hip_Root_JNT").gameObject;
+            leftUpLeg = hips.transform.Find("Left_Leg_JNT").gameObject;
+            leftLeg = leftUpLeg.transform.Find("Left_Knee_JNT").gameObject;
+            rightUpLeg = hips.transform.Find("Right_Leg_JNT").gameObject;
+            rightLeg = rightUpLeg.transform.Find("Right_Knee_JNT").gameObject;
+            spine = hips.transform.Find("Spine_01_Bottom_JNT").gameObject;
+            spine = spine.transform.Find("Spine_02_Mid_JNT").gameObject;
+            
+            spineTemp = spine.transform.Find("Spine_03_Top_JNT").gameObject;
+            spineTemp = spineTemp.transform.Find("Spine_00_Top_JNT").gameObject;
+            
+            leftArm = spineTemp.transform.Find("Left_Clavicle_JNT").gameObject;
+            leftArm = leftArm.transform.Find("Left_Shoulder_JNT").gameObject;
+
+            leftForeArm = leftArm.transform.Find("Left_Forarm_JNT").gameObject;
+            leftHand = leftForeArm.transform.Find("Left_Wrist_JNT").gameObject;
+
+            rightArm = spineTemp.transform.Find("Right_Clavicle_JNT").gameObject;
+            rightArm = rightArm.transform.Find("Right_Shoulder_JNT").gameObject;
+
+            rightForeArm = rightArm.transform.Find("Right_Forarm_JNT").gameObject;
+            rightHand = rightForeArm.transform.Find("Right_Wrist_JNT").gameObject;
+            head = spineTemp.transform.Find("Neck_JNT").gameObject;
+            head = head.transform.Find("Head_JNT").gameObject;
+            heldObj = hips;
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             heldObjRb.transform.position = holdPos.transform.position;
+            Debug.Log("----------------------------------------");
             Debug.Log(heldObj);
             Debug.Log(heldObjRb);
+            Debug.Log("----------------------------------------");
+
 
             //heldObj.gameObject.transform.root.gameObject.layer = 6;
 
-            
+
             ToggleCollisions(6);
         }
     }
