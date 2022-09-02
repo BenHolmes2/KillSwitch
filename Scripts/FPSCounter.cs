@@ -8,6 +8,7 @@ public class FPSCounter : MonoBehaviour
     private float pollingTime = 1f;
     private float time;
     private int frameCount;
+    public int actualFPS;
 
     // Update is called once per frame
     void Update()
@@ -20,9 +21,14 @@ public class FPSCounter : MonoBehaviour
         {
             int frameRate = Mathf.RoundToInt(frameCount / time);
             FPSText.text = frameRate.ToString() + " FPS";
+            actualFPS = frameRate;
+
 
             time -= pollingTime;
             frameCount = 0;
+
         }
+
+        
     }
 }
