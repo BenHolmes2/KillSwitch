@@ -7,6 +7,7 @@ public class Fan : MonoBehaviour
     public GameController gameController;
     public int fanForceBody = 100;
     public float fanForcePlayer = 0.1f;
+    public bool isVertical = false;
     private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -26,8 +27,14 @@ public class Fan : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //this currently doesnt work very well when the fan is trying to push the player upwards
-            //player.GetComponent<CharacterController>().Move(this.transform.forward * fanForcePlayer);
-            player.GetComponent<PlayerController>().movementDir += this.transform.forward * fanForcePlayer;
+            if (isVertical)
+            {
+                player.GetComponent<PlayerController>().movementDir += this.transform.forward * fanForcePlayer;
+            }
+            else
+            {
+                player.GetComponent<CharacterController>().Move(this.transform.forward * fanForcePlayer);
+            }
         }
         if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
         {
