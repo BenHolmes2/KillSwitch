@@ -24,7 +24,7 @@ public class ChangeRespawnPoint : MonoBehaviour
         {
             GameController.GetComponent<GameController>().respawnPoint = spawnPos;
             GameController.GetComponent<GameData>().exitRoom = true;
-            GameController.GetComponent<PerformanceController>().exitRoomPerf = true;
+            //GameController.GetComponent<PerformanceController>().exitRoomPerf = true;
             player = GameController.GetComponent<GameController>().spawnedPlayer;
             GameController.GetComponent<GameController>().bodyLimit = bodyLimit;
             GameController.GetComponent<GameController>().bodiesUsed = 0;

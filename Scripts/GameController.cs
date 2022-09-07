@@ -101,18 +101,33 @@ public class GameController : MonoBehaviour
 
         if (cameraHolder.transform.parent == null && tempBody != null)
         {
-            tempObj = tempBody.transform.Find("riggedd body 04").gameObject;
-            tempObj = tempObj.transform.Find("QuickRigCharacter_Reference").gameObject;
-            tempObj = tempObj.transform.Find("QuickRigCharacter_Hips").gameObject;
-            hips = tempObj;
-            spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
-            spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
-            spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
-            head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
-            head = head.transform.Find("QuickRigCharacter_Head").gameObject;
+            //tempObj = tempBody.transform.Find("riggedd body 04").gameObject;
+            //tempObj = tempObj.transform.Find("QuickRigCharacter_Reference").gameObject;
+            //tempObj = tempObj.transform.Find("QuickRigCharacter_Hips").gameObject;
+            //hips = tempObj;
+            //spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
+            //spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
+            //spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
+            //head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
+            //head = head.transform.Find("QuickRigCharacter_Head").gameObject;
+            //temp = head.transform.Find("CameraPos").gameObject;
+            //cameraHolder.transform.position = temp.transform.position;
+            //cameraHolder.transform.parent = temp.transform;
+
+            hips = tempBody.transform.Find("Hip_Root_JNT").gameObject;
+            spine = hips.transform.Find("Spine_01_Bottom_JNT").gameObject;
+            spine = spine.transform.Find("Spine_02_Mid_JNT").gameObject;
+            spine = spine.transform.Find("Spine_03_Top_JNT").gameObject;
+            spine = spine.transform.Find("Spine_00_Top_JNT").gameObject;
+
+            head = spine.transform.Find("Neck_JNT").gameObject;
+            head = head.transform.Find("Head_JNT").gameObject;
+
+
             temp = head.transform.Find("CameraPos").gameObject;
+
             cameraHolder.transform.position = temp.transform.position;
-            cameraHolder.transform.parent = temp.transform;
+            cameraHolder.transform.parent = temp.transform.parent;
         }
         if (hitGround && isRespawn)
         {
@@ -154,6 +169,7 @@ public class GameController : MonoBehaviour
                 cameraHolder.transform.position = cameraPosition.transform.position;
                 cameraHolder.transform.rotation = cameraPosition.transform.rotation;
                 tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+                //tempObj = tempObj.transform.Find("CameraHolder").gameObject;
                 spawnedPlayer.GetComponent<PlayerController>().enabled = true;
                 tempBody = null;
                 bodyMoved = true;
@@ -203,6 +219,7 @@ public class GameController : MonoBehaviour
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+        //tempObj = tempObj.transform.Find("CameraHolder").gameObject; 
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
         spawnedPlayer.GetComponent<PlayerController>().DropObject();
         spawnedPlayer.GetComponent<PlayerController>().enabled = false;
