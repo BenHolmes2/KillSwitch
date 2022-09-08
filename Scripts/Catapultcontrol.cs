@@ -38,7 +38,7 @@ public class Catapultcontrol : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "QuickRigCharacter_Hips")
+        if (collision.gameObject.name == "Hip_Root_JNT")
         {
             counter++;
         }
@@ -48,7 +48,7 @@ public class Catapultcontrol : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.name == "QuickRigCharacter_Hips")
+        if (collision.gameObject.name == "Hip_Root_JNT")
         {
             counter--;
         }
