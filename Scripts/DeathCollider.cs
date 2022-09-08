@@ -58,19 +58,23 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.deathByBuzzSawCount++;
-            }
-
-            if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
-            {
                 if (!Controller.isRespawn)
                 {
-                    bloodEffect.transform.position = other.transform.position;
-                    Destroy(other.gameObject.transform.root.gameObject);
-                    Instantiate(bloodEffect);
+                    Controller.StartCoroutine(Controller.respawnPlayer());
+                    Controller.deathByBuzzSawCount++;
                 }
             }
+
+            //turn this back on if we want the buzzsaw to destroy bodies with a blood effect
+            //if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
+            //{
+            //    if (!Controller.isRespawn)
+            //    {
+            //        bloodEffect.transform.position = other.transform.position;
+            //        Destroy(other.gameObject.transform.root.gameObject);
+            //        Instantiate(bloodEffect);
+            //    }
+            //}
         }
     }
 }

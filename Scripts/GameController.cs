@@ -216,6 +216,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator respawnPlayer()
     {
+        isRespawn = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
@@ -228,7 +229,6 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(0.1f); // change this to the lowest pissible value without breaking it or change it to ignore collisions?????
         tempBody = Instantiate(deadBody);
         tempBody1 = tempBody;
-        isRespawn = true;
     }
 
     //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)

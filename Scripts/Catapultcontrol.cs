@@ -36,21 +36,19 @@ public class Catapultcontrol : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.name == "Hip_Root_JNT")
+        if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
-            counter++;
+            counter = 1;
         }
     }
 
-    //private void OnCollisionEmpty(Collision collision)
-
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.name == "Hip_Root_JNT")
+        if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
-            counter--;
+            counter = 0;
         }
     }
 }

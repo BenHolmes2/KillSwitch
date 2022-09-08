@@ -29,31 +29,31 @@ public class BridgeMovement : MonoBehaviour
     {
         if (counter == 0 )
         {
-            bridgeAnim.SetBool("On", true);
             gear1Anim.SetBool("On", true);
             gear2Anim.SetBool("On", true);
+            bridgeAnim.SetBool("On", true);
         }
         else
         {
-            bridgeAnim.SetBool("On", false);
             gear1Anim.SetBool("On", false);
             gear2Anim.SetBool("On", false);
+            bridgeAnim.SetBool("On", false);
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.name == "Hip_Root_JNT")
+        if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
-            counter++;
+            counter = 1;
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.name == "Hip_Root_JNT")
+        if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
-            counter--;
+            counter = 0;
         }
     }
 }
