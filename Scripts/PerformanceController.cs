@@ -32,7 +32,6 @@ public class PerformanceController : MonoBehaviour
         controller = gameObject.GetComponent<GameController>();
         exitRoomPerf = false;
         roomCount = 0;
-       
         
     }
 
@@ -91,8 +90,4 @@ public class PerformanceController : MonoBehaviour
         File.AppendAllText("PerformanceData.txt", totalBodyStr);
         File.AppendAllText("PerformanceData.txt", "------------------------------------------------------------------- \n");
     }
-
-
-
-
 }

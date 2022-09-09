@@ -197,6 +197,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // When player is in the air
+        //to implement jump grace period, check ground check in update and then create a small timer that allows the player to still jump
         if (!controller.isGrounded)
         {
             airMovementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
