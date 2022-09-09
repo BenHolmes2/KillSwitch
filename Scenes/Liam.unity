@@ -874,6 +874,10 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 941970619}
+    - target: {fileID: 6660552630075235754, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6763207156170678732, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
@@ -898,7 +902,8 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7985173711968443768, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
 --- !u!1 &941970614 stripped
 GameObject:
@@ -921,9 +926,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1160168589, guid: 38976cc6f84128446a39bfa52e8de071, type: 3}
   m_PrefabInstance: {fileID: 6744416401031879736}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1667620893 stripped
+--- !u!1 &1196556379 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 344052543477216521, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5820819793404533563, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
   m_PrefabInstance: {fileID: 929331694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1688756345
@@ -988,7 +993,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1667620893}
+      objectReference: {fileID: 1196556379}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: reticleCanvas
       value: 
@@ -1000,7 +1005,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 1667620893}
+      objectReference: {fileID: 1196556379}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
 --- !u!1 &1978528433

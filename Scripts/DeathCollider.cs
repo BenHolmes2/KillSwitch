@@ -18,7 +18,8 @@ public class DeathCollider : MonoBehaviour
                 Controller.StartCoroutine(Controller.respawnPlayer());
                 Controller.deathByShreddersCount++;
                 //Controller.respawnPlayer();
-                Instantiate(bloodEffect);
+                //add this back if we want blood
+                //Instantiate(bloodEffect);
 
             }
 
@@ -28,7 +29,8 @@ public class DeathCollider : MonoBehaviour
                 {
                     bloodEffect.transform.position = other.transform.position;
                     Destroy(other.gameObject.transform.root.gameObject);
-                    Instantiate(bloodEffect);
+                    //add this back if we want blood
+                    //Instantiate(bloodEffect);
                 }
             }
         }
