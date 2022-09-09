@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip Footsteps;
     public AudioSource MusicSource;
 
+    public AudioSource deathSource;
+    private AudioClip[] deathSounds = new AudioClip[4];
+    private int deathGruntInt;
+
 
     void Start()
     {
@@ -70,6 +74,11 @@ public class PlayerController : MonoBehaviour
         if (Footsteps != null)
             MusicSource.clip = Footsteps;
         MusicSource.volume = 1f;
+
+        deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
+        deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
+        deathSounds[2] = Resources.Load("DeathGrunt3") as AudioClip;
+        deathSounds[3] = Resources.Load("DeathWilhelm") as AudioClip;
     }
 
     // Update is called once per frame
@@ -226,7 +235,7 @@ public class PlayerController : MonoBehaviour
         //if ((movementDir.x > 2.0f || movementDir.x < -2.0f || movementDir.z > 2.0f || movementDir.z < -2.0f) && )
 
 
-        if (controller.velocity.magnitude > 2f && MusicSource.isPlaying == false)
+        if (controller.velocity.magnitude > 2f && MusicSource.isPlaying == false && controller.isGrounded)
         {
             MusicSource.PlayOneShot(Footsteps);
             //float time = Time.deltaTime;
@@ -356,5 +365,15 @@ public class PlayerController : MonoBehaviour
         //rightHand.GetComponent<Collider>().enabled = toggle;
         //head.GetComponent<Collider>().enabled = toggle;
 
+    }
+
+    public void PlayDeathSound()
+    {
+        deathGruntInt = Random.Range(0, 3); //this randomly pick what death grunt to play
+        if (deathGruntInt == 4) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
+        {
+            deathGruntInt = Random.Range(0, 3);
+        }
+        MusicSource.PlayOneShot(deathSounds[deathGruntInt]);
     }
 }

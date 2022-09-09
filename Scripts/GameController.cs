@@ -32,6 +32,10 @@ public class GameController : MonoBehaviour
 
     public AudioClip Music;
     public AudioSource MusicSource;
+    public AudioSource deathSource;
+    private AudioClip[] deathSounds = new AudioClip[4];
+    private int deathGruntInt;
+
 
     public Color objectColor;
 
@@ -63,6 +67,11 @@ public class GameController : MonoBehaviour
         hitGround = false;
         objectColor = blackOutSquare.GetComponent<Image>().color;
         bodyCount = 0;
+
+        //deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
+        //deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
+        //deathSounds[2] = Resources.Load("DeathGrunt3") as AudioClip;
+        //deathSounds[3] = Resources.Load("DeathWilhelm") as AudioClip;
     }
 
     void CheckExistence()
@@ -229,6 +238,14 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(0.1f); // change this to the lowest pissible value without breaking it or change it to ignore collisions?????
         tempBody = Instantiate(deadBody);
         tempBody1 = tempBody;
+        spawnedPlayer.GetComponent<PlayerController>().PlayDeathSound();
+        //deathGruntInt = Random.Range(0, 3); //this randomly pick what death grunt to play
+        //if (deathGruntInt == 4) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
+        //{
+        //    deathGruntInt = Random.Range(0, 3);
+        //}
+        //spawnedPlayer.GetComponent<AudioSource>().PlayOneShot(deathSounds[deathGruntInt]);
+        //deathSource.PlayOneShot(deathSounds[deathGruntInt]);
     }
 
     //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)
