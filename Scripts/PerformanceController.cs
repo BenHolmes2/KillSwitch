@@ -73,7 +73,7 @@ public class PerformanceController : MonoBehaviour
         {
      
             bodyStr += "Room " + rn.ToString() + " Body Count:" + bodyCountRooms[room].ToString() + "\n";
-            fpsStr += "Room " + rn.ToString() + "Lowest FPS: " + fpsDrop[room].ToString() + "\n";
+            fpsStr += "Room " + rn.ToString() + " Lowest FPS: " + fpsDrop[room].ToString() + "\n";
             room++;
         }
 
