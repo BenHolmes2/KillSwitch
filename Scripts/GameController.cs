@@ -32,9 +32,9 @@ public class GameController : MonoBehaviour
 
     public AudioClip Music;
     public AudioSource MusicSource;
-    public AudioSource deathSource;
-    private AudioClip[] deathSounds = new AudioClip[4];
-    private int deathGruntInt;
+    //public AudioSource deathSource;
+    //private AudioClip[] deathSounds = new AudioClip[4];
+    //private int deathGruntInt;
 
 
     public Color objectColor;
@@ -62,8 +62,8 @@ public class GameController : MonoBehaviour
         MusicSource.playOnAwake = true;
         if (Music != null)
             MusicSource.clip = Music;
-        MusicSource.volume = 0.0001f;
-        //MusicSource.Play();
+        MusicSource.volume = 0.06f;
+        MusicSource.Play();
         hitGround = false;
         objectColor = blackOutSquare.GetComponent<Image>().color;
         bodyCount = 0;
@@ -209,18 +209,18 @@ public class GameController : MonoBehaviour
         //}
 
         //debug respawn 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            deadBody.transform.position = spawnedPlayer.transform.position;
-            deadBody.transform.rotation = spawnedPlayer.transform.rotation;
-            spawnedPlayer.transform.position = respawnPoint.transform.position;
-            spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    deadBody.transform.position = spawnedPlayer.transform.position;
+        //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+        //    spawnedPlayer.transform.position = respawnPoint.transform.position;
+        //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
 
-            for (int i = 0; i < 10; i++)
-            {
-                Instantiate(deadBody);
-            }
-        }
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        Instantiate(deadBody);
+        //    }
+        //}
     }
 
     public IEnumerator respawnPlayer()

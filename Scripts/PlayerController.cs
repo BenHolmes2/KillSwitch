@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private RaycastHit cursorHit;
 
     public AudioClip Footsteps;
-    public AudioSource MusicSource;
+    public AudioSource StepSource;
 
     public AudioSource deathSource;
     private AudioClip[] deathSounds = new AudioClip[4];
@@ -68,12 +68,12 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
 
-        MusicSource = this.gameObject.AddComponent<AudioSource>();
-        MusicSource.loop = true;
-        MusicSource.playOnAwake = true;
+        StepSource = this.gameObject.AddComponent<AudioSource>();
+        StepSource.loop = true;
+        StepSource.playOnAwake = true;
         if (Footsteps != null)
-            MusicSource.clip = Footsteps;
-        MusicSource.volume = 1f;
+            StepSource.clip = Footsteps;
+        StepSource.volume = 1f;
 
         deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
         deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
@@ -236,9 +236,9 @@ public class PlayerController : MonoBehaviour
         //if ((movementDir.x > 2.0f || movementDir.x < -2.0f || movementDir.z > 2.0f || movementDir.z < -2.0f) && )
 
 
-        if (controller.velocity.magnitude > 2f && MusicSource.isPlaying == false && controller.isGrounded)
+        if (controller.velocity.magnitude > 2f && StepSource.isPlaying == false && controller.isGrounded)
         {
-            MusicSource.PlayOneShot(Footsteps);
+            StepSource.PlayOneShot(Footsteps);
             //float time = Time.deltaTime;
         }
         //else
@@ -375,6 +375,6 @@ public class PlayerController : MonoBehaviour
         {
             deathGruntInt = Random.Range(0, 3);
         }
-        MusicSource.PlayOneShot(deathSounds[deathGruntInt]);
+        StepSource.PlayOneShot(deathSounds[deathGruntInt]);
     }
 }
