@@ -466,6 +466,25 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &397711108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4235037808306522562, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &397711112
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397711108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7661608669171636992, guid: da7843b5a55ba1843af41a3cf822e56c, type: 3}
 --- !u!1 &432432459
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +534,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &570742273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1842392199178198432, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &571105997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5772409575297583802, guid: d3882b32bedcaaf41a3442c9a679715f, type: 3}
@@ -602,6 +626,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 578924901, guid: 38976cc6f84128446a39bfa52e8de071, type: 3}
   m_PrefabInstance: {fileID: 6744416401031879736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &861035610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1908259941729513115, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &861035612
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861035610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7434549690534084444, guid: d11f057132de8b64eb18b416224beb74, type: 3}
 --- !u!1001 &904009266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,6 +909,10 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
+    - target: {fileID: 6324832082830494364, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Name
+      value: RespawnPointSquisher
+      objectReference: {fileID: 0}
     - target: {fileID: 6561404689950124065, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
@@ -898,7 +945,8 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7209657514479870327, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
 --- !u!1 &941970614 stripped
 GameObject:
@@ -921,9 +969,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1160168589, guid: 38976cc6f84128446a39bfa52e8de071, type: 3}
   m_PrefabInstance: {fileID: 6744416401031879736}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1397001641 stripped
+--- !u!1 &1412814135 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5820819793404533563, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_CorrespondingSourceObject: {fileID: 42083229255449507, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
   m_PrefabInstance: {fileID: 929331694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1688756345
@@ -988,7 +1036,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1397001641}
+      objectReference: {fileID: 570742273}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: reticleCanvas
       value: 
@@ -1000,7 +1048,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 1397001641}
+      objectReference: {fileID: 1412814135}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
 --- !u!1 &1978528433
