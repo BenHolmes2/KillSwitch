@@ -996,6 +996,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 941970619}
     - target: {fileID: 2379571670883158728, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2379571670883158728, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7d00cf3e2d0f3c54fb9cf9a6fe13bd37, type: 2}
@@ -1095,6 +1099,10 @@ PrefabInstance:
       propertyPath: GameController
       value: 
       objectReference: {fileID: 941970614}
+    - target: {fileID: 5860257651030527334, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 941970619}
     - target: {fileID: 6144615444484663297, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
@@ -1159,6 +1167,14 @@ PrefabInstance:
       propertyPath: GameController
       value: 
       objectReference: {fileID: 941970614}
+    - target: {fileID: 8555242561135656586, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555242561135656586, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8620279727915587609, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
@@ -1243,6 +1259,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fan: {fileID: 239603415}
   cFan: {fileID: 239603417}
+--- !u!65 &1423044190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423044182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.12207, y: 21.244873, z: 54.12265}
+  m_Center: {x: 0.0020809174, y: 0.0000019073486, z: -0.00390625}
+--- !u!1 &1625055451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4979655989578420949, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1625055457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625055451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.12207, y: 21.244873, z: 54.12265}
+  m_Center: {x: 0.00012779236, y: 0.0000019073486, z: -0.00390625}
+--- !u!114 &1625055458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625055451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7be24b4962112a4c9f9e372ebf6265d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fan: {fileID: 2038578964}
+  cFan: {fileID: 2038578966}
 --- !u!1001 &1688756345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1585,6 +1646,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2038578964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7076948619019208017, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2038578966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 672941574825519652, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038578964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8fc4d3ae5cb8642a219f8cc5802d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2045402364 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 937521015597019853, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}

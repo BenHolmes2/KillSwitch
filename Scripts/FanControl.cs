@@ -41,8 +41,9 @@ public class FanControl : MonoBehaviour
                       
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("haha");
         if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
             counter = 1;
