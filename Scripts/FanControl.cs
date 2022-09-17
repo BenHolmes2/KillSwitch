@@ -46,6 +46,7 @@ public class FanControl : MonoBehaviour
         if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
             counter = 1;
+            Debug.Log("bruh");
         }
 
             
@@ -56,6 +57,7 @@ public class FanControl : MonoBehaviour
         if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         {
             counter = 0;
+            Debug.Log("bruh2");
         }
 
 
