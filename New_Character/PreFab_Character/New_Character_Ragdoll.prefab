@@ -207,7 +207,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4597107667637640440, guid: 323a723b089f8f346afe63dc118e1c6c, type: 3}
+  - {fileID: 2100000, guid: 6fc17225c54947a439d64d99bfbbd78d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1211,7 +1211,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503984816377162980}
-  m_LocalRotation: {x: 8.326673e-17, y: -0.0000000030791754, z: -0.0000000032363006, w: 1}
+  m_LocalRotation: {x: 8.326673e-17, y: -0.0000000030791754, z: -0.0000000032363006,
+    w: 1}
   m_LocalPosition: {x: -0.4917577, y: 7.5886116, z: 0.24758984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3726,7 +3727,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5406940326289964990}
-  m_LocalRotation: {x: 4.1633363e-17, y: -0.0000000015395877, z: -0.0000000016181503, w: 1}
+  m_LocalRotation: {x: 4.1633363e-17, y: -0.0000000015395877, z: -0.0000000016181503,
+    w: 1}
   m_LocalPosition: {x: 0.49780408, y: 7.588611, z: 0.2475895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3975,9 +3977,11 @@ MonoBehaviour:
   speed: 12.5
   jumpForce: 10
   gravity: 45
+  movementDir: {x: 0, y: 0, z: 0}
   gameController: {fileID: 0}
   Footsteps: {fileID: 8300000, guid: 5789656830e2d96438b014380c46a576, type: 3}
-  MusicSource: {fileID: 0}
+  StepSource: {fileID: 0}
+  deathSource: {fileID: 0}
 --- !u!1 &5951219640399642853
 GameObject:
   m_ObjectHideFlags: 0
