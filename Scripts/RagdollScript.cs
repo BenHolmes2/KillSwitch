@@ -23,6 +23,10 @@ public class RagdollScript : MonoBehaviour
     private GameObject rightHand;
     private GameObject head;
     private GameObject gameController;
+    private GameObject player;
+    private bool turningOff;
+    private float turnOffDelay;
+    private int frames = 0;
 
 
     //// Start is called before the first frame update
@@ -30,6 +34,8 @@ public class RagdollScript : MonoBehaviour
     {
         Debug.Log("????");
         gameController = GameObject.Find("GameController");
+        turnOffDelay = gameController.GetComponent<GameController>().ragdollTurnOffDelay;
+        player = gameController.GetComponent<GameController>().spawnedPlayer;
         ragdoll = gameObject;
         currObj = ragdoll;
         currObj = currObj.transform.root.gameObject;
@@ -92,11 +98,27 @@ public class RagdollScript : MonoBehaviour
             }
         }
 
-        if (gameController.GetComponent<GameController>().hitGround)
+        if (frames > 30)
         {
-            StartCoroutine(TurnOffRagdoll());
+            Invoke("TurnOffRagdoll", turnOffDelay);
+            turningOff = true;
+            frames = 0;
         }
 
+        //if (gameController.GetComponent<GameController>().hitGround)
+        //{
+        //    Invoke("TurnOffRagdoll", 3);
+        //    //StartCoroutine(TurnOffRagdoll());
+        //}
+
+        //if (player.GetComponent<PlayerController>().heldObj == null)
+        //{
+        //    if (hips.GetComponent<Rigidbody>().velocity.magnitude < 0.2f)
+        //    {
+        //        Invoke("TurnOffRagdoll", 3);
+        //        //StartCoroutine(TurnOffRagdoll());      
+        //    }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -158,10 +180,56 @@ public class RagdollScript : MonoBehaviour
         }
     }
 
-    public IEnumerator TurnOffRagdoll()
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
+        {
+            if (gameObject.tag == "canPickUpDeath")
+            {
+                if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
+                {
+                    if (!turningOff)
+                    {
+                        frames++;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
     {
 
-        yield return new WaitForSeconds(2f);
+        if (gameObject.tag == "canPickUpDeath")
+        {
+            if (collision.gameObject.tag == "DeathSurface" || gameObject.tag == "canPickUpDeath" || gameObject.tag == "canPickUp")
+            {
+                frames = 0;
+            }
+        }
+    }
+
+    //public IEnumerator TurnOffRagdoll()
+    //{
+
+    //    yield return new WaitForSeconds(3f);
+    //    hips.GetComponent<Rigidbody>().isKinematic = true;
+    //    leftUpLeg.GetComponent<Rigidbody>().isKinematic = true;
+    //    leftLeg.GetComponent<Rigidbody>().isKinematic = true;
+    //    rightUpLeg.GetComponent<Rigidbody>().isKinematic = true;
+    //    rightLeg.GetComponent<Rigidbody>().isKinematic = true;
+    //    spine.GetComponent<Rigidbody>().isKinematic = true;
+    //    leftArm.GetComponent<Rigidbody>().isKinematic = true;
+    //    leftForeArm.GetComponent<Rigidbody>().isKinematic = true;
+    //    leftHand.GetComponent<Rigidbody>().isKinematic = true;
+    //    rightArm.GetComponent<Rigidbody>().isKinematic = true;
+    //    rightForeArm.GetComponent<Rigidbody>().isKinematic = true;
+    //    rightHand.GetComponent<Rigidbody>().isKinematic = true;
+    //    head.GetComponent<Rigidbody>().isKinematic = true;
+    //}
+
+    public void TurnOffRagdoll()
+    {
         hips.GetComponent<Rigidbody>().isKinematic = true;
         leftUpLeg.GetComponent<Rigidbody>().isKinematic = true;
         leftLeg.GetComponent<Rigidbody>().isKinematic = true;
@@ -175,5 +243,23 @@ public class RagdollScript : MonoBehaviour
         rightForeArm.GetComponent<Rigidbody>().isKinematic = true;
         rightHand.GetComponent<Rigidbody>().isKinematic = true;
         head.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public void TurnOnRagdoll()
+    {
+        turningOff = false;
+        hips.GetComponent<Rigidbody>().isKinematic = false;
+        leftUpLeg.GetComponent<Rigidbody>().isKinematic = false;
+        leftLeg.GetComponent<Rigidbody>().isKinematic = false;
+        rightUpLeg.GetComponent<Rigidbody>().isKinematic = false;
+        rightLeg.GetComponent<Rigidbody>().isKinematic = false;
+        spine.GetComponent<Rigidbody>().isKinematic = false;
+        leftArm.GetComponent<Rigidbody>().isKinematic = false;
+        leftForeArm.GetComponent<Rigidbody>().isKinematic = false;
+        leftHand.GetComponent<Rigidbody>().isKinematic = false;
+        rightArm.GetComponent<Rigidbody>().isKinematic = false;
+        rightForeArm.GetComponent<Rigidbody>().isKinematic = false;
+        rightHand.GetComponent<Rigidbody>().isKinematic = false;
+        head.GetComponent<Rigidbody>().isKinematic = false;
     }
 }

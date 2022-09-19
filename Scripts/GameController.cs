@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     public float fadeSpeed = 2;
     private float fadeAmount;
 
+    public float ragdollTurnOffDelay = 3f;
     public int bodyCount;
     public int deathBySpikesCount;
     public int deathByShreddersCount;
