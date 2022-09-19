@@ -209,18 +209,18 @@ public class GameController : MonoBehaviour
         //}
 
         //debug respawn 
-        //if (Input.GetKeyDown(KeyCode.T))
-        //{
-        //    deadBody.transform.position = spawnedPlayer.transform.position;
-        //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
-        //    spawnedPlayer.transform.position = respawnPoint.transform.position;
-        //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            deadBody.transform.position = spawnedPlayer.transform.position;
+            deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+            spawnedPlayer.transform.position = respawnPoint.transform.position;
+            spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
 
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        Instantiate(deadBody);
-        //    }
-        //}
+            for (int i = 0; i < 10; i++)
+            {
+                Instantiate(deadBody);
+            }
+        }
     }
 
     public IEnumerator respawnPlayer()

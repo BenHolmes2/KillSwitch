@@ -7,10 +7,13 @@ public class DoorMovement : MonoBehaviour, IDoor
 
     private bool isOpen = false;
     private Animator animator;
+    private Material l;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+
+        //l.SetColor("_Emission", Color.red);
     }
 
     public void OpenDoor()
