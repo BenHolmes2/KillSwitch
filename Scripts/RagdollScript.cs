@@ -91,6 +91,12 @@ public class RagdollScript : MonoBehaviour
                 head.GetComponent<VisualEffect>().enabled = true;
             }
         }
+
+        if (gameController.GetComponent<GameController>().hitGround)
+        {
+            StartCoroutine(TurnOffRagdoll());
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -150,5 +156,24 @@ public class RagdollScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public IEnumerator TurnOffRagdoll()
+    {
+
+        yield return new WaitForSeconds(2f);
+        hips.GetComponent<Rigidbody>().isKinematic = true;
+        leftUpLeg.GetComponent<Rigidbody>().isKinematic = true;
+        leftLeg.GetComponent<Rigidbody>().isKinematic = true;
+        rightUpLeg.GetComponent<Rigidbody>().isKinematic = true;
+        rightLeg.GetComponent<Rigidbody>().isKinematic = true;
+        spine.GetComponent<Rigidbody>().isKinematic = true;
+        leftArm.GetComponent<Rigidbody>().isKinematic = true;
+        leftForeArm.GetComponent<Rigidbody>().isKinematic = true;
+        leftHand.GetComponent<Rigidbody>().isKinematic = true;
+        rightArm.GetComponent<Rigidbody>().isKinematic = true;
+        rightForeArm.GetComponent<Rigidbody>().isKinematic = true;
+        rightHand.GetComponent<Rigidbody>().isKinematic = true;
+        head.GetComponent<Rigidbody>().isKinematic = true;
     }
 }
