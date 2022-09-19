@@ -25,6 +25,8 @@ public class GameData : MonoBehaviour
     private string spikesDeathStr = "Total Deaths from Spikes: ";
     private string shreddersDeathStr = "Total Deaths from Shredders: ";
     private string buzzSawDeathStr = "Total Deaths from BuzzSaws: ";
+    private string gearBoxDeathStr = "Total Deaths from GearBoxes: ";
+    private string fallingDeathStr = "Total Deaths from Falling: ";
     private string totalDeathStr = "Total Deaths: ";
     private string totalRespawnStr = "Total Times Respawned: ";
     private int totalRespawn;
@@ -88,6 +90,8 @@ public class GameData : MonoBehaviour
         spikesDeathStr += controller.deathBySpikesCount.ToString() + "\n";
         shreddersDeathStr += controller.deathByShreddersCount.ToString() + "\n";
         buzzSawDeathStr += controller.deathByBuzzSawCount.ToString() + "\n";
+        gearBoxDeathStr += controller.deathByGearBoxCount.ToString() + "\n";
+        fallingDeathStr += controller.deathByFallingCount.ToString() + "\n";
         totalDeathStr += totalDeaths.ToString() + "\n";
         totalRespawnStr += totalRespawn.ToString() + "\n";
         totalBodyStr += bodyCountTotal.ToString() + "\n";
@@ -103,6 +107,8 @@ public class GameData : MonoBehaviour
         File.AppendAllText("GameData.txt", electricityDeathStr);
         File.AppendAllText("GameData.txt", spikesDeathStr);
         File.AppendAllText("GameData.txt", buzzSawDeathStr);
+        File.AppendAllText("GameData.txt", gearBoxDeathStr);
+        File.AppendAllText("GameData.txt", fallingDeathStr);
         File.AppendAllText("GameData.txt", "---------------------------------------------------------------------------------\n");
     }
 }

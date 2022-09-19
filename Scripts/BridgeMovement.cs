@@ -32,12 +32,14 @@ public class BridgeMovement : MonoBehaviour
             gear1Anim.SetBool("On", true);
             gear2Anim.SetBool("On", true);
             bridgeAnim.SetBool("On", true);
+            gameObject.GetComponent<DeathCollider>().enabled = true;
         }
         else
         {
             gear1Anim.SetBool("On", false);
             gear2Anim.SetBool("On", false);
             bridgeAnim.SetBool("On", false);
+            gameObject.GetComponent<DeathCollider>().enabled = false;
         }
     }
 

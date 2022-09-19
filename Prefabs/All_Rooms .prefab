@@ -66025,6 +66025,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DeathSurface
       objectReference: {fileID: 0}
+    - target: {fileID: 3184275237384279097, guid: c5dac1371338ada4992f737539b56e00, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5283002519956242159, guid: c5dac1371338ada4992f737539b56e00, type: 3}
       propertyPath: m_TagString
       value: DeathSurface
@@ -66073,6 +66077,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5597916749896652281, guid: c5dac1371338ada4992f737539b56e00, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     - target: {fileID: 5766085069895564013, guid: c5dac1371338ada4992f737539b56e00, type: 3}
       propertyPath: m_Material
       value: 
@@ -66081,6 +66089,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_11_Folder
       objectReference: {fileID: 0}
+    - target: {fileID: 7606000525004802804, guid: c5dac1371338ada4992f737539b56e00, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 8406003150531978461, guid: c5dac1371338ada4992f737539b56e00, type: 3}
+      propertyPath: m_TagString
+      value: DeathFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673744966584420004, guid: c5dac1371338ada4992f737539b56e00, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5dac1371338ada4992f737539b56e00, type: 3}
 --- !u!1 &344052543477216521 stripped
@@ -66088,6 +66108,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2736409567617169115, guid: c5dac1371338ada4992f737539b56e00, type: 3}
   m_PrefabInstance: {fileID: 2395914966525428690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6167645208940881679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8406003150531978461, guid: c5dac1371338ada4992f737539b56e00, type: 3}
+  m_PrefabInstance: {fileID: 2395914966525428690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1420685145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167645208940881679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 970.48, y: 100, z: 730.3}
+  m_Center: {x: 0, y: -701.9, z: 0}
+--- !u!114 &1420685144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167645208940881679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf168733884a6034caa53052d53f416b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  bloodEffect: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
 --- !u!1 &6440335349382284662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8673744966584420004, guid: c5dac1371338ada4992f737539b56e00, type: 3}
@@ -70110,9 +70162,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3272471315234789909, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
+    - target: {fileID: 3515419705481575157, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: m_TagString
+      value: DeathFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 3862162813950242921, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375391520723424837, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4788761374728676154, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70166,6 +70230,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DeathSurface
       objectReference: {fileID: 0}
+    - target: {fileID: 7554514641133356248, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7811257054593056504, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
       propertyPath: m_TagString
       value: DeathSurface
@@ -70208,6 +70276,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 670740152818536772, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
   m_PrefabInstance: {fileID: 6799299293430193150}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7967625537866408203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3515419705481575157, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}
+  m_PrefabInstance: {fileID: 6799299293430193150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &490029732
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967625537866408203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 610, y: 100, z: 620}
+  m_Center: {x: 0, y: -570.2, z: 0}
+--- !u!114 &490029733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967625537866408203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf168733884a6034caa53052d53f416b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  bloodEffect: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
 --- !u!1 &8924574543037027440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2702586308874719118, guid: 0d7de6cced0dc0d41b47d0c2f448390e, type: 3}

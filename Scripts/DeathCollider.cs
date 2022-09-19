@@ -56,6 +56,27 @@ public class DeathCollider : MonoBehaviour
             }
         }
 
+
+        if (gameObject.CompareTag("GearBox"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                //Controller.respawnPlayer();
+                Controller.StartCoroutine(Controller.respawnPlayer());
+                Controller.deathByGearBoxCount++;
+            }
+        }
+
+        if (gameObject.CompareTag("DeathFloor"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                //Controller.respawnPlayer();
+                Controller.StartCoroutine(Controller.respawnPlayer());
+                Controller.deathByFallingCount++;
+            }
+        }
+
         if (gameObject.CompareTag("BuzzSaw"))
         {
             if (other.gameObject.CompareTag("Player"))

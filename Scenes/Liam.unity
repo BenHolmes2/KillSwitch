@@ -345,6 +345,11 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &340411570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 390082977407518795, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432432459
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +411,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 490029733, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 941970619}
     - target: {fileID: 956998208, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 941970619}
+    - target: {fileID: 1420685144, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
@@ -578,6 +591,10 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
+    - target: {fileID: 5238265646412908838, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 941970619}
     - target: {fileID: 5270105179114054711, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
@@ -634,16 +651,16 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
-    - target: {fileID: 7822810174896657963, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-      propertyPath: m_TagString
-      value: Item
-      objectReference: {fileID: 0}
     - target: {fileID: 7937287650523175280, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: GameController
       value: 
       objectReference: {fileID: 941970614}
     - target: {fileID: 8042754132409528489, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: gameController
+      value: 
+      objectReference: {fileID: 941970619}
+    - target: {fileID: 8300646469694718443, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
     - target: {fileID: 8620279727915587609, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
@@ -672,11 +689,6 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1160168589, guid: 38976cc6f84128446a39bfa52e8de071, type: 3}
   m_PrefabInstance: {fileID: 6744416401031879736}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1244308790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 344052543477216521, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-  m_PrefabInstance: {fileID: 929331694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1688756345
 PrefabInstance:
@@ -740,7 +752,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1244308790}
+      objectReference: {fileID: 340411570}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: reticleCanvas
       value: 
@@ -752,7 +764,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 1244308790}
+      objectReference: {fileID: 340411570}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: ragdollTurnOffDelay
       value: 3
