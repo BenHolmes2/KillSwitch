@@ -14,11 +14,22 @@ public class GameController : MonoBehaviour
     public GameObject cameraPosition;
     public GameObject deadBody;
     private GameObject tempBody;
-    private GameObject tempBody1;
+    private GameObject currentBody;
     private GameObject temp;
     private GameObject hips;
     private GameObject spine;
     private GameObject head;
+    private GameObject leftUpLeg;
+    private GameObject leftLeg;
+    private GameObject rightUpLeg;
+    private GameObject rightLeg;
+    private GameObject spineTemp;
+    private GameObject leftArm;
+    private GameObject leftForeArm;
+    private GameObject leftHand;
+    private GameObject rightArm;
+    private GameObject rightForeArm;
+    private GameObject rightHand;
     private GameObject tempObj;
     public GameObject spawnedPlayer;
     public GameObject blackOutSquare;
@@ -98,8 +109,8 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             //add timer in to stop soft lock
-            StartCoroutine(respawnPlayer());
-            //respawnPlayer();
+            //StartCoroutine(respawnPlayer());
+            respawnPlayer();
         }
 
         //use this as a base if we want to implement the colour changing for the player
@@ -172,6 +183,8 @@ public class GameController : MonoBehaviour
                         bodyMoved = false;
                         hitGround = false;
                         isRespawn = false;
+                        SetLayer(currentBody);
+                        Physics.IgnoreLayerCollision(6, 3, false);
                     }
                 }
             }
@@ -226,29 +239,98 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public IEnumerator respawnPlayer()
+    //public IEnumerator respawnPlayer()
+    //{
+    //    isRespawn = true;
+    //    deadBody.transform.position = spawnedPlayer.transform.position;
+    //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+    //    tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+    //    //tempObj = tempObj.transform.Find("CameraHolder").gameObject; 
+    //    cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
+    //    spawnedPlayer.GetComponent<PlayerController>().DropObject();
+    //    spawnedPlayer.GetComponent<PlayerController>().enabled = false;
+    //    spawnedPlayer.transform.position = respawnPoint.transform.position;
+    //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+    //    yield return new WaitForSeconds(0.1f); // change this to the lowest pissible value without breaking it or change it to ignore collisions?????
+    //    //change the above wait statement to an ignore collision statement
+    //    tempBody = Instantiate(deadBody);
+    //    tempBody1 = tempBody;
+    //    spawnedPlayer.GetComponent<PlayerController>().PlayDeathSound();
+
+    //}
+
+    public void respawnPlayer()
     {
         isRespawn = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+        Debug.Log(spawnedPlayer.transform.Find("CameraHolder").gameObject);
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
+        Debug.Log(tempObj);
         //tempObj = tempObj.transform.Find("CameraHolder").gameObject; 
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
         spawnedPlayer.GetComponent<PlayerController>().DropObject();
         spawnedPlayer.GetComponent<PlayerController>().enabled = false;
+        Physics.IgnoreLayerCollision(6, 3, true);
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
-        yield return new WaitForSeconds(0.1f); // change this to the lowest pissible value without breaking it or change it to ignore collisions?????
         tempBody = Instantiate(deadBody);
-        tempBody1 = tempBody;
+        currentBody = tempBody;
         spawnedPlayer.GetComponent<PlayerController>().PlayDeathSound();
-        //deathGruntInt = Random.Range(0, 3); //this randomly pick what death grunt to play
-        //if (deathGruntInt == 4) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
-        //{
-        //    deathGruntInt = Random.Range(0, 3);
-        //}
-        //spawnedPlayer.GetComponent<AudioSource>().PlayOneShot(deathSounds[deathGruntInt]);
-        //deathSource.PlayOneShot(deathSounds[deathGruntInt]);
+        hips = tempBody.transform.Find("Hip_Root_JNT").gameObject;
+        spine = hips.transform.Find("Spine_01_Bottom_JNT").gameObject;
+        spine = spine.transform.Find("Spine_02_Mid_JNT").gameObject;
+        spine = spine.transform.Find("Spine_03_Top_JNT").gameObject;
+        spine = spine.transform.Find("Spine_00_Top_JNT").gameObject;
+        head = spine.transform.Find("Neck_JNT").gameObject;
+        head = head.transform.Find("Head_JNT").gameObject;
+        temp = head.transform.Find("CameraPos").gameObject;
+        cameraHolder.transform.position = temp.transform.position;
+        cameraHolder.transform.parent = temp.transform.parent;
+
+    }
+
+    private void SetLayer(GameObject currentBody)
+    {
+        hips = currentBody.transform.Find("Hip_Root_JNT").gameObject;
+        leftUpLeg = hips.transform.Find("Left_Leg_JNT").gameObject;
+        leftLeg = leftUpLeg.transform.Find("Left_Knee_JNT").gameObject;
+        rightUpLeg = hips.transform.Find("Right_Leg_JNT").gameObject;
+        rightLeg = rightUpLeg.transform.Find("Right_Knee_JNT").gameObject;
+        spine = hips.transform.Find("Spine_01_Bottom_JNT").gameObject;
+        spine = spine.transform.Find("Spine_02_Mid_JNT").gameObject;
+
+        spineTemp = spine.transform.Find("Spine_03_Top_JNT").gameObject;
+        spineTemp = spineTemp.transform.Find("Spine_00_Top_JNT").gameObject;
+
+        leftArm = spineTemp.transform.Find("Left_Clavicle_JNT").gameObject;
+        leftArm = leftArm.transform.Find("Left_Shoulder_JNT").gameObject;
+
+        leftForeArm = leftArm.transform.Find("Left_Forarm_JNT").gameObject;
+        leftHand = leftForeArm.transform.Find("Left_Wrist_JNT").gameObject;
+
+        rightArm = spineTemp.transform.Find("Right_Clavicle_JNT").gameObject;
+        rightArm = rightArm.transform.Find("Right_Shoulder_JNT").gameObject;
+
+        rightForeArm = rightArm.transform.Find("Right_Forarm_JNT").gameObject;
+        rightHand = rightForeArm.transform.Find("Right_Wrist_JNT").gameObject;
+        head = spineTemp.transform.Find("Neck_JNT").gameObject;
+        head = head.transform.Find("Head_JNT").gameObject;
+
+        hips.layer = 0;
+        leftUpLeg.layer = 0;
+        leftLeg.layer = 0;
+        rightUpLeg.layer = 0;
+        rightLeg.layer = 0;
+        spine.layer = 0;
+        leftArm.layer = 0;
+        leftForeArm.layer = 0;
+        leftHand.layer = 0;
+        rightArm.layer = 0;
+        rightForeArm.layer = 0;
+        hips.layer = 0;
+        rightHand.layer = 0;
+        head.layer = 0;
     }
 
     //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)

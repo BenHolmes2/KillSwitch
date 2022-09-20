@@ -14,12 +14,15 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                bloodEffect.transform.position = other.transform.position;
-                Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.deathByShreddersCount++;
-                //Controller.respawnPlayer();
-                //add this back if we want blood
-                //Instantiate(bloodEffect);
+                if (!Controller.isRespawn)
+                {
+                    bloodEffect.transform.position = other.transform.position;
+                    //Controller.StartCoroutine(Controller.respawnPlayer());
+                    Controller.deathByShreddersCount++;
+                    Controller.respawnPlayer();
+                    //add this back if we want blood
+                    //Instantiate(bloodEffect);
+                }
 
             }
 
@@ -39,10 +42,16 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.deathBySpikesCount++;
-                //Controller.respawnPlayer();
-                Debug.Log("you should have died");
+                if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
+                {
+                    if (!Controller.isRespawn)
+                    {
+                        //Controller.StartCoroutine(Controller.respawnPlayer());
+                        Controller.deathBySpikesCount++;
+                        Controller.respawnPlayer();
+                        //Debug.Log("you should have died");
+                    }
+                }
             }
         }
 
@@ -50,9 +59,12 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                //Controller.respawnPlayer();
-                Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.deathByElectricityCount++;
+                if (!Controller.isRespawn)
+                {
+                    Controller.respawnPlayer();
+                    //Controller.StartCoroutine(Controller.respawnPlayer());
+                    Controller.deathByElectricityCount++;
+                }
             }
         }
 
@@ -61,19 +73,12 @@ public class DeathCollider : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                //Controller.respawnPlayer();
-                Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.deathByGearBoxCount++;
-            }
-        }
-
-        if (gameObject.CompareTag("DeathFloor"))
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                //Controller.respawnPlayer();
-                Controller.StartCoroutine(Controller.respawnPlayer());
-                Controller.deathByFallingCount++;
+                if (!Controller.isRespawn)
+                {
+                    Controller.respawnPlayer();
+                    //Controller.StartCoroutine(Controller.respawnPlayer());
+                    Controller.deathByGearBoxCount++;
+                }
             }
         }
 
@@ -83,7 +88,8 @@ public class DeathCollider : MonoBehaviour
             {
                 if (!Controller.isRespawn)
                 {
-                    Controller.StartCoroutine(Controller.respawnPlayer());
+                    Controller.respawnPlayer();
+                    //Controller.StartCoroutine(Controller.respawnPlayer());
                     Controller.deathByBuzzSawCount++;
                 }
             }
@@ -98,6 +104,25 @@ public class DeathCollider : MonoBehaviour
             //        Instantiate(bloodEffect);
             //    }
             //}
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (gameObject.CompareTag("DeathFloor"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
+                {
+                    if (!Controller.isRespawn)
+                    {
+                        Controller.respawnPlayer();
+                        //Controller.StartCoroutine(Controller.respawnPlayer());
+                        Controller.deathByFallingCount++;
+                    }
+                }
+            }
         }
     }
 }

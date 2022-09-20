@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(controller.isGrounded);
 
         PlayerLook();
         PlayerMove();
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PickUpBody(GameObject pickUpObj)
+    private void PickUpBody(GameObject pickUpObj)
     {
         if (pickUpObj.GetComponent<Rigidbody>())
         {
@@ -183,12 +184,12 @@ public class PlayerController : MonoBehaviour
             //heldObj.gameObject.transform.root.gameObject.layer = 6;
 
             heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
-
-            ToggleCollisions(6);
+            ToggleLayer(6);
+            ToggleCollisions(true);
         }
     }
 
-    void PlayerMove()
+    private void PlayerMove()
     {
         movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
 
@@ -254,7 +255,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void PlayerLook()
+    private void PlayerLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -267,7 +268,7 @@ public class PlayerController : MonoBehaviour
         playerBody.Rotate(Vector3.up * mouseX);
     }
 
-    void PickUpObject(GameObject pickUpObj)
+    private void PickUpObject(GameObject pickUpObj)
     {
         if (pickUpObj.GetComponent<Rigidbody>())
         {
@@ -285,10 +286,11 @@ public class PlayerController : MonoBehaviour
             //heldObj.gameObject.layer.Equals(0);
             heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
             heldObj = null;
-            ToggleCollisions(0);
+            ToggleLayer(0);
+            ToggleCollisions(false);
         }
     }
-    void MoveObject()
+    private void MoveObject()
     {
         heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
         //heldObj.transform.position = holdPos.transform.position;
@@ -298,12 +300,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void ThrowObject()
+    private void ThrowObject()
     {
         //heldObj.gameObject.layer.Equals(0);
         heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
-  
-        ToggleCollisions(0);
+        ToggleLayer(0);
+
+        ToggleCollisions(false);
         heldObjRb.transform.rotation = cameraObj.transform.rotation;
         //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
         hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
@@ -323,25 +326,26 @@ public class PlayerController : MonoBehaviour
         heldObj = null;
     }
 
-    void ToggleCollisions(int toggle)
+    public void ToggleCollisions(bool toggle)
     {
-        hips.layer = toggle;
-        leftUpLeg.layer = toggle;
-        leftLeg.layer = toggle;
-        rightUpLeg.layer = toggle;
-        rightLeg.layer = toggle;
-        spine.layer = toggle;
-        leftArm.layer = toggle;
-        leftForeArm.layer = toggle;
-        leftHand.layer = toggle;
-        rightArm.layer = toggle;
-        rightForeArm.layer = toggle;
-        hips.layer = toggle;
-        rightHand.layer = toggle;
-        head.layer = toggle;
+        //hips.layer = toggle;
+        //leftUpLeg.layer = toggle;
+        //leftLeg.layer = toggle;
+        //rightUpLeg.layer = toggle;
+        //rightLeg.layer = toggle;
+        //spine.layer = toggle;
+        //leftArm.layer = toggle;
+        //leftForeArm.layer = toggle;
+        //leftHand.layer = toggle;
+        //rightArm.layer = toggle;
+        //rightForeArm.layer = toggle;
+        //hips.layer = toggle;
+        //rightHand.layer = toggle;
+        //head.layer = toggle;
 
         //this ignores collisions between the body and the envrionment but not the gearbox
-        //Physics.IgnoreLayerCollision(6, 0, toggle);
+        Physics.IgnoreLayerCollision(6, 0, toggle);
+        Physics.IgnoreLayerCollision(6, 3, toggle);
 
         //these ignore collisions stop the ragdoll from clipping with the player and itself when being held, but casue issues
         //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), toggle);
@@ -374,6 +378,24 @@ public class PlayerController : MonoBehaviour
         //rightHand.GetComponent<Collider>().enabled = toggle;
         //head.GetComponent<Collider>().enabled = toggle;
 
+    }
+
+    private void ToggleLayer(int toggle)
+    {
+        hips.layer = toggle;
+        leftUpLeg.layer = toggle;
+        leftLeg.layer = toggle;
+        rightUpLeg.layer = toggle;
+        rightLeg.layer = toggle;
+        spine.layer = toggle;
+        leftArm.layer = toggle;
+        leftForeArm.layer = toggle;
+        leftHand.layer = toggle;
+        rightArm.layer = toggle;
+        rightForeArm.layer = toggle;
+        hips.layer = toggle;
+        rightHand.layer = toggle;
+        head.layer = toggle;
     }
 
     public void PlayDeathSound()

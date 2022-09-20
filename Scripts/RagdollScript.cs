@@ -32,7 +32,7 @@ public class RagdollScript : MonoBehaviour
     //// Start is called before the first frame update
     void Start()
     {
-        Debug.Log("????");
+        //Debug.Log("????");
         gameController = GameObject.Find("GameController");
         turnOffDelay = gameController.GetComponent<GameController>().ragdollTurnOffDelay;
         player = gameController.GetComponent<GameController>().spawnedPlayer;
@@ -90,6 +90,11 @@ public class RagdollScript : MonoBehaviour
     //// Update is called once per frame
     void Update()
     {
+        if (player.GetComponent<PlayerController>().heldObj != null)
+        {
+            frames = 0;
+        }
+
         if (head != null)
         {
             if (head.GetComponent<RagdollScript>().isElectrified)
@@ -98,7 +103,7 @@ public class RagdollScript : MonoBehaviour
             }
         }
 
-        if (frames > 30)
+        if (frames > 60)
         {
             Invoke("TurnOffRagdoll", turnOffDelay);
             turningOff = true;
@@ -145,8 +150,8 @@ public class RagdollScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
-        Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
+        //Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
+        //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
         //how do i get it to ignore the respawn tube 
         if (collision.gameObject.tag == "RespawnTube")
         {
@@ -168,8 +173,8 @@ public class RagdollScript : MonoBehaviour
 
         if (collision.gameObject != gameObject)
         {
-            Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
-            Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
+            //Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
+            //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
             if (gameObject.tag == "canPickUpDeath")
             {
                 if ((collision.gameObject.tag == "DeathSurface" || collision.gameObject.tag == "RespawnTube" || collision.gameObject.tag == "canPickUp") && gameController.GetComponent<GameController>().hitGround == false)
@@ -190,7 +195,10 @@ public class RagdollScript : MonoBehaviour
                 {
                     if (!turningOff)
                     {
-                        frames++;
+                        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.01)
+                        {
+                            frames++;
+                        }
                     }
                 }
             }
