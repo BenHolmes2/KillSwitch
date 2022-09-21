@@ -6,10 +6,12 @@ public class Fan : MonoBehaviour
 {
     public GameController gameController;
     public int fanForceBody = 100;
+    public int fanForceBodyInitial = 0;
     public float fanForcePlayer = 0.1f;
+    public float fanForcePlayerInitial = 0f;
     public bool isVertical = false;
     private GameObject player;
-    // Start is called before the first frame update
+    /// Start is called before the first frame update
     void Start()
     {
         player = gameController.spawnedPlayer;
@@ -22,7 +24,29 @@ public class Fan : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other) //this provides the player or body with some initial velocity
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //this currently doesnt work very well when the fan is trying to push the player upwards
+            if (!gameController.isRespawn)
+            {
+                if (isVertical)
+                {
+                    player.GetComponent<PlayerController>().movementDir += this.transform.forward * fanForcePlayerInitial;
+                }
+            }
+        }
+        if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
+        {
+            if (isVertical)
+            {
+                other.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * fanForceBodyInitial);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other) //this provides the player or body with some velocity as long as they remain within the collider
     {
         if (other.gameObject.CompareTag("Player"))
         {
