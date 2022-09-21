@@ -38,22 +38,22 @@ public class DeathCollider : MonoBehaviour
             }
         }
 
-        if (gameObject.CompareTag("Spikes"))
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
-                {
-                    if (!Controller.isRespawn)
-                    {
-                        //Controller.StartCoroutine(Controller.respawnPlayer());
-                        Controller.deathBySpikesCount++;
-                        Controller.respawnPlayer();
-                        //Debug.Log("you should have died");
-                    }
-                }
-            }
-        }
+        //if (gameObject.CompareTag("Spikes"))
+        //{
+        //    if (other.gameObject.CompareTag("Player"))
+        //    {
+        //        if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
+        //        {
+        //            if (!Controller.isRespawn)
+        //            {
+        //                //Controller.StartCoroutine(Controller.respawnPlayer());
+        //                Controller.deathBySpikesCount++;
+        //                Controller.respawnPlayer();
+        //                //Debug.Log("you should have died");
+        //            }
+        //        }
+        //    }
+        //}
 
         if (gameObject.CompareTag("LightningPoles"))
         {
@@ -120,6 +120,23 @@ public class DeathCollider : MonoBehaviour
                         Controller.respawnPlayer();
                         //Controller.StartCoroutine(Controller.respawnPlayer());
                         Controller.deathByFallingCount++;
+                    }
+                }
+            }
+        }
+
+        if (gameObject.CompareTag("Spikes"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
+                {
+                    if (!Controller.isRespawn)
+                    {
+                        //Controller.StartCoroutine(Controller.respawnPlayer());
+                        Controller.deathBySpikesCount++;
+                        Controller.respawnPlayer();
+                        //Debug.Log("you should have died");
                     }
                 }
             }
