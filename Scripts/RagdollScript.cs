@@ -112,7 +112,7 @@ public class RagdollScript : MonoBehaviour
 
         //if (gameController.GetComponent<GameController>().hitGround)
         //{
-        //    Invoke("TurnOffRagdoll", 3);
+            //Invoke("TurnOffRagdoll", 3);
         //    //StartCoroutine(TurnOffRagdoll());
         //}
 
