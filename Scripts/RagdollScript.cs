@@ -177,7 +177,7 @@ public class RagdollScript : MonoBehaviour
             //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
             if (gameObject.tag == "canPickUpDeath")
             {
-                if ((collision.gameObject.tag == "DeathSurface" || collision.gameObject.tag == "RespawnTube" || collision.gameObject.tag == "canPickUp") && gameController.GetComponent<GameController>().hitGround == false)
+                if ((collision.gameObject.tag == "DeathSurface" || collision.gameObject.tag == "RespawnTube" || collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "Spikes") && gameController.GetComponent<GameController>().hitGround == false)
                 {
                     gameController.GetComponent<GameController>().hitGround = true;
                 }

@@ -1,0 +1,23 @@
+diff a/Scripts/DeathCollider.cs b/Scripts/DeathCollider.cs	(rejected hunks)
+@@ -125,5 +125,21 @@
+             }
+         }
+ 
++        if (gameObject.CompareTag("Spikes"))
++        {
++            if (other.gameObject.CompareTag("Player"))
++            {
++                if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
++                {
++                    if (!Controller.isRespawn)
++                    {
++                        //Controller.StartCoroutine(Controller.respawnPlayer());
++                        Controller.deathBySpikesCount++;
++                        Controller.respawnPlayer();
++                        //Debug.Log("you should have died");
++                    }
++                }
++            }
++        }
+     }
+ }

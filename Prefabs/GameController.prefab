@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 683888291193174260}
   - component: {fileID: 1529017003655832836}
   - component: {fileID: 941970620}
-  - component: {fileID: 941970622}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -61,15 +60,17 @@ MonoBehaviour:
   hitGround: 0
   Music: {fileID: 8300000, guid: 63e2c1e340b3dbb49a4a08471e5f623a, type: 3}
   MusicSource: {fileID: 0}
-  deathSource: {fileID: 0}
   objectColor: {r: 0, g: 0, b: 0, a: 0}
   j: 0
-  fadeSpeed: 2
+  fadeSpeed: 1
+  ragdollTurnOffDelay: 3
   bodyCount: 0
   deathBySpikesCount: 0
   deathByShreddersCount: 0
   deathByElectricityCount: 0
   deathByBuzzSawCount: 0
+  deathByGearBoxCount: 0
+  deathByFallingCount: 0
   bodyLimit: 9999
   bodiesUsed: 0
 --- !u!114 &941970620
@@ -85,17 +86,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitRoom: 0
---- !u!114 &941970622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683888291193174258}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e535e9fb1516d4447bd94f73962d7064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitRoomPerf: 0
-  min: Infinity

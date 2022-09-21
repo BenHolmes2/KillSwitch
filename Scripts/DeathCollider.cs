@@ -38,22 +38,22 @@ public class DeathCollider : MonoBehaviour
             }
         }
 
-        if (gameObject.CompareTag("Spikes"))
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
-                {
-                    if (!Controller.isRespawn)
-                    {
-                        //Controller.StartCoroutine(Controller.respawnPlayer());
-                        Controller.deathBySpikesCount++;
-                        Controller.respawnPlayer();
-                        //Debug.Log("you should have died");
-                    }
-                }
-            }
-        }
+        //if (gameObject.CompareTag("Spikes"))
+        //{
+        //    if (other.gameObject.CompareTag("Player"))
+        //    {
+        //        if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
+        //        {
+        //            if (!Controller.isRespawn)
+        //            {
+        //                //Controller.StartCoroutine(Controller.respawnPlayer());
+        //                Controller.deathBySpikesCount++;
+        //                Controller.respawnPlayer();
+        //                //Debug.Log("you should have died");
+        //            }
+        //        }
+        //    }
+        //}
 
         if (gameObject.CompareTag("LightningPoles"))
         {
@@ -95,15 +95,15 @@ public class DeathCollider : MonoBehaviour
             }
 
             //turn this back on if we want the buzzsaw to destroy bodies with a blood effect
-            //if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
-            //{
-            //    if (!Controller.isRespawn)
-            //    {
-            //        bloodEffect.transform.position = other.transform.position;
-            //        Destroy(other.gameObject.transform.root.gameObject);
-            //        Instantiate(bloodEffect);
-            //    }
-            //}
+            if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
+            {
+                if (!Controller.isRespawn)
+                {
+                    //bloodEffect.transform.position = other.transform.position;
+                    Destroy(other.gameObject.transform.root.gameObject);
+                    //Instantiate(bloodEffect);
+                }
+            }
         }
     }
 
@@ -122,6 +122,23 @@ public class DeathCollider : MonoBehaviour
                         Controller.deathByFallingCount++;
                     }
                 }
+            }
+        }
+
+        if (gameObject.CompareTag("Spikes"))
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+               // if (Controller.spawnedPlayer.GetComponent<CharacterController>().isGrounded)
+               // {
+                    if (!Controller.isRespawn)
+                    {
+                        //Controller.StartCoroutine(Controller.respawnPlayer());
+                        Controller.deathBySpikesCount++;
+                        Controller.respawnPlayer();
+                        //Debug.Log("you should have died");
+                    }
+                //}
             }
         }
     }
