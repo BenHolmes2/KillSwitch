@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FanControl : MonoBehaviour
+public class FanControl2 : MonoBehaviour
 {
     private Animator fanAnim;
 
@@ -12,7 +12,7 @@ public class FanControl : MonoBehaviour
     private int counter = 0;
 
 
-   void Awake()
+    void Awake()
     {
         cFan.fanForceBody = 0;
         fanAnim = fan.GetComponent<Animator>();
@@ -22,7 +22,7 @@ public class FanControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -36,9 +36,9 @@ public class FanControl : MonoBehaviour
         else
         {
             fanAnim.SetBool("On", true);
-            cFan.fanForceBody = 70;
+            cFan.fanForceBody = 20;
         }
-                      
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -50,7 +50,7 @@ public class FanControl : MonoBehaviour
             Debug.Log("bruh");
         }
 
-            
+
     }
 
     private void OnTriggerExit(Collider collision)
