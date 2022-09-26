@@ -3194,6 +3194,7 @@ MonoBehaviour:
   playerBody: {fileID: 456147170148868629}
   cameraObj: {fileID: 3946482764617344539}
   speed: 11
+  speedTemp: 10
   jumpForce: 10
   gravity: 45
   movementDir: {x: 0, y: 0, z: 0}
@@ -3202,6 +3203,8 @@ MonoBehaviour:
   StepSource: {fileID: 0}
   deathSource: {fileID: 0}
   jumpGracePeriod: 0.2
+  rampUpModifier: 1.04
+  rampUpOffset: 6
 --- !u!1 &5255096336115772951
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     float xRotation = 0f;
 
     public float speed = 10.0f;
+    public float speedTemp = 10.0f;
     public float jumpForce = 10.0f;
     public float gravity = 20.0f;
     private Vector3 movementInput = Vector3.zero;
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
     private double startTime;
     private double tempTime;
     public float jumpGracePeriod = 0.2f;
+    public float rampUpModifier = 1.1f;
+    public int rampUpOffset = 6;
 
 
     void Start()
@@ -83,6 +86,9 @@ public class PlayerController : MonoBehaviour
         deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
         deathSounds[2] = Resources.Load("DeathGrunt3") as AudioClip;
         deathSounds[3] = Resources.Load("DeathWilhelm") as AudioClip;
+
+        speedTemp = speed;
+        speedTemp -= rampUpOffset;
     }
 
     // Update is called once per frame
@@ -196,6 +202,20 @@ public class PlayerController : MonoBehaviour
     private void PlayerMove()
     {
         movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+        //Debug.Log(Input.GetAxisRaw("Horizontal"));
+        //Debug.Log(Input.GetAxisRaw("Vertical"));
+
+        //this applies a ramp up to the speed as the player holds down a move button
+        if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && speedTemp <= speed)
+        {
+            speedTemp *= rampUpModifier;
+        }
+        else if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0) 
+        {
+            speedTemp = speed;
+            speedTemp -= rampUpOffset; 
+        }
+
 
         if (movementInput.magnitude > 1.0f)
         {
@@ -203,7 +223,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // When player is in the air
-        //to implement jump grace period, check ground check in update and then create a small timer that allows the player to still jump
         if (!controller.isGrounded)
         {
             airMovementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
@@ -219,8 +238,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            airMovementDir.x *= speed;
-            airMovementDir.z *= speed;
+            airMovementDir.x *= speedTemp;
+            airMovementDir.z *= speedTemp;
 
             movementDir.x = airMovementDir.x;
             movementDir.z = airMovementDir.z;
@@ -237,16 +256,20 @@ public class PlayerController : MonoBehaviour
                 movementDir.y = jumpForce;
             }
 
-            movementDir.x *= speed;
-            movementDir.z *= speed;
+            movementDir.x *= speedTemp;
+            movementDir.z *= speedTemp;
             startTime = Time.timeAsDouble;
             tempTime = startTime + jumpGracePeriod;
         }
-
+        //Debug.Log("*****************************************");
+        //Debug.Log(movementDir);
         movementDir = transform.TransformDirection(movementDir);
         controller.Move(movementDir * Time.deltaTime);
+        //Debug.Log("1111111111111111111111111111");
         //Debug.Log(movementDir);
+        //Debug.Log("2222222222222222222222222222");
         //Debug.Log(controller.velocity.magnitude);
+        //Debug.Log("3333333333333333333333333333");
         //Debug.Log(controller.velocity);
 
         //float stepsOffset = 0.5f;
