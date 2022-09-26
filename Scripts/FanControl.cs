@@ -14,7 +14,7 @@ public class FanControl : MonoBehaviour
 
    void Awake()
     {
-        cFan.fanForceBody = 0;
+        
         fanAnim = fan.GetComponent<Animator>();
         counter = 0;
     }
@@ -31,12 +31,12 @@ public class FanControl : MonoBehaviour
         if (counter == 0)
         {
             fanAnim.SetBool("On", false);
-            cFan.fanForceBody = 0;
+            fan.GetComponent<Fan>().enabled = false;
         }
         else
         {
             fanAnim.SetBool("On", true);
-            cFan.fanForceBody = 70;
+            fan.GetComponent<Fan>().enabled = true;
         }
                       
     }
