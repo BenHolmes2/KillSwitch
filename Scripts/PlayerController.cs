@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
     private AudioClip[] deathSounds = new AudioClip[4];
     private int deathGruntInt;
 
+    private double startTime;
+    private double tempTime;
+    public float jumpGracePeriod = 0.2f;
+
 
     void Start()
     {
@@ -204,6 +208,17 @@ public class PlayerController : MonoBehaviour
         {
             airMovementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
 
+            startTime = Time.timeAsDouble;
+            if (startTime < tempTime)
+            {
+                if (Input.GetButton("Jump"))
+                {
+                    movementDir.y = jumpForce;
+                    //set start time to temp time here
+                    tempTime = startTime;
+                }
+            }
+
             airMovementDir.x *= speed;
             airMovementDir.z *= speed;
 
@@ -224,7 +239,8 @@ public class PlayerController : MonoBehaviour
 
             movementDir.x *= speed;
             movementDir.z *= speed;
-
+            startTime = Time.timeAsDouble;
+            tempTime = startTime + jumpGracePeriod;
         }
 
         movementDir = transform.TransformDirection(movementDir);
