@@ -100,6 +100,7 @@ public class DeathCollider : MonoBehaviour
                 if (!Controller.isRespawn)
                 {
                     //bloodEffect.transform.position = other.transform.position;
+                    Controller.spawnedPlayer.GetComponent<PlayerController>().ToggleCollisions(false);
                     Destroy(other.gameObject.transform.root.gameObject);
                     //Instantiate(bloodEffect);
                 }

@@ -305,7 +305,6 @@ public class PlayerController : MonoBehaviour
         //heldObj.gameObject.layer.Equals(0);
         heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
         ToggleLayer(0);
-
         ToggleCollisions(false);
         heldObjRb.transform.rotation = cameraObj.transform.rotation;
         //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
