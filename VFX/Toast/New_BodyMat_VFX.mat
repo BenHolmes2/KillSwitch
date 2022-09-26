@@ -18,15 +18,19 @@ MonoBehaviour:
     m_Values: 
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BodyMat
-  m_Shader: {fileID: -6465566751694194690, guid: 696aa63daf2954e378502ede08a03d31, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT
-  m_LightmapFlags: 4
+  m_Name: New_BodyMat_VFX
+  m_Shader: {fileID: -6465566751694194690, guid: 696aa63daf2954e378502ede08a03d31,
+    type: 3}
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  - _DISABLE_SSR_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2475
@@ -43,15 +47,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Basemap:
-        m_Texture: {fileID: 2800000, guid: 8c5a51942e8777c4d885c355e870f4c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: aa4b5bcf2f83792418fe536de9429794, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 3a63d47323e654d4a82c178b267a32f2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 53a9776a336cde445a11ac834b627353, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: fed19972ec321534b9ab78a7dcb99cb5, type: 3}
+        m_Texture: {fileID: 2800000, guid: e5eabe9fc599a5f4aa534dd28ae43280, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -80,7 +84,7 @@ Material:
     - _CullModeForward: 2
     - _DepthOffsetEnable: 0
     - _DoubleSidedEnable: 0
-    - _DoubleSidedGIMode: 0
+    - _DoubleSidedGIMode: 2
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
     - _EmissionForHoles: -1
@@ -119,6 +123,6 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
