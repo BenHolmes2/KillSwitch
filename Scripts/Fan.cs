@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fan : MonoBehaviour
 {
     public GameController gameController;
+    private GameObject tempObj;
     public int fanForceBody = 100;
     public int fanForceBodyInitial = 0;
     public float fanForcePlayer = 0.1f;
@@ -12,14 +13,24 @@ public class Fan : MonoBehaviour
     public bool isVertical = false;
     private GameObject player;
     /// Start is called before the first frame update
-    void Start()
+    /// 
+
+    private void Start()
     {
         player = gameController.spawnedPlayer;
+
+        tempObj = GameObject.Find("GameController");
+        gameController = tempObj.GetComponent<GameController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (tempObj == null)
+        {
+            tempObj = GameObject.Find("GameController");
+            gameController = tempObj.GetComponent<GameController>();
+        }
+
         player = gameController.spawnedPlayer;
 
     }
