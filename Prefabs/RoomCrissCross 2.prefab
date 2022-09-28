@@ -3954,8 +3954,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 8155502107065503305}
     m_Modifications:
     - target: {fileID: 242277084, guid: 4283f4ed6bb592242ba6b10938b27458, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 242277084, guid: 4283f4ed6bb592242ba6b10938b27458, type: 3}
       propertyPath: isVertical
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 242277084, guid: 4283f4ed6bb592242ba6b10938b27458, type: 3}
+      propertyPath: fanForceBody
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 242277084, guid: 4283f4ed6bb592242ba6b10938b27458, type: 3}
       propertyPath: fanForcePlayer
@@ -4498,6 +4506,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7625380099045549688, guid: 48204c6226d579f46abfa025d30f35df, type: 3}
   m_PrefabInstance: {fileID: 8087652334069919075}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &5895387451784527182
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868947932291123995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 213.7
+  m_Height: 682.7
+  m_Direction: 2
+  m_Center: {x: -349.38, y: 65.1, z: -102.9}
 --- !u!114 &6029012150166899061
 MonoBehaviour:
   m_ObjectHideFlags: 0
