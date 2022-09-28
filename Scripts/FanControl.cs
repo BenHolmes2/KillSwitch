@@ -24,6 +24,7 @@ public class FanControl : MonoBehaviour
         fanAnim = fan.GetComponent<Animator>();
         buttonAnim = button.GetComponent<Animator>();
         counter = 0;
+        
     }
 
     // Start is called before the first frame update
@@ -40,12 +41,14 @@ public class FanControl : MonoBehaviour
             fanAnim.SetBool("On", false);
             fan.GetComponent<Fan>().enabled = false;
             buttonAnim.SetBool("Open", false);
+            windfx.Stop();
         }
         else
         {
             fanAnim.SetBool("On", true);
             fan.GetComponent<Fan>().enabled = true;
             buttonAnim.SetBool("Open", true);
+            windfx.Play();
         }
                       
     }
