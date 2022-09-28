@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ragdoll3.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1714133391043462749, guid: d3882b32bedcaaf41a3442c9a679715f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2054208297656409319, guid: d3882b32bedcaaf41a3442c9a679715f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -402,11 +406,6 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
---- !u!1 &431597285 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 390082977407518795, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-  m_PrefabInstance: {fileID: 929331694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432432459
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +824,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 431597285}
+      objectReference: {fileID: 1922243419}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: reticleCanvas
       value: 
@@ -837,9 +836,14 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 431597285}
+      objectReference: {fileID: 1922243419}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
+--- !u!1 &1922243419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1227418687630571816, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1978528433
 GameObject:
   m_ObjectHideFlags: 0

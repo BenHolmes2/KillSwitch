@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {
-            if (cursorHit.transform.gameObject.tag == "canPickUp" || cursorHit.transform.gameObject.tag == "canPickUpDeath")
+            if (cursorHit.transform.gameObject.tag == "canPickUpObject" || cursorHit.transform.gameObject.tag == "canPickUpDeath")
             {
                 //Debug.Log(cursorHit.transform.gameObject.name);
                 gameController.reticleCanvas.SetActive(false);
@@ -124,15 +124,15 @@ public class PlayerController : MonoBehaviour
                     //Debug.DrawLine(cameraObj.transform.position, pickUpHit.point, Color.white, 5f);
                     //Debug.Log(pickUpHit.transform.gameObject.tag);
                     //Debug.Log(pickUpHit.transform.gameObject.name);
-                    if (pickUpHit.transform.gameObject.tag == "canPickUp" || pickUpHit.transform.gameObject.tag == "canPickUpDeath")
+                    if (pickUpHit.transform.gameObject.tag == "canPickUpDeath")
                     {
                         PickUpBody(pickUpHit.transform.gameObject);
                     }
                     //currently not needed, reimplement if we want to be able to pick up objects again
-                    //if (hit.transform.gameObject.tag == "canPickUpObject")
-                    //{
-                    //    PickUpObject(hit.transform.gameObject);
-                    //}
+                    if (pickUpHit.transform.gameObject.tag == "canPickUpObject")
+                    {
+                        PickUpObject(pickUpHit.transform.gameObject);
+                    }
                 }
             }
             else
@@ -185,10 +185,10 @@ public class PlayerController : MonoBehaviour
             heldObj = hips;
             heldObjRb = heldObj.GetComponent<Rigidbody>();
             //heldObjRb.transform.position = holdPos.transform.position;
-            Debug.Log("----------------------------------------");
-            Debug.Log(heldObj);
-            Debug.Log(heldObjRb);
-            Debug.Log("----------------------------------------");
+            //Debug.Log("----------------------------------------");
+            //Debug.Log(heldObj);
+            //Debug.Log(heldObjRb);
+            //Debug.Log("----------------------------------------");
             heldObjRb.transform.position = holdPos.transform.position;
 
             //heldObj.gameObject.transform.root.gameObject.layer = 6;
@@ -312,8 +312,11 @@ public class PlayerController : MonoBehaviour
         if (pickUpObj.GetComponent<Rigidbody>())
         {
             heldObj = pickUpObj;
-            Debug.Log(heldObj);
+            //Debug.Log(heldObj);
             heldObjRb = heldObj.GetComponent<Rigidbody>();
+            heldObjRb.isKinematic = false;
+            ToggleLayer(6);
+            ToggleCollisions(true);
             heldObjRb.transform.position = holdPos.transform.position;
 
         }
@@ -322,46 +325,76 @@ public class PlayerController : MonoBehaviour
     {
         if (heldObj != null)
         {
-            //heldObj.gameObject.layer.Equals(0);
-            heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
-            heldObj = null;
-            ToggleLayer(0);
-            ToggleCollisions(false);
+            if (heldObj.GetComponent<RagdollScript>() == true) //make this a better check
+            {
+                ToggleLayer(0);
+                ToggleCollisions(false);
+                heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
+                heldObj = null;
+            }
+            else
+            {
+                ToggleLayer(0);
+                ToggleCollisions(false);
+                heldObj = null;
+            }
         }
     }
     private void MoveObject()
     {
-        heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
+        if (heldObj.GetComponent<RagdollScript>() == true) //make this a better check
+        {
+            heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
+            heldObjRb.transform.position = holdPos.transform.position;
+            heldObjRb.transform.rotation = holdPos.transform.rotation;
+        }
+        else
+        {
+            heldObjRb.transform.position = holdPos.transform.position;
+           // heldObjRb.transform.rotation = holdPos.transform.rotation;
+        }
+
         //heldObj.transform.position = holdPos.transform.position;
         //heldObj.transform.rotation = holdPos.transform.rotation;
-        heldObjRb.transform.position = holdPos.transform.position;
-        heldObjRb.transform.rotation = holdPos.transform.rotation;
+
 
     }
 
     private void ThrowObject()
     {
         //heldObj.gameObject.layer.Equals(0);
-        heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
-        ToggleLayer(0);
-        ToggleCollisions(false);
-        heldObjRb.transform.rotation = cameraObj.transform.rotation;
-        //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
-        hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        leftUpLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        leftLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        rightUpLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        rightLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        spine.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        leftArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        leftForeArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        leftHand.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        rightArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        rightForeArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        rightHand.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        head.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
-        heldObj = null;
+        
+        if (heldObj.GetComponent<RagdollScript>() == true) //make this a better check
+        {
+            heldObj.GetComponent<RagdollScript>().TurnOnRagdoll();
+            ToggleLayer(0);
+            ToggleCollisions(false);
+            heldObjRb.transform.rotation = cameraObj.transform.rotation;
+            //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
+            hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            leftUpLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            leftLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            rightUpLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            rightLeg.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            spine.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            leftArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            leftForeArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            leftHand.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            rightArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            rightForeArm.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            rightHand.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            head.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            heldObj = null;
+        }
+
+        if (heldObj.CompareTag("canPickUpObject"))
+        {
+            ToggleLayer(0);
+            ToggleCollisions(false);
+            heldObj.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            heldObj = null;
+        }
     }
 
     public void ToggleCollisions(bool toggle)
@@ -420,20 +453,28 @@ public class PlayerController : MonoBehaviour
 
     private void ToggleLayer(int toggle)
     {
-        hips.layer = toggle;
-        leftUpLeg.layer = toggle;
-        leftLeg.layer = toggle;
-        rightUpLeg.layer = toggle;
-        rightLeg.layer = toggle;
-        spine.layer = toggle;
-        leftArm.layer = toggle;
-        leftForeArm.layer = toggle;
-        leftHand.layer = toggle;
-        rightArm.layer = toggle;
-        rightForeArm.layer = toggle;
-        hips.layer = toggle;
-        rightHand.layer = toggle;
-        head.layer = toggle;
+        if (heldObj.GetComponent<RagdollScript>() == true) //make this a better check
+        {
+            hips.layer = toggle;
+            leftUpLeg.layer = toggle;
+            leftLeg.layer = toggle;
+            rightUpLeg.layer = toggle;
+            rightLeg.layer = toggle;
+            spine.layer = toggle;
+            leftArm.layer = toggle;
+            leftForeArm.layer = toggle;
+            leftHand.layer = toggle;
+            rightArm.layer = toggle;
+            rightForeArm.layer = toggle;
+            hips.layer = toggle;
+            rightHand.layer = toggle;
+            head.layer = toggle;
+        }
+        else
+        {
+            heldObj.layer = toggle; 
+        }
+
     }
 
     public void PlayDeathSound()
