@@ -949,15 +949,15 @@ PrefabInstance:
       objectReference: {fileID: 941970619}
     - target: {fileID: 672941574825519652, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 672941574825519652, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: fanForceBody
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 672941574825519652, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: fanForcePlayer
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 672941574825519652, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: gameController
@@ -1199,6 +1199,10 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
+    - target: {fileID: 6979790074370194648, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6998894115392168440, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
@@ -1772,7 +1776,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 929331694}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038578964}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea8fc4d3ae5cb8642a219f8cc5802d85, type: 3}
   m_Name: 
@@ -1796,20 +1800,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960, type: 3}
   arcStart: {fileID: 587529095}
---- !u!136 &2045402367
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045402364}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 359.5
-  m_Height: 33.5
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2136203247
 GameObject:
   m_ObjectHideFlags: 0
