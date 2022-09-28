@@ -39,16 +39,16 @@ public class FanControl : MonoBehaviour
         if (counter == 0)
         {
             fanAnim.SetBool("On", false);
-            fan.GetComponent<Fan>().enabled = false;
+            fan.GetComponent<CapsuleCollider>().enabled = false;
             buttonAnim.SetBool("On", false);
-            windfx.Stop();
+            windfx.enabled = false;
         }
         else
         {
             fanAnim.SetBool("On", true);
-            fan.GetComponent<Fan>().enabled = true;
+            fan.GetComponent<CapsuleCollider>().enabled = true;
             buttonAnim.SetBool("On", true);
-            windfx.Play();
+            windfx.enabled = true;
         }
                       
     }
@@ -56,22 +56,22 @@ public class FanControl : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("haha");
-        if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
-        {
+        //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
+        //{
             counter = 1;
             Debug.Log("bruh");
-        }
+        //}
 
             
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
-        {
+        //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
+        //{
             counter = 0;
             Debug.Log("bruh2");
-        }
+        //}
 
 
     }
