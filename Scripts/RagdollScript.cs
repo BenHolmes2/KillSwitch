@@ -152,6 +152,19 @@ public class RagdollScript : MonoBehaviour
             rightHand.GetComponent<RagdollScript>().isElectrified = true;
             head.GetComponent<RagdollScript>().isElectrified = true;
         }
+
+        if (other.gameObject.CompareTag("GearBox"))
+        {
+            TurnOffRagdoll();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("GearBox"))
+        {
+            TurnOnRagdoll();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -183,7 +196,7 @@ public class RagdollScript : MonoBehaviour
             //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
             if (gameObject.tag == "canPickUpDeath")
             {
-                if ((collision.gameObject.tag == "DeathSurface" || collision.gameObject.tag == "RespawnTube" || collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "Spikes") && gameController.GetComponent<GameController>().hitGround == false)
+                if ((collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox")) && gameController.GetComponent<GameController>().hitGround == false)
                 {
                     gameController.GetComponent<GameController>().hitGround = true;
                 }

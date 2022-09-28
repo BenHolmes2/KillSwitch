@@ -483,10 +483,6 @@ PrefabInstance:
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
-    - target: {fileID: 1420685144, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-      propertyPath: Controller
-      value: 
-      objectReference: {fileID: 941970619}
     - target: {fileID: 1847408752, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
@@ -568,6 +564,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 941970619}
     - target: {fileID: 1696682396106363372, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 941970619}
+    - target: {fileID: 1790186629236281908, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: Controller
       value: 
       objectReference: {fileID: 941970619}
@@ -757,6 +757,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834955e4e1bccc440a5277c5435dd5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &943868122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 344052543477216521, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1160168589 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1160168589, guid: 38976cc6f84128446a39bfa52e8de071, type: 3}
@@ -824,7 +829,7 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1922243419}
+      objectReference: {fileID: 943868122}
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: reticleCanvas
       value: 
@@ -836,14 +841,9 @@ PrefabInstance:
     - target: {fileID: 1529017003655832836, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: initialSpawnPos
       value: 
-      objectReference: {fileID: 1922243419}
+      objectReference: {fileID: 943868122}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
---- !u!1 &1922243419 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1227418687630571816, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
-  m_PrefabInstance: {fileID: 929331694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1978528433
 GameObject:
   m_ObjectHideFlags: 0

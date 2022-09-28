@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {
-            if (cursorHit.transform.gameObject.tag == "canPickUpObject" || cursorHit.transform.gameObject.tag == "canPickUpDeath")
+            if (cursorHit.transform.gameObject.tag == "canPickUpObject" || cursorHit.transform.gameObject.tag == "canPickUpDeath" || cursorHit.transform.gameObject.tag == "canPickUp")
             {
                 //Debug.Log(cursorHit.transform.gameObject.name);
                 gameController.reticleCanvas.SetActive(false);
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
                     //Debug.DrawLine(cameraObj.transform.position, pickUpHit.point, Color.white, 5f);
                     //Debug.Log(pickUpHit.transform.gameObject.tag);
                     //Debug.Log(pickUpHit.transform.gameObject.name);
-                    if (pickUpHit.transform.gameObject.tag == "canPickUpDeath")
+                    if (pickUpHit.transform.gameObject.tag == "canPickUpDeath" || pickUpHit.transform.gameObject.tag == "canPickUp")
                     {
                         PickUpBody(pickUpHit.transform.gameObject);
                     }
@@ -387,8 +387,7 @@ public class PlayerController : MonoBehaviour
             head.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
             heldObj = null;
         }
-
-        if (heldObj.CompareTag("canPickUpObject"))
+        else if (heldObj.CompareTag("canPickUpObject"))
         {
             ToggleLayer(0);
             ToggleCollisions(false);
