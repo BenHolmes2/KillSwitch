@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class FanControl : MonoBehaviour
 {
     private Animator fanAnim;
+    private Animator buttonAnim;
 
+
+    public VisualEffect windfx;
+
+    public GameObject button;
     public GameObject fan;
     public Fan cFan;
 
@@ -14,8 +20,9 @@ public class FanControl : MonoBehaviour
 
    void Awake()
     {
-        
+        windfx = windfx.GetComponent<VisualEffect>();
         fanAnim = fan.GetComponent<Animator>();
+        buttonAnim = button.GetComponent<Animator>();
         counter = 0;
     }
 
@@ -32,11 +39,13 @@ public class FanControl : MonoBehaviour
         {
             fanAnim.SetBool("On", false);
             fan.GetComponent<Fan>().enabled = false;
+            buttonAnim.SetBool("Open", false);
         }
         else
         {
             fanAnim.SetBool("On", true);
             fan.GetComponent<Fan>().enabled = true;
+            buttonAnim.SetBool("Open", true);
         }
                       
     }
