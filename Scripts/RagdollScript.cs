@@ -90,6 +90,12 @@ public class RagdollScript : MonoBehaviour
     //// Update is called once per frame
     void Update()
     {
+        //if (gameObject.GetComponent<Rigidbody>().velocity.magnitude > 15)
+        //{
+        //    gameObject.GetComponent<Rigidbody>().velocity = 15;
+        //}
+
+
         if (player.GetComponent<PlayerController>().heldObj != null)
         {
             frames = 0;

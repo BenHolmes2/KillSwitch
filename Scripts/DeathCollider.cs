@@ -6,7 +6,7 @@ public class DeathCollider : MonoBehaviour
 {
     public GameController Controller;
     public GameObject bloodEffect;
-    public GameObject tempObj;
+    private GameObject tempObj;
     private Transform pos;
 
 
