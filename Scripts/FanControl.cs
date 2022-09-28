@@ -40,14 +40,14 @@ public class FanControl : MonoBehaviour
         {
             fanAnim.SetBool("On", false);
             fan.GetComponent<Fan>().enabled = false;
-            buttonAnim.SetBool("Open", false);
+            buttonAnim.SetBool("On", false);
             windfx.Stop();
         }
         else
         {
             fanAnim.SetBool("On", true);
             fan.GetComponent<Fan>().enabled = true;
-            buttonAnim.SetBool("Open", true);
+            buttonAnim.SetBool("On", true);
             windfx.Play();
         }
                       
