@@ -25884,7 +25884,7 @@ GameObject:
   - component: {fileID: 1244249223}
   m_Layer: 0
   m_Name: pCube95
-  m_TagString: Untagged
+  m_TagString: DeathSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36678,7 +36678,7 @@ GameObject:
   - component: {fileID: 12709284}
   m_Layer: 0
   m_Name: pCube93
-  m_TagString: Untagged
+  m_TagString: DeathSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61959,7 +61959,7 @@ GameObject:
   - component: {fileID: 364391599}
   m_Layer: 0
   m_Name: polySurface8820
-  m_TagString: Untagged
+  m_TagString: DeathSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72115,6 +72115,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2429428479357256159}
     m_Modifications:
+    - target: {fileID: 98027870006581384, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
+      propertyPath: fanForcePlayerInitial
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 676914057265230431, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -406
@@ -72175,6 +72179,10 @@ PrefabInstance:
       propertyPath: fanForcePlayerInitial
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5508711966801867884, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
+      propertyPath: fanForceBodyInitial
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6481320840464953010, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.2
@@ -72210,6 +72218,18 @@ PrefabInstance:
     - target: {fileID: 7820125048484402234, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
       propertyPath: m_TagString
       value: DeathSurface
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013998272628208424, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013998272628208424, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
+      propertyPath: fanForcePlayer
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013998272628208424, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
+      propertyPath: fanForcePlayerInitial
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8155502107065503305, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
       propertyPath: m_RootOrder
@@ -72263,53 +72283,9 @@ PrefabInstance:
     - {fileID: 8156249443599081064, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
     - {fileID: 7725115493527909625, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
---- !u!1 &1444527864979667700 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2667911921902861154, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
-  m_PrefabInstance: {fileID: 3534672260042883478}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4286203208092912025 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 753801715790907407, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
-  m_PrefabInstance: {fileID: 3534672260042883478}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1160851205
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4286203208092912025}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2941.97
-  m_Height: 10049.2
-  m_Direction: 2
-  m_Center: {x: -349.38, y: 65.1, z: -102.9}
---- !u!114 &1160851204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4286203208092912025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715ec47d0106ea44696aced79dc13996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorGameObject: {fileID: 1444527864979667700}
-  electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960, type: 3}
-  arcStart: {fileID: 4697449316037877690}
 --- !u!4 &4621683076678701023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8155502107065503305, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
-  m_PrefabInstance: {fileID: 3534672260042883478}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4697449316037877690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8087652334246452780, guid: bf2560d042a55e4488896b75498f93cd, type: 3}
   m_PrefabInstance: {fileID: 3534672260042883478}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3590906668720936545
@@ -78795,6 +78771,10 @@ PrefabInstance:
       value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 8013939289073623337, guid: 7316173b731d1c04f97ea1e2d511cdc5, type: 3}
+      propertyPath: fanForceBody
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013939289073623337, guid: 7316173b731d1c04f97ea1e2d511cdc5, type: 3}
       propertyPath: fanForceBodyInitial
       value: 250
       objectReference: {fileID: 0}
@@ -78808,11 +78788,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9133424536540301361, guid: 7316173b731d1c04f97ea1e2d511cdc5, type: 3}
       propertyPath: fanForceBody
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9133424536540301361, guid: 7316173b731d1c04f97ea1e2d511cdc5, type: 3}
       propertyPath: fanForceBodyInitial
-      value: 50
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 9133424536540301361, guid: 7316173b731d1c04f97ea1e2d511cdc5, type: 3}
       propertyPath: fanForcePlayerInitial
