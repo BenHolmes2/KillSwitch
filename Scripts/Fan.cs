@@ -17,22 +17,19 @@ public class Fan : MonoBehaviour
 
     private void Start()
     {
-        player = gameController.spawnedPlayer;
-
         tempObj = GameObject.Find("GameController");
         gameController = tempObj.GetComponent<GameControllerAnimated>();
+        player = gameController.spawnedPlayer;
     }
 
     private void Update()
     {
-        if (tempObj == null)
+        if (player == null)
         {
             tempObj = GameObject.Find("GameController");
             gameController = tempObj.GetComponent<GameControllerAnimated>();
             player = gameController.spawnedPlayer;
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other) //this provides the player or body with some initial velocity
