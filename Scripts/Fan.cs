@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    public GameController gameController;
+    public GameControllerAnimated gameController;
     private GameObject tempObj;
     public int fanForceBody = 100;
     public int fanForceBodyInitial = 0;
@@ -20,7 +20,7 @@ public class Fan : MonoBehaviour
         player = gameController.spawnedPlayer;
 
         tempObj = GameObject.Find("GameController");
-        gameController = tempObj.GetComponent<GameController>();
+        gameController = tempObj.GetComponent<GameControllerAnimated>();
     }
 
     private void Update()
@@ -28,10 +28,10 @@ public class Fan : MonoBehaviour
         if (tempObj == null)
         {
             tempObj = GameObject.Find("GameController");
-            gameController = tempObj.GetComponent<GameController>();
+            gameController = tempObj.GetComponent<GameControllerAnimated>();
+            player = gameController.spawnedPlayer;
         }
 
-        player = gameController.spawnedPlayer;
 
     }
 
@@ -44,7 +44,7 @@ public class Fan : MonoBehaviour
             {
                 if (isVertical)
                 {
-                    player.GetComponent<PlayerController>().movementDir += this.transform.forward * fanForcePlayerInitial;
+                    player.GetComponent<PlayerControllerAnimated>().movementDir += this.transform.forward * fanForcePlayerInitial;
                 }
             }
         }
@@ -66,7 +66,7 @@ public class Fan : MonoBehaviour
             {
                 if (isVertical)
                 {
-                    player.GetComponent<PlayerController>().movementDir += this.transform.forward * fanForcePlayer;
+                    player.GetComponent<PlayerControllerAnimated>().movementDir += this.transform.forward * fanForcePlayer;
                 }
                 else
                 {

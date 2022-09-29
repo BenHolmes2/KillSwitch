@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathCollider : MonoBehaviour
 {
-    public GameController Controller;
+    public GameControllerAnimated Controller;
     public GameObject bloodEffect;
     private GameObject tempObj;
     private Transform pos;
@@ -14,7 +14,7 @@ public class DeathCollider : MonoBehaviour
     private void Start()
     {
         tempObj = GameObject.Find("GameController");
-        Controller = tempObj.GetComponent<GameController>();
+        Controller = tempObj.GetComponent<GameControllerAnimated>();
     }
 
     private void Update()
@@ -22,7 +22,7 @@ public class DeathCollider : MonoBehaviour
         if (tempObj == null)
         {
             tempObj = GameObject.Find("GameController");
-            Controller = tempObj.GetComponent<GameController>();
+            Controller = tempObj.GetComponent<GameControllerAnimated>();
         }
     }
 
@@ -118,7 +118,7 @@ public class DeathCollider : MonoBehaviour
                 if (!Controller.isRespawn)
                 {
                     //bloodEffect.transform.position = other.transform.position;
-                    Controller.spawnedPlayer.GetComponent<PlayerController>().ToggleCollisions(false);
+                    Controller.spawnedPlayer.GetComponent<PlayerControllerAnimated>().ToggleCollisions(false);
                     Destroy(other.gameObject.transform.root.gameObject);
                     //Instantiate(bloodEffect);
                 }
