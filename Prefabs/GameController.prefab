@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 683888291193174260}
-  - component: {fileID: 1529017003655832836}
   - component: {fileID: 941970620}
+  - component: {fileID: 7762637748100593801}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -33,46 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1529017003655832836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683888291193174258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834955e4e1bccc440a5277c5435dd5ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 5190110279434808378, guid: 1f727c4894a9cd24c9e71dbea7f55195, type: 3}
-  initialSpawnPos: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  cameraHolder: {fileID: 0}
-  cameraPosition: {fileID: 0}
-  deadBody: {fileID: 1714133391043462749, guid: d3882b32bedcaaf41a3442c9a679715f, type: 3}
-  spawnedPlayer: {fileID: 0}
-  blackOutSquare: {fileID: 0}
-  reticleCanvas: {fileID: 0}
-  pickUpCanvas: {fileID: 0}
-  isRespawn: 0
-  fadeOut: 1
-  hitGround: 0
-  Music: {fileID: 8300000, guid: 63e2c1e340b3dbb49a4a08471e5f623a, type: 3}
-  MusicSource: {fileID: 0}
-  objectColor: {r: 0, g: 0, b: 0, a: 0}
-  j: 0
-  fadeSpeed: 1
-  ragdollTurnOffDelay: 3
-  bodyCount: 0
-  deathBySpikesCount: 0
-  deathByShreddersCount: 0
-  deathByElectricityCount: 0
-  deathByBuzzSawCount: 0
-  deathByGearBoxCount: 0
-  deathByFallingCount: 0
-  bodyLimit: 9999
-  bodiesUsed: 0
 --- !u!114 &941970620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,3 +46,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitRoom: 0
+--- !u!114 &7762637748100593801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683888291193174258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bda0d9e9de0ec4f840fc8323982c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5640033094760487906, guid: d54a5b5b7f622b44886635da80dea0b8, type: 3}
+  initialSpawnPos: {fileID: 0}
+  respawnPoint: {fileID: 0}
+  cameraHolder: {fileID: 0}
+  cameraPosition: {fileID: 0}
+  deadBody: {fileID: 5413650497600358677, guid: 46167a981a3d4544b806028b8106a932, type: 3}
+  spawnedPlayer: {fileID: 0}
+  blackOutSquare: {fileID: 0}
+  reticleCanvas: {fileID: 0}
+  pickUpCanvas: {fileID: 0}
+  isRespawn: 0
+  fadeOut: 1
+  hitGround: 0
+  Music: {fileID: 8300000, guid: 63e2c1e340b3dbb49a4a08471e5f623a, type: 3}
+  MusicSource: {fileID: 0}
+  objectColor: {r: 0, g: 0, b: 0, a: 0}
+  j: 0
+  fadeSpeed: 2
+  ragdollTurnOffDelay: 3
+  bodyCount: 0
+  deathBySpikesCount: 0
+  deathByShreddersCount: 0
+  deathByElectricityCount: 0
+  deathByBuzzSawCount: 0
+  deathByGearBoxCount: 0
+  deathByFallingCount: 0
+  bodyLimit: 9999
+  bodiesUsed: 0
