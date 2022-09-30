@@ -502,10 +502,10 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     public void PlayDeathSound()
     {
-        deathGruntInt = Random.Range(0, 3); //this randomly pick what death grunt to play
-        if (deathGruntInt == 4) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
+        deathGruntInt = Random.Range(0, 4); //this randomly pick what death grunt to play
+        if (deathGruntInt == 3) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
         {
-            deathGruntInt = Random.Range(0, 3);
+            deathGruntInt = Random.Range(0, 4);
         }
         StepSource.PlayOneShot(deathSounds[deathGruntInt]);
     }
