@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189229028750101313}
   m_LocalRotation: {x: 0, y: -0.91820467, z: -0, w: -0.3961062}
-  m_LocalPosition: {x: 786.6698, y: 248.3899, z: -318.8885}
+  m_LocalPosition: {x: 404, y: 248.3899, z: -24}
   m_LocalScale: {x: 178.87277, y: 178.87274, z: 178.87277}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8856,6 +8856,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1384d012ee6ec94458b2f71ec92f3bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Door_L: {fileID: 0}
+  Door_R: {fileID: 0}
+  dnew: 0
 --- !u!65 &8110881061237184815
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10486,6 +10489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1384d012ee6ec94458b2f71ec92f3bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Door_L: {fileID: 0}
+  Door_R: {fileID: 0}
+  dnew: 0
 --- !u!1 &4726838480531259724
 GameObject:
   m_ObjectHideFlags: 0
@@ -16498,7 +16504,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  bloodEffect: {fileID: 7912651982342270546, guid: 8b9b8634c2765479fadb8e698c79428d, type: 3}
+  bloodEffect: {fileID: 7912651982342270546, guid: 8b9b8634c2765479fadb8e698c79428d,
+    type: 3}
 --- !u!1 &6404159572097552021
 GameObject:
   m_ObjectHideFlags: 0
@@ -16546,6 +16553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1384d012ee6ec94458b2f71ec92f3bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Door_L: {fileID: 0}
+  Door_R: {fileID: 0}
+  dnew: 0
 --- !u!95 &6276873732745409482
 Animator:
   serializedVersion: 4
@@ -16593,7 +16603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorGameObject: {fileID: 4709696368271475902}
-  electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960, type: 3}
+  electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960,
+    type: 3}
   arcStart: {fileID: 2424973646673778468}
 --- !u!1 &6479992994121623709
 GameObject:
@@ -17273,6 +17284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1384d012ee6ec94458b2f71ec92f3bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Door_L: {fileID: 0}
+  Door_R: {fileID: 0}
+  dnew: 0
 --- !u!114 &5726985629790805873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32654,7 +32668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorGameObject: {fileID: 4709696368271475902}
-  electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960, type: 3}
+  electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960,
+    type: 3}
   arcStart: {fileID: 2424973646673778468}
 --- !u!1 &7717695145739482243
 GameObject:
@@ -32938,7 +32953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8021670120684828948}
   m_LocalRotation: {x: -0, y: 0.35518128, z: -0, w: -0.93479747}
-  m_LocalPosition: {x: -279.49936, y: 248.3899, z: 282.70032}
+  m_LocalPosition: {x: 68, y: 248.3899, z: -48}
   m_LocalScale: {x: 178.87273, y: 178.87274, z: 178.87273}
   m_ConstrainProportionsScale: 1
   m_Children:
