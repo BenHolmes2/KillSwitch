@@ -9,8 +9,8 @@ public class DoorMovement : MonoBehaviour, IDoor
     private Animator animator;
     public GameObject Door_L;
     public GameObject Door_R;
-    private Material Light_L;
-    private Material Light_R;
+    private Renderer Light_L;
+    private Renderer Light_R;
     public bool dnew=false;
 
     private void Awake()
@@ -18,10 +18,12 @@ public class DoorMovement : MonoBehaviour, IDoor
         animator = GetComponent<Animator>();
         if (dnew) 
         {
-            Light_L = Door_L.GetComponent<Material>();
-            Light_R = Door_R.GetComponent<Material>();
-            Light_L.SetColor("_Emission", Color.red);
-            Light_R.SetColor("_Emission", Color.red); 
+            Light_L = Door_L.GetComponent<Renderer>();
+            Light_R = Door_R.GetComponent<Renderer>();
+            Light_L.material.EnableKeyword("_EMISSION");
+            Light_R.material.EnableKeyword("_EMISSION");
+            Light_L.material.SetColor("_EmissionColor", Color.red);
+            Light_R.material.SetColor("_EmissionColor", Color.red); 
         }
     }
 
@@ -29,8 +31,10 @@ public class DoorMovement : MonoBehaviour, IDoor
     {
         if (dnew) 
         {
-            Light_L.SetColor("_Emission", Color.green);
-            Light_R.SetColor("_Emission", Color.green);
+            Light_L.material.EnableKeyword("_EMISSION");
+            Light_R.material.EnableKeyword("_EMISSION");
+            Light_L.material.SetColor("_EmissionColor", Color.green);
+            Light_R.material.SetColor("_EmissionColor", Color.green);
         }
         animator.SetBool("Open", true);
     }
@@ -40,8 +44,10 @@ public class DoorMovement : MonoBehaviour, IDoor
         animator.SetBool("Open", false);
         if (dnew)
         {
-            Light_L.SetColor("_Emission", Color.red);
-            Light_R.SetColor("_Emission", Color.red);
+            Light_L.material.EnableKeyword("_EMISSION");
+            Light_R.material.EnableKeyword("_EMISSION");
+            Light_L.material.SetColor("_EmissionColor", Color.red);
+            Light_R.material.SetColor("_EmissionColor", Color.red);
         }
     }
 
