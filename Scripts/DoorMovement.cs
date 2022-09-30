@@ -8,8 +8,8 @@ public class DoorMovement : MonoBehaviour, IDoor
 
     private bool isOpen = false;
     private Animator animator;
-    public GameObject Door_L;
-    public GameObject Door_R;
+    //public GameObject Door_L;
+    //public GameObject Door_R;
     //private Renderer Light_L;
     //private Renderer Light_R;
     public bool dnew = false;
