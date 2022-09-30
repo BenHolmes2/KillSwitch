@@ -101,10 +101,10 @@ public class RagdollScriptAnimated : MonoBehaviour
         //}
 
 
-        if (player.GetComponent<PlayerControllerAnimated>().heldObj != null)
-        {
-            frames = 0;
-        }
+        //if (player.GetComponent<PlayerControllerAnimated>().heldObj != null)
+        //{
+        //    frames = 0;
+        //}
 
         if (head != null && characterRenderer == null)
         {
@@ -130,16 +130,22 @@ public class RagdollScriptAnimated : MonoBehaviour
 
         }
 
-        if (frames > 60)
+        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude == 0 && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
         {
-            Invoke("TurnOffRagdoll", turnOffDelay);
-            turningOff = true;
-            frames = 0;
+            TurnOffRagdoll();
         }
+
+        //if (frames > 240)
+        //{
+        //    TurnOffRagdoll();
+        //    //Invoke("TurnOffRagdoll", turnOffDelay);
+        //    turningOff = true;
+        //    frames = 0;
+        //}
 
         //if (gameController.GetComponent<GameController>().hitGround)
         //{
-            //Invoke("TurnOffRagdoll", 3);
+        //Invoke("TurnOffRagdoll", 3);
         //    //StartCoroutine(TurnOffRagdoll());
         //}
 
@@ -233,9 +239,9 @@ public class RagdollScriptAnimated : MonoBehaviour
             {
                 if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
                 {
-                    if (!turningOff)
+                    if (!turningOff && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
                     {
-                        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.01)
+                        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.1)
                         {
                             frames++;
                         }
@@ -247,12 +253,15 @@ public class RagdollScriptAnimated : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-
-        if (gameObject.tag == "canPickUpDeath")
+        if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
-            if (collision.gameObject.tag == "DeathSurface" || gameObject.tag == "canPickUpDeath" || gameObject.tag == "canPickUp")
+
+            if (gameObject.tag == "canPickUpDeath")
             {
-                frames = 0;
+                if (collision.gameObject.tag == "DeathSurface" || gameObject.tag == "canPickUpDeath" || gameObject.tag == "canPickUp")
+                {
+                    frames = 0;
+                }
             }
         }
     }
