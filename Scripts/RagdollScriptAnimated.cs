@@ -24,9 +24,14 @@ public class RagdollScriptAnimated : MonoBehaviour
     private GameObject head;
     private GameObject gameController;
     private GameObject player;
+    private GameObject characterMesh;
+    private Renderer characterRenderer;
     private bool turningOff;
     private float turnOffDelay;
     private int frames = 0;
+    private float electricityEffectModifier;
+    private float negative = -1f;
+
 
 
     //// Start is called before the first frame update
@@ -101,12 +106,28 @@ public class RagdollScriptAnimated : MonoBehaviour
             frames = 0;
         }
 
-        if (head != null)
+        if (head != null && characterRenderer == null)
         {
             if (head.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
-                head.GetComponent<VisualEffect>().enabled = true;
+                characterMesh = head.transform.root.gameObject;
+                characterMesh = characterMesh.transform.Find("parent").gameObject;
+                characterMesh = characterMesh.transform.Find("KS_CHaracter_Rig_GRP").gameObject;
+                characterMesh = characterMesh.transform.Find("Character_Mesh").gameObject;
+                characterMesh = characterMesh.transform.Find("CHarcter_Skin_Geo").gameObject;
+
+                characterRenderer = characterMesh.GetComponent<Renderer>();
+                
+                characterRenderer.material.SetFloat("_EmissionForHoles", 0f);
             }
+        }
+
+        if (characterRenderer != null)
+        {
+            electricityEffectModifier = Mathf.PingPong(Time.time, 0.8f);
+            electricityEffectModifier *= negative;
+            characterRenderer.material.SetFloat("_EmissionForHoles", electricityEffectModifier);
+
         }
 
         if (frames > 60)
