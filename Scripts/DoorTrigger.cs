@@ -25,4 +25,13 @@ public class DoorTrigger : MonoBehaviour
             door.CloseDoor();
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        door = doorGameObject.GetComponent<IDoor>();
+        if (typeOpen)
+        {
+            door.CloseDoor();
+        }
+    }
 }
