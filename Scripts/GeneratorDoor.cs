@@ -75,9 +75,9 @@ public class GeneratorDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Hip_Root_JNT")
+        if (collision.gameObject.name == "mixamorig:Hips1")
         {
-            if (collision.gameObject.GetComponent<RagdollScript>().isElectrified)
+            if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
                 counter++;
                 if (elecCounter == 0)
@@ -117,9 +117,9 @@ public class GeneratorDoor : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.GetComponent<RagdollScript>() != null)
+        if (collision.gameObject.GetComponent<RagdollScriptAnimated>() != null)
         {
-            if (collision.gameObject.GetComponent<RagdollScript>().isElectrified)
+            if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
                 counter--;
             }

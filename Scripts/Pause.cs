@@ -16,7 +16,7 @@ public class Pause : MonoBehaviour
     public Slider playerSlider;
     public Slider gravitySlider;
     public Slider respawnSlider;
-    public GameController gameController;
+    public GameControllerAnimated gameController;
     public Text volume;
     public Text mouseSensitivity;
     public Text jumpForce;
@@ -41,10 +41,10 @@ public class Pause : MonoBehaviour
         //{
         //    ResumeGame();
         //}
-        gameController.spawnedPlayer.GetComponent<PlayerController>().mouseSensitivity = mouseSlider.value;
-        gameController.spawnedPlayer.GetComponent<PlayerController>().jumpForce = jumpSlider.value;
-        gameController.spawnedPlayer.GetComponent<PlayerController>().speed = playerSlider.value;
-        gameController.spawnedPlayer.GetComponent<PlayerController>().gravity = gravitySlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().jumpForce = jumpSlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().speed = playerSlider.value;
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().gravity = gravitySlider.value;
         gameController.fadeSpeed = respawnSlider.value;
         gameController.MusicSource.volume = volumeSlider.value;
         volume.text = volumeSlider.value.ToString();

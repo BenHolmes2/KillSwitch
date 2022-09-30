@@ -14,7 +14,7 @@ public class GameData : MonoBehaviour
     private int roomCount;
     private int bodyCountTotal;
     private int bodyCountTemp;
-    private GameController controller;
+    private GameControllerAnimated controller;
     int[] bodyCountRooms = new int[10]; //change these based on number of rooms in the build
     double[] roomTimes = new double[10];
     private string timeStr = "";
@@ -41,7 +41,7 @@ public class GameData : MonoBehaviour
         exitRoom = false;
         roomCount = 0;
         runningTime = 0;
-        controller = gameObject.GetComponent<GameController>();
+        controller = gameObject.GetComponent<GameControllerAnimated>();
 
     }
 
