@@ -79,7 +79,7 @@ public class GeneratorDoor : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
-                counter++;
+                counter = 1;
                 if (elecCounter == 0)
                 {
                     elecCounter = 1;
@@ -121,7 +121,7 @@ public class GeneratorDoor : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
-                counter--;
+                counter = 0;
             }
         }
 
