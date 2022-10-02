@@ -26,7 +26,7 @@ public class RagdollScriptAnimated : MonoBehaviour
     private GameObject player;
     private GameObject characterMesh;
     private Renderer characterRenderer;
-    private bool turningOff;
+    public bool turningOff;
     private float turnOffDelay;
     private int frames = 0;
     private float electricityEffectModifier;
@@ -225,7 +225,7 @@ public class RagdollScriptAnimated : MonoBehaviour
             {
                 if ((collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox")) && gameController.GetComponent<GameControllerAnimated>().hitGround == false)
                 {
-                    //gameController.GetComponent<GameControllerAnimated>().hitGround = true;
+                    gameController.GetComponent<GameControllerAnimated>().hitGround = true;
                 }
             }
         }
@@ -287,6 +287,7 @@ public class RagdollScriptAnimated : MonoBehaviour
 
     public void TurnOffRagdoll()
     {
+        turningOff = true;
         hips.GetComponent<Rigidbody>().isKinematic = true;
         leftUpLeg.GetComponent<Rigidbody>().isKinematic = true;
         leftLeg.GetComponent<Rigidbody>().isKinematic = true;
