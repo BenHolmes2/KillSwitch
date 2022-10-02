@@ -65553,6 +65553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glass_Window
       objectReference: {fileID: 0}
+    - target: {fileID: 4128490168036932641, guid: 5ca82e6d04d95eb4f8a8203a814cd04d, type: 3}
+      propertyPath: m_TagString
+      value: canPickUpDeath
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca82e6d04d95eb4f8a8203a814cd04d, type: 3}
 --- !u!4 &3603028426022696292 stripped
@@ -65948,6 +65952,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 225881277771672707, guid: d574f9b4306ec654cb81f5eb8b8ac4d9, type: 3}
   m_PrefabInstance: {fileID: 1115197734}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8084884616549011501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8084884617583395083, guid: d574f9b4306ec654cb81f5eb8b8ac4d9, type: 3}
+  m_PrefabInstance: {fileID: 1115197734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6479796582122447987
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084884616549011501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3746643514349516644, guid: d1ccfd81315030b4d9337f8438426a38, type: 3}
 --- !u!1001 &1233297710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68555,7 +68578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3694c92bde6032d4ea47b6c8b6a4779b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.77249
+      value: -81.5271
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3694c92bde6032d4ea47b6c8b6a4779b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69408,6 +69431,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1648800575760066155, guid: af1d358954483034db8aefda9a09dc2f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0766
+      objectReference: {fileID: 0}
     - target: {fileID: 3735010813514610620, guid: af1d358954483034db8aefda9a09dc2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.001
@@ -70093,7 +70120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00ea87ef58aa464c8aa0977cd29782b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -30
+      value: -125.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00ea87ef58aa464c8aa0977cd29782b, type: 3}
       propertyPath: m_LocalPosition.z
