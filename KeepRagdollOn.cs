@@ -9,12 +9,19 @@ public class KeepRagdollOn : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff == true)
+        {
+            other.gameObject.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
 
-        other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff = true;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff = false;
+        if (other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff == true)
+        {
+            other.gameObject.GetComponent<RagdollScriptAnimated>().TurnOffRagdoll();
+
+        }
     }
 }
