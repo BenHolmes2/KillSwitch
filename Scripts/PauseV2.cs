@@ -8,6 +8,21 @@ public class PauseV2 : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject settingsMenu;
+    public GameObject debugMenu;
+
+    public GameObject respawnInitial;
+    public GameObject respawnButton;
+    public GameObject respawnWall;
+    public GameObject respawnSpikes;
+    public GameObject respawnElecIntro;
+    public GameObject respawnBuzzSawIntro;
+    public GameObject respawnFanIntro;
+    public GameObject respawnSpaceJam;
+    public GameObject respawnFanSpikeSaw;
+    public GameObject respawnBridge;
+    public GameObject respawnCrissCross;
+    public GameObject respawnCatapult;
+
     //public GameObject sliderObj;
     public Slider volumeSlider;
     public Slider mouseSlider;
@@ -28,6 +43,7 @@ public class PauseV2 : MonoBehaviour
         //mouseSlider = sliderObj.GetComponent<Slider>();
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        debugMenu.SetActive(false);
     }
 
     void Update()
@@ -39,6 +55,11 @@ public class PauseV2 : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.P) && paused)
         {
             ResumeGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M) && paused)
+        {
+            DebugMenu();
         }
         gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().jumpForce = jumpSlider.value;
@@ -59,6 +80,7 @@ public class PauseV2 : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        debugMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         paused = false;
         //Cursor.visible = false;
@@ -83,16 +105,103 @@ public class PauseV2 : MonoBehaviour
         SceneManager.LoadScene("MainMenuV2"); // add the reference to the main scene her when it is built
     }
 
-    public void LoadSettingsMenu()
+    public void SettingsMenu()
     {
         settingsMenu.SetActive(true);
         pauseMenu.SetActive(false);
+        debugMenu.SetActive(false);
 
+    }
+
+    public void DebugMenu()
+    {
+        settingsMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        debugMenu.SetActive(true);
     }
 
     public void Back()
     {
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);
+        debugMenu.SetActive(false);
+
+    }
+
+    public void SetInitial()
+    {
+        gameController.respawnPoint.transform.position = respawnInitial.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnInitial.transform.rotation;
+    }
+
+    public void SetButton()
+    {
+        gameController.respawnPoint.transform.position = respawnButton.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnButton.transform.rotation;
+    }
+
+    public void SetWall()
+    {
+        gameController.respawnPoint.transform.position = respawnWall.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnWall.transform.rotation;
+    }
+
+    public void SetSpike()
+    {
+        gameController.respawnPoint.transform.position = respawnSpikes.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnSpikes.transform.rotation;
+    }
+
+    public void SetElecIntro()
+    {
+        gameController.respawnPoint.transform.position = respawnElecIntro.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnElecIntro.transform.rotation;
+    }
+
+    public void SetBuzzSawIntro()
+    {
+        gameController.respawnPoint.transform.position = respawnBuzzSawIntro.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnBuzzSawIntro.transform.rotation;
+    }
+
+    public void SetFanIntro()
+    {
+        gameController.respawnPoint.transform.position = respawnFanIntro.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnFanIntro.transform.rotation;
+    }
+
+    public void SetSpaceJam()
+    {
+        gameController.respawnPoint.transform.position = respawnSpaceJam.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnSpaceJam.transform.rotation;
+    }
+
+    public void SetFanSpikeSaw()
+    {
+        gameController.respawnPoint.transform.position = respawnFanSpikeSaw.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnFanSpikeSaw.transform.rotation;
+    }
+
+    public void SetBridge()
+    {
+        gameController.respawnPoint.transform.position = respawnBridge.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnBridge.transform.rotation;
+    }
+
+    public void SetCrissCross()
+    {
+        gameController.respawnPoint.transform.position = respawnCrissCross.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnCrissCross.transform.rotation;
+    }
+
+    public void SetCatapult()
+    {
+        gameController.respawnPoint.transform.position = respawnCatapult.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnCatapult.transform.rotation;
+    }
+
+    public void ResetRespawn()
+    {
+        gameController.hitGround = true;
     }
 }

@@ -225,7 +225,7 @@ public class RagdollScriptAnimated : MonoBehaviour
             {
                 if ((collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox")) && gameController.GetComponent<GameControllerAnimated>().hitGround == false)
                 {
-                    gameController.GetComponent<GameControllerAnimated>().hitGround = true;
+                    //gameController.GetComponent<GameControllerAnimated>().hitGround = true;
                 }
             }
         }
