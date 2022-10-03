@@ -18,6 +18,7 @@ public class MainMenuV2 : MonoBehaviour
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void Play()
