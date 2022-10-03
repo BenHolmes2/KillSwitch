@@ -320,4 +320,37 @@ public class RagdollScriptAnimated : MonoBehaviour
         rightHand.GetComponent<Rigidbody>().isKinematic = false;
         head.GetComponent<Rigidbody>().isKinematic = false;
     }
+
+    public void ClampVelocity()
+    {
+        int clamp = -5;
+        hips.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        leftUpLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        leftLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        rightUpLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        rightLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        spine.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        leftArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        leftForeArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        leftHand.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        rightArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        rightForeArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        rightHand.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        head.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+
+        //hips.GetComponent<Rigidbody>().velocity = clamp;
+        //leftUpLeg.GetComponent<Rigidbody>().velocity.y
+        //leftLeg.GetComponent<Rigidbody>().velocity.y
+        //rightUpLeg.GetComponent<Rigidbody>().velocity.y
+        //rightLeg.GetComponent<Rigidbody>().velocity.y
+        //spine.GetComponent<Rigidbody>().velocity.y
+        //leftArm.GetComponent<Rigidbody>().velocity.y
+        //leftForeArm.GetComponent<Rigidbody>().velocity.y
+        //leftHand.GetComponent<Rigidbody>().velocity.y
+        //rightArm.GetComponent<Rigidbody>().velocity.y
+        //rightForeArm.GetComponent<Rigidbody>().velocity.y
+        //rightHand.GetComponent<Rigidbody>().velocity.y
+        //head.GetComponent<Rigidbody>().velocity.y
+
+    }
 }
