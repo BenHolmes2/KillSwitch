@@ -22,7 +22,7 @@ public class MainMenuV2 : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Liam");
+        SceneManager.LoadScene("Liamw");
     }
 
     public void Credits()

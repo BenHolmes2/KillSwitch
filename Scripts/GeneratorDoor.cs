@@ -73,7 +73,7 @@ public class GeneratorDoor : MonoBehaviour
 
     //}
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.name == "mixamorig:Hips1")
         {
