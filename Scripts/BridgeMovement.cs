@@ -11,6 +11,7 @@ public class BridgeMovement : MonoBehaviour
     public GameObject bridge;
     public GameObject gear1;
     public GameObject gear2;
+    public GameObject deathCollider;
 
     private int counter = 0;
 
@@ -32,14 +33,14 @@ public class BridgeMovement : MonoBehaviour
             gear1Anim.SetBool("On", true);
             gear2Anim.SetBool("On", true);
             bridgeAnim.SetBool("On", true);
-            gameObject.GetComponent<DeathCollider>().enabled = true;
+            deathCollider.gameObject.GetComponent<BoxCollider>().enabled = true;
         }
         else
         {
             gear1Anim.SetBool("On", false);
             gear2Anim.SetBool("On", false);
             bridgeAnim.SetBool("On", false);
-            gameObject.GetComponent<DeathCollider>().enabled = false;
+            deathCollider.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

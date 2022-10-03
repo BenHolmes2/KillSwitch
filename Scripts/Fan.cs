@@ -10,6 +10,7 @@ public class Fan : MonoBehaviour
     public int fanForceBodyInitial = 0;
     public float fanForcePlayer = 0.1f;
     public float fanForcePlayerInitial = 0f;
+    public int verticalFanPlayerExit;
     public bool isVertical = false;
     private GameObject player;
     /// Start is called before the first frame update
@@ -78,5 +79,21 @@ public class Fan : MonoBehaviour
         //if we want to make it so that the player is pushed back faster while holding a body then we should access the player controller
         //so we can see if the player is carrying a body
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //this currently doesnt work very well when the fan is trying to push the player upwards
+            if (!gameController.isRespawn)
+            {
+                if (isVertical)
+                {
+                    Debug.Log("check1");
+                    player.GetComponent<PlayerControllerAnimated>().movementDir += new Vector3(0, verticalFanPlayerExit, 0);
+                }
+            }
+        }
     }
 }

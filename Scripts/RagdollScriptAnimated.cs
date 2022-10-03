@@ -182,15 +182,26 @@ public class RagdollScriptAnimated : MonoBehaviour
 
         if (other.gameObject.CompareTag("GearBox"))
         {
-            TurnOffRagdoll();
+            if (!gameController.GetComponent<GameControllerAnimated>().isRespawn)
+            {
+                //TurnOffRagdoll();
+                if (other.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("GearBox"))
+        if (!gameController.GetComponent<GameControllerAnimated>().isRespawn)
         {
-            TurnOnRagdoll();
+            //TurnOnRagdoll();
+            if (other.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
     }
 
