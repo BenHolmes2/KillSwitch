@@ -174,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36913700767907555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029632568, y: 0.99100006, z: 0.37695312}
+  m_LocalPosition: {x: 0.03, y: 0.877, z: 0.4}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -240,11 +240,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36913701083304411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0058, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 36913700932096198}
+  - {fileID: 5980190255720408006}
   m_Father: {fileID: 36913700767907552}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1433,8 +1434,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4905549461177670559}
-  m_LocalRotation: {x: 0.000000026077027, y: 0.00000017881389, z: 0.0000000065192567,
-    w: 1}
+  m_LocalRotation: {x: 0.000000026077027, y: 0.00000017881389, z: 0.0000000065192567, w: 1}
   m_LocalPosition: {x: 0.0011853027, y: 0.0864, z: 0.015078125}
   m_LocalScale: {x: 0.016000003, y: 0.016000004, z: 0.015999995}
   m_ConstrainProportionsScale: 0
@@ -1725,6 +1725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5640033094760487906}
   holdPos: {fileID: 36913700932096198}
+  holdPosObject: {fileID: 5980190255720408006}
   throwForce: 4
   pickUpRange: 5
   heldObj: {fileID: 0}
@@ -1776,6 +1777,37 @@ Transform:
   - {fileID: 6105664123683225203}
   m_Father: {fileID: 1139103458577340680}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5964635245797279585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5980190255720408006}
+  m_Layer: 3
+  m_Name: HoldPosObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5980190255720408006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964635245797279585}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0305, z: 0.0963}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 36913701083304408}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6040593555826749180
 GameObject:

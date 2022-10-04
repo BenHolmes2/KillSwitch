@@ -6,6 +6,7 @@ public class PlayerControllerAnimated : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
+    public Transform holdPosObject;
     public float throwForce = 5f;
     public float pickUpRange = 20f;
 
@@ -333,7 +334,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -83f, 90f);
 
 
         cameraObj.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -350,9 +351,10 @@ public class PlayerControllerAnimated : MonoBehaviour
             heldObjRb.isKinematic = false;
             ToggleLayer(6);
             ToggleCollisions(true);
-            heldObjRb.transform.position = holdPos.transform.position;
+            heldObjRb.transform.position = holdPosObject.transform.position;
 
         }
+
     }
     public void DropObject()
     {
@@ -386,12 +388,17 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
             heldObjRb.transform.position = holdPos.transform.position;
-            heldObjRb.transform.rotation = holdPos.transform.rotation;
+            //heldObjRb.transform.rotation = holdPos.transform.rotation;
             heldObj.GetComponent<RagdollScriptAnimated>().ClampVelocity();
         }
         else
         {
-            heldObjRb.transform.position = holdPos.transform.position;
+            heldObjRb.transform.position = holdPosObject.transform.position;
+
+            if (heldObjRb.velocity.magnitude > 5)
+            {
+                heldObjRb.GetComponent<Rigidbody>().velocity = new Vector3(0, -5, 0);
+            }
            // heldObjRb.transform.rotation = holdPos.transform.rotation;
         }
 
