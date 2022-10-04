@@ -130,7 +130,7 @@ public class RagdollScriptAnimated : MonoBehaviour
 
         }
 
-        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude == 0 && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
+        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude == 0 && !gameController.GetComponent<GameControllerAnimated>().isRespawn && turningOff == false)
         {
             TurnOffRagdoll();
         }
