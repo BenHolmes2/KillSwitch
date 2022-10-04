@@ -360,8 +360,15 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
             {
-                ToggleLayer(0);
-                ToggleCollisions(false);
+
+                //Physics.IgnoreLayerCollision(6, 0, false);
+                //Invoke("Physics.IgnoreLayerCollision(6, 3, false)", 0.5f);
+                //Invoke("ToggleLayer(0)", 0.5f);
+
+                StartCoroutine(ToggleCollisionsDrop(false));
+                StartCoroutine(ToggleLayerDrop(0));
+
+
                 heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
                 heldObj = null;
             }
@@ -510,7 +517,40 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     }
 
-    public void PlayDeathSound()
+    private IEnumerator ToggleLayerDrop(int toggle)
+    {
+        if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
+        {
+            yield return new WaitForSeconds(0.5f);
+            hips.layer = toggle;
+            leftUpLeg.layer = toggle;
+            leftLeg.layer = toggle;
+            rightUpLeg.layer = toggle;
+            rightLeg.layer = toggle;
+            spine.layer = toggle;
+            leftArm.layer = toggle;
+            leftForeArm.layer = toggle;
+            leftHand.layer = toggle;
+            rightArm.layer = toggle;
+            rightForeArm.layer = toggle;
+            hips.layer = toggle;
+            rightHand.layer = toggle;
+            head.layer = toggle;
+        }
+        else
+        {
+            heldObj.layer = toggle;
+        }
+
+    }
+
+    public IEnumerator ToggleCollisionsDrop(bool toggle)
+    {
+        Physics.IgnoreLayerCollision(6, 0, toggle);
+        yield return new WaitForSeconds(0.5f);
+        Physics.IgnoreLayerCollision(6, 3, toggle);
+    }
+        public void PlayDeathSound()
     {
         deathGruntInt = Random.Range(0, 4); //this randomly pick what death grunt to play
         if (deathGruntInt == 3) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
