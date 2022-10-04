@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brown_staple
       objectReference: {fileID: 0}
+    - target: {fileID: 948127037829422115, guid: 98b6f44f77da1fe42a142f83d824ce30, type: 3}
+      propertyPath: m_TagString
+      value: canPickUpObject
+      objectReference: {fileID: 0}
     - target: {fileID: 1596685446848167414, guid: 98b6f44f77da1fe42a142f83d824ce30, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -93,7 +97,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!64 &7766986083496371856
 MeshCollider:
   m_ObjectHideFlags: 0
