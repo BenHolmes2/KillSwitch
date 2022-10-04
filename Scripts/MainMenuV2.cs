@@ -19,7 +19,7 @@ public class MainMenuV2 : MonoBehaviour
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
-        //Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class MainMenuV2 : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("Liam");
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Credits()
