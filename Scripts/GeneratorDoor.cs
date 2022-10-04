@@ -15,6 +15,7 @@ public class GeneratorDoor : MonoBehaviour
     //private bool electrified = false;
     private int counter = 0;
     private int elecCounter = 0;
+    private bool doorShut = false;
 
     void Awake()
     {
@@ -79,11 +80,14 @@ public class GeneratorDoor : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
-                counter = 1;
-                if (elecCounter == 0)
+                if (!doorShut)
                 {
-                    elecCounter = 1;
-                }
+                    counter = 1;
+                    if (elecCounter == 0)
+                    {
+                        elecCounter = 1;
+                    }
+                }    
             }
         }
 
@@ -122,6 +126,7 @@ public class GeneratorDoor : MonoBehaviour
             if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
                 counter = 0;
+                doorShut = true;
             }
         }
 

@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &779684136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 779684137}
+  - component: {fileID: 779684139}
+  - component: {fileID: 779684138}
+  m_Layer: 2
+  m_Name: PitKillBox
+  m_TagString: DeathFloor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779684137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779684136}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 208, y: -520, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8155502107065503305}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &779684139
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779684136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 323.75867, y: 90.78347, z: 705.46735}
+  m_Center: {x: 21.424982, y: -54.440826, z: 6.0886607}
+--- !u!114 &779684138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779684136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf168733884a6034caa53052d53f416b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  bloodEffect: {fileID: 0}
 --- !u!1 &101713702505055858
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +177,7 @@ MonoBehaviour:
   fanForceBodyInitial: 50
   fanForcePlayer: 1
   fanForcePlayerInitial: 5
+  verticalFanPlayerExit: 0
   isVertical: 1
 --- !u!1 &189229028750101313
 GameObject:
@@ -1734,6 +1795,7 @@ MonoBehaviour:
   fanForceBodyInitial: 50
   fanForcePlayer: 0.1
   fanForcePlayerInitial: 0
+  verticalFanPlayerExit: 0
   isVertical: 0
 --- !u!114 &922017330
 MonoBehaviour:
@@ -2241,6 +2303,7 @@ Transform:
   - {fileID: 5551793353286883896}
   - {fileID: 3787691153039517434}
   - {fileID: 3787691154338091651}
+  - {fileID: 779684137}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -10433,6 +10496,7 @@ MonoBehaviour:
   fanForceBodyInitial: 100
   fanForcePlayer: 1
   fanForcePlayerInitial: 1
+  verticalFanPlayerExit: 0
   isVertical: 1
 --- !u!1 &5449215309041970067
 GameObject:
