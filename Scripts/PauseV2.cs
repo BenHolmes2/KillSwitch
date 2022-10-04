@@ -44,6 +44,18 @@ public class PauseV2 : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
         debugMenu.SetActive(false);
+        //Debug.Log(PlayerPrefs.GetFloat("Volume"));
+        //Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity"));
+        if (PlayerPrefs.GetFloat("Volume") != 0)
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+
+        }
+        if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
+        {
+            mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+
+        }
     }
 
     void Update()

@@ -11,8 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT
     _ENABLE_FOG_ON_TRANSPARENT _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP _NORMALMAP_TANGENT_SPACE
-    _SPECULAR_OCCLUSION_FROM_BENT_NORMAL_MAP _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
-  m_LightmapFlags: 2
+    _SPECULAR_OCCLUSION_NONE _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2700
@@ -121,7 +121,7 @@ Material:
     - _AORemapMin: 0
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 1
-    - _AlbedoAffectEmissive: 1
+    - _AlbedoAffectEmissive: 0
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaCutoffPostpass: 0.5
@@ -193,7 +193,7 @@ Material:
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
-    - _SpecularOcclusionMode: 2
+    - _SpecularOcclusionMode: 0
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -227,9 +227,9 @@ Material:
     - _ZTestTransparent: 3
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.7830189, b: 0.7095877, a: 1}
+    - _BaseColor: {r: 0.017933436, g: 0.2924528, b: 0.26637346, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0, g: 0.7830188, b: 0.7095877, a: 1}
+    - _Color: {r: 0.017933436, g: 0.29245278, b: 0.26637343, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
