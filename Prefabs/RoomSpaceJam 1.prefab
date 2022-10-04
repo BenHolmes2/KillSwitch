@@ -5758,6 +5758,7 @@ MonoBehaviour:
   fanForceBodyInitial: 250
   fanForcePlayer: 1
   fanForcePlayerInitial: 5
+  verticalFanPlayerExit: 0
   isVertical: 1
 --- !u!1 &2318076966272073233
 GameObject:
@@ -6284,7 +6285,7 @@ GameObject:
   - component: {fileID: 2381007342283079015}
   m_Layer: 0
   m_Name: polySurface8819
-  m_TagString: Untagged
+  m_TagString: DeathSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16442,7 +16443,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8730724510041085314}
   - {fileID: 1833923313415784096}
@@ -26203,8 +26204,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5588651095488926980}
   m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -3554.799, y: 21.59978, z: 1738.2994}
-  m_LocalScale: {x: 0.5845014, y: 0.5845014, z: 0.5845014}
+  m_LocalPosition: {x: -3554.799, y: 21.59978, z: 1695.8}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 126349262039611584}
@@ -27819,6 +27820,7 @@ MonoBehaviour:
   fanForceBodyInitial: 250
   fanForcePlayer: 1
   fanForcePlayerInitial: 5
+  verticalFanPlayerExit: -10
   isVertical: 1
 --- !u!1 &8283713406476558755
 GameObject:
@@ -28315,7 +28317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3187139695920437360, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.22
+      value: 1.146
       objectReference: {fileID: 0}
     - target: {fileID: 3187139695920437360, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28323,7 +28325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3187139695920437360, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.067
+      value: -0.088
       objectReference: {fileID: 0}
     - target: {fileID: 3962864223474487302, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_IsActive
@@ -28356,6 +28358,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6047883747571613472, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
     - {fileID: 8343232705259002100, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
+    - {fileID: 4644551826995408975, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
 --- !u!1 &1142567050019411640 stripped
 GameObject:
@@ -28377,10 +28380,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 5.548462
-  m_Height: 11.853078
+  m_Radius: 6.7456055
+  m_Height: 14.817453
   m_Direction: 1
-  m_Center: {x: 0.33483887, y: -4.0734606, z: 0.3330078}
+  m_Center: {x: 0.5058594, y: -4.1874948, z: 0.3330078}
 --- !u!114 &6482538670208544877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28395,12 +28398,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorGameObject: {fileID: 1142567050019411640}
   electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960, type: 3}
-  arcStart: {fileID: 0}
+  arcStart: {fileID: 2999875396815005103}
+  counter: 0
+  doorShut: 0
 --- !u!4 &1955818532894587275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 404541906037060717, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
   m_PrefabInstance: {fileID: 2213886658759593446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3941790911830601566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2886037550983619256, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
+  m_PrefabInstance: {fileID: 2213886658759593446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &612749817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941790911830601566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63617b1462fd7504aa037720d70ef3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorGameObject: {fileID: 1142567050019411640}
+  doorOpenTrigger: {fileID: 1322974542136839858}
+  typeOpen: 0
 --- !u!1001 &2407074471886021760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28430,7 +28455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccd1c4cf05354824bb7a737538534f72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.84
+      value: 493
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccd1c4cf05354824bb7a737538534f72, type: 3}
       propertyPath: m_LocalPosition.z
