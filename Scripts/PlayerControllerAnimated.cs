@@ -103,8 +103,11 @@ public class PlayerControllerAnimated : MonoBehaviour
         PlayerLook();
         PlayerMove();
 
+        //this doesnt reset back to the normal one becasue walls are often outside the pickuprange
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {
+            Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
+
             if (cursorHit.transform.gameObject.tag == "canPickUpObject" || cursorHit.transform.gameObject.tag == "canPickUpDeath" || cursorHit.transform.gameObject.tag == "canPickUp")
             {
                 //Debug.Log(cursorHit.transform.gameObject.name);
@@ -116,6 +119,11 @@ public class PlayerControllerAnimated : MonoBehaviour
                 gameController.reticleCanvas.SetActive(true);
                 gameController.pickUpCanvas.SetActive(false);
             }
+        }
+        else
+        {
+            gameController.reticleCanvas.SetActive(true);
+            gameController.pickUpCanvas.SetActive(false);
         }
 
 
