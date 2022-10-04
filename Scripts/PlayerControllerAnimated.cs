@@ -415,8 +415,10 @@ public class PlayerControllerAnimated : MonoBehaviour
         if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
         {
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
-            ToggleLayer(0);
-            ToggleCollisions(false);
+            StartCoroutine(ToggleCollisionsDrop(false));
+            StartCoroutine(ToggleLayerDrop(0));
+            //ToggleLayer(0);
+            //ToggleCollisions(false);
             heldObjRb.transform.rotation = cameraObj.transform.rotation;
             //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
             hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
