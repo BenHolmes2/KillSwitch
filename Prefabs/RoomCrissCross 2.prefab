@@ -32725,7 +32725,28 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6047883747571613472, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
     - {fileID: 8343232705259002100, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
+    - {fileID: 4644551826995408975, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
+--- !u!1 &1801702005719041110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2886037550983619256, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
+  m_PrefabInstance: {fileID: 3534672259135252206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &250562789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801702005719041110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63617b1462fd7504aa037720d70ef3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorGameObject: {fileID: 2337321147235941808}
+  doorOpenTrigger: {fileID: 4461032896404858298}
+  typeOpen: 0
 --- !u!1 &2337321147235941808 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1252696146374990686, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
@@ -32770,6 +32791,8 @@ MonoBehaviour:
   doorGameObject: {fileID: 2337321147235941808}
   electricityArc: {fileID: 9003699761476537797, guid: 238168bf34c28bb4ab8acde5e4494960, type: 3}
   arcStart: {fileID: 2424973646673778468}
+  counter: 0
+  doorShut: 0
 --- !u!1001 &3534672259381088919
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,9 +13,9 @@ public class GeneratorDoor : MonoBehaviour
     //private IDoor button;
     private GameObject pos;
     //private bool electrified = false;
-    private int counter = 0;
+    public int counter = 0;
     private int elecCounter = 0;
-    private bool doorShut = false;
+    public bool doorShut = false;
 
     void Awake()
     {
@@ -126,7 +126,6 @@ public class GeneratorDoor : MonoBehaviour
             if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
                 counter = 0;
-                doorShut = true;
             }
         }
 
@@ -136,7 +135,6 @@ public class GeneratorDoor : MonoBehaviour
             {
                 Destroy(electricityArc1);
             }
-            
             elecCounter = 0;
         }
 
