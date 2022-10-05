@@ -40,6 +40,7 @@ public class GameControllerAnimated : MonoBehaviour
     private bool bodyMoved = false;
     public bool fadeOut = true;
     public bool hitGround;
+    public bool respawnAllowed;
 
     public AudioClip Music;
     public AudioSource MusicSource;
@@ -65,9 +66,9 @@ public class GameControllerAnimated : MonoBehaviour
     public int bodyLimit = 9999;
     public int bodiesUsed;
 
-
     void Start()
     {
+        Time.timeScale = 1.0f;
         Instantiate(player, initialSpawnPos.transform.position, initialSpawnPos.transform.rotation);
         CheckExistence();
 
@@ -79,8 +80,12 @@ public class GameControllerAnimated : MonoBehaviour
         MusicSource.volume = 0.06f;
         MusicSource.Play();
         hitGround = false;
-        objectColor = blackOutSquare.GetComponent<Image>().color;
+        respawnAllowed = true;
+        //objectColor = blackOutSquare.GetComponent<Image>().color;
+        objectColor = new Color(0, 0, 0, 0);
         bodyCount = 0;
+
+        StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
 
         //deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
         //deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
@@ -106,7 +111,7 @@ public class GameControllerAnimated : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit) //isRespawning makes sure the player cant respawn until the camera has finished moving
+        if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit && respawnAllowed) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             //add timer in to stop soft lock
             //StartCoroutine(respawnPlayer());
@@ -211,13 +216,13 @@ public class GameControllerAnimated : MonoBehaviour
         //}
 
         //debug inputs for testing the fade to black canvas
-        //if (Input.GetKeyDown(KeyCode.P))
+        //if (Input.GetKeyDown(KeyCode.K))
         //{
-        //    StartCoroutine(FadeBlackOutSqaure(true, 5));
+        //    StartCoroutine(FadeBlackOutSqaure(true, 0.2f));
         //}
         //if (Input.GetKeyDown(KeyCode.L))
         //{
-        //    StartCoroutine(FadeBlackOutSqaure(false, 5));
+        //    StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
         //}
 
         //debug respawn 
@@ -329,34 +334,31 @@ public class GameControllerAnimated : MonoBehaviour
         head.layer = 0;
     }
 
-    //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)
-    //{
-    //    Color objectColor = blackOutSquare.GetComponent<Image>().color;
-    //    float fadeAmount;
+    public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, float fadeSpeed = 5f)
+    {
+        Color objectColorA = blackOutSquare.GetComponent<Image>().color;
+        float fadeAmount;
 
-    //    if (fadeToBlack)
-    //    {
-    //        j = blackOutSquare.GetComponent<Image>().color.a;
-    //        while (blackOutSquare.GetComponent<Image>().color.a < 1)
-    //        {
-    //            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
-    //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-    //            blackOutSquare.GetComponent<Image>().color = objectColor;
-    //            j = blackOutSquare.GetComponent<Image>().color.a;
-    //            yield return null;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        while (blackOutSquare.GetComponent<Image>().color.a > 0)
-    //        {
-    //            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-    //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-    //            blackOutSquare.GetComponent<Image>().color = objectColor;
-    //            j = blackOutSquare.GetComponent<Image>().color.a;
-    //            yield return null;
-    //        }
-    //    }
-    //}
+        if (fadeToBlack)
+        {
+            while (blackOutSquare.GetComponent<Image>().color.a < 1)
+            {
+                fadeAmount = objectColorA.a + (fadeSpeed * Time.deltaTime);
+                objectColorA = new Color(objectColorA.r, objectColorA.g, objectColorA.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColorA;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (blackOutSquare.GetComponent<Image>().color.a > 0)
+            {
+                fadeAmount = objectColorA.a - (fadeSpeed * Time.deltaTime);
+                objectColorA = new Color(objectColorA.r, objectColorA.g, objectColorA.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColorA;
+                yield return null;
+            }
+        }
+    }
 
 }

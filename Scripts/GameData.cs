@@ -110,5 +110,7 @@ public class GameData : MonoBehaviour
         File.AppendAllText("GameData.txt", gearBoxDeathStr);
         File.AppendAllText("GameData.txt", fallingDeathStr);
         File.AppendAllText("GameData.txt", "---------------------------------------------------------------------------------\n");
+
+        PlayerPrefs.SetInt("BodiesUsed", bodyCountTotal);
     }
 }

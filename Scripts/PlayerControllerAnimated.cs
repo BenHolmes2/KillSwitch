@@ -388,7 +388,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
             heldObjRb.transform.position = holdPos.transform.position;
-            //heldObjRb.transform.rotation = holdPos.transform.rotation;
+            heldObjRb.transform.rotation = holdPos.transform.rotation;
             heldObj.GetComponent<RagdollScriptAnimated>().ClampVelocity();
         }
         else

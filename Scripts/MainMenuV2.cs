@@ -11,6 +11,8 @@ public class MainMenuV2 : MonoBehaviour
     public GameObject mainMenu;
     public GameObject settingsMenu;
     public GameObject CreditsMenu;
+    //public AudioClip Music;
+    //public AudioSource MusicSource;
 
     // Start is called before the first frame update
 
@@ -20,6 +22,14 @@ public class MainMenuV2 : MonoBehaviour
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
+
+        //MusicSource = this.gameObject.AddComponent<AudioSource>();
+        //MusicSource.loop = true;
+        //MusicSource.playOnAwake = true;
+        //if (Music != null)
+        //    MusicSource.clip = Music;
+        //MusicSource.volume = 0.06f;
+        //MusicSource.Play();
     }
 
     private void Update()
@@ -31,7 +41,7 @@ public class MainMenuV2 : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("Liam");
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Credits()
