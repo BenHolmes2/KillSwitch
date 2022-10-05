@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class FinalRoom : MonoBehaviour
@@ -20,13 +21,14 @@ public class FinalRoom : MonoBehaviour
     public GameObject blackOutSquare;
     public float j;
     public bool addExtraBodies = false;
-
+    public TMP_Text counterText;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        counterText.text = "0";
         //blackOutSquare.GetComponent<Image>().color = new Color(0, 0, 0, 255);
         startTime = Time.timeAsDouble;
         if (PlayerPrefs.GetInt("BodiesUsed") != 0)
@@ -34,7 +36,7 @@ public class FinalRoom : MonoBehaviour
             bodiesUsed = PlayerPrefs.GetInt("BodiesUsed");
             if (addExtraBodies)
             {
-                bodiesUsed += 50;
+                bodiesUsed += 20;
             }
         }
         else
@@ -113,6 +115,7 @@ public class FinalRoom : MonoBehaviour
         ragdoll.transform.position = spawnPos.position;
         ragdoll.transform.rotation = spawnPos.rotation;
         Instantiate(ragdoll);
+        counterText.text = bodiesCheck.ToString();
     }
 
     public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, float fadeSpeed = 0.15f)
