@@ -9,6 +9,7 @@ public class PlayerControllerAnimated : MonoBehaviour
     public Transform holdPos;
     public Transform holdPosObject;
     public float throwForce = 5f;
+    public float throwForceObject = 15f;
     public float pickUpRange = 20f;
 
     public GameObject heldObj;
@@ -436,7 +437,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             ToggleLayer(0);
             ToggleCollisions(false);
-            heldObj.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            heldObj.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForceObject);
             heldObj = null;
         }
     }
