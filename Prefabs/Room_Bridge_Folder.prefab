@@ -110,8 +110,8 @@ GameObject:
   - component: {fileID: 4106123000709393283}
   - component: {fileID: 8068487782647656296}
   - component: {fileID: 6403558560016772670}
-  - component: {fileID: 1396107386816984297}
   - component: {fileID: 6008958206198843434}
+  - component: {fileID: 216225481}
   m_Layer: 0
   m_Name: polySurface6945
   m_TagString: DeathSurface
@@ -198,20 +198,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -609559026236517945, guid: 8a02697e7ca5c9b459028f02aa3bd889, type: 3}
---- !u!64 &1396107386816984297
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779201810059344746}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -609559026236517945, guid: 8a02697e7ca5c9b459028f02aa3bd889, type: 3}
 --- !u!114 &6008958206198843434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bfc9dacaaf40db41b8172d951d6d216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &216225481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779201810059344746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 105.45503, y: 19.769316, z: 327.47128}
+  m_Center: {x: -4445.682, y: -17.58264, z: 626.8319}
 --- !u!1 &1105959588027311790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3796,6 +3795,10 @@ PrefabInstance:
       propertyPath: bridge
       value: 
       objectReference: {fileID: 4446749507845789550}
+    - target: {fileID: 4770109184592322361, guid: 9729ff6344221314ca7229a651a6797d, type: 3}
+      propertyPath: spinCollider
+      value: 
+      objectReference: {fileID: 779201810059344746}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9729ff6344221314ca7229a651a6797d, type: 3}
 --- !u!4 &388016673789082662 stripped
@@ -3916,7 +3919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047883747571613472, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_Size.x
-      value: 25.468506
+      value: 37.62329
       objectReference: {fileID: 0}
     - target: {fileID: 6047883747571613472, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_Size.y
@@ -3924,7 +3927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047883747571613472, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_Center.x
-      value: 10.988159
+      value: 17.065552
       objectReference: {fileID: 0}
     - target: {fileID: 6047883747571613472, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_Center.y
