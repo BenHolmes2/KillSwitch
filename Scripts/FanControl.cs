@@ -9,7 +9,9 @@ public class FanControl : MonoBehaviour
     private Animator buttonAnim;
 
 
-    public VisualEffect windfx;
+    public VisualEffect windFX;
+    public ParticleSystem trailsFX;
+    public ParticleSystem dotsFX;
 
     public GameObject button;
     public GameObject fan;
@@ -20,7 +22,9 @@ public class FanControl : MonoBehaviour
 
    void Awake()
     {
-        windfx = windfx.GetComponent<VisualEffect>();
+        windFX = windFX.GetComponent<VisualEffect>();
+        trailsFX = trailsFX.GetComponent<ParticleSystem>();
+        dotsFX = dotsFX.GetComponent<ParticleSystem>();
         fanAnim = fan.GetComponent<Animator>();
         buttonAnim = button.GetComponent<Animator>();
         counter = 0;
@@ -41,14 +45,18 @@ public class FanControl : MonoBehaviour
             fanAnim.SetBool("On", false);
             fan.GetComponent<CapsuleCollider>().enabled = false;
             buttonAnim.SetBool("On", false);
-            windfx.enabled = false;
+            windFX.enabled = false;
+            trailsFX.Stop();
+            dotsFX.Stop();
         }
         else
         {
             fanAnim.SetBool("On", true);
             fan.GetComponent<CapsuleCollider>().enabled = true;
             buttonAnim.SetBool("On", true);
-            windfx.enabled = true;
+            windFX.enabled = true;
+            trailsFX.Play();
+            dotsFX.Play();
         }
                       
     }
