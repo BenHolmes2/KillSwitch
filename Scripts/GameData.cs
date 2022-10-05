@@ -15,8 +15,8 @@ public class GameData : MonoBehaviour
     private int bodyCountTotal;
     private int bodyCountTemp;
     private GameControllerAnimated controller;
-    int[] bodyCountRooms = new int[10]; //change these based on number of rooms in the build
-    double[] roomTimes = new double[10];
+    int[] bodyCountRooms = new int[11]; //change these based on number of rooms in the build
+    double[] roomTimes = new double[11];
     private string timeStr = "";
     private string timeTotalStr = "Total Time Take: ";
     private string bodyStr = "";
