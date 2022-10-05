@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerControllerAnimated : MonoBehaviour
 {
@@ -54,7 +55,6 @@ public class PlayerControllerAnimated : MonoBehaviour
     private RaycastHit pickUpHit;
     private RaycastHit cursorHit;
 
-    public AudioClip Footsteps;
     public AudioSource StepSource;
 
     public AudioSource deathSource;
@@ -79,12 +79,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
 
-        StepSource = this.gameObject.AddComponent<AudioSource>();
-        StepSource.loop = true;
-        StepSource.playOnAwake = true;
-        if (Footsteps != null)
-            StepSource.clip = Footsteps;
-        StepSource.volume = 1f;
+        StepSource = this.gameObject.GetComponent<AudioSource>();
 
         deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
         deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
@@ -297,7 +292,7 @@ public class PlayerControllerAnimated : MonoBehaviour
 
         if (controller.velocity.magnitude > 2f && StepSource.isPlaying == false && controller.isGrounded)
         {
-            StepSource.PlayOneShot(Footsteps);
+            StepSource.Play();
 
             //float time = Time.deltaTime;
         }

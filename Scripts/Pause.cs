@@ -46,7 +46,7 @@ public class Pause : MonoBehaviour
         gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().speed = playerSlider.value;
         gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().gravity = gravitySlider.value;
         gameController.fadeSpeed = respawnSlider.value;
-        gameController.MusicSource.volume = volumeSlider.value;
+        //gameController.MusicSource.volume = volumeSlider.value;
         volume.text = volumeSlider.value.ToString();
         mouseSensitivity.text = mouseSlider.value.ToString();
         jumpForce.text = jumpSlider.value.ToString();
