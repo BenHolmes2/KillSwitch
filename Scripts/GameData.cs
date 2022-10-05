@@ -85,7 +85,7 @@ public class GameData : MonoBehaviour
             room++;
         }
 
-        timeTotalStr += runningTime.ToString() + "\n";
+        timeTotalStr += endTime.ToString() + "\n";
         electricityDeathStr += controller.deathByElectricityCount.ToString() + "\n";
         spikesDeathStr += controller.deathBySpikesCount.ToString() + "\n";
         shreddersDeathStr += controller.deathByShreddersCount.ToString() + "\n";
