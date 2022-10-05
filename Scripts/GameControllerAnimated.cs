@@ -107,6 +107,7 @@ public class GameControllerAnimated : MonoBehaviour
             //add timer in to stop soft lock
             //StartCoroutine(respawnPlayer());
             respawnPlayer();
+            blackOutSquare.GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
 
         //use this as a base if we want to implement the colour changing for the player
