@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PauseV2 : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class PauseV2 : MonoBehaviour
     //public Text gravity;
     //public Text respawnSpeed;
     private bool paused = false;
+
+    public AudioMixer mixer;
+
     void Start()
     {
         //mouseSlider = sliderObj.GetComponent<Slider>();
@@ -49,12 +53,11 @@ public class PauseV2 : MonoBehaviour
         if (PlayerPrefs.GetFloat("Volume") != 0)
         {
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
-
+            mixer.SetFloat("MasterVolume", volumeSlider.value);
         }
         if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
         {
             mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
-
         }
     }
 
@@ -78,7 +81,6 @@ public class PauseV2 : MonoBehaviour
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().speed = playerSlider.value;
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().gravity = gravitySlider.value;
         //gameController.fadeSpeed = respawnSlider.value;
-        gameController.MusicSource.volume = volumeSlider.value;
         //volume.text = volumeSlider.value.ToString();
         //mouseSensitivity.text = mouseSlider.value.ToString();
         //jumpForce.text = jumpSlider.value.ToString();
@@ -137,7 +139,8 @@ public class PauseV2 : MonoBehaviour
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);
         debugMenu.SetActive(false);
-
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
     }
 
     public void SetInitial()

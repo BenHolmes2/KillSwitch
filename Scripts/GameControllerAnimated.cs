@@ -42,13 +42,6 @@ public class GameControllerAnimated : MonoBehaviour
     public bool hitGround;
     public bool respawnAllowed;
 
-    public AudioClip Music;
-    public AudioSource MusicSource;
-    //public AudioSource deathSource;
-    //private AudioClip[] deathSounds = new AudioClip[4];
-    //private int deathGruntInt;
-
-
     public Color objectColor;
 
     public float j;
@@ -65,6 +58,9 @@ public class GameControllerAnimated : MonoBehaviour
     public int deathByFallingCount;
     public int bodyLimit = 9999;
     public int bodiesUsed;
+    public float volume;
+
+
 
     void Start()
     {
@@ -72,18 +68,13 @@ public class GameControllerAnimated : MonoBehaviour
         Instantiate(player, initialSpawnPos.transform.position, initialSpawnPos.transform.rotation);
         CheckExistence();
 
-        MusicSource = this.gameObject.AddComponent<AudioSource>();
-        MusicSource.loop = true;
-        MusicSource.playOnAwake = true;
-        if (Music != null)
-            MusicSource.clip = Music;
-        MusicSource.volume = 0.06f;
-        MusicSource.Play();
+
         hitGround = false;
         respawnAllowed = true;
         //objectColor = blackOutSquare.GetComponent<Image>().color;
         objectColor = new Color(0, 0, 0, 0);
         bodyCount = 0;
+
 
         StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
 
@@ -116,6 +107,7 @@ public class GameControllerAnimated : MonoBehaviour
             //add timer in to stop soft lock
             //StartCoroutine(respawnPlayer());
             respawnPlayer();
+            blackOutSquare.GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
 
         //use this as a base if we want to implement the colour changing for the player

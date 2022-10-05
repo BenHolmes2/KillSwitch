@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class MainMenuV2 : MonoBehaviour
@@ -12,7 +13,10 @@ public class MainMenuV2 : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject CreditsMenu;
     //public AudioClip Music;
-    //public AudioSource MusicSource;
+    public AudioSource MusicSource;
+    public AudioMixer mixer;
+
+
 
     // Start is called before the first frame update
 
@@ -23,19 +27,23 @@ public class MainMenuV2 : MonoBehaviour
         CreditsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
 
-        //MusicSource = this.gameObject.AddComponent<AudioSource>();
-        //MusicSource.loop = true;
-        //MusicSource.playOnAwake = true;
-        //if (Music != null)
-        //    MusicSource.clip = Music;
-        //MusicSource.volume = 0.06f;
-        //MusicSource.Play();
+        if (PlayerPrefs.GetFloat("Volume") != 0)
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+            mixer.SetFloat("MasterVolume", volumeSlider.value);
+        }
+        if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
+        {
+            mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+        }
     }
 
     private void Update()
     {
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        mixer.SetFloat("MasterVolume", volumeSlider.value);
+
     }
 
     public void Play()
