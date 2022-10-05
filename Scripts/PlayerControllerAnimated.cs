@@ -159,6 +159,15 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("canPickUpObject"))
+    //    {
+    //        other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 10);
+    //        Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    //    }
+    //}
+
     private void PickUpBody(GameObject pickUpObj)
     {
         if (pickUpObj.GetComponent<Rigidbody>())
