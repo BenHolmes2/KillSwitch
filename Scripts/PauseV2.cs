@@ -63,11 +63,11 @@ public class PauseV2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !paused) 
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused) 
         {
             PauseGame();
         }
-        else if (Input.GetKeyDown(KeyCode.P) && paused)
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
         {
             ResumeGame();
         }
