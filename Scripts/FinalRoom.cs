@@ -13,6 +13,7 @@ public class FinalRoom : MonoBehaviour
     public float spawnTime = 1.5f;
     public float spawnTimeModifyier = 0.01f;
     private double startTime;
+    private int fadeStart;
     private double tempTime;
     private double tempTime1;
     private bool check = false;
@@ -65,7 +66,7 @@ public class FinalRoom : MonoBehaviour
                     bodiesCheck++;
                 }
             }
-            else
+            if (bodiesCheck + 10 > bodiesUsed)
             {
                 StartCoroutine(FadeBlackOutSqaure());
 
