@@ -19,11 +19,9 @@ public class BreakableObject : MonoBehaviour
                 if (brokenSpeaker != null)
                 {
                     speaker.Stop();
-                    speaker.PlayOneShot(brokenSpeaker); 
-                    if (!speaker.isPlaying)
-                    {
-                        
-                    }
+                    speaker.PlayOneShot(brokenSpeaker);
+                    gameObject.tag = "canPickUpObject";
+
                 }
             }
         }
