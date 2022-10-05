@@ -19,6 +19,7 @@ public class FinalRoom : MonoBehaviour
     private bool check = false;
     public GameObject blackOutSquare;
     public float j;
+    public bool addExtraBodies = false;
 
 
 
@@ -31,6 +32,10 @@ public class FinalRoom : MonoBehaviour
         if (PlayerPrefs.GetInt("BodiesUsed") != 0)
         {
             bodiesUsed = PlayerPrefs.GetInt("BodiesUsed");
+            if (addExtraBodies)
+            {
+                bodiesUsed += 50;
+            }
         }
         else
         {
