@@ -391,6 +391,8 @@ public class PlayerControllerAnimated : MonoBehaviour
     {
         if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
         {
+            ToggleLayer(6);
+            ToggleCollisions(true);
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
             heldObjRb.transform.position = holdPos.transform.position;
             heldObjRb.transform.rotation = holdPos.transform.rotation;
