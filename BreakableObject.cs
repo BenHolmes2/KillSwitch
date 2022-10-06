@@ -13,6 +13,8 @@ public class BreakableObject : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Rigidbody>().useGravity = true;
+            gameObject.tag = "canPickUpObject";
+
 
             if (speaker != null)
             {
@@ -20,8 +22,6 @@ public class BreakableObject : MonoBehaviour
                 {
                     speaker.Stop();
                     speaker.PlayOneShot(brokenSpeaker);
-                    gameObject.tag = "canPickUpObject";
-
                 }
             }
         }

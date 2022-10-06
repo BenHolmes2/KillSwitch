@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 690386253100241525}
   - component: {fileID: 1539486235080087412}
   - component: {fileID: 2055272773}
+  - component: {fileID: 2596121712950477033}
   m_Layer: 0
   m_Name: pCube145
   m_TagString: DeathSurface
@@ -1141,6 +1142,20 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &2055272773
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084137647414006823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9216986893841661389, guid: b8e4479403b667544b4896f35eb1ac30, type: 3}
+--- !u!64 &2596121712950477033
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5110,6 +5125,10 @@ PrefabInstance:
     - target: {fileID: 2796735103518801974, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939678331058433600, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.337
       objectReference: {fileID: 0}
     - target: {fileID: 3187139695920437360, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
       propertyPath: m_LocalPosition.x
