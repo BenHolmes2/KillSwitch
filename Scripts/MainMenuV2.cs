@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine;
+using TMPro;
 
 public class MainMenuV2 : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class MainMenuV2 : MonoBehaviour
     //public AudioClip Music;
     public AudioSource MusicSource;
     public AudioMixer mixer;
+    private int mouseInt;
+    private int volumeInt;
+    public TMP_Text sensitivityText;
+    public TMP_Text audioText;
 
 
 
@@ -31,10 +36,15 @@ public class MainMenuV2 : MonoBehaviour
         {
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
             mixer.SetFloat("MasterVolume", volumeSlider.value);
+            volumeInt = (int)volumeSlider.value;
+            audioText.text = volumeInt.ToString();
         }
         if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
         {
             mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+            mouseInt = (int)mouseSlider.value;
+            sensitivityText.text = mouseInt.ToString();
+
         }
     }
 
@@ -43,6 +53,10 @@ public class MainMenuV2 : MonoBehaviour
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
         mixer.SetFloat("MasterVolume", volumeSlider.value);
+        volumeInt = (int)volumeSlider.value;
+        audioText.text = volumeInt.ToString();
+        mouseInt = (int)mouseSlider.value;
+        sensitivityText.text = mouseInt.ToString();
 
     }
 

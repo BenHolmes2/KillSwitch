@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
+
 
 public class PauseV2 : MonoBehaviour
 {
@@ -24,6 +26,10 @@ public class PauseV2 : MonoBehaviour
     public GameObject respawnCrissCross;
     public GameObject respawnCatapult;
 
+    public TMP_Text sensitivityText;
+    public TMP_Text audioText;
+
+
     //public GameObject sliderObj;
     public Slider volumeSlider;
     public Slider mouseSlider;
@@ -39,6 +45,8 @@ public class PauseV2 : MonoBehaviour
     //public Text gravity;
     //public Text respawnSpeed;
     private bool paused = false;
+    private int mouseInt;
+    private int volumeInt;
 
     public AudioMixer mixer;
 
@@ -54,10 +62,14 @@ public class PauseV2 : MonoBehaviour
         {
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
             mixer.SetFloat("MasterVolume", volumeSlider.value);
+            volumeInt = (int)volumeSlider.value;
+            audioText.text = volumeInt.ToString();
         }
         if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
         {
             mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+            mouseInt = (int)mouseSlider.value;
+            sensitivityText.text = mouseInt.ToString();
         }
     }
 
@@ -88,6 +100,10 @@ public class PauseV2 : MonoBehaviour
         //playerSpeed.text = playerSlider.value.ToString();
         //gravity.text = gravitySlider.value.ToString();
         //respawnSpeed.text = respawnSlider.value.ToString();
+        mouseInt = (int)mouseSlider.value;
+        sensitivityText.text = mouseInt.ToString();
+        volumeInt = (int)volumeSlider.value;
+        audioText.text = volumeInt.ToString();
     }
 
     public void ResumeGame()

@@ -45,6 +45,7 @@ public class Fan : MonoBehaviour
                 if (isVertical)
                 {
                     player.GetComponent<PlayerControllerAnimated>().movementDir += this.transform.forward * fanForcePlayerInitial;
+                    player.GetComponent<PlayerControllerAnimated>().throwForce = 10;
                 }
             }
         }
@@ -59,9 +60,9 @@ public class Fan : MonoBehaviour
 
     private void OnTriggerStay(Collider other) //this provides the player or body with some velocity as long as they remain within the collider
     {
-        counterFPS++;
         if (other.gameObject.CompareTag("Player"))
         {
+            counterFPS++;
             //this currently doesnt work very well when the fan is trying to push the player upwards
             if (!gameController.isRespawn)
             {
@@ -74,6 +75,10 @@ public class Fan : MonoBehaviour
                     player.GetComponent<CharacterController>().Move(this.transform.forward * fanForcePlayer);
                 }
             }
+            if (counterFPS % 60 == 0)
+            {
+                verticalFanPlayerExit++;
+            }
         }
         if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
         {
@@ -81,11 +86,6 @@ public class Fan : MonoBehaviour
         }
         //if we want to make it so that the player is pushed back faster while holding a body then we should access the player controller
         //so we can see if the player is carrying a body
-
-        if (counterFPS % 60 == 0)
-        {
-            verticalFanPlayerExit++;
-        }
 
     }
 
@@ -100,6 +100,7 @@ public class Fan : MonoBehaviour
                 {
                     Debug.Log("check1");
                     player.GetComponent<PlayerControllerAnimated>().movementDir += new Vector3(0, exitMulitplier * verticalFanPlayerExit, 0);
+                    player.GetComponent<PlayerControllerAnimated>().throwForce = 4;
                 }
             }
         }
