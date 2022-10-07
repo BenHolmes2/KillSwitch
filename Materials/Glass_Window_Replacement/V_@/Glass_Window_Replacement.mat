@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT
     _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP _NORMALMAP_TANGENT_SPACE _REFRACTION_THIN
-    _SPECULAR_OCCLUSION_NONE _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
+    _SPECULAR_OCCLUSION_NONE _SURFACE_TYPE_TRANSPARENT _TRANSMITTANCECOLORMAP _TRANSPARENT_WRITES_MOTION_VEC
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: efde7694c2902fa4ca2645eac6155edc, type: 3}
+        m_Texture: {fileID: 2800000, guid: f2c2570029aa13441b513ba1801dc8fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -65,15 +65,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: efde7694c2902fa4ca2645eac6155edc, type: 3}
+        m_Texture: {fileID: 2800000, guid: f2c2570029aa13441b513ba1801dc8fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: b364075427ff63345a88879d29dc326f, type: 3}
+        m_Texture: {fileID: 2800000, guid: a10e873aaf499e24292d82f9fa5ee283, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 6d7bcd32f9471fd43ac0900086873e4e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 45dd8bb526e950f4d96be4b531b4814b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -101,7 +101,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransmittanceColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 595102dc14bfad647bb03a3954e64573, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
