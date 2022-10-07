@@ -32,6 +32,9 @@ public class RagdollScriptAnimated : MonoBehaviour
     private float electricityEffectModifier;
     private float negative = -1f;
 
+    private double runningTime;
+    private double destroyTime;
+
 
 
     //// Start is called before the first frame update
@@ -95,6 +98,19 @@ public class RagdollScriptAnimated : MonoBehaviour
     //// Update is called once per frame
     void Update()
     {
+        runningTime = Time.timeAsDouble;
+        Debug.Log(destroyTime);
+        if (runningTime > destroyTime && destroyTime != 0)
+        {
+            Destroy(gameObject.transform.root.gameObject);
+        }
+
+        if (!gameObject.GetComponent<Rigidbody>().isKinematic)
+        {
+            runningTime = 0;
+            destroyTime = 0;
+        }
+
         //if (gameObject.GetComponent<Rigidbody>().velocity.magnitude > 15)
         //{
         //    gameObject.GetComponent<Rigidbody>().velocity = 15;
@@ -133,6 +149,7 @@ public class RagdollScriptAnimated : MonoBehaviour
         if (gameObject.GetComponent<Rigidbody>().velocity.magnitude == 0 && !gameController.GetComponent<GameControllerAnimated>().isRespawn && turningOff == false)
         {
             TurnOffRagdoll();
+            destroyTime = Time.timeAsDouble + 180;
         }
 
         //if (frames > 240)
@@ -242,40 +259,40 @@ public class RagdollScriptAnimated : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
-        {
-            if (gameObject.tag == "canPickUpDeath")
-            {
-                if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
-                {
-                    if (!turningOff && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
-                    {
-                        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.1)
-                        {
-                            frames++;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
+    //    {
+    //        if (gameObject.tag == "canPickUpDeath")
+    //        {
+    //            if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
+    //            {
+    //                if (!turningOff && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
+    //                {
+    //                    if (gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.1)
+    //                    {
+    //                        frames++;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
-        {
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
+    //    {
 
-            if (gameObject.tag == "canPickUpDeath")
-            {
-                if (collision.gameObject.tag == "DeathSurface" || gameObject.tag == "canPickUpDeath" || gameObject.tag == "canPickUp")
-                {
-                    frames = 0;
-                }
-            }
-        }
-    }
+    //        if (gameObject.tag == "canPickUpDeath")
+    //        {
+    //            if (collision.gameObject.tag == "DeathSurface" || gameObject.tag == "canPickUpDeath" || gameObject.tag == "canPickUp")
+    //            {
+    //                frames = 0;
+    //            }
+    //        }
+    //    }
+    //}
 
     //public IEnumerator TurnOffRagdoll()
     //{
