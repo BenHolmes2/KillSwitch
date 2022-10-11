@@ -29,7 +29,7 @@ public class Catapultcontrol : MonoBehaviour
             animCata.SetBool("On", true);
             animG1.SetBool("On", true);
             animG2.SetBool("On", true);
-            deathCollider.gameObject.GetComponent<BoxCollider>().enabled = false;
+            deathCollider.gameObject.GetComponent<BoxCollider>().enabled = true;
         }
         else
         {            

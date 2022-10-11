@@ -399,7 +399,7 @@ Transform:
   m_Children:
   - {fileID: 3646367270913897501}
   m_Father: {fileID: 6396771400828351304}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066180568585022210
 GameObject:
@@ -1055,7 +1055,7 @@ Transform:
   m_Children:
   - {fileID: 1635763778908597252}
   m_Father: {fileID: 6396771400828351304}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3070046216719255917
 GameObject:
@@ -1326,10 +1326,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: f53edfcc781b5c74686260b0e2c22105, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0030500358
-  m_Height: 0.020430483
+  m_Radius: 0.0030500356
+  m_Height: 0.018860731
   m_Direction: 1
-  m_Center: {x: 0.00027334286, y: 0.010215053, z: 0.00028331}
+  m_Center: {x: 0.00027333674, y: 0.01099993, z: 0.00028330417}
 --- !u!54 &4217415968026653565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1452,10 +1452,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: f53edfcc781b5c74686260b0e2c22105, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0037004703
-  m_Height: 0.010965266
+  m_Radius: 0.0037004706
+  m_Height: 0.012059561
   m_Direction: 1
-  m_Center: {x: -0.00024647813, y: 0.0054826275, z: -0.00032478836}
+  m_Center: {x: -0.00024647804, y: 0.006029778, z: -0.00032478874}
 --- !u!54 &1237893416970280889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1482,7 +1482,7 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 4349219476502044804}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
@@ -1491,18 +1491,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 88.6322
+    limit: -49.85408
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 177
+    limit: 52.55528
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 68.44757
+    limit: 29.39278
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -1894,9 +1894,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.0039548217
-  m_Height: 0.010965573
+  m_Height: 0.0119654015
   m_Direction: 1
-  m_Center: {x: -0.0000000041377914, y: 0.0054827854, z: -0.00009206428}
+  m_Center: {x: -0.0000000036394974, y: 0.0059826984, z: -0.00009205859}
 --- !u!54 &1312222835444962186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2015,7 +2015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2475478776688995583}
   m_Layer: 6
-  m_Name: Ragdoll4.2
+  m_Name: Ragdoll4.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2028,8 +2028,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413650497600358677}
-  m_LocalRotation: {x: 0, y: 0.046829958, z: 0, w: 0.9989029}
-  m_LocalPosition: {x: 477.9213, y: 143.91516, z: -1651.2726}
+  m_LocalRotation: {x: 0, y: -0.78405714, z: 0, w: -0.6206886}
+  m_LocalPosition: {x: 352.04126, y: 163.06479, z: -1652.9083}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2425,7 +2425,7 @@ Transform:
   m_Children:
   - {fileID: 863890868886795228}
   m_Father: {fileID: 6396771400828351304}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6667139972042536372
 GameObject:
@@ -2525,9 +2525,9 @@ Transform:
   m_Children:
   - {fileID: 3482708400930441766}
   - {fileID: 8329235138646679403}
-  - {fileID: 5904859446401631464}
   - {fileID: 4610630237616909196}
   - {fileID: 3767921125954525310}
+  - {fileID: 5904859446401631464}
   m_Father: {fileID: 7125564950047357224}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3331,10 +3331,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: f53edfcc781b5c74686260b0e2c22105, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0024482457
-  m_Height: 0.01924015
+  m_Radius: 0.0024482454
+  m_Height: 0.017555114
   m_Direction: 1
-  m_Center: {x: -0.00000011098041, y: 0.009944955, z: 0.00023615343}
+  m_Center: {x: -0.0000001221424, y: 0.01078748, z: 0.00023616054}
 --- !u!54 &2857262463496860287
 Rigidbody:
   m_ObjectHideFlags: 0

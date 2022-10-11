@@ -169,6 +169,7 @@ public class RagdollScriptAnimated : MonoBehaviour
         {
             TurnOffRagdoll();
             //Invoke("TurnOffRagdoll", turnOffDelay);
+            destroyTime = Time.timeAsDouble + 60;
             turningOff = true;
             frames = 0;
         }
@@ -277,8 +278,8 @@ public class RagdollScriptAnimated : MonoBehaviour
     {
         if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
-            if (gameObject.CompareTag("canPickUpDeath"))
-            {
+            //if (gameObject.CompareTag("canPickUpDeath"))
+            //{
                 if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
                 {
                     if (!turningOff && !gameController.isRespawn)
@@ -289,7 +290,7 @@ public class RagdollScriptAnimated : MonoBehaviour
                         }
                     }
                 }
-            }
+            //}
         }
     }
 
