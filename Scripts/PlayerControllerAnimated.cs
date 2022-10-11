@@ -105,7 +105,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
 
-            if (cursorHit.transform.gameObject.tag == "canPickUpObject" || cursorHit.transform.gameObject.tag == "canPickUpDeath" || cursorHit.transform.gameObject.tag == "canPickUp")
+            if (cursorHit.transform.gameObject.CompareTag("canPickUpObject") || cursorHit.transform.gameObject.CompareTag("canPickUpDeath") || cursorHit.transform.gameObject.CompareTag("canPickUp"))
             {
                 //Debug.Log(cursorHit.transform.gameObject.name);
                 gameController.reticleCanvas.SetActive(false);
@@ -133,12 +133,12 @@ public class PlayerControllerAnimated : MonoBehaviour
                     //Debug.DrawLine(cameraObj.transform.position, pickUpHit.point, Color.white, 5f);
                     //Debug.Log(pickUpHit.transform.gameObject.tag);
                     //Debug.Log(pickUpHit.transform.gameObject.name);
-                    if (pickUpHit.transform.gameObject.tag == "canPickUpDeath" || pickUpHit.transform.gameObject.tag == "canPickUp")
+                    if (pickUpHit.transform.gameObject.CompareTag("canPickUpDeath") || pickUpHit.transform.gameObject.CompareTag("canPickUp"))
                     {
                         PickUpBody(pickUpHit.transform.gameObject);
                     }
                     //currently not needed, reimplement if we want to be able to pick up objects again
-                    if (pickUpHit.transform.gameObject.tag == "canPickUpObject")
+                    if (pickUpHit.transform.gameObject.CompareTag("canPickUpObject"))
                     {
                         PickUpObject(pickUpHit.transform.gameObject);
                     }

@@ -15,6 +15,7 @@ public class FanControl : MonoBehaviour
 
     public GameObject button;
     public GameObject fan;
+    public CapsuleCollider fanCollider;
     public Fan cFan;
 
     private int counter = 0;
@@ -34,7 +35,7 @@ public class FanControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        fanCollider = fan.GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -43,7 +44,8 @@ public class FanControl : MonoBehaviour
         if (counter == 0)
         {
             fanAnim.SetBool("On", false);
-            fan.GetComponent<CapsuleCollider>().enabled = false;
+            //fan.GetComponent<CapsuleCollider>().enabled = false;
+            fanCollider.enabled = false;
             buttonAnim.SetBool("On", false);
             windFX.enabled = false;
             trailsFX.Stop();
@@ -52,7 +54,8 @@ public class FanControl : MonoBehaviour
         else
         {
             fanAnim.SetBool("On", true);
-            fan.GetComponent<CapsuleCollider>().enabled = true;
+            //fan.GetComponent<CapsuleCollider>().enabled = true;
+            fanCollider.enabled = true;
             buttonAnim.SetBool("On", true);
             windFX.enabled = true;
             trailsFX.Play();

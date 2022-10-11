@@ -37,10 +37,18 @@ public class GeneratorDoor : MonoBehaviour
 
         if (elecCounter == 2)
         {
-            midPoint = (pos.transform.position + arcStart.transform.position) / 2;
-            electricityArc1.transform.position = midPoint;
-            electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
-            electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
+            if (pos != null)
+            {
+                midPoint = (pos.transform.position + arcStart.transform.position) / 2;
+                electricityArc1.transform.position = midPoint;
+                electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
+                electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
+            }
+            else
+            {
+                elecCounter = 0;
+                Destroy(electricityArc1);
+            }
         }
     }
 
