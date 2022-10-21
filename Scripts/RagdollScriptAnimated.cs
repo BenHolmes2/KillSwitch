@@ -22,15 +22,36 @@ public class RagdollScriptAnimated : MonoBehaviour
     private GameObject rightForeArm;
     private GameObject rightHand;
     private GameObject head;
-    private GameObject gameController;
+    private Rigidbody hipsRB;
+    private Rigidbody leftUpLegRB;
+    private Rigidbody leftLegRB;
+    private Rigidbody rightUpLegRB;
+    private Rigidbody rightLegRB;
+    private Rigidbody spineRB;
+    private Rigidbody spineTempRB;
+    private Rigidbody leftArmRB;
+    private Rigidbody leftForeArmRB;
+    private Rigidbody leftHandRB;
+    private Rigidbody rightArmRB;
+    private Rigidbody rightForeArmRB;
+    private Rigidbody rightHandRB;
+    private Rigidbody headRB;
+    private RagdollScriptAnimated headScript;
+    private GameObject temp;
+    private GameControllerAnimated gameController;
     private GameObject player;
     private GameObject characterMesh;
+    private Rigidbody thisRigidBody;
     private Renderer characterRenderer;
+    private MeshCollider respawnTubeCol;
     public bool turningOff;
     private float turnOffDelay;
     private int frames = 0;
     private float electricityEffectModifier;
     private float negative = -1f;
+
+    private double runningTime;
+    private double destroyTime;
 
 
 
@@ -38,35 +59,14 @@ public class RagdollScriptAnimated : MonoBehaviour
     void Start()
     {
         //Debug.Log("????");
-        gameController = GameObject.Find("GameController");
+        temp = GameObject.Find("GameController");
+        gameController = temp.GetComponent<GameControllerAnimated>();
         turnOffDelay = gameController.GetComponent<GameControllerAnimated>().ragdollTurnOffDelay;
         player = gameController.GetComponent<GameControllerAnimated>().spawnedPlayer;
         ragdoll = gameObject;
         currObj = ragdoll;
         currObj = currObj.transform.root.gameObject;
         currObj = currObj.transform.Find("parent").gameObject;
-        //currObj = currObj.transform.Find("riggedd body 04").gameObject;
-        //currObj = currObj.transform.Find("QuickRigCharacter_Reference").gameObject;
-        //hips = currObj.transform.Find("QuickRigCharacter_Hips").gameObject;
-        //leftUpLeg = hips.transform.Find("QuickRigCharacter_LeftUpLeg").gameObject;
-        //leftLeg = leftUpLeg.transform.Find("QuickRigCharacter_LeftLeg").gameObject;
-        //rightUpLeg = hips.transform.Find("QuickRigCharacter_RightUpLeg").gameObject;
-        //rightLeg = rightUpLeg.transform.Find("QuickRigCharacter_RightLeg").gameObject;
-        //spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
-        //spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
-        //spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
-        //leftArm = spine.transform.Find("QuickRigCharacter_LeftShoulder").gameObject;
-        //leftArm = leftArm.transform.Find("QuickRigCharacter_LeftArm").gameObject;
-        //leftForeArm = leftArm.transform.Find("QuickRigCharacter_LeftForeArm").gameObject;
-        //leftHand = leftForeArm.transform.Find("QuickRigCharacter_LeftHand").gameObject;
-        //rightArm = spine.transform.Find("QuickRigCharacter_RightShoulder").gameObject;
-        //rightArm = rightArm.transform.Find("QuickRigCharacter_RightArm").gameObject;
-        //rightForeArm = rightArm.transform.Find("QuickRigCharacter_RightForeArm").gameObject;
-        //rightHand = rightForeArm.transform.Find("QuickRigCharacter_RightHand").gameObject;
-        //head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
-        //head = head.transform.Find("QuickRigCharacter_Head").gameObject;
-        //Debug.Log("THIS IS THE THIGN IM LOOKING FOR");
-        //Debug.Log(currObj.name);
         hips = currObj.transform.Find("mixamorig:Hips1").gameObject;
         leftUpLeg = hips.transform.Find("mixamorig:LeftUpLeg").gameObject;
         leftLeg = leftUpLeg.transform.Find("mixamorig:LeftLeg").gameObject;
@@ -90,11 +90,40 @@ public class RagdollScriptAnimated : MonoBehaviour
         rightHand = rightForeArm.transform.Find("mixamorig:RightHand").gameObject;
         head = spineTemp.transform.Find("mixamorig:Neck").gameObject;
         head = head.transform.Find("mixamorig:Head").gameObject;
+
+        thisRigidBody = gameObject.GetComponent<Rigidbody>();
+        hipsRB = hips.GetComponent<Rigidbody>();
+        leftUpLegRB = leftUpLeg.GetComponent<Rigidbody>();
+        leftLegRB = leftLeg.GetComponent<Rigidbody>();
+        rightUpLegRB = rightUpLeg.GetComponent<Rigidbody>();
+        rightLegRB = rightLeg.GetComponent<Rigidbody>();
+        spineRB = spine.GetComponent<Rigidbody>();
+        leftArmRB = leftArm.GetComponent<Rigidbody>();
+        leftForeArmRB = leftForeArm.GetComponent<Rigidbody>();
+        leftHandRB = leftHand.GetComponent<Rigidbody>();
+        rightArmRB = rightArm.GetComponent<Rigidbody>();
+        rightForeArmRB = rightForeArm.GetComponent<Rigidbody>();
+        rightHandRB = rightHand.GetComponent<Rigidbody>();
+        headRB = head.GetComponent<Rigidbody>();
+        headScript = head.GetComponent<RagdollScriptAnimated>();
     }
 
     //// Update is called once per frame
     void Update()
     {
+        runningTime = Time.timeAsDouble;
+        //Debug.Log(destroyTime);
+        if (runningTime > destroyTime && destroyTime != 0)
+        {
+            Destroy(gameObject.transform.root.gameObject);
+        }
+
+        if (!thisRigidBody.isKinematic)
+        {
+            runningTime = 0;
+            destroyTime = 0;
+        }
+
         //if (gameObject.GetComponent<Rigidbody>().velocity.magnitude > 15)
         //{
         //    gameObject.GetComponent<Rigidbody>().velocity = 15;
@@ -108,7 +137,7 @@ public class RagdollScriptAnimated : MonoBehaviour
 
         if (head != null && characterRenderer == null)
         {
-            if (head.GetComponent<RagdollScriptAnimated>().isElectrified)
+            if (headScript.isElectrified)
             {
                 characterMesh = head.transform.root.gameObject;
                 characterMesh = characterMesh.transform.Find("parent").gameObject;
@@ -117,7 +146,7 @@ public class RagdollScriptAnimated : MonoBehaviour
                 characterMesh = characterMesh.transform.Find("CHarcter_Skin_Geo").gameObject;
 
                 characterRenderer = characterMesh.GetComponent<Renderer>();
-                
+
                 characterRenderer.material.SetFloat("_EmissionForHoles", 0f);
             }
         }
@@ -130,18 +159,20 @@ public class RagdollScriptAnimated : MonoBehaviour
 
         }
 
-        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude == 0 && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
+        if (thisRigidBody.velocity.magnitude == 0 && !gameController.isRespawn && turningOff == false)
         {
             TurnOffRagdoll();
+            destroyTime = Time.timeAsDouble + 60;
         }
 
-        //if (frames > 240)
-        //{
-        //    TurnOffRagdoll();
-        //    //Invoke("TurnOffRagdoll", turnOffDelay);
-        //    turningOff = true;
-        //    frames = 0;
-        //}
+        if (frames > 240)
+        {
+            TurnOffRagdoll();
+            //Invoke("TurnOffRagdoll", turnOffDelay);
+            destroyTime = Time.timeAsDouble + 60;
+            turningOff = true;
+            frames = 0;
+        }
 
         //if (gameController.GetComponent<GameController>().hitGround)
         //{
@@ -161,7 +192,7 @@ public class RagdollScriptAnimated : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "LightningPoles")
+        if (other.gameObject.CompareTag("LightningPoles"))
         {
             isElectrified = true;
 
@@ -177,20 +208,31 @@ public class RagdollScriptAnimated : MonoBehaviour
             rightArm.GetComponent<RagdollScriptAnimated>().isElectrified = true;
             rightForeArm.GetComponent<RagdollScriptAnimated>().isElectrified = true;
             rightHand.GetComponent<RagdollScriptAnimated>().isElectrified = true;
-            head.GetComponent<RagdollScriptAnimated>().isElectrified = true;
+            headScript.isElectrified = true;
         }
 
         if (other.gameObject.CompareTag("GearBox"))
         {
-            TurnOffRagdoll();
+            if (!gameController.isRespawn)
+            {
+                //TurnOffRagdoll();
+                if (other.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("GearBox"))
+        if (!gameController.isRespawn)
         {
-            TurnOnRagdoll();
+            //TurnOnRagdoll();
+            if (other.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
     }
 
@@ -199,33 +241,34 @@ public class RagdollScriptAnimated : MonoBehaviour
         //Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
         //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
         //how do i get it to ignore the respawn tube 
-        if (collision.gameObject.tag == "RespawnTube")
+        if (collision.gameObject.CompareTag("RespawnTube"))
         {
+            respawnTubeCol = collision.gameObject.GetComponent<MeshCollider>();
             //these need to be turned off at somepoint
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), hips.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftUpLeg.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftLeg.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), rightUpLeg.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), rightLeg.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), spine.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftArm.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftForeArm.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), leftHand.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), rightArm.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), rightForeArm.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), rightHand.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<MeshCollider>(), head.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, hips.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, leftUpLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, leftLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, rightUpLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, rightLeg.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, spine.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, leftArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, leftForeArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, leftHand.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, rightArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, rightForeArm.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, rightHand.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(respawnTubeCol, head.GetComponent<Collider>(), true);
         }
 
         if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
             //Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
             //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
-            if (gameObject.tag == "canPickUpDeath")
+            if (gameObject.CompareTag("canPickUpDeath"))
             {
-                if ((collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox")) && gameController.GetComponent<GameControllerAnimated>().hitGround == false)
+                if ((collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox")) && gameController.hitGround == false)
                 {
-                    gameController.GetComponent<GameControllerAnimated>().hitGround = true;
+                    gameController.hitGround = true;
                 }
             }
         }
@@ -235,19 +278,19 @@ public class RagdollScriptAnimated : MonoBehaviour
     {
         if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
-            if (gameObject.tag == "canPickUpDeath")
-            {
+            //if (gameObject.CompareTag("canPickUpDeath"))
+            //{
                 if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
                 {
-                    if (!turningOff && !gameController.GetComponent<GameControllerAnimated>().isRespawn)
+                    if (!turningOff && !gameController.isRespawn)
                     {
-                        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.1)
+                        if (thisRigidBody.velocity.magnitude < 0.1)
                         {
                             frames++;
                         }
                     }
                 }
-            }
+            //}
         }
     }
 
@@ -256,9 +299,9 @@ public class RagdollScriptAnimated : MonoBehaviour
         if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
 
-            if (gameObject.tag == "canPickUpDeath")
+            if (gameObject.CompareTag("canPickUpDeath"))
             {
-                if (collision.gameObject.tag == "DeathSurface" || gameObject.tag == "canPickUpDeath" || gameObject.tag == "canPickUp")
+                if (collision.gameObject.CompareTag("DeathSurface") || gameObject.CompareTag("canPickUpDeath") || gameObject.CompareTag("canPickUp"))
                 {
                     frames = 0;
                 }
@@ -288,55 +331,55 @@ public class RagdollScriptAnimated : MonoBehaviour
     public void TurnOffRagdoll()
     {
         turningOff = true;
-        hips.GetComponent<Rigidbody>().isKinematic = true;
-        leftUpLeg.GetComponent<Rigidbody>().isKinematic = true;
-        leftLeg.GetComponent<Rigidbody>().isKinematic = true;
-        rightUpLeg.GetComponent<Rigidbody>().isKinematic = true;
-        rightLeg.GetComponent<Rigidbody>().isKinematic = true;
-        spine.GetComponent<Rigidbody>().isKinematic = true;
-        leftArm.GetComponent<Rigidbody>().isKinematic = true;
-        leftForeArm.GetComponent<Rigidbody>().isKinematic = true;
-        leftHand.GetComponent<Rigidbody>().isKinematic = true;
-        rightArm.GetComponent<Rigidbody>().isKinematic = true;
-        rightForeArm.GetComponent<Rigidbody>().isKinematic = true;
-        rightHand.GetComponent<Rigidbody>().isKinematic = true;
-        head.GetComponent<Rigidbody>().isKinematic = true;
+        hipsRB.isKinematic = true;
+        leftUpLegRB.isKinematic = true;
+        leftLegRB.isKinematic = true;
+        rightUpLegRB.isKinematic = true;
+        rightLegRB.isKinematic = true;
+        spineRB.isKinematic = true;
+        leftArmRB.isKinematic = true;
+        leftForeArmRB.isKinematic = true;
+        leftHandRB.isKinematic = true;
+        rightArmRB.isKinematic = true;
+        rightForeArmRB.isKinematic = true;
+        rightHandRB.isKinematic = true;
+        headRB.isKinematic = true;
     }
 
     public void TurnOnRagdoll()
     {
         turningOff = false;
-        hips.GetComponent<Rigidbody>().isKinematic = false;
-        leftUpLeg.GetComponent<Rigidbody>().isKinematic = false;
-        leftLeg.GetComponent<Rigidbody>().isKinematic = false;
-        rightUpLeg.GetComponent<Rigidbody>().isKinematic = false;
-        rightLeg.GetComponent<Rigidbody>().isKinematic = false;
-        spine.GetComponent<Rigidbody>().isKinematic = false;
-        leftArm.GetComponent<Rigidbody>().isKinematic = false;
-        leftForeArm.GetComponent<Rigidbody>().isKinematic = false;
-        leftHand.GetComponent<Rigidbody>().isKinematic = false;
-        rightArm.GetComponent<Rigidbody>().isKinematic = false;
-        rightForeArm.GetComponent<Rigidbody>().isKinematic = false;
-        rightHand.GetComponent<Rigidbody>().isKinematic = false;
-        head.GetComponent<Rigidbody>().isKinematic = false;
+        hipsRB.isKinematic = false;
+        leftUpLegRB.isKinematic = false;
+        leftLegRB.isKinematic = false;
+        rightUpLegRB.isKinematic = false;
+        rightLegRB.isKinematic = false;
+        spineRB.isKinematic = false;
+        leftArmRB.isKinematic = false;
+        leftForeArmRB.isKinematic = false;
+        leftHandRB.isKinematic = false;
+        rightArmRB.isKinematic = false;
+        rightForeArmRB.isKinematic = false;
+        rightHandRB.isKinematic = false;
+        headRB.isKinematic = false;
     }
 
     public void ClampVelocity()
     {
         int clamp = -5;
-        hips.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        leftUpLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        leftLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        rightUpLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        rightLeg.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        spine.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        leftArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        leftForeArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        leftHand.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        rightArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        rightForeArm.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        rightHand.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
-        head.GetComponent<Rigidbody>().velocity = new Vector3(0, clamp, 0);
+        hipsRB.velocity = new Vector3(0, clamp, 0);
+        leftUpLegRB.velocity = new Vector3(0, clamp, 0);
+        leftLegRB.velocity = new Vector3(0, clamp, 0);
+        rightUpLegRB.velocity = new Vector3(0, clamp, 0);
+        rightLegRB.velocity = new Vector3(0, clamp, 0);
+        spineRB.velocity = new Vector3(0, clamp, 0);
+        leftArmRB.velocity = new Vector3(0, clamp, 0);
+        leftForeArmRB.velocity = new Vector3(0, clamp, 0);
+        leftHandRB.velocity = new Vector3(0, clamp, 0);
+        rightArmRB.velocity = new Vector3(0, clamp, 0);
+        rightForeArmRB.velocity = new Vector3(0, clamp, 0);
+        rightHandRB.velocity = new Vector3(0, clamp, 0);
+        headRB.velocity = new Vector3(0, clamp, 0);
 
         //hips.GetComponent<Rigidbody>().velocity = clamp;
         //leftUpLeg.GetComponent<Rigidbody>().velocity.y

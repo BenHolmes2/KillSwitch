@@ -10,6 +10,8 @@ public class Catapultcontrol : MonoBehaviour
     public GameObject catapult;
     public GameObject gear1;
     public GameObject gear2;
+    public GameObject deathCollider;
+
     private int counter = 0;
 
     void Awake()
@@ -27,14 +29,14 @@ public class Catapultcontrol : MonoBehaviour
             animCata.SetBool("On", true);
             animG1.SetBool("On", true);
             animG2.SetBool("On", true);
-            //gameObject.GetComponent<DeathCollider>().enabled = true;
+            deathCollider.gameObject.GetComponent<BoxCollider>().enabled = true;
         }
         else
         {            
             animCata.SetBool("On", false);
             animG1.SetBool("On", false);
             animG2.SetBool("On", false);
-            //gameObject.GetComponent<DeathCollider>().enabled = false;
+            deathCollider.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

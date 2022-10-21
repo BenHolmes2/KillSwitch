@@ -33,13 +33,19 @@ public class ButtonPress : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        counter++;
+        if (collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("Player"))
+        {
+            counter++;
+        }
     }
 
     //private void OnCollisionEmpty(Collision collision)
 
     private void OnTriggerExit(Collider collision)
     {
-        counter--;
+        if (collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("Player"))
+        {
+            counter--;
+        }
     }
 }

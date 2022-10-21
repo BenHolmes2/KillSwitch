@@ -8,6 +8,7 @@ public class DoorTrigger : MonoBehaviour
     private IDoor door;
 
     public bool typeOpen = true;
+    public bool typeAllowSpawn = true;
 
     void Awake()
     {
@@ -39,6 +40,10 @@ public class DoorTrigger : MonoBehaviour
             if (typeOpen)
             {
                 door.CloseDoor();
+            }
+            if (!typeAllowSpawn)
+            {
+                other.gameObject.GetComponent<PlayerControllerAnimated>().gameController.GetComponent<GameControllerAnimated>().respawnAllowed = false;
             }
         }
     }

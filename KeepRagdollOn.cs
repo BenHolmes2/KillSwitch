@@ -8,20 +8,25 @@ public class KeepRagdollOn : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff == true)
+        if (other.gameObject.GetComponent<RagdollScriptAnimated>() != null)
         {
-            other.gameObject.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
-
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff == true)
-        {
-            other.gameObject.GetComponent<RagdollScriptAnimated>().TurnOffRagdoll();
-
+            if (other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff == true)
+            {
+                //other.gameObject.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.GetComponent<RagdollScriptAnimated>() != null)
+    //    {
+    //        if (other.gameObject.GetComponent<RagdollScriptAnimated>().turningOff == true)
+    //        {
+    //            //other.gameObject.GetComponent<RagdollScriptAnimated>().TurnOffRagdoll();
+    //            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+    //        }
+    //    }
+    //}
 }

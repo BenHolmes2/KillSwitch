@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerControllerAnimated : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
+    public Transform holdPosObject;
     public float throwForce = 5f;
+    public float throwForceObject = 15f;
     public float pickUpRange = 20f;
 
     public GameObject heldObj;
@@ -53,7 +56,6 @@ public class PlayerControllerAnimated : MonoBehaviour
     private RaycastHit pickUpHit;
     private RaycastHit cursorHit;
 
-    public AudioClip Footsteps;
     public AudioSource StepSource;
 
     public AudioSource deathSource;
@@ -78,12 +80,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
 
-        StepSource = this.gameObject.AddComponent<AudioSource>();
-        StepSource.loop = true;
-        StepSource.playOnAwake = true;
-        if (Footsteps != null)
-            StepSource.clip = Footsteps;
-        StepSource.volume = 1f;
+        StepSource = this.gameObject.GetComponent<AudioSource>();
 
         deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
         deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
@@ -97,14 +94,18 @@ public class PlayerControllerAnimated : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(controller.velocity);
         //Debug.Log(controller.isGrounded);
 
         PlayerLook();
         PlayerMove();
 
+        //this doesnt reset back to the normal one becasue walls are often outside the pickuprange
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {
-            if (cursorHit.transform.gameObject.tag == "canPickUpObject" || cursorHit.transform.gameObject.tag == "canPickUpDeath" || cursorHit.transform.gameObject.tag == "canPickUp")
+            Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
+
+            if (cursorHit.transform.gameObject.CompareTag("canPickUpObject") || cursorHit.transform.gameObject.CompareTag("canPickUpDeath") || cursorHit.transform.gameObject.CompareTag("canPickUp"))
             {
                 //Debug.Log(cursorHit.transform.gameObject.name);
                 gameController.reticleCanvas.SetActive(false);
@@ -115,6 +116,11 @@ public class PlayerControllerAnimated : MonoBehaviour
                 gameController.reticleCanvas.SetActive(true);
                 gameController.pickUpCanvas.SetActive(false);
             }
+        }
+        else
+        {
+            gameController.reticleCanvas.SetActive(true);
+            gameController.pickUpCanvas.SetActive(false);
         }
 
 
@@ -127,12 +133,12 @@ public class PlayerControllerAnimated : MonoBehaviour
                     //Debug.DrawLine(cameraObj.transform.position, pickUpHit.point, Color.white, 5f);
                     //Debug.Log(pickUpHit.transform.gameObject.tag);
                     //Debug.Log(pickUpHit.transform.gameObject.name);
-                    if (pickUpHit.transform.gameObject.tag == "canPickUpDeath" || pickUpHit.transform.gameObject.tag == "canPickUp")
+                    if (pickUpHit.transform.gameObject.CompareTag("canPickUpDeath") || pickUpHit.transform.gameObject.CompareTag("canPickUp"))
                     {
                         PickUpBody(pickUpHit.transform.gameObject);
                     }
                     //currently not needed, reimplement if we want to be able to pick up objects again
-                    if (pickUpHit.transform.gameObject.tag == "canPickUpObject")
+                    if (pickUpHit.transform.gameObject.CompareTag("canPickUpObject"))
                     {
                         PickUpObject(pickUpHit.transform.gameObject);
                     }
@@ -152,6 +158,15 @@ public class PlayerControllerAnimated : MonoBehaviour
             }
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("canPickUpObject"))
+    //    {
+    //        other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 10);
+    //        Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    //    }
+    //}
 
     private void PickUpBody(GameObject pickUpObj)
     {
@@ -287,7 +302,7 @@ public class PlayerControllerAnimated : MonoBehaviour
 
         if (controller.velocity.magnitude > 2f && StepSource.isPlaying == false && controller.isGrounded)
         {
-            StepSource.PlayOneShot(Footsteps);
+            StepSource.Play();
 
             //float time = Time.deltaTime;
         }
@@ -324,7 +339,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -83f, 90f);
 
 
         cameraObj.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -341,9 +356,10 @@ public class PlayerControllerAnimated : MonoBehaviour
             heldObjRb.isKinematic = false;
             ToggleLayer(6);
             ToggleCollisions(true);
-            heldObjRb.transform.position = holdPos.transform.position;
+            heldObjRb.transform.position = holdPosObject.transform.position;
 
         }
+
     }
     public void DropObject()
     {
@@ -351,8 +367,15 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
             {
-                ToggleLayer(0);
-                ToggleCollisions(false);
+
+                //Physics.IgnoreLayerCollision(6, 0, false);
+                //Invoke("Physics.IgnoreLayerCollision(6, 3, false)", 0.5f);
+                //Invoke("ToggleLayer(0)", 0.5f);
+
+                StartCoroutine(ToggleCollisionsDrop(false));
+                StartCoroutine(ToggleLayerDrop(0));
+
+
                 heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
                 heldObj = null;
             }
@@ -368,6 +391,8 @@ public class PlayerControllerAnimated : MonoBehaviour
     {
         if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
         {
+            ToggleLayer(6);
+            ToggleCollisions(true);
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
             heldObjRb.transform.position = holdPos.transform.position;
             heldObjRb.transform.rotation = holdPos.transform.rotation;
@@ -375,7 +400,12 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
         else
         {
-            heldObjRb.transform.position = holdPos.transform.position;
+            heldObjRb.transform.position = holdPosObject.transform.position;
+
+            if (heldObjRb.velocity.magnitude > 5)
+            {
+                heldObjRb.GetComponent<Rigidbody>().velocity = new Vector3(0, -5, 0);
+            }
            // heldObjRb.transform.rotation = holdPos.transform.rotation;
         }
 
@@ -392,8 +422,10 @@ public class PlayerControllerAnimated : MonoBehaviour
         if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
         {
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
-            ToggleLayer(0);
-            ToggleCollisions(false);
+            StartCoroutine(ToggleCollisionsDrop(false));
+            StartCoroutine(ToggleLayerDrop(0));
+            //ToggleLayer(0);
+            //ToggleCollisions(false);
             heldObjRb.transform.rotation = cameraObj.transform.rotation;
             //heldObjRb.velocity = (cameraObj.transform.forward * throwForce);
             hips.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
@@ -416,7 +448,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             ToggleLayer(0);
             ToggleCollisions(false);
-            heldObj.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForce);
+            heldObj.GetComponent<Rigidbody>().velocity = (cameraObj.transform.forward * throwForceObject);
             heldObj = null;
         }
     }
@@ -501,12 +533,48 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     }
 
-    public void PlayDeathSound()
+    private IEnumerator ToggleLayerDrop(int toggle)
+    {
+        if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
+        {
+            yield return new WaitForSeconds(0.5f);
+            hips.layer = toggle;
+            leftUpLeg.layer = toggle;
+            leftLeg.layer = toggle;
+            rightUpLeg.layer = toggle;
+            rightLeg.layer = toggle;
+            spine.layer = toggle;
+            leftArm.layer = toggle;
+            leftForeArm.layer = toggle;
+            leftHand.layer = toggle;
+            rightArm.layer = toggle;
+            rightForeArm.layer = toggle;
+            hips.layer = toggle;
+            rightHand.layer = toggle;
+            head.layer = toggle;
+        }
+        else
+        {
+            heldObj.layer = toggle;
+        }
+
+    }
+
+    public IEnumerator ToggleCollisionsDrop(bool toggle)
+    {
+        Physics.IgnoreLayerCollision(6, 0, toggle);
+        yield return new WaitForSeconds(0.5f);
+        Physics.IgnoreLayerCollision(6, 3, toggle);
+    }
+        public void PlayDeathSound()
     {
         deathGruntInt = Random.Range(0, 4); //this randomly pick what death grunt to play
         if (deathGruntInt == 3) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
         {
-            deathGruntInt = Random.Range(0, 4);
+            if (deathGruntInt == 3)
+            {
+                deathGruntInt = Random.Range(0, 4);
+            }
         }
         StepSource.PlayOneShot(deathSounds[deathGruntInt]);
     }

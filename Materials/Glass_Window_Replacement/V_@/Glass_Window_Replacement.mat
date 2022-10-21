@@ -9,17 +9,18 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Glass_Window_Replacement
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT
-    _ENABLE_FOG_ON_TRANSPARENT _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP _NORMALMAP_TANGENT_SPACE
-    _SPECULAR_OCCLUSION_FROM_BENT_NORMAL_MAP _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
+  m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT
+    _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP _NORMALMAP_TANGENT_SPACE _SPECULAR_OCCLUSION_NONE
+    _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2700
+  m_CustomRenderQueue: 2950
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
   - RayTracingPrepass
+  - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -28,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: efde7694c2902fa4ca2645eac6155edc, type: 3}
+        m_Texture: {fileID: 2800000, guid: f2c2570029aa13441b513ba1801dc8fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -64,19 +65,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: efde7694c2902fa4ca2645eac6155edc, type: 3}
+        m_Texture: {fileID: 2800000, guid: f2c2570029aa13441b513ba1801dc8fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: b364075427ff63345a88879d29dc326f, type: 3}
+        m_Texture: {fileID: 2800000, guid: a10e873aaf499e24292d82f9fa5ee283, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 6d7bcd32f9471fd43ac0900086873e4e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 45dd8bb526e950f4d96be4b531b4814b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6d7bcd32f9471fd43ac0900086873e4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -120,20 +121,20 @@ Material:
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
-    - _AddPrecomputedVelocity: 1
-    - _AlbedoAffectEmissive: 1
+    - _AddPrecomputedVelocity: 0
+    - _AlbedoAffectEmissive: 0
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
     - _AlphaCutoffShadow: 0.5
-    - _AlphaDstBlend: 10
+    - _AlphaDstBlend: 1
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
-    - _BlendMode: 0
-    - _CoatMask: 0.979
+    - _BlendMode: 1
+    - _CoatMask: 1
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -149,7 +150,7 @@ Material:
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 1
     - _DoubleSidedNormalMode: 1
-    - _DstBlend: 10
+    - _DstBlend: 1
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -193,7 +194,7 @@ Material:
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
-    - _SpecularOcclusionMode: 2
+    - _SpecularOcclusionMode: 0
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -227,9 +228,9 @@ Material:
     - _ZTestTransparent: 3
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.7830189, b: 0.7095877, a: 1}
+    - _BaseColor: {r: 0.017933436, g: 0.2924528, b: 0.26637346, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0, g: 0.7830188, b: 0.7095877, a: 1}
+    - _Color: {r: 0.017933436, g: 0.29245278, b: 0.26637343, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

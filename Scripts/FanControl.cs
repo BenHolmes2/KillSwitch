@@ -9,10 +9,13 @@ public class FanControl : MonoBehaviour
     private Animator buttonAnim;
 
 
-    public VisualEffect windfx;
+    public VisualEffect windFX;
+    public ParticleSystem trailsFX;
+    public ParticleSystem dotsFX;
 
     public GameObject button;
     public GameObject fan;
+    public CapsuleCollider fanCollider;
     public Fan cFan;
 
     private int counter = 0;
@@ -20,7 +23,9 @@ public class FanControl : MonoBehaviour
 
    void Awake()
     {
-        windfx = windfx.GetComponent<VisualEffect>();
+        windFX = windFX.GetComponent<VisualEffect>();
+        trailsFX = trailsFX.GetComponent<ParticleSystem>();
+        dotsFX = dotsFX.GetComponent<ParticleSystem>();
         fanAnim = fan.GetComponent<Animator>();
         buttonAnim = button.GetComponent<Animator>();
         counter = 0;
@@ -30,7 +35,7 @@ public class FanControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        fanCollider = fan.GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -39,16 +44,22 @@ public class FanControl : MonoBehaviour
         if (counter == 0)
         {
             fanAnim.SetBool("On", false);
-            fan.GetComponent<CapsuleCollider>().enabled = false;
+            //fan.GetComponent<CapsuleCollider>().enabled = false;
+            fanCollider.enabled = false;
             buttonAnim.SetBool("On", false);
-            windfx.enabled = false;
+            windFX.enabled = false;
+            trailsFX.Stop();
+            dotsFX.Stop();
         }
         else
         {
             fanAnim.SetBool("On", true);
-            fan.GetComponent<CapsuleCollider>().enabled = true;
+            //fan.GetComponent<CapsuleCollider>().enabled = true;
+            fanCollider.enabled = true;
             buttonAnim.SetBool("On", true);
-            windfx.enabled = true;
+            windFX.enabled = true;
+            trailsFX.Play();
+            dotsFX.Play();
         }
                       
     }

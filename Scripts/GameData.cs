@@ -15,8 +15,8 @@ public class GameData : MonoBehaviour
     private int bodyCountTotal;
     private int bodyCountTemp;
     private GameControllerAnimated controller;
-    int[] bodyCountRooms = new int[10]; //change these based on number of rooms in the build
-    double[] roomTimes = new double[10];
+    int[] bodyCountRooms = new int[11]; //change these based on number of rooms in the build
+    double[] roomTimes = new double[11];
     private string timeStr = "";
     private string timeTotalStr = "Total Time Take: ";
     private string bodyStr = "";
@@ -85,7 +85,7 @@ public class GameData : MonoBehaviour
             room++;
         }
 
-        timeTotalStr += runningTime.ToString() + "\n";
+        timeTotalStr += endTime.ToString() + "\n";
         electricityDeathStr += controller.deathByElectricityCount.ToString() + "\n";
         spikesDeathStr += controller.deathBySpikesCount.ToString() + "\n";
         shreddersDeathStr += controller.deathByShreddersCount.ToString() + "\n";
@@ -110,5 +110,7 @@ public class GameData : MonoBehaviour
         File.AppendAllText("GameData.txt", gearBoxDeathStr);
         File.AppendAllText("GameData.txt", fallingDeathStr);
         File.AppendAllText("GameData.txt", "---------------------------------------------------------------------------------\n");
+
+        PlayerPrefs.SetInt("BodiesUsed", bodyCountTotal);
     }
 }

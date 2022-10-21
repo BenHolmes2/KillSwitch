@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+using TMPro;
+
 
 public class PauseV2 : MonoBehaviour
 {
@@ -23,6 +26,10 @@ public class PauseV2 : MonoBehaviour
     public GameObject respawnCrissCross;
     public GameObject respawnCatapult;
 
+    public TMP_Text sensitivityText;
+    public TMP_Text audioText;
+
+
     //public GameObject sliderObj;
     public Slider volumeSlider;
     public Slider mouseSlider;
@@ -38,21 +45,41 @@ public class PauseV2 : MonoBehaviour
     //public Text gravity;
     //public Text respawnSpeed;
     private bool paused = false;
+    private int mouseInt;
+    private int volumeInt;
+
+    public AudioMixer mixer;
+
     void Start()
     {
         //mouseSlider = sliderObj.GetComponent<Slider>();
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
         debugMenu.SetActive(false);
+        //Debug.Log(PlayerPrefs.GetFloat("Volume"));
+        //Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity"));
+        if (PlayerPrefs.GetFloat("Volume") != 0)
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+            mixer.SetFloat("MasterVolume", volumeSlider.value);
+            volumeInt = (int)volumeSlider.value;
+            audioText.text = volumeInt.ToString();
+        }
+        if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
+        {
+            mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+            mouseInt = (int)mouseSlider.value;
+            sensitivityText.text = mouseInt.ToString();
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !paused) 
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused) 
         {
             PauseGame();
         }
-        else if (Input.GetKeyDown(KeyCode.P) && paused)
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
         {
             ResumeGame();
         }
@@ -62,17 +89,21 @@ public class PauseV2 : MonoBehaviour
             DebugMenu();
         }
         gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
+        mixer.SetFloat("MasterVolume", volumeSlider.value);
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().jumpForce = jumpSlider.value;
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().speed = playerSlider.value;
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().gravity = gravitySlider.value;
         //gameController.fadeSpeed = respawnSlider.value;
-        gameController.MusicSource.volume = volumeSlider.value;
         //volume.text = volumeSlider.value.ToString();
         //mouseSensitivity.text = mouseSlider.value.ToString();
         //jumpForce.text = jumpSlider.value.ToString();
         //playerSpeed.text = playerSlider.value.ToString();
         //gravity.text = gravitySlider.value.ToString();
         //respawnSpeed.text = respawnSlider.value.ToString();
+        mouseInt = (int)mouseSlider.value;
+        sensitivityText.text = mouseInt.ToString();
+        volumeInt = (int)volumeSlider.value;
+        audioText.text = volumeInt.ToString();
     }
 
     public void ResumeGame()
@@ -125,7 +156,8 @@ public class PauseV2 : MonoBehaviour
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);
         debugMenu.SetActive(false);
-
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
     }
 
     public void SetInitial()

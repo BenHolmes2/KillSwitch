@@ -13,8 +13,9 @@ public class GeneratorDoor : MonoBehaviour
     //private IDoor button;
     private GameObject pos;
     //private bool electrified = false;
-    private int counter = 0;
+    public int counter = 0;
     private int elecCounter = 0;
+    public bool doorShut = false;
 
     void Awake()
     {
@@ -36,10 +37,18 @@ public class GeneratorDoor : MonoBehaviour
 
         if (elecCounter == 2)
         {
-            midPoint = (pos.transform.position + arcStart.transform.position) / 2;
-            electricityArc1.transform.position = midPoint;
-            electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
-            electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
+            if (pos != null)
+            {
+                midPoint = (pos.transform.position + arcStart.transform.position) / 2;
+                electricityArc1.transform.position = midPoint;
+                electricityArc1.GetComponent<LineRenderer>().SetPosition(0, pos.transform.position);
+                electricityArc1.GetComponent<LineRenderer>().SetPosition(1, arcStart.transform.position);
+            }
+            else
+            {
+                elecCounter = 0;
+                Destroy(electricityArc1);
+            }
         }
     }
 
@@ -79,11 +88,14 @@ public class GeneratorDoor : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<RagdollScriptAnimated>().isElectrified)
             {
-                counter = 1;
-                if (elecCounter == 0)
+                if (!doorShut)
                 {
-                    elecCounter = 1;
-                }
+                    counter = 1;
+                    if (elecCounter == 0)
+                    {
+                        elecCounter = 1;
+                    }
+                }    
             }
         }
 
@@ -131,7 +143,6 @@ public class GeneratorDoor : MonoBehaviour
             {
                 Destroy(electricityArc1);
             }
-            
             elecCounter = 0;
         }
 

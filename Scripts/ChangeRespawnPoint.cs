@@ -7,6 +7,7 @@ public class ChangeRespawnPoint : MonoBehaviour
     public GameObject spawnPos;
     public GameObject player;
     public GameControllerAnimated GameController;
+    private GameData gameData;
     public float cameraFollowSpeed = 100; //maybe for really long rooms have a seperate collider for just this
     private int i = 0;
     public bool changeJumpForce = false;
@@ -19,14 +20,15 @@ public class ChangeRespawnPoint : MonoBehaviour
         bodyLimit = 9999;
         tempObj = GameObject.Find("GameController");
         GameController = tempObj.GetComponent<GameControllerAnimated>();
+        gameData = tempObj.GetComponent<GameData>();
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && i == 0)
+        if (other.gameObject.CompareTag("Player") && i == 0)
         {
             GameController.respawnPoint = spawnPos;
-            GameController.GetComponent<GameData>().exitRoom = true;
+            gameData.exitRoom = true;
             //GameController.GetComponent<PerformanceController>().exitRoomPerf = true;
             player = GameController.spawnedPlayer;
             GameController.bodyLimit = bodyLimit;

@@ -32,7 +32,9 @@ public class GameControllerAnimated : MonoBehaviour
     private GameObject rightHand;
     private GameObject tempObj;
     public GameObject spawnedPlayer;
+    public PlayerControllerAnimated spawnedPlayerScript;
     public GameObject blackOutSquare;
+    private Image blackOutSquareImage;
     public GameObject reticleCanvas;
     public GameObject pickUpCanvas;
 
@@ -40,13 +42,7 @@ public class GameControllerAnimated : MonoBehaviour
     private bool bodyMoved = false;
     public bool fadeOut = true;
     public bool hitGround;
-
-    public AudioClip Music;
-    public AudioSource MusicSource;
-    //public AudioSource deathSource;
-    //private AudioClip[] deathSounds = new AudioClip[4];
-    //private int deathGruntInt;
-
+    public bool respawnAllowed;
 
     public Color objectColor;
 
@@ -64,23 +60,26 @@ public class GameControllerAnimated : MonoBehaviour
     public int deathByFallingCount;
     public int bodyLimit = 9999;
     public int bodiesUsed;
+    public float volume;
+
 
 
     void Start()
     {
+        Time.timeScale = 1.0f;
         Instantiate(player, initialSpawnPos.transform.position, initialSpawnPos.transform.rotation);
         CheckExistence();
 
-        MusicSource = this.gameObject.AddComponent<AudioSource>();
-        MusicSource.loop = true;
-        MusicSource.playOnAwake = true;
-        if (Music != null)
-            MusicSource.clip = Music;
-        MusicSource.volume = 0.06f;
-        MusicSource.Play();
+
         hitGround = false;
-        objectColor = blackOutSquare.GetComponent<Image>().color;
+        respawnAllowed = true;
+        //objectColor = blackOutSquare.GetComponent<Image>().color;
+        objectColor = new Color(0, 0, 0, 0);
         bodyCount = 0;
+        blackOutSquareImage = blackOutSquare.GetComponent<Image>();
+
+
+        StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
 
         //deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
         //deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
@@ -97,6 +96,7 @@ public class GameControllerAnimated : MonoBehaviour
             spawnedPlayer = playerObject;
             cameraHolder = GameObject.FindWithTag("CameraHolder");
             cameraPosition = GameObject.FindWithTag("CameraPosition");
+            spawnedPlayerScript = spawnedPlayer.GetComponent<PlayerControllerAnimated>();
         }
         else
         {
@@ -106,11 +106,12 @@ public class GameControllerAnimated : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit) //isRespawning makes sure the player cant respawn until the camera has finished moving
+        if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit && respawnAllowed) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             //add timer in to stop soft lock
             //StartCoroutine(respawnPlayer());
             respawnPlayer();
+            blackOutSquareImage.color = new Color(0, 0, 0, 0);
         }
 
         //use this as a base if we want to implement the colour changing for the player
@@ -155,8 +156,8 @@ public class GameControllerAnimated : MonoBehaviour
                 fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
 
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-                blackOutSquare.GetComponent<Image>().color = objectColor;
-                j = blackOutSquare.GetComponent<Image>().color.a;
+                blackOutSquareImage.color = objectColor;
+                j = blackOutSquareImage.color.a;
                 //Debug.Log(j);
                 if (j > 1)
                 {
@@ -170,8 +171,8 @@ public class GameControllerAnimated : MonoBehaviour
                     fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
 
                     objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-                    blackOutSquare.GetComponent<Image>().color = objectColor;
-                    j = blackOutSquare.GetComponent<Image>().color.a;
+                    blackOutSquareImage.color = objectColor;
+                    j = blackOutSquareImage.color.a;
                     //Debug.Log(j);
                     if (j < 0)
                     {
@@ -191,7 +192,7 @@ public class GameControllerAnimated : MonoBehaviour
                 cameraHolder.transform.rotation = cameraPosition.transform.rotation;
                 tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
                 //tempObj = tempObj.transform.Find("CameraHolder").gameObject;
-                spawnedPlayer.GetComponent<PlayerControllerAnimated>().enabled = true;
+                spawnedPlayerScript.enabled = true;
                 tempBody = null;
                 bodyMoved = true;
                 bodyCount++;
@@ -211,28 +212,28 @@ public class GameControllerAnimated : MonoBehaviour
         //}
 
         //debug inputs for testing the fade to black canvas
-        //if (Input.GetKeyDown(KeyCode.P))
+        //if (Input.GetKeyDown(KeyCode.K))
         //{
-        //    StartCoroutine(FadeBlackOutSqaure(true, 5));
+        //    StartCoroutine(FadeBlackOutSqaure(true, 0.2f));
         //}
         //if (Input.GetKeyDown(KeyCode.L))
         //{
-        //    StartCoroutine(FadeBlackOutSqaure(false, 5));
+        //    StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
         //}
 
         //debug respawn 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            deadBody.transform.position = spawnedPlayer.transform.position;
-            deadBody.transform.rotation = spawnedPlayer.transform.rotation;
-            spawnedPlayer.transform.position = respawnPoint.transform.position;
-            spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    deadBody.transform.position = spawnedPlayer.transform.position;
+        //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
+        //    spawnedPlayer.transform.position = respawnPoint.transform.position;
+        //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
 
-            for (int i = 0; i < 10; i++)
-            {
-                Instantiate(deadBody);
-            }
-        }
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        Instantiate(deadBody);
+        //    }
+        //}
     }
 
     //public IEnumerator respawnPlayer()
@@ -265,14 +266,14 @@ public class GameControllerAnimated : MonoBehaviour
         Debug.Log(tempObj);
         //tempObj = tempObj.transform.Find("CameraHolder").gameObject; 
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
-        spawnedPlayer.GetComponent<PlayerControllerAnimated>().DropObject();
-        spawnedPlayer.GetComponent<PlayerControllerAnimated>().enabled = false;
+        spawnedPlayerScript.DropObject();
+        spawnedPlayerScript.PlayDeathSound();
+        spawnedPlayerScript.enabled = false;
         Physics.IgnoreLayerCollision(6, 3, true);
         spawnedPlayer.transform.position = respawnPoint.transform.position;
         spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
         tempBody = Instantiate(deadBody);
         currentBody = tempBody;
-        spawnedPlayer.GetComponent<PlayerControllerAnimated>().PlayDeathSound();
         temp = tempBody.transform.Find("parent").gameObject;
         hips = temp.transform.Find("mixamorig:Hips1").gameObject;
         spine = hips.transform.Find("mixamorig:Spine").gameObject;
@@ -329,34 +330,31 @@ public class GameControllerAnimated : MonoBehaviour
         head.layer = 0;
     }
 
-    //public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, int fadeSpeed = 5)
-    //{
-    //    Color objectColor = blackOutSquare.GetComponent<Image>().color;
-    //    float fadeAmount;
+    public IEnumerator FadeBlackOutSqaure(bool fadeToBlack = true, float fadeSpeed = 5f)
+    {
+        Color objectColorA = blackOutSquareImage.color;
+        float fadeAmount;
 
-    //    if (fadeToBlack)
-    //    {
-    //        j = blackOutSquare.GetComponent<Image>().color.a;
-    //        while (blackOutSquare.GetComponent<Image>().color.a < 1)
-    //        {
-    //            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
-    //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-    //            blackOutSquare.GetComponent<Image>().color = objectColor;
-    //            j = blackOutSquare.GetComponent<Image>().color.a;
-    //            yield return null;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        while (blackOutSquare.GetComponent<Image>().color.a > 0)
-    //        {
-    //            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-    //            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-    //            blackOutSquare.GetComponent<Image>().color = objectColor;
-    //            j = blackOutSquare.GetComponent<Image>().color.a;
-    //            yield return null;
-    //        }
-    //    }
-    //}
+        if (fadeToBlack)
+        {
+            while (blackOutSquareImage.color.a < 1)
+            {
+                fadeAmount = objectColorA.a + (fadeSpeed * Time.deltaTime);
+                objectColorA = new Color(objectColorA.r, objectColorA.g, objectColorA.b, fadeAmount);
+                blackOutSquareImage.color = objectColorA;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (blackOutSquareImage.color.a > 0)
+            {
+                fadeAmount = objectColorA.a - (fadeSpeed * Time.deltaTime);
+                objectColorA = new Color(objectColorA.r, objectColorA.g, objectColorA.b, fadeAmount);
+                blackOutSquareImage.color = objectColorA;
+                yield return null;
+            }
+        }
+    }
 
 }

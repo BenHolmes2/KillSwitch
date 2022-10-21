@@ -264,9 +264,9 @@ public class GameController : MonoBehaviour
         isRespawn = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
-        Debug.Log(spawnedPlayer.transform.Find("CameraHolder").gameObject);
+        //Debug.Log(spawnedPlayer.transform.Find("CameraHolder").gameObject);
         tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-        Debug.Log(tempObj);
+        //Debug.Log(tempObj);
         //tempObj = tempObj.transform.Find("CameraHolder").gameObject; 
         cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
         spawnedPlayer.GetComponent<PlayerController>().DropObject();
