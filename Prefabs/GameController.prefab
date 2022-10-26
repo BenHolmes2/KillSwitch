@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 683888291193174260}
-  - component: {fileID: 941970620}
   - component: {fileID: 7762637748100593801}
+  - component: {fileID: 941970620}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -33,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &941970620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683888291193174258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfe1e8f2d2d79647abec0243bda3e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitRoom: 0
 --- !u!114 &7762637748100593801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +52,7 @@ MonoBehaviour:
   cameraPosition: {fileID: 0}
   deadBody: {fileID: 5413650497600358677, guid: 7541a4f0568d5534cbf9f9f057e56bd4, type: 3}
   spawnedPlayer: {fileID: 0}
+  spawnedPlayerScript: {fileID: 0}
   blackOutSquare: {fileID: 0}
   reticleCanvas: {fileID: 0}
   pickUpCanvas: {fileID: 0}
@@ -86,3 +74,16 @@ MonoBehaviour:
   bodyLimit: 9999
   bodiesUsed: 0
   volume: 0
+--- !u!114 &941970620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683888291193174258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfe1e8f2d2d79647abec0243bda3e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitRoom: 0
