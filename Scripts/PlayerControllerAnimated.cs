@@ -100,10 +100,10 @@ public class PlayerControllerAnimated : MonoBehaviour
         PlayerLook();
         PlayerMove();
 
-        //this doesnt reset back to the normal one becasue walls are often outside the pickuprange
+        
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {
-            Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
+            //Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
 
             if (cursorHit.transform.gameObject.CompareTag("canPickUpObject") || cursorHit.transform.gameObject.CompareTag("canPickUpDeath") || cursorHit.transform.gameObject.CompareTag("canPickUp"))
             {
@@ -417,7 +417,6 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     private void ThrowObject()
     {
-        //heldObj.gameObject.layer.Equals(0);
         
         if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
         {
@@ -453,58 +452,12 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
     }
 
+    //The two functions below change the collision layer on the ragdoll and and disable collisions between layers.
     public void ToggleCollisions(bool toggle)
     {
-        //hips.layer = toggle;
-        //leftUpLeg.layer = toggle;
-        //leftLeg.layer = toggle;
-        //rightUpLeg.layer = toggle;
-        //rightLeg.layer = toggle;
-        //spine.layer = toggle;
-        //leftArm.layer = toggle;
-        //leftForeArm.layer = toggle;
-        //leftHand.layer = toggle;
-        //rightArm.layer = toggle;
-        //rightForeArm.layer = toggle;
-        //hips.layer = toggle;
-        //rightHand.layer = toggle;
-        //head.layer = toggle;
-
         //this ignores collisions between the body and the envrionment but not the gearbox
         Physics.IgnoreLayerCollision(6, 0, toggle);
         Physics.IgnoreLayerCollision(6, 3, toggle);
-
-        //these ignore collisions stop the ragdoll from clipping with the player and itself when being held, but casue issues
-        //Physics.IgnoreCollision(controller, hips.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, leftUpLeg.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, leftLeg.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, rightUpLeg.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, rightLeg.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, spine.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, leftArm.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, leftForeArm.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, leftHand.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, rightArm.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, rightForeArm.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, rightHand.GetComponent<Collider>(), toggle);
-        //Physics.IgnoreCollision(controller, head.GetComponent<Collider>(), toggle);
-
-
-        //this does the same as above but can casue issues with gearboxes
-        //hips.GetComponent<Collider>().enabled = toggle;
-        //leftUpLeg.GetComponent<Collider>().enabled = toggle;
-        //leftLeg.GetComponent<Collider>().enabled = toggle;
-        //rightUpLeg.GetComponent<Collider>().enabled = toggle;
-        //rightLeg.GetComponent<Collider>().enabled = toggle;
-        //spine.GetComponent<Collider>().enabled = toggle;
-        //leftArm.GetComponent<Collider>().enabled = toggle;
-        //leftForeArm.GetComponent<Collider>().enabled = toggle;
-        //leftHand.GetComponent<Collider>().enabled = toggle;
-        //rightArm.GetComponent<Collider>().enabled = toggle;
-        //rightForeArm.GetComponent<Collider>().enabled = toggle;
-        //rightHand.GetComponent<Collider>().enabled = toggle;
-        //head.GetComponent<Collider>().enabled = toggle;
-
     }
 
     private void ToggleLayer(int toggle)
@@ -533,6 +486,9 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     }
 
+    //The two functions below change the collision layer on the ragdoll and and re-enable collisions between layers.
+    //These functions are set as IEnumerators so they can be called on a delay, this is to stop the body from colliding
+    //with the player when being dropped.
     private IEnumerator ToggleLayerDrop(int toggle)
     {
         if (heldObj.GetComponent<RagdollScriptAnimated>() == true) //make this a better check
@@ -566,7 +522,8 @@ public class PlayerControllerAnimated : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Physics.IgnoreLayerCollision(6, 3, toggle);
     }
-        public void PlayDeathSound()
+
+    public void PlayDeathSound()
     {
         deathGruntInt = Random.Range(0, 4); //this randomly pick what death grunt to play
         if (deathGruntInt == 3) //i dont want the wilhelm scream to play as often as the others and this keeps it rare

@@ -192,10 +192,10 @@ public class RagdollScriptAnimated : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //The if statement below checks to see if part of the ragdoll has collided with the lightning poles and 
         if (other.gameObject.CompareTag("LightningPoles"))
         {
             isElectrified = true;
-
             hips.GetComponent<RagdollScriptAnimated>().isElectrified = true;
             leftUpLeg.GetComponent<RagdollScriptAnimated>().isElectrified = true;
             leftLeg.GetComponent<RagdollScriptAnimated>().isElectrified = true;
@@ -240,7 +240,9 @@ public class RagdollScriptAnimated : MonoBehaviour
     {
         //Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
         //Debug.Log(collision.gameObject.transform.root.gameObject.name + collision.gameObject.name);
-        //how do i get it to ignore the respawn tube 
+
+        //The below if statement ignores collisions between the ragdoll and the respawn tube, this stops the player getting stuck
+        //if they respawn in the respawn tube.
         if (collision.gameObject.CompareTag("RespawnTube"))
         {
             respawnTubeCol = collision.gameObject.GetComponent<MeshCollider>();
@@ -260,6 +262,7 @@ public class RagdollScriptAnimated : MonoBehaviour
             Physics.IgnoreCollision(respawnTubeCol, head.GetComponent<Collider>(), true);
         }
 
+        //The nested if statements below are used to check when the ragdoll has hit he ground while respawning so the camera can be moved back to the player.
         if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
             //Debug.Log(gameObject.transform.root.gameObject.name + gameObject.name);
@@ -278,19 +281,16 @@ public class RagdollScriptAnimated : MonoBehaviour
     {
         if (collision.gameObject.transform.root.gameObject != gameObject.transform.root.gameObject)
         {
-            //if (gameObject.CompareTag("canPickUpDeath"))
-            //{
-                if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
+            if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("canPickUp"))
+            {
+                if (!turningOff && !gameController.isRespawn)
                 {
-                    if (!turningOff && !gameController.isRespawn)
+                    if (thisRigidBody.velocity.magnitude < 0.1)
                     {
-                        if (thisRigidBody.velocity.magnitude < 0.1)
-                        {
-                            frames++;
-                        }
+                        frames++;
                     }
                 }
-            //}
+            }
         }
     }
 

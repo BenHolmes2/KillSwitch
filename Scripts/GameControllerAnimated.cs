@@ -80,11 +80,6 @@ public class GameControllerAnimated : MonoBehaviour
 
 
         StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
-
-        //deathSounds[0] = Resources.Load("DeathGrunt1") as AudioClip;
-        //deathSounds[1] = Resources.Load("DeathGrunt2") as AudioClip;
-        //deathSounds[2] = Resources.Load("DeathGrunt3") as AudioClip;
-        //deathSounds[3] = Resources.Load("DeathWilhelm") as AudioClip;
     }
 
     void CheckExistence()
@@ -114,30 +109,8 @@ public class GameControllerAnimated : MonoBehaviour
             blackOutSquareImage.color = new Color(0, 0, 0, 0);
         }
 
-        //use this as a base if we want to implement the colour changing for the player
-        //if (Input.GetKeyDown(KeyCode.M) && !isRespawn) //isRespawning makes sure the player cant respawn until the camera has finished moving
-        //{
-        //    tempBody1 = tempBody1.transform.Find("riggedd body 04").gameObject;
-        //    tempBody1 = tempBody1.transform.Find("Layer_1").gameObject;
-        //    tempBody1.GetComponent<Renderer>().material.color = Color.green;
-        //}
-
-
         if (cameraHolder.transform.parent == null && tempBody != null)
         {
-            //tempObj = tempBody.transform.Find("riggedd body 04").gameObject;
-            //tempObj = tempObj.transform.Find("QuickRigCharacter_Reference").gameObject;
-            //tempObj = tempObj.transform.Find("QuickRigCharacter_Hips").gameObject;
-            //hips = tempObj;
-            //spine = hips.transform.Find("QuickRigCharacter_Spine").gameObject;
-            //spine = spine.transform.Find("QuickRigCharacter_Spine1").gameObject;
-            //spine = spine.transform.Find("QuickRigCharacter_Spine2").gameObject;
-            //head = spine.transform.Find("QuickRigCharacter_Neck").gameObject;
-            //head = head.transform.Find("QuickRigCharacter_Head").gameObject;
-            //temp = head.transform.Find("CameraPos").gameObject;
-            //cameraHolder.transform.position = temp.transform.position;
-            //cameraHolder.transform.parent = temp.transform;
-
             temp = tempBody.transform.Find("parent").gameObject;
             hips = temp.transform.Find("mixamorig:Hips1").gameObject;
             spine = hips.transform.Find("mixamorig:Spine").gameObject;
@@ -204,13 +177,6 @@ public class GameControllerAnimated : MonoBehaviour
             hitGround = false;
         }
 
-        //debug respawn
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    deadBody.transform.position = respawnPoint.transform.position;
-        //    Instantiate(deadBody);
-        //}
-
         //debug inputs for testing the fade to black canvas
         //if (Input.GetKeyDown(KeyCode.K))
         //{
@@ -235,26 +201,6 @@ public class GameControllerAnimated : MonoBehaviour
         //    }
         //}
     }
-
-    //public IEnumerator respawnPlayer()
-    //{
-    //    isRespawn = true;
-    //    deadBody.transform.position = spawnedPlayer.transform.position;
-    //    deadBody.transform.rotation = spawnedPlayer.transform.rotation;
-    //    tempObj = spawnedPlayer.transform.Find("CameraHolder").gameObject;
-    //    //tempObj = tempObj.transform.Find("CameraHolder").gameObject; 
-    //    cameraHolder.transform.parent = null; //Removes the player as the cameras parent so they can be moved independantly
-    //    spawnedPlayer.GetComponent<PlayerController>().DropObject();
-    //    spawnedPlayer.GetComponent<PlayerController>().enabled = false;
-    //    spawnedPlayer.transform.position = respawnPoint.transform.position;
-    //    spawnedPlayer.transform.rotation = respawnPoint.transform.rotation;
-    //    yield return new WaitForSeconds(0.1f); // change this to the lowest pissible value without breaking it or change it to ignore collisions?????
-    //    //change the above wait statement to an ignore collision statement
-    //    tempBody = Instantiate(deadBody);
-    //    tempBody1 = tempBody;
-    //    spawnedPlayer.GetComponent<PlayerController>().PlayDeathSound();
-
-    //}
 
     public void respawnPlayer()
     {

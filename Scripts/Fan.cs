@@ -60,12 +60,14 @@ public class Fan : MonoBehaviour
 
     private void OnTriggerStay(Collider other) //this provides the player or body with some velocity as long as they remain within the collider
     {
+        //The if statement below provides force for the player when they are in the fan collider
         if (other.gameObject.CompareTag("Player"))
         {
-            counterFPS++;
-            //this currently doesnt work very well when the fan is trying to push the player upwards
-            if (!gameController.isRespawn)
+            counterFPS++; //this is a counter that checks how many frames the player has been in the fan collider 
+            if (!gameController.isRespawn) //this checks to see if the player is respawning
             {
+                //The if-else statement below checks whether the fan is vertical or not, this is important as the movement needs to be applied differently
+                //between vertical and horizontal fans.
                 if (isVertical)
                 {
                     player.GetComponent<PlayerControllerAnimated>().movementDir += this.transform.forward * fanForcePlayer;
@@ -75,11 +77,13 @@ public class Fan : MonoBehaviour
                     player.GetComponent<CharacterController>().Move(this.transform.forward * fanForcePlayer);
                 }
             }
+            //this is used is used to increment this value roughly every second the player stays in the collider
             if (counterFPS % 60 == 0)
             {
                 verticalFanPlayerExit++;
             }
         }
+        //The if statement below applies force to each part of the ragdoll that is within the fan collider
         if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUpDeath"))
         {
             other.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * fanForceBody);

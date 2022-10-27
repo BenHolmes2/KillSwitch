@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 142498975016905269}
   - component: {fileID: 6267451825496712267}
   - component: {fileID: 5418008033751108332}
-  - component: {fileID: 2370881858797446579}
   m_Layer: 7
   m_Name: polySurface6907
-  m_TagString: Untagged
+  m_TagString: BuzzSaw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,8 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf168733884a6034caa53052d53f416b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  bloodEffect: {fileID: 0}
+  bloodEffect: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
 --- !u!64 &5418008033751108332
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -129,19 +127,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9181064053092408459, guid: 01646472dcc809f478d620d576020767, type: 3}
---- !u!65 &2370881858797446579
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142498975016905288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 5.5454106, y: 102.62601, z: 102.62612}
-  m_Center: {x: -1695.6226, y: 1.8746794, z: 289.5198}
 --- !u!1 &142498975289769575
 GameObject:
   m_ObjectHideFlags: 0

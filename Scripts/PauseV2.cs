@@ -13,22 +13,8 @@ public class PauseV2 : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject debugMenu;
 
-    public GameObject respawnInitial;
-    public GameObject respawnButton;
-    public GameObject respawnWall;
-    public GameObject respawnSpikes;
-    public GameObject respawnElecIntro;
-    public GameObject respawnBuzzSawIntro;
-    public GameObject respawnFanIntro;
-    public GameObject respawnSpaceJam;
-    public GameObject respawnFanSpikeSaw;
-    public GameObject respawnBridge;
-    public GameObject respawnCrissCross;
-    public GameObject respawnCatapult;
-
     public TMP_Text sensitivityText;
     public TMP_Text audioText;
-
 
     //public GameObject sliderObj;
     public Slider volumeSlider;
@@ -49,6 +35,19 @@ public class PauseV2 : MonoBehaviour
     private int volumeInt;
 
     public AudioMixer mixer;
+
+    public GameObject respawnInitial;
+    public GameObject respawnButton;
+    public GameObject respawnWall;
+    public GameObject respawnSpikes;
+    public GameObject respawnElecIntro;
+    public GameObject respawnBuzzSawIntro;
+    public GameObject respawnFanIntro;
+    public GameObject respawnSpaceJam;
+    public GameObject respawnFanSpikeSaw;
+    public GameObject respawnBridge;
+    public GameObject respawnCrissCross;
+    public GameObject respawnCatapult;
 
     void Start()
     {

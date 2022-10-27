@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BridgeMovement : MonoBehaviour
+public class GearBoxController : MonoBehaviour
 {
     private Animator bridgeAnim;
     private Animator gear1Anim;
