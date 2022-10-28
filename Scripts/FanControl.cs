@@ -66,11 +66,11 @@ public class FanControl : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        Debug.Log("haha");
+        //Debug.Log("haha");
         //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         //{
             counter = 1;
-            Debug.Log("bruh");
+            //Debug.Log("bruh");
         //}
 
             
@@ -81,7 +81,7 @@ public class FanControl : MonoBehaviour
         //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         //{
             counter = 0;
-            Debug.Log("bruh2");
+            //Debug.Log("bruh2");
         //}
 
 

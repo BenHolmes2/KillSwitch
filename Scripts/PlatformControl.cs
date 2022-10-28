@@ -34,13 +34,13 @@ public class PlatformControl : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        Debug.Log("haha");
+        //Debug.Log("haha");
         //these are only needed if we dont want the player to be able to activate the button
         //in this room its important they can so they can see what buttons do
         //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         //{
             counter = 1;
-            Debug.Log("bruh");
+            //Debug.Log("bruh");
         //}
 
 
@@ -51,7 +51,7 @@ public class PlatformControl : MonoBehaviour
         //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         //{
             counter = 0;
-            Debug.Log("bruh2");
+            //Debug.Log("bruh2");
         //}
 
 
