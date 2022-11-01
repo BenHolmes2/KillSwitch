@@ -26559,6 +26559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dots
       objectReference: {fileID: 0}
+    - target: {fileID: 3347070525741758945, guid: d081aab2de9cb4573b990f145d274db2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3347070525741758947, guid: d081aab2de9cb4573b990f145d274db2, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 2.56
@@ -27128,11 +27132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572668374255216791, guid: 7266e64fddba945a48429536241c07ec, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 572668374255216791, guid: 7266e64fddba945a48429536241c07ec, type: 3}
       propertyPath: InitialModule.startSizeY.scalar
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 572668374255216791, guid: 7266e64fddba945a48429536241c07ec, type: 3}
       propertyPath: InitialModule.startSizeZ.scalar
@@ -27144,7 +27148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572668374255216791, guid: 7266e64fddba945a48429536241c07ec, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 10
+      value: 5.13
       objectReference: {fileID: 0}
     - target: {fileID: 572668374255216791, guid: 7266e64fddba945a48429536241c07ec, type: 3}
       propertyPath: EmissionModule.rateOverTime.minScalar
