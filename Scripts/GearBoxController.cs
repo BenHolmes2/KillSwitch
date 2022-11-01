@@ -99,7 +99,7 @@ public class GearBoxController : MonoBehaviour
 
             if (currentTime > destroyTime && destroyTime != 0)
             {
-                Destroy(collision.gameObject.transform.root.gameObject);
+                Destroy(collision.gameObject.transform.root.root.gameObject);
                 destroyed = true;
                 timeSet = false;
                 counter = 0;

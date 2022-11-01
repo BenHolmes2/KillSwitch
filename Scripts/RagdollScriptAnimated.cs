@@ -52,6 +52,7 @@ public class RagdollScriptAnimated : MonoBehaviour
 
     private double runningTime;
     private double destroyTime;
+    public ParticleSystem smoke;
 
 
 
@@ -395,5 +396,11 @@ public class RagdollScriptAnimated : MonoBehaviour
         //rightHand.GetComponent<Rigidbody>().velocity.y
         //head.GetComponent<Rigidbody>().velocity.y
 
+    }
+
+    private void OnDestroy()
+    {
+        smoke.transform.position = this.gameObject.transform.position;
+        Instantiate(smoke);
     }
 }
