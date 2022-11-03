@@ -16,20 +16,12 @@ public class GeneratorDoor : MonoBehaviour
     public int counter = 0;
     private int elecCounter = 0;
     public bool doorShut = false;
-    public bool hasWire = false;
-
-    public GameObject wireTexture;
-    private Renderer wireRenderer;
 
     void Awake()
     {
         door = doorGameObject.GetComponent<IDoor>();
         counter = 0;
         elecCounter = 0;
-        if (hasWire)
-        {
-            wireRenderer = wireTexture.GetComponent<Renderer>();
-        }
     }
 
     private void FixedUpdate()
@@ -37,18 +29,10 @@ public class GeneratorDoor : MonoBehaviour
         if (counter == 0)//PlayerIsOn == true
         {
             door.CloseDoor();
-            if (hasWire)
-            {
-                wireRenderer.material.SetFloat("_EmissionForHoles", -1);
-            }
         }
         else
         {
             door.OpenDoor();
-            if (hasWire)
-            {
-                wireRenderer.material.SetFloat("_EmissionForHoles", 1);
-            }
         }
 
         if (elecCounter == 2)
