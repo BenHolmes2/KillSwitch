@@ -100,6 +100,12 @@ public class PlayerControllerAnimated : MonoBehaviour
         PlayerLook();
         PlayerMove();
 
+        //Hoping this will fix weird edge case where if the ragdoll is destoryed while being held, the next time the player respawns they fall through the floor
+        if (heldObj == null)
+        {
+            ToggleCollisions(false);
+        }
+
         
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {

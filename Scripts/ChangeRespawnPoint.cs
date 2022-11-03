@@ -65,6 +65,7 @@ public class ChangeRespawnPoint : MonoBehaviour
             //Instantiate(smoke);
             Destroy(characterRenderer.transform.root.root.gameObject);
             characterRenderer = null;
+            electricityEffectModifier = -1;
         }
     }
 
