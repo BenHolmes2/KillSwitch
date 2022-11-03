@@ -6,6 +6,8 @@ public class ButtonPress : MonoBehaviour
 {
     public GameObject doorGameObject;
     public GameObject buttonGameObject;
+    public GameObject wireTexture;
+    private Renderer wireRenderer;
     private IDoor door;
     private IDoor button;
     private int counter = 0;
@@ -15,6 +17,8 @@ public class ButtonPress : MonoBehaviour
         door = doorGameObject.GetComponent<IDoor>();
         button = buttonGameObject.GetComponent<IDoor>();
         counter = 0;
+        wireRenderer = wireTexture.GetComponent<Renderer>();
+
     }
 
     void Update()
@@ -23,11 +27,13 @@ public class ButtonPress : MonoBehaviour
         {
             door.CloseDoor();
             button.CloseDoor();
+            wireRenderer.material.SetFloat("_EmissionForHoles", -1);
         }
         else
         {
             door.OpenDoor();
             button.OpenDoor();
+            wireRenderer.material.SetFloat("_EmissionForHoles", 1);
         }
     }
 
@@ -36,6 +42,7 @@ public class ButtonPress : MonoBehaviour
         if (collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("canPickUpDeath") || collision.gameObject.CompareTag("Player"))
         {
             counter++;
+
         }
     }
 

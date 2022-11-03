@@ -18,6 +18,9 @@ public class FanControl : MonoBehaviour
     public CapsuleCollider fanCollider;
     public Fan cFan;
 
+    public GameObject wireTexture;
+    private Renderer wireRenderer;
+
     private int counter = 0;
 
 
@@ -29,7 +32,7 @@ public class FanControl : MonoBehaviour
         fanAnim = fan.GetComponent<Animator>();
         buttonAnim = button.GetComponent<Animator>();
         counter = 0;
-        
+        wireRenderer = wireTexture.GetComponent<Renderer>();
     }
 
     // Start is called before the first frame update
@@ -50,6 +53,7 @@ public class FanControl : MonoBehaviour
             windFX.enabled = false;
             trailsFX.Stop();
             dotsFX.Stop();
+            wireRenderer.material.SetFloat("_EmissionForHoles", -1);
         }
         else
         {
@@ -60,8 +64,10 @@ public class FanControl : MonoBehaviour
             windFX.enabled = true;
             trailsFX.Play();
             dotsFX.Play();
+            wireRenderer.material.SetFloat("_EmissionForHoles", 1);
+
         }
-                      
+
     }
 
     private void OnTriggerStay(Collider collision)
@@ -70,10 +76,10 @@ public class FanControl : MonoBehaviour
         //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         //{
             counter = 1;
-            //Debug.Log("bruh");
+        //Debug.Log("bruh");
         //}
 
-            
+
     }
 
     private void OnTriggerExit(Collider collision)
@@ -81,7 +87,7 @@ public class FanControl : MonoBehaviour
         //if (collision.gameObject.tag == "canPickUp" || collision.gameObject.tag == "canPickUpDeath")
         //{
             counter = 0;
-            //Debug.Log("bruh2");
+        //Debug.Log("bruh2");
         //}
 
 
