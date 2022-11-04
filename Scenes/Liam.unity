@@ -340,6 +340,11 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!95 &179772401 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7061920760584116182, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432432459
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +401,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 954742265528325076, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: bridgeAnimator
+      value: 
+      objectReference: {fileID: 179772401}
     - target: {fileID: 2429428479357256159, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -443,6 +452,18 @@ PrefabInstance:
     - target: {fileID: 3097562815477504869, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_Name
       value: 'All_Rooms '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052291380315994092, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -292.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799299293633826103, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Size.y
+      value: 43.050095
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799299293633826103, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_Center.y
+      value: -17.199389
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
