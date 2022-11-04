@@ -22,6 +22,7 @@ public class FinalRoom : MonoBehaviour
     public float j;
     public bool addExtraBodies = false;
     public TMP_Text counterText;
+    public Animator Credits;
 
 
 
@@ -79,6 +80,12 @@ public class FinalRoom : MonoBehaviour
 
             }
             if (blackOutSquare.GetComponent<Image>().color.a >= 1)
+            {
+                Credits.SetBool("PlayCredits", true);
+                //SceneManager.LoadScene("MainMenuV2");
+
+            }
+            if (Credits.GetBool("isFinished") == true)
             {
                 SceneManager.LoadScene("MainMenuV2");
             }

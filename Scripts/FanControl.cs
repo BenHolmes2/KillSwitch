@@ -65,7 +65,6 @@ public class FanControl : MonoBehaviour
             trailsFX.Play();
             dotsFX.Play();
             wireRenderer.material.SetFloat("_EmissionForHoles", 1);
-
         }
 
     }
