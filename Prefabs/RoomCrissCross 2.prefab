@@ -8421,7 +8421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3991046976847633514
 Transform:
   m_ObjectHideFlags: 0
@@ -8760,7 +8760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6263072703699518386
 Transform:
   m_ObjectHideFlags: 0
@@ -30751,7 +30751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3449334465867783935
 Transform:
   m_ObjectHideFlags: 0
@@ -31388,6 +31388,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorProximity
       objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Size.x
+      value: 26.177223
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Size.y
+      value: 16.362
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Center.x
+      value: 11.342516
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Center.y
+      value: 3.1809998
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
 --- !u!4 &547027705025359675 stripped
@@ -31688,7 +31704,7 @@ MonoBehaviour:
   arcStart: {fileID: 2424973646673778468}
   counter: 0
   doorShut: 0
-  hasWire: 0
+  hasWire: 1
   wireTexture: {fileID: 0}
 --- !u!1001 &3534672259261288461
 PrefabInstance:

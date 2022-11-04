@@ -1763,6 +1763,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorProximity
       objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Size.x
+      value: 25.849121
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Size.y
+      value: 17.564955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Center.x
+      value: 11.178467
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983286403980169611, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
+      propertyPath: m_Center.y
+      value: 3.782474
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd511ec25d82fd74fb8ab7bf8e01beca, type: 3}
 --- !u!4 &9211065436061980490 stripped
@@ -1938,6 +1954,8 @@ MonoBehaviour:
   arcStart: {fileID: 6028620336565498302}
   counter: 0
   doorShut: 0
+  hasWire: 0
+  wireTexture: {fileID: 0}
 --- !u!4 &5535976121859509651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 404541906037060717, guid: 0bc22e45e3f85d14e8504deb6c7a59be, type: 3}
