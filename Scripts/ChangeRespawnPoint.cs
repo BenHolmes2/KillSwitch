@@ -90,7 +90,7 @@ public class ChangeRespawnPoint : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("canPickUp") || other.gameObject.CompareTag("canPickUp"))
+        if (other.gameObject.CompareTag("canPickUp"))
         {
             characterMesh = other.gameObject.transform.root.gameObject;
             characterMesh = characterMesh.transform.Find("parent").gameObject;
@@ -105,6 +105,14 @@ public class ChangeRespawnPoint : MonoBehaviour
             //{
             //    other.gameObject.GetComponent<PlayerControllerAnimated>().heldObj = null;
             //}
+        }
+
+        if (other.gameObject.CompareTag("canPickUpObject"))
+        {
+            characterMesh = other.gameObject;
+            Destroy(characterMesh);
+            smoke.transform.position = other.transform.position;
+            Instantiate(smoke);
         }
     }
 }
