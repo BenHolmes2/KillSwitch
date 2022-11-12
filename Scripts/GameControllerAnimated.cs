@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 
 public class GameControllerAnimated : MonoBehaviour
@@ -38,6 +40,7 @@ public class GameControllerAnimated : MonoBehaviour
     public GameObject reticleCanvas;
     public GameObject pickUpCanvas;
 
+    public bool startRespawn = false;
     public bool isRespawn = false;
     private bool bodyMoved = false;
     public bool fadeOut = true;
@@ -101,7 +104,7 @@ public class GameControllerAnimated : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isRespawn && bodiesUsed < bodyLimit && respawnAllowed) //isRespawning makes sure the player cant respawn until the camera has finished moving
+        if (startRespawn && !isRespawn && bodiesUsed < bodyLimit && respawnAllowed) //isRespawning makes sure the player cant respawn until the camera has finished moving
         {
             //add timer in to stop soft lock
             //StartCoroutine(respawnPlayer());
@@ -202,8 +205,19 @@ public class GameControllerAnimated : MonoBehaviour
         //}
     }
 
+    //private void OnRespawn()
+    //{
+    //    if (!isRespawn && bodiesUsed < bodyLimit && respawnAllowed) //isRespawning makes sure the player cant respawn until the camera has finished moving
+    //    {
+    //        //add timer in to stop soft lock
+    //        respawnPlayer();
+    //        blackOutSquareImage.color = new Color(0, 0, 0, 0);
+    //    }
+    //}
+
     public void respawnPlayer()
     {
+        startRespawn = false;
         isRespawn = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;

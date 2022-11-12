@@ -20,7 +20,10 @@ public class MainMenuV2 : MonoBehaviour
     private int volumeInt;
     public TMP_Text sensitivityText;
     public TMP_Text audioText;
-
+    public Animator creditsAnimator;
+    public Button playButton;
+    public Button settingsBackButton;
+    public Button creditsBackButton;
 
 
     // Start is called before the first frame update
@@ -31,6 +34,8 @@ public class MainMenuV2 : MonoBehaviour
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
+        playButton.Select();
+
 
         if (PlayerPrefs.GetFloat("Volume") != 0)
         {
@@ -58,8 +63,13 @@ public class MainMenuV2 : MonoBehaviour
         mouseInt = (int)mouseSlider.value;
         sensitivityText.text = mouseInt.ToString();
 
+        if (creditsAnimator.GetBool("isFinished") == true)
+        {
+            mainMenu.SetActive(true);
+            settingsMenu.SetActive(false);
+            CreditsMenu.SetActive(false);
+        }
     }
-
     public void Play()
     {
         SceneManager.LoadScene("Liam");
@@ -71,6 +81,8 @@ public class MainMenuV2 : MonoBehaviour
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(true);
+        creditsAnimator.SetBool("PlayCredits", true);
+        creditsBackButton.Select();
     }
 
     public void Settings()
@@ -78,6 +90,7 @@ public class MainMenuV2 : MonoBehaviour
         mainMenu.SetActive(false);
         settingsMenu.SetActive(true);
         CreditsMenu.SetActive(false);
+        settingsBackButton.Select();
     }
 
     public void Back()
@@ -85,6 +98,7 @@ public class MainMenuV2 : MonoBehaviour
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
+        playButton.Select();
     }
 
     public void Quit()

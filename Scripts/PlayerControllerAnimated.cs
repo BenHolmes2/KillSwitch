@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerControllerAnimated : MonoBehaviour
 {
@@ -34,6 +36,9 @@ public class PlayerControllerAnimated : MonoBehaviour
     private Rigidbody heldObjRb;
     private bool canThrow = true;
     public CharacterController controller;
+    public GameObject menu;
+    public PauseV2 menuScript;
+    public InputSystemUIInputModule menuInput;
 
     public float mouseSensitivity = 100f;
 
@@ -70,6 +75,9 @@ public class PlayerControllerAnimated : MonoBehaviour
     public GameObject animatorObj;
     private Animator bodyController;
 
+    private float mouseInputX;
+    private float mouseInputY;
+
 
     void Start()
     {
@@ -77,7 +85,12 @@ public class PlayerControllerAnimated : MonoBehaviour
         controller = GetComponent<CharacterController>();
         tempObj = GameObject.Find("GameController");
         gameController = tempObj.GetComponent<GameControllerAnimated>();
+        menu = GameObject.Find("PauseMenuV2");
+        menuScript = menu.GetComponent<PauseV2>();
         Cursor.lockState = CursorLockMode.Locked;
+        menu = menu.gameObject.transform.Find("EventSystem").gameObject;
+        menuInput = menu.GetComponent<InputSystemUIInputModule>();
+        GetComponent<PlayerInput>().uiInputModule = menuInput;
 
 
         StepSource = this.gameObject.GetComponent<AudioSource>();
@@ -130,8 +143,47 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (heldObj != null)
         {
+            MoveObject();
+            //if (Input.GetKeyDown(KeyCode.Mouse0) && canThrow == true)
+            //{
+            //    ThrowObject();
+            //}
+        }
+    }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("canPickUpObject"))
+    //    {
+    //        other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 10);
+    //        Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    //    }
+    //}
+
+    private void OnRespawn()
+    {
+        gameController.startRespawn = true;
+    }
+
+    private void OnPause()
+    {
+        if (!menuScript.startPause)
+        {
+            menuScript.startPause = true;
+
+        }
+        else
+        {
+            menuScript.startPause = false;
+        }
+    }
+
+    private void OnPickUp()
+    {
+
             if (heldObj == null)
             {
                 if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out pickUpHit, pickUpRange))
@@ -154,25 +206,7 @@ public class PlayerControllerAnimated : MonoBehaviour
             {
                 DropObject();
             }
-        }
-        if (heldObj != null)
-        {
-            MoveObject();
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canThrow == true)
-            {
-                ThrowObject();
-            }
-        }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("canPickUpObject"))
-    //    {
-    //        other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 10);
-    //        Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-    //    }
-    //}
 
     private void PickUpBody(GameObject pickUpObj)
     {
@@ -228,19 +262,29 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     private void PlayerMove()
     {
-        movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+        //movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
         //Debug.Log(Input.GetAxisRaw("Horizontal"));
         //Debug.Log(Input.GetAxisRaw("Vertical"));
 
         //this applies a ramp up to the speed as the player holds down a move button
-        if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && speedTemp <= speed)
+        //if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && speedTemp <= speed)
+        //{
+        //    speedTemp *= rampUpModifier;
+        //}
+        //else if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0) 
+        //{
+        //    speedTemp = speed;
+        //    speedTemp -= rampUpOffset; 
+        //}
+
+        if ((movementInput.z != 0 || movementInput.x != 0) && speedTemp <= speed)
         {
             speedTemp *= rampUpModifier;
         }
-        else if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0) 
+        else if (movementInput.z == 0 && movementInput.x == 0)
         {
             speedTemp = speed;
-            speedTemp -= rampUpOffset; 
+            speedTemp -= rampUpOffset;
         }
 
 
@@ -252,19 +296,19 @@ public class PlayerControllerAnimated : MonoBehaviour
         // When player is in the air
         if (!controller.isGrounded)
         {
-            airMovementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
+            airMovementDir = new Vector3(movementInput.x, movementInput.y, movementInput.z);
 
             startTime = Time.timeAsDouble;
-            if (startTime < tempTime)
-            {
-                if (Input.GetButton("Jump"))
-                {
-                    bodyController.SetBool("Jumping", true);
-                    movementDir.y = jumpForce;
-                    //set start time to temp time here
-                    tempTime = startTime;
-                }
-            }
+            //if (startTime < tempTime)
+            //{
+            //    //if (Input.GetButton("Jump"))
+            //    //{
+            //    //    bodyController.SetBool("Jumping", true);
+            //    //    movementDir.y = jumpForce;
+            //    //    //set start time to temp time here
+            //    //    tempTime = startTime;
+            //    //}
+            //}
 
             airMovementDir.x *= speedTemp;
             airMovementDir.z *= speedTemp;
@@ -277,33 +321,22 @@ public class PlayerControllerAnimated : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            movementDir = new Vector3(movementInput.x, 0.0f, movementInput.z);
+            movementDir = new Vector3(movementInput.x, movementInput.y, movementInput.z);
 
-            if (Input.GetButton("Jump"))
-            {
-                bodyController.SetBool("Jumping", true);
-                movementDir.y = jumpForce;
-            }
+            //if (Input.GetButton("Jump"))
+            //{
+            //    bodyController.SetBool("Jumping", true);
+            //    movementDir.y = jumpForce;
+            //}
 
             movementDir.x *= speedTemp;
             movementDir.z *= speedTemp;
             startTime = Time.timeAsDouble;
             tempTime = startTime + jumpGracePeriod;
         }
-        //Debug.Log("*****************************************");
-        //Debug.Log(movementDir);
+
         movementDir = transform.TransformDirection(movementDir);
         controller.Move(movementDir * Time.deltaTime);
-        //Debug.Log("1111111111111111111111111111");
-        //Debug.Log(movementDir);
-        //Debug.Log("2222222222222222222222222222");
-        //Debug.Log(controller.velocity.magnitude);
-        //Debug.Log("3333333333333333333333333333");
-        //Debug.Log(controller.velocity);
-
-        //float stepsOffset = 0.5f;
-        //float time = Time.deltaTime;
-        //if ((movementDir.x > 2.0f || movementDir.x < -2.0f || movementDir.z > 2.0f || movementDir.z < -2.0f) && )
 
 
         if (controller.velocity.magnitude > 2f && StepSource.isPlaying == false && controller.isGrounded)
@@ -335,21 +368,58 @@ public class PlayerControllerAnimated : MonoBehaviour
         movementDir.y -= gravity * Time.deltaTime;
         movementDir.x -= gravity * Time.deltaTime;
         movementDir.z -= gravity * Time.deltaTime;
+        //Debug.Log(movementDir.y + "?????????????");
         //Debug.Log(movementDir);
 
     }
 
+    private void OnMove(InputValue value)
+    {
+        movementInput = new Vector3(value.Get<Vector2>().x, movementInput.y, value.Get<Vector2>().y);
+        Debug.Log(value.Get<Vector2>());
+    }
+
     private void PlayerLook()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        //mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        //mouseInputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        xRotation -= mouseY;
+        xRotation -= mouseInputY;
         xRotation = Mathf.Clamp(xRotation, -83f, 90f);
 
 
         cameraObj.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        playerBody.Rotate(Vector3.up * mouseInputX);
+    }
+
+    private void OnLook(InputValue value)
+    {
+        mouseInputX = value.Get<Vector2>().x;
+        mouseInputY = value.Get<Vector2>().y;
+    }
+
+    private void OnJump()
+    {
+        Debug.Log("SPACE PRESSED");
+        if (!controller.isGrounded)
+        {
+
+            if (startTime < tempTime)
+            {
+                bodyController.SetBool("Jumping", true);
+                movementDir.y = jumpForce;
+                //set start time to temp time here
+                tempTime = startTime;
+            }
+        }
+        else 
+        {
+            bodyController.SetBool("Jumping", true);
+            Debug.Log("WHYYYYYYYYYYY");
+            movementDir.y = jumpForce;
+        }
+        movementDir = transform.TransformDirection(movementDir);
+        controller.Move(movementDir * Time.deltaTime);
     }
 
     private void PickUpObject(GameObject pickUpObj)
@@ -458,6 +528,17 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
     }
 
+    private void OnThrow()
+    {
+        if (heldObj != null)
+        {
+            if (canThrow == true)
+            {
+                ThrowObject();
+            }
+        }
+    }
+
     //The two functions below change the collision layer on the ragdoll and and disable collisions between layers.
     public void ToggleCollisions(bool toggle)
     {
@@ -541,4 +622,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
         StepSource.PlayOneShot(deathSounds[deathGruntInt]);
     }
+
+
+
 }

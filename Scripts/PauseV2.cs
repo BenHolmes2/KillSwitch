@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.InputSystem;
+
 
 
 public class PauseV2 : MonoBehaviour
@@ -33,6 +35,7 @@ public class PauseV2 : MonoBehaviour
     private bool paused = false;
     private int mouseInt;
     private int volumeInt;
+    public bool startPause = false;
 
     public AudioMixer mixer;
 
@@ -48,6 +51,9 @@ public class PauseV2 : MonoBehaviour
     public GameObject respawnBridge;
     public GameObject respawnCrissCross;
     public GameObject respawnCatapult;
+    public Button resumeButton;
+    public Button settingsBackButton;
+    public Button debugBackButton;
 
     void Start()
     {
@@ -74,19 +80,19 @@ public class PauseV2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !paused) 
+        if (startPause && !paused)
         {
             PauseGame();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+        else if (!startPause && paused)
         {
             ResumeGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && paused)
-        {
-            DebugMenu();
-        }
+        //if (Input.GetKeyDown(KeyCode.M) && paused)
+        //{
+        //    DebugMenu();
+        //}
         gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
         mixer.SetFloat("MasterVolume", volumeSlider.value);
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().jumpForce = jumpSlider.value;
@@ -105,8 +111,29 @@ public class PauseV2 : MonoBehaviour
         audioText.text = volumeInt.ToString();
     }
 
+    //private void OnPause()
+    //{
+    //    if (!paused)
+    //    {
+    //        PauseGame();
+    //    }
+    //    else
+    //    {
+    //        ResumeGame();
+    //    }
+    //}
+
+    //private void OnDebug()
+    //{
+    //    if (paused)
+    //    {
+    //        DebugMenu();
+    //    }
+    //}
+
     public void ResumeGame()
     {
+        startPause = false;
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -114,6 +141,9 @@ public class PauseV2 : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         paused = false;
         //Cursor.visible = false;
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().enabled = true;
+        gameController.spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+        Debug.Log(gameController.spawnedPlayer.GetComponent<PlayerInput>().currentActionMap);
     }
 
     public void PauseGame()
@@ -123,6 +153,10 @@ public class PauseV2 : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         paused = true;
         //Cursor.visible = true;
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().enabled = false;
+        gameController.spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap("Menu");
+        Debug.Log(gameController.spawnedPlayer.GetComponent<PlayerInput>().currentActionMap);
+        resumeButton.Select();
     }
 
     public void QuitGame()
@@ -140,6 +174,7 @@ public class PauseV2 : MonoBehaviour
         settingsMenu.SetActive(true);
         pauseMenu.SetActive(false);
         debugMenu.SetActive(false);
+        settingsBackButton.Select();
 
     }
 
@@ -148,6 +183,7 @@ public class PauseV2 : MonoBehaviour
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         debugMenu.SetActive(true);
+        debugBackButton.Select();
     }
 
     public void Back()
@@ -157,6 +193,7 @@ public class PauseV2 : MonoBehaviour
         debugMenu.SetActive(false);
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        resumeButton.Select();
     }
 
     public void SetInitial()
