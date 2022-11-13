@@ -504,20 +504,20 @@ MonoBehaviour:
   volumeTrigger: {fileID: 36913701083304408}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 3
   temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
+    jitterSpread: 1
+    sharpness: 0.1
+    stationaryBlending: 0.5
+    motionBlending: 0.5
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
+    fastMode: 1
+    keepAlpha: 1
   fog:
     enabled: 1
     excludeSkybox: 1
@@ -543,8 +543,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
