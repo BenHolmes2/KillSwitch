@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 36913701083304415}
   - component: {fileID: 36913701083304414}
   - component: {fileID: 36913701083304409}
+  - component: {fileID: 7542703228253983788}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -488,6 +489,66 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &7542703228253983788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36913701083304411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 36913701083304408}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 3
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &51049146927973675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1559,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4905549461177670559}
-  m_LocalRotation: {x: 0.000000026077027, y: 0.00000017881389, z: 0.0000000065192567, w: 1}
+  m_LocalRotation: {x: 0.000000026077027, y: 0.00000017881389, z: 0.0000000065192567,
+    w: 1}
   m_LocalPosition: {x: 0.0011999512, y: 0.08184, z: 0.016000977}
   m_LocalScale: {x: 0.016000003, y: 0.016000004, z: 0.015999995}
   m_ConstrainProportionsScale: 0
@@ -1796,6 +1858,9 @@ MonoBehaviour:
   pickUpRange: 5
   heldObj: {fileID: 0}
   controller: {fileID: 0}
+  menu: {fileID: 0}
+  menuScript: {fileID: 0}
+  menuInput: {fileID: 0}
   mouseSensitivity: 100
   playerBody: {fileID: 2827944536333073928}
   cameraObj: {fileID: 36913701083304411}
@@ -1820,7 +1885,8 @@ AudioSource:
   m_GameObject: {fileID: 5640033094760487906}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -985177103330646316, guid: 8f66882cba96ece47adb40f27043f0d0, type: 2}
+  OutputAudioMixerGroup: {fileID: -985177103330646316, guid: 8f66882cba96ece47adb40f27043f0d0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 5789656830e2d96438b014380c46a576, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
