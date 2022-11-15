@@ -60,6 +60,8 @@ public class PauseV2 : MonoBehaviour
     public Button settingsBackButton;
     public Button debugBackButton;
     public InputActionReference invertAction;
+    public PlayerInput playerInput;
+
 
 
     void Start()
@@ -104,6 +106,12 @@ public class PauseV2 : MonoBehaviour
 
     void Update()
     {
+        if (playerInput == null)
+        {
+            playerInput = gameController.spawnedPlayer.GetComponent<PlayerInput>();
+        }
+
+
         if (startPause && !paused)
         {
             PauseGame();
@@ -111,6 +119,17 @@ public class PauseV2 : MonoBehaviour
         else if (!startPause && paused)
         {
             ResumeGame();
+            Cursor.visible = false;
+
+        }
+
+        if (playerInput.currentControlScheme == "Controller" && paused)
+        {
+            Cursor.visible = false;
+        }
+        else if (paused)
+        {
+            Cursor.visible = true;
         }
 
         //if (Input.GetKeyDown(KeyCode.M) && paused)

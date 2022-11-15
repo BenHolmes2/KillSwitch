@@ -32,6 +32,8 @@ public class MainMenuV2 : MonoBehaviour
     public Button settingsBackButton;
     public Button creditsBackButton;
     public InputActionReference invertAction;
+    public PlayerInput playerInput;
+
 
     // Start is called before the first frame update
 
@@ -95,6 +97,15 @@ public class MainMenuV2 : MonoBehaviour
             mainMenu.SetActive(true);
             settingsMenu.SetActive(false);
             CreditsMenu.SetActive(false);
+        }
+
+        if (playerInput.currentControlScheme == "Controller")
+        {
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
         }
     }
     public void Play()

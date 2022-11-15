@@ -406,8 +406,8 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     private void OnLook(InputValue value)
     {
-        mouseInputX = value.Get<Vector2>().x;
-        mouseInputY = value.Get<Vector2>().y;
+        mouseInputX = value.Get<Vector2>().x * mouseSensitivity * Time.deltaTime;
+        mouseInputY = value.Get<Vector2>().y * mouseSensitivity * Time.deltaTime;
     }
 
     private void OnJump()
