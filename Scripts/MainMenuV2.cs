@@ -5,11 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
+
 
 public class MainMenuV2 : MonoBehaviour
 {
     public Slider volumeSlider;
     public Slider mouseSlider;
+    public Slider FOVSlider;
+    public Toggle invertToggle;
     public GameObject mainMenu;
     public GameObject settingsMenu;
     public GameObject CreditsMenu;
@@ -18,13 +22,16 @@ public class MainMenuV2 : MonoBehaviour
     public AudioMixer mixer;
     private int mouseInt;
     private int volumeInt;
+    private int FOVInt;
+    private int inverted;
     public TMP_Text sensitivityText;
     public TMP_Text audioText;
+    public TMP_Text FOVText;
     public Animator creditsAnimator;
     public Button playButton;
     public Button settingsBackButton;
     public Button creditsBackButton;
-
+    public InputActionReference invertAction;
 
     // Start is called before the first frame update
 
@@ -35,6 +42,7 @@ public class MainMenuV2 : MonoBehaviour
         CreditsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
         playButton.Select();
+
 
 
         if (PlayerPrefs.GetFloat("Volume") != 0)
@@ -51,17 +59,36 @@ public class MainMenuV2 : MonoBehaviour
             sensitivityText.text = mouseInt.ToString();
 
         }
+        if (PlayerPrefs.GetFloat("FOV") != 0)
+        {
+            FOVSlider.value = PlayerPrefs.GetFloat("FOV");
+            FOVInt = (int)FOVSlider.value;
+            FOVText.text = FOVInt.ToString();
+        }
+        //if (PlayerPrefs.GetInt("Inverted") == 1)
+        //{
+        //    invertToggle.isOn = true;  
+        //}
+        //else
+        //{
+        //    invertToggle.isOn = false;
+        //}
     }
 
     private void Update()
     {
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("FOV", FOVSlider.value);
+        PlayerPrefs.SetInt("Inverted", inverted);
+
         mixer.SetFloat("MasterVolume", volumeSlider.value);
         volumeInt = (int)volumeSlider.value;
         audioText.text = volumeInt.ToString();
         mouseInt = (int)mouseSlider.value;
         sensitivityText.text = mouseInt.ToString();
+        FOVInt = (int)FOVSlider.value;
+        FOVText.text = FOVInt.ToString();
 
         if (creditsAnimator.GetBool("isFinished") == true)
         {
@@ -104,6 +131,20 @@ public class MainMenuV2 : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void SetInverted()
+    {
+        if (!invertToggle.isOn)
+        {
+            invertAction.action.ApplyBindingOverride(new InputBinding { overrideProcessors = "invertVector2(invertX=false,invertY=false)" });
+            inverted = 0;
+        }
+        else
+        {
+            invertAction.action.ApplyBindingOverride(new InputBinding { overrideProcessors = "invertVector2(invertX=false,invertY=true)" });
+            inverted = 1;
+        }
     }
 
 }

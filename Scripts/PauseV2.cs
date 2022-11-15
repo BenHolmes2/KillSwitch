@@ -17,10 +17,13 @@ public class PauseV2 : MonoBehaviour
 
     public TMP_Text sensitivityText;
     public TMP_Text audioText;
+    public TMP_Text FOVText;
 
     //public GameObject sliderObj;
     public Slider volumeSlider;
     public Slider mouseSlider;
+    public Slider FOVSlider;
+    public Toggle invertToggle;
     //public Slider jumpSlider;
     //public Slider playerSlider;
     //public Slider gravitySlider;
@@ -35,6 +38,8 @@ public class PauseV2 : MonoBehaviour
     private bool paused = false;
     private int mouseInt;
     private int volumeInt;
+    private int FOVInt;
+    private int inverted;
     public bool startPause = false;
 
     public AudioMixer mixer;
@@ -54,6 +59,8 @@ public class PauseV2 : MonoBehaviour
     public Button resumeButton;
     public Button settingsBackButton;
     public Button debugBackButton;
+    public InputActionReference invertAction;
+
 
     void Start()
     {
@@ -76,6 +83,23 @@ public class PauseV2 : MonoBehaviour
             mouseInt = (int)mouseSlider.value;
             sensitivityText.text = mouseInt.ToString();
         }
+        if (PlayerPrefs.GetFloat("FOV") != 0)
+        {
+            FOVSlider.value = PlayerPrefs.GetFloat("FOV");
+            FOVInt = (int)FOVSlider.value;
+            FOVText.text = FOVInt.ToString();
+        }
+        if (PlayerPrefs.GetInt("Inverted") == 1)
+        {
+            invertToggle.isOn = true;
+            invertAction.action.ApplyBindingOverride(new InputBinding { overrideProcessors = "invertVector2(invertX=false,invertY=true)" });
+
+        }
+        else
+        {
+            invertToggle.isOn = false;
+            invertAction.action.ApplyBindingOverride(new InputBinding { overrideProcessors = "invertVector2(invertX=false,invertY=false)" });
+        }
     }
 
     void Update()
@@ -93,8 +117,7 @@ public class PauseV2 : MonoBehaviour
         //{
         //    DebugMenu();
         //}
-        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
-        mixer.SetFloat("MasterVolume", volumeSlider.value);
+
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().jumpForce = jumpSlider.value;
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().speed = playerSlider.value;
         //gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().gravity = gravitySlider.value;
@@ -109,6 +132,8 @@ public class PauseV2 : MonoBehaviour
         sensitivityText.text = mouseInt.ToString();
         volumeInt = (int)volumeSlider.value;
         audioText.text = volumeInt.ToString();
+        FOVInt = (int)FOVSlider.value;
+        FOVText.text = FOVInt.ToString();
     }
 
     //private void OnPause()
@@ -191,8 +216,12 @@ public class PauseV2 : MonoBehaviour
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);
         debugMenu.SetActive(false);
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
+        mixer.SetFloat("MasterVolume", volumeSlider.value);
+        gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().cameraObj.GetComponent<Camera>().fieldOfView = FOVSlider.value;
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.SetInt("Inverted", inverted);
         resumeButton.Select();
     }
 
@@ -271,5 +300,19 @@ public class PauseV2 : MonoBehaviour
     public void ResetRespawn()
     {
         gameController.hitGround = true;
+    }
+
+    public void SetInverted()
+    {
+        if (!invertToggle.isOn)
+        {
+            invertAction.action.ApplyBindingOverride(new InputBinding { overrideProcessors = "invertVector2(invertX=false,invertY=false)" });
+            inverted = 0;
+        }
+        else
+        {
+            invertAction.action.ApplyBindingOverride(new InputBinding { overrideProcessors = "invertVector2(invertX=false,invertY=true)" });
+            inverted = 1;
+        }
     }
 }
