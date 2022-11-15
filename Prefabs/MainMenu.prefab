@@ -1883,7 +1883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8297007830477798367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3243,7 +3243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409160874383700249, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
@@ -3273,6 +3273,30 @@ PrefabInstance:
       propertyPath: m_IsOn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 7643721848205493968}
+    - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.92941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 2548554110392312608}
     - target: {fileID: 1203406418, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -3387,11 +3411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1410364958525216224, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1410364958525216224, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3742689264777756811, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_Name
@@ -3399,60 +3423,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3742689264777756811, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570685096967092521, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4570685096967092521, guid: dac4a5289b17610479cc319288096c95, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4570685096967092521, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4570685096967092521, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4570685098666896414, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4570685098666896414, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4959595640602689325, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.71428573
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4959595640602689325, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4959595640602689325, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.71428573
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4961769757530201867, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4961769757530201867, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4961769757530201867, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5338621845033530678, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.71428573
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5338621845033530678, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799137532006266017, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799137532006266017, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 8297007830602306003}
+    - target: {fileID: 5799137532006266017, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 5497401221204820404}
     - target: {fileID: 5799137532006266017, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
