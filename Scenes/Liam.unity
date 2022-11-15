@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &79366959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1116903608286391958, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +401,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 572668373901866433, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 593800734607297577, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.04
+      objectReference: {fileID: 0}
     - target: {fileID: 2429428479357256159, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -444,8 +457,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'All_Rooms '
       objectReference: {fileID: 0}
+    - target: {fileID: 3945458857999856960, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: trailsFX
+      value: 
+      objectReference: {fileID: 1391970802}
+    - target: {fileID: 7215077759721401438, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: trailsFX
+      value: 
+      objectReference: {fileID: 2124433054}
+    - target: {fileID: 7586567110685369543, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+      propertyPath: trailsFX
+      value: 
+      objectReference: {fileID: 79366959}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+--- !u!1 &1391970802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8557526151248447308, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1978528433
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +741,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2124433054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1116903609600978412, guid: f28fd3ad9aacc9646a41ed51248da110, type: 3}
+  m_PrefabInstance: {fileID: 929331694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136203247
 GameObject:
   m_ObjectHideFlags: 0
