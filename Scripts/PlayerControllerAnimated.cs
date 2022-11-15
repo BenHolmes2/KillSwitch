@@ -77,6 +77,8 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     private float mouseInputX;
     private float mouseInputY;
+    private PlayerInput playerInput;
+
 
 
     void Start()
@@ -91,6 +93,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         menu = menu.gameObject.transform.Find("EventSystem").gameObject;
         menuInput = menu.GetComponent<InputSystemUIInputModule>();
         GetComponent<PlayerInput>().uiInputModule = menuInput;
+        playerInput = gameObject.GetComponent<PlayerInput>();
 
 
         StepSource = this.gameObject.GetComponent<AudioSource>();
@@ -124,11 +127,20 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             //Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
 
-            if (cursorHit.transform.gameObject.CompareTag("canPickUpObject") || cursorHit.transform.gameObject.CompareTag("canPickUpDeath") || cursorHit.transform.gameObject.CompareTag("canPickUp"))
+            if ((cursorHit.transform.gameObject.CompareTag("canPickUpObject") || cursorHit.transform.gameObject.CompareTag("canPickUpDeath") || cursorHit.transform.gameObject.CompareTag("canPickUp")) && heldObj == null)
             {
                 //Debug.Log(cursorHit.transform.gameObject.name);
                 gameController.reticleCanvas.SetActive(false);
                 gameController.pickUpCanvas.SetActive(true);
+
+                if (playerInput.currentControlScheme == "Controller")
+                {
+                    gameController.pickUpText.text = "X";
+                }
+                else
+                {
+                    gameController.pickUpText.text = "E";
+                }
             }
             else
             {

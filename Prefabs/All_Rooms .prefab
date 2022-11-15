@@ -10547,9 +10547,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7762637748100593801, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
+      propertyPath: pickUpText
+      value: 
+      objectReference: {fileID: 7628164739190136961}
+    - target: {fileID: 7762637748100593801, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: pickUpCanvas
       value: 
-      objectReference: {fileID: 4824156043645303500}
+      objectReference: {fileID: 3882729118727043968}
     - target: {fileID: 7762637748100593801, guid: 2ccc410f9b53a6b4186ae53fa2c66b14, type: 3}
       propertyPath: respawnPoint
       value: 
@@ -14529,11 +14533,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7925965852850138236, guid: c7630772d24dfc8458f5d2f0dba27010, type: 3}
   m_PrefabInstance: {fileID: 8735473219164005509}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4824156043645303500 stripped
+--- !u!1 &3882729118727043968 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4307828010909523529, guid: c7630772d24dfc8458f5d2f0dba27010, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5537346251617410821, guid: c7630772d24dfc8458f5d2f0dba27010, type: 3}
   m_PrefabInstance: {fileID: 8735473219164005509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7628164739190136961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1217676100044571652, guid: c7630772d24dfc8458f5d2f0dba27010, type: 3}
+  m_PrefabInstance: {fileID: 8735473219164005509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8903148401776515859
 PrefabInstance:
   m_ObjectHideFlags: 0

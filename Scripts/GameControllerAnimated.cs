@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
+
 
 
 
@@ -38,6 +40,7 @@ public class GameControllerAnimated : MonoBehaviour
     public GameObject blackOutSquare;
     private Image blackOutSquareImage;
     public GameObject reticleCanvas;
+    public TMP_Text pickUpText;
     public GameObject pickUpCanvas;
 
     public bool startRespawn = false;
