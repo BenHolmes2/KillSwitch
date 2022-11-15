@@ -23,6 +23,7 @@ public class FinalRoom : MonoBehaviour
     public bool addExtraBodies = false;
     public TMP_Text counterText;
     public Animator Credits;
+    public GameObject reticule;
 
 
 
@@ -82,6 +83,7 @@ public class FinalRoom : MonoBehaviour
             if (blackOutSquare.GetComponent<Image>().color.a >= 1)
             {
                 Credits.SetBool("PlayCredits", true);
+                reticule.SetActive(false);
                 //SceneManager.LoadScene("MainMenuV2");
 
             }
