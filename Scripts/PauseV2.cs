@@ -78,12 +78,14 @@ public class PauseV2 : MonoBehaviour
             mixer.SetFloat("MasterVolume", volumeSlider.value);
             volumeInt = (int)volumeSlider.value;
             audioText.text = volumeInt.ToString();
+            mixer.SetFloat("MasterVolume", volumeSlider.value);
         }
         if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
         {
             mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
             mouseInt = (int)mouseSlider.value;
             sensitivityText.text = mouseInt.ToString();
+            gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
         }
         if (PlayerPrefs.GetFloat("FOV") != 0)
         {
@@ -147,6 +149,7 @@ public class PauseV2 : MonoBehaviour
         //playerSpeed.text = playerSlider.value.ToString();
         //gravity.text = gravitySlider.value.ToString();
         //respawnSpeed.text = respawnSlider.value.ToString();
+
         mouseInt = (int)mouseSlider.value;
         sensitivityText.text = mouseInt.ToString();
         volumeInt = (int)volumeSlider.value;
@@ -334,4 +337,6 @@ public class PauseV2 : MonoBehaviour
             inverted = 1;
         }
     }
+
+
 }

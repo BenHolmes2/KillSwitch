@@ -5031,6 +5031,7 @@ MonoBehaviour:
   settingsBackButton: {fileID: 8004296479071448887}
   debugBackButton: {fileID: 986730002}
   invertAction: {fileID: -3633728455935041318, guid: 9734d5b806fd3a34a91ccb3bbfdb84a0, type: 3}
+  playerInput: {fileID: 0}
 --- !u!1 &3426171180065392892
 GameObject:
   m_ObjectHideFlags: 0
@@ -6385,6 +6386,10 @@ PrefabInstance:
     - target: {fileID: 4570685096967092521, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570685097214449205, guid: dac4a5289b17610479cc319288096c95, type: 3}
+      propertyPath: m_MaxValue
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4570685098666896414, guid: dac4a5289b17610479cc319288096c95, type: 3}
       propertyPath: m_AnchorMax.x
