@@ -85,7 +85,6 @@ public class PauseV2 : MonoBehaviour
             mouseSlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
             mouseInt = (int)mouseSlider.value;
             sensitivityText.text = mouseInt.ToString();
-            gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
         }
         if (PlayerPrefs.GetFloat("FOV") != 0)
         {
@@ -111,6 +110,7 @@ public class PauseV2 : MonoBehaviour
         if (playerInput == null)
         {
             playerInput = gameController.spawnedPlayer.GetComponent<PlayerInput>();
+            gameController.spawnedPlayer.GetComponent<PlayerControllerAnimated>().mouseSensitivity = mouseSlider.value;
         }
 
 
@@ -337,6 +337,4 @@ public class PauseV2 : MonoBehaviour
             inverted = 1;
         }
     }
-
-
 }
