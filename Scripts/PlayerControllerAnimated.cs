@@ -624,5 +624,8 @@ public class PlayerControllerAnimated : MonoBehaviour
     }
 
 
-
+    private void OnDebug()
+    {
+        menuScript.DebugMenu();
+    }
 }
