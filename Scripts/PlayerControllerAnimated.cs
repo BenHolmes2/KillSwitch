@@ -110,6 +110,7 @@ public class PlayerControllerAnimated : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //Debug.Log(controller.velocity);
         //Debug.Log(controller.isGrounded);
 
