@@ -78,6 +78,7 @@ public class PlayerControllerAnimated : MonoBehaviour
     private float mouseInputX;
     private float mouseInputY;
     private PlayerInput playerInput;
+    private bool finishedDropping = true;
 
 
 
@@ -118,12 +119,12 @@ public class PlayerControllerAnimated : MonoBehaviour
         PlayerMove();
 
         //Hoping this will fix weird edge case where if the ragdoll is destoryed while being held, the next time the player respawns they fall through the floor
-        if (heldObj == null)
+        if (heldObj == null && finishedDropping)
         {
             ToggleCollisions(false);
         }
 
-        
+
         if (Physics.Raycast(cameraObj.transform.position, cameraObj.transform.TransformDirection(Vector3.forward), out cursorHit, pickUpRange))
         {
             //Debug.DrawLine(cameraObj.transform.position, cursorHit.point, Color.white, 5f);
@@ -463,6 +464,7 @@ public class PlayerControllerAnimated : MonoBehaviour
 
                 StartCoroutine(ToggleCollisionsDrop(false));
                 StartCoroutine(ToggleLayerDrop(0));
+                finishedDropping = false;
 
 
                 heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
@@ -512,6 +514,7 @@ public class PlayerControllerAnimated : MonoBehaviour
             heldObj.GetComponent<RagdollScriptAnimated>().TurnOnRagdoll();
             StartCoroutine(ToggleCollisionsDrop(false));
             StartCoroutine(ToggleLayerDrop(0));
+            finishedDropping = false;
             //ToggleLayer(0);
             //ToggleCollisions(false);
             heldObjRb.transform.rotation = cameraObj.transform.rotation;
@@ -621,6 +624,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         Physics.IgnoreLayerCollision(6, 0, toggle);
         yield return new WaitForSeconds(0.5f);
         Physics.IgnoreLayerCollision(6, 3, toggle);
+        finishedDropping = true;
     }
 
     public void PlayDeathSound()
