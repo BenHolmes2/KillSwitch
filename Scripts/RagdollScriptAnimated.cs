@@ -163,14 +163,14 @@ public class RagdollScriptAnimated : MonoBehaviour
         if (thisRigidBody.velocity.magnitude == 0 && !gameController.isRespawn && turningOff == false)
         {
             TurnOffRagdoll();
-            destroyTime = Time.timeAsDouble + 240;
+            destroyTime = Time.timeAsDouble + 600;
         }
 
         if (frames > 240)
         {
             TurnOffRagdoll();
             //Invoke("TurnOffRagdoll", turnOffDelay);
-            destroyTime = Time.timeAsDouble + 240;
+            destroyTime = Time.timeAsDouble + 600;
             turningOff = true;
             frames = 0;
         }
