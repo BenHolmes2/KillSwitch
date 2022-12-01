@@ -63,6 +63,7 @@ public class Fan : MonoBehaviour
         //The if statement below provides force for the player when they are in the fan collider
         if (other.gameObject.CompareTag("Player"))
         {
+            Physics.IgnoreLayerCollision(6, 3, true);
             counterFPS++; //this is a counter that checks how many frames the player has been in the fan collider 
             if (!gameController.isRespawn) //this checks to see if the player is respawning
             {
@@ -97,6 +98,7 @@ public class Fan : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Physics.IgnoreLayerCollision(6, 3, false);
             //this currently doesnt work very well when the fan is trying to push the player upwards
             if (!gameController.isRespawn)
             {

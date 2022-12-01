@@ -228,6 +228,7 @@ public class PauseV2 : MonoBehaviour
 
     public void MainMenu()
     {
+        ResumeGame();
         SceneManager.LoadScene("MainMenuV2"); // add the reference to the main scene her when it is built
     }
 
