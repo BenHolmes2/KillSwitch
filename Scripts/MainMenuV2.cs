@@ -33,6 +33,8 @@ public class MainMenuV2 : MonoBehaviour
     public Button creditsBackButton;
     public InputActionReference invertAction;
     public PlayerInput playerInput;
+    public GameObject ControllerControlsImage;
+    public GameObject MKControlsImage;
 
 
     // Start is called before the first frame update
@@ -79,6 +81,18 @@ public class MainMenuV2 : MonoBehaviour
 
     private void Update()
     {
+        if (playerInput.currentControlScheme == "Controller")
+        {
+            ControllerControlsImage.SetActive(true);
+            MKControlsImage.SetActive(false);
+        }
+        else
+        {
+            ControllerControlsImage.SetActive(false);
+            MKControlsImage.SetActive(true);
+        }
+
+
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSlider.value);
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
         PlayerPrefs.SetFloat("FOV", FOVSlider.value);

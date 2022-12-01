@@ -61,6 +61,8 @@ public class PauseV2 : MonoBehaviour
     public Button debugBackButton;
     public InputActionReference invertAction;
     public PlayerInput playerInput;
+    public GameObject ControllerControlsImage;
+    public GameObject MKControlsImage;
 
 
 
@@ -107,6 +109,8 @@ public class PauseV2 : MonoBehaviour
 
     void Update()
     {
+
+
         if (playerInput == null)
         {
             playerInput = gameController.spawnedPlayer.GetComponent<PlayerInput>();
@@ -132,6 +136,17 @@ public class PauseV2 : MonoBehaviour
         else if (paused)
         {
             Cursor.visible = true;
+        }
+
+        if (playerInput.currentControlScheme == "Controller")
+        {
+            ControllerControlsImage.SetActive(true);
+            MKControlsImage.SetActive(false);
+        }
+        else
+        {
+            ControllerControlsImage.SetActive(false);
+            MKControlsImage.SetActive(true);
         }
 
         //if (Input.GetKeyDown(KeyCode.M) && paused)
