@@ -159,6 +159,7 @@ public class GameControllerAnimated : MonoBehaviour
                         bodyMoved = false;
                         hitGround = false;
                         isRespawn = false;
+                        startRespawn = false;
                         SetLayer(currentBody);
                         Physics.IgnoreLayerCollision(6, 3, false);
                     }
@@ -220,7 +221,6 @@ public class GameControllerAnimated : MonoBehaviour
 
     public void respawnPlayer()
     {
-        startRespawn = false;
         isRespawn = true;
         deadBody.transform.position = spawnedPlayer.transform.position;
         deadBody.transform.rotation = spawnedPlayer.transform.rotation;
