@@ -45,7 +45,8 @@ public class GearBoxController : MonoBehaviour
         {
             gear1Anim.SetBool("On", true);
             gear2Anim.SetBool("On", true);
-            bridgeAnim.SetBool("On", true);
+            //bridgeAnim.SetBool("On", true);
+            bridgeAnim.speed = 0.5f;
             deathCollider.enabled = true;
             destroyTime = 0;
             currentTime = 0;
@@ -58,7 +59,8 @@ public class GearBoxController : MonoBehaviour
         {
             gear1Anim.SetBool("On", false);
             gear2Anim.SetBool("On", false);
-            bridgeAnim.SetBool("On", false);
+            //bridgeAnim.SetBool("On", false);
+            bridgeAnim.speed = 0;
             deathCollider.enabled = false;
             //spinCollider.enabled = false;
         }
