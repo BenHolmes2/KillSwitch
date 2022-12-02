@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearBoxController : MonoBehaviour
+public class GearBoxControllerFanTube : MonoBehaviour
 {
     private Animator bridgeAnim;
     private Animator gear1Anim;
@@ -34,18 +34,19 @@ public class GearBoxController : MonoBehaviour
 
     private void Start()
     {
-        deathCollider =  deathColliderObj.GetComponent<BoxCollider>();
+        deathCollider = deathColliderObj.GetComponent<BoxCollider>();
         //spinCollider = spinColliderObj.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (counter == 0 )
+        if (counter == 0)
         {
             gear1Anim.SetBool("On", true);
             gear2Anim.SetBool("On", true);
-            bridgeAnim.SetBool("On", true);
+            //bridgeAnim.SetBool("On", true);
+            bridgeAnim.speed = 0.5f;
             deathCollider.enabled = true;
             destroyTime = 0;
             currentTime = 0;
@@ -58,7 +59,8 @@ public class GearBoxController : MonoBehaviour
         {
             gear1Anim.SetBool("On", false);
             gear2Anim.SetBool("On", false);
-            bridgeAnim.SetBool("On", false);
+            //bridgeAnim.SetBool("On", false);
+            bridgeAnim.speed = 0;
             deathCollider.enabled = false;
             //spinCollider.enabled = false;
         }

@@ -56,6 +56,8 @@ public class PauseV2 : MonoBehaviour
     public GameObject respawnBridge;
     public GameObject respawnCrissCross;
     public GameObject respawnCatapult;
+    public GameObject respawnSquisher;
+    public GameObject respawnFanTube;
     public Button resumeButton;
     public Button settingsBackButton;
     public Button debugBackButton;
@@ -333,6 +335,18 @@ public class PauseV2 : MonoBehaviour
     {
         gameController.respawnPoint.transform.position = respawnCatapult.transform.position;
         gameController.respawnPoint.transform.rotation = respawnCatapult.transform.rotation;
+    }
+
+    public void SetSquisher()
+    {
+        gameController.respawnPoint.transform.position = respawnSquisher.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnSquisher.transform.rotation;
+    }
+
+    public void SetFanTube()
+    {
+        gameController.respawnPoint.transform.position = respawnFanTube.transform.position;
+        gameController.respawnPoint.transform.rotation = respawnFanTube.transform.rotation;
     }
 
     public void ResetRespawn()
