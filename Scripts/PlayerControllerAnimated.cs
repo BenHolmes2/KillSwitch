@@ -352,7 +352,6 @@ public class PlayerControllerAnimated : MonoBehaviour
 
         movementDir = transform.TransformDirection(movementDir);
         controller.Move(movementDir * Time.deltaTime);
-        noDoubleJump = true;
 
 
         if (controller.velocity.magnitude > 2f && StepSource.isPlaying == false && controller.isGrounded)
@@ -428,18 +427,14 @@ public class PlayerControllerAnimated : MonoBehaviour
                 tempTime = startTime;
             }
         }
-        else
+        else 
         {
             bodyController.SetBool("Jumping", true);
             Debug.Log("WHYYYYYYYYYYY");
             movementDir.y = jumpForce;
         }
-        if (noDoubleJump)
-        {
-            movementDir = transform.TransformDirection(movementDir);
-            controller.Move(movementDir * Time.deltaTime);
-            noDoubleJump = false;
-        }
+        movementDir = transform.TransformDirection(movementDir);
+        controller.Move(movementDir * Time.deltaTime);
     }
 
     private void PickUpObject(GameObject pickUpObj)
