@@ -78,7 +78,6 @@ public class GameControllerAnimated : MonoBehaviour
 
 
         hitGround = false;
-        respawnAllowed = true;
         //objectColor = blackOutSquare.GetComponent<Image>().color;
         objectColor = new Color(0, 0, 0, 0);
         bodyCount = 0;

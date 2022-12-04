@@ -643,7 +643,13 @@ public class PlayerControllerAnimated : MonoBehaviour
         {
             if (deathGruntInt == 3)
             {
-                deathGruntInt = Random.Range(0, 4);
+                if (deathGruntInt == 3)
+                {
+                    if (deathGruntInt == 3)
+                    {
+                        deathGruntInt = Random.Range(0, 4);
+                    }
+                }
             }
         }
         StepSource.PlayOneShot(deathSounds[deathGruntInt]);
