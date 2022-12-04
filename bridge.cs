@@ -26,7 +26,7 @@ public class bridge : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 other.gameObject.GetComponent<CharacterController>().Move(new Vector3(1f, 0f, 0f));
-                Debug.Log("Bridge moved ya");
+                //Debug.Log("Bridge moved ya");
             }
         }
     }

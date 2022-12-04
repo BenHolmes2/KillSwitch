@@ -7239,6 +7239,7 @@ MonoBehaviour:
   FOVSlider: {fileID: 2763316594908468397}
   invertToggle: {fileID: 4570685097303802798}
   gameController: {fileID: 2505487784631155653}
+  paused: 0
   startPause: 0
   mixer: {fileID: 24100000, guid: 8f66882cba96ece47adb40f27043f0d0, type: 2}
   respawnInitial: {fileID: 0}
@@ -7253,6 +7254,8 @@ MonoBehaviour:
   respawnBridge: {fileID: 0}
   respawnCrissCross: {fileID: 0}
   respawnCatapult: {fileID: 0}
+  respawnSquisher: {fileID: 0}
+  respawnFanTube: {fileID: 0}
   resumeButton: {fileID: 5539353445771667141}
   settingsBackButton: {fileID: 8004296479568294237}
   debugBackButton: {fileID: 1488261240}
@@ -10431,6 +10434,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7394414184844633470}
     - target: {fileID: 2475521838024421205, guid: b3bc8862c6b45504794916ecae00c24f, type: 3}
+      propertyPath: creditsCanvas
+      value: 
+      objectReference: {fileID: 6553144705915919708}
+    - target: {fileID: 2475521838024421205, guid: b3bc8862c6b45504794916ecae00c24f, type: 3}
       propertyPath: addExtraBodies
       value: 1
       objectReference: {fileID: 0}
@@ -11489,9 +11496,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1967257966, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1409160873256397372, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2628
+      value: -1750
       objectReference: {fileID: 0}
     - target: {fileID: 1409160874383700229, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
       propertyPath: m_Pivot.x
@@ -11581,6 +11592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1409160874383700249, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1409160874383700250, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -11595,6 +11610,11 @@ Animator:
 --- !u!224 &6553144705915919680 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1409160874383700229, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
+  m_PrefabInstance: {fileID: 5295998118374763589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6553144705915919708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1409160874383700249, guid: 8185dd6fddc1ea742974ea5e8d887f0c, type: 3}
   m_PrefabInstance: {fileID: 5295998118374763589}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5295998118687186791

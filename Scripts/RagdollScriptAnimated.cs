@@ -38,6 +38,7 @@ public class RagdollScriptAnimated : MonoBehaviour
     private Rigidbody headRB;
     private RagdollScriptAnimated headScript;
     private GameObject temp;
+    private GameObject root;
     private GameControllerAnimated gameController;
     private GameObject player;
     private GameObject characterMesh;
@@ -67,6 +68,7 @@ public class RagdollScriptAnimated : MonoBehaviour
         ragdoll = gameObject;
         currObj = ragdoll;
         currObj = currObj.transform.root.gameObject;
+        root = currObj;
         currObj = currObj.transform.Find("parent").gameObject;
         hips = currObj.transform.Find("mixamorig:Hips1").gameObject;
         leftUpLeg = hips.transform.Find("mixamorig:LeftUpLeg").gameObject;
@@ -275,6 +277,13 @@ public class RagdollScriptAnimated : MonoBehaviour
                     gameController.hitGround = true;
                 }
             }
+        }
+
+
+        if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox"))
+        {
+            Debug.Log(gameObject.transform.root.root.gameObject);
+            root.transform.SetParent(null, true);
         }
     }
 

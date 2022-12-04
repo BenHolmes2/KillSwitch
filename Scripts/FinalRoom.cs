@@ -24,6 +24,7 @@ public class FinalRoom : MonoBehaviour
     public TMP_Text counterText;
     public Animator Credits;
     public GameObject reticule;
+    public GameObject creditsCanvas;
 
 
 
@@ -82,6 +83,7 @@ public class FinalRoom : MonoBehaviour
             }
             if (blackOutSquare.GetComponent<Image>().color.a >= 1)
             {
+                creditsCanvas.SetActive(true);
                 Credits.SetBool("PlayCredits", true);
                 reticule.SetActive(false);
                 //SceneManager.LoadScene("MainMenuV2");

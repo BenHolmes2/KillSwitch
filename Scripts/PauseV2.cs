@@ -35,7 +35,7 @@ public class PauseV2 : MonoBehaviour
     //public Text playerSpeed;
     //public Text gravity;
     //public Text respawnSpeed;
-    private bool paused = false;
+    public bool paused = false;
     private int mouseInt;
     private int volumeInt;
     private int FOVInt;

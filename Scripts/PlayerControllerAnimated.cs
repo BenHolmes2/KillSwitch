@@ -196,6 +196,14 @@ public class PlayerControllerAnimated : MonoBehaviour
         }
     }
 
+    private void OnBack()
+    {
+        if (menuScript.paused)
+        {
+            menuScript.Back();
+        }
+    }
+
     private void OnPickUp()
     {
 
@@ -391,7 +399,7 @@ public class PlayerControllerAnimated : MonoBehaviour
     private void OnMove(InputValue value)
     {
         movementInput = new Vector3(value.Get<Vector2>().x, movementInput.y, value.Get<Vector2>().y);
-        Debug.Log(value.Get<Vector2>());
+        //Debug.Log(value.Get<Vector2>());
     }
 
     private void PlayerLook()
@@ -415,7 +423,7 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     private void OnJump()
     {
-        Debug.Log("SPACE PRESSED");
+        //Debug.Log("SPACE PRESSED");
         if (!controller.isGrounded)
         {
 
@@ -430,7 +438,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         else 
         {
             bodyController.SetBool("Jumping", true);
-            Debug.Log("WHYYYYYYYYYYY");
+            //Debug.Log("WHYYYYYYYYYYY");
             movementDir.y = jumpForce;
         }
         movementDir = transform.TransformDirection(movementDir);

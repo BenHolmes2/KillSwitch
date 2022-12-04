@@ -145,12 +145,18 @@ public class MainMenuV2 : MonoBehaviour
         settingsBackButton.Select();
     }
 
+    private void OnBack()
+    {
+        Back();
+    }
+
     public void Back()
     {
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
         playButton.Select();
+        
     }
 
     public void Quit()
