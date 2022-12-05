@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5905724760975190561}
   m_Layer: 0
   m_Name: Shredders
-  m_TagString: Untagged
+  m_TagString: Shredders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 135
+  m_Radius: 150.97
   m_Height: 1108.85
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -61,7 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf168733884a6034caa53052d53f416b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
   bloodEffect: {fileID: 2110623585086633153, guid: 94f0bc39e9afa46efa81609d8974359c, type: 3}
 --- !u!1001 &2409187405135613288
 PrefabInstance:
@@ -141,6 +140,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 216992269974108526, guid: c0c7f6fcd7e17ca4daa459cb9b9db92d, type: 3}
   m_PrefabInstance: {fileID: 2409187405135613288}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &8639655543399232461
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480866018276930566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 9535ddb342248cd4a8afd6b0db474477, type: 3}
 --- !u!95 &5905724761136868560
 Animator:
   serializedVersion: 4
@@ -249,6 +262,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2661303171499331761, guid: c70a94bf196832049abf382b4bf5f184, type: 3}
   m_PrefabInstance: {fileID: 6323799820713072193}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &825756459496208489
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299148181902362352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: fd6206a2a40a124448daaf29bedc79ef, type: 3}
 --- !u!95 &5905724760351288236
 Animator:
   serializedVersion: 4
