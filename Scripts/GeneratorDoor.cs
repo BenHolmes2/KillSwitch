@@ -141,7 +141,11 @@ public class GeneratorDoor : MonoBehaviour
 
     }
 
+    //need to find a way to make sure the generator knows when its empty
     //private void OnCollisionEmpty(Collision collision)
+    //{
+    //    counter = 0;
+    //}
 
     private void OnTriggerExit(Collider collision)
     {
@@ -161,6 +165,7 @@ public class GeneratorDoor : MonoBehaviour
             }
             elecCounter = 0;
         }
+
 
     }
 }

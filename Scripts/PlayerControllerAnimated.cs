@@ -77,7 +77,7 @@ public class PlayerControllerAnimated : MonoBehaviour
 
     private float mouseInputX;
     private float mouseInputY;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private bool finishedDropping = true;
     private bool noDoubleJump = true;
 
@@ -408,7 +408,7 @@ public class PlayerControllerAnimated : MonoBehaviour
         //mouseInputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseInputY;
-        xRotation = Mathf.Clamp(xRotation, -83f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -80f, 90f);
 
 
         cameraObj.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -641,15 +641,16 @@ public class PlayerControllerAnimated : MonoBehaviour
         deathGruntInt = Random.Range(0, 4); //this randomly pick what death grunt to play
         if (deathGruntInt == 3) //i dont want the wilhelm scream to play as often as the others and this keeps it rare
         {
+            deathGruntInt = Random.Range(0, 4);
+
             if (deathGruntInt == 3)
             {
+                deathGruntInt = Random.Range(0, 4);
+
                 if (deathGruntInt == 3)
                 {
-                    if (deathGruntInt == 3)
-                    {
-                        deathGruntInt = Random.Range(0, 4);
-                    }
-                }
+                    deathGruntInt = Random.Range(0, 4);
+                } 
             }
         }
         StepSource.PlayOneShot(deathSounds[deathGruntInt]);

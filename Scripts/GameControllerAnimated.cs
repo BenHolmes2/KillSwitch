@@ -67,6 +67,7 @@ public class GameControllerAnimated : MonoBehaviour
     public int bodyLimit = 9999;
     public int bodiesUsed;
     public float volume;
+    public bool finalRoomSpawn = false;
 
 
 
@@ -83,8 +84,11 @@ public class GameControllerAnimated : MonoBehaviour
         bodyCount = 0;
         blackOutSquareImage = blackOutSquare.GetComponent<Image>();
 
-
-        StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
+        if (!finalRoomSpawn)
+        {
+            Debug.Log(finalRoomSpawn);
+            StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
+        }
     }
 
     void CheckExistence()
