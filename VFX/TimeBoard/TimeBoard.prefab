@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 756021830454390310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.79999924, y: 5.6, z: -1.2999992}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3450063789631488514}
@@ -242,7 +242,6 @@ GameObject:
   - component: {fileID: 3450063789825605201}
   - component: {fileID: 3450063789825605214}
   - component: {fileID: 3450063789825605215}
-  - component: {fileID: 3450063789825605212}
   m_Layer: 5
   m_Name: TimeUI
   m_TagString: Untagged
@@ -332,19 +331,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3450063789825605212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450063789825605213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63d79ceb47b8640a4a084ec82b70eaca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeText: {fileID: 3450063790509676271}
 --- !u!1 &3450063790509676268
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +342,7 @@ GameObject:
   - component: {fileID: 3450063790509676257}
   - component: {fileID: 3450063790509676270}
   - component: {fileID: 3450063790509676271}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,14 +356,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3450063790509676268}
-  m_LocalRotation: {x: 0.5014334, y: 0.49882567, z: -0.5043726, w: 0.49532393}
-  m_LocalPosition: {x: 0, y: 0, z: -14.6}
+  m_LocalRotation: {x: 0.50243276, y: -0.49724638, z: 0.5033773, w: 0.49690902}
+  m_LocalPosition: {x: 0, y: 0, z: 14.3}
   m_LocalScale: {x: 0.37245, y: 0.37245, z: 0.37245}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3450063789825605200}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.66901, y: 87.422, z: -2.947998}
+  m_LocalEulerAnglesHint: {x: 90.66901, y: -93.01898, z: -2.945984}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -861.4, y: -349.5}
@@ -414,8 +400,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6cdf03a2012854057a1ddc84a4e148e8, type: 2}
-  m_sharedMaterial: {fileID: -4408837589164660836, guid: 6cdf03a2012854057a1ddc84a4e148e8,
-    type: 2}
+  m_sharedMaterial: {fileID: -4408837589164660836, guid: 6cdf03a2012854057a1ddc84a4e148e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -446,7 +431,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

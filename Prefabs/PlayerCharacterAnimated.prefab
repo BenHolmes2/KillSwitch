@@ -1733,10 +1733,13 @@ MonoBehaviour:
   pickUpRange: 5
   heldObj: {fileID: 0}
   controller: {fileID: 0}
+  menu: {fileID: 0}
+  menuScript: {fileID: 0}
+  menuInput: {fileID: 0}
   mouseSensitivity: 100
   playerBody: {fileID: 2827944536333073928}
   cameraObj: {fileID: 36913701083304411}
-  speed: 11
+  speed: 10
   speedTemp: 10
   jumpForce: 10
   gravity: 45
@@ -1746,8 +1749,9 @@ MonoBehaviour:
   deathSource: {fileID: 0}
   jumpGracePeriod: 0.2
   rampUpModifier: 1.1
-  rampUpOffset: 6
+  rampUpOffset: 5
   animatorObj: {fileID: 5248218516902241062}
+  playerInput: {fileID: 0}
 --- !u!82 &-4932516671063088534
 AudioSource:
   m_ObjectHideFlags: 0

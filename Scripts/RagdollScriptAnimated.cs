@@ -280,7 +280,7 @@ public class RagdollScriptAnimated : MonoBehaviour
         }
 
 
-        if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("canPickUp") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox"))
+        if (collision.gameObject.CompareTag("DeathSurface") || collision.gameObject.CompareTag("RespawnTube") || collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("GearBox"))
         {
             Debug.Log(gameObject.transform.root.root.gameObject);
             root.transform.SetParent(null, true);

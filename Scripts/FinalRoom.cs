@@ -25,6 +25,9 @@ public class FinalRoom : MonoBehaviour
     public Animator Credits;
     public GameObject reticule;
     public GameObject creditsCanvas;
+    private int frames = 0;
+    private bool faded = false;
+
 
 
 
@@ -47,12 +50,24 @@ public class FinalRoom : MonoBehaviour
             bodiesUsed = 50;
         }
 
-        StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
+        //StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (frames < 120)
+        {
+            frames++;
+        }
+
+        if (frames >= 120 && !faded)
+        {
+            Debug.Log("?>?>?");
+            StartCoroutine(FadeBlackOutSqaure(false, 0.2f));
+            faded = true;
+        }
+
         if (check)
         {
             if (bodiesCheck < bodiesUsed)
