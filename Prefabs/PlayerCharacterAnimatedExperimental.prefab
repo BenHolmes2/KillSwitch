@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36913700932096198}
   - component: {fileID: 8603374114440504791}
-  - component: {fileID: 4386791522866200957}
+  - component: {fileID: 3001349741682977376}
   m_Layer: 3
   m_Name: HoldPos
   m_TagString: Untagged
@@ -229,10 +229,10 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!144 &4386791522866200957
-CharacterJoint:
+--- !u!145 &3001349741682977376
+SpringJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -241,40 +241,18 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_SwingAxis: {x: 0, y: 1, z: 0}
-  m_TwistLimitSpring:
-    spring: 0
-    damper: 0
-  m_LowTwistLimit:
-    limit: -20
-    bounciness: 0
-    contactDistance: 0
-  m_HighTwistLimit:
-    limit: 70
-    bounciness: 0
-    contactDistance: 0
-  m_SwingLimitSpring:
-    spring: 0
-    damper: 0
-  m_Swing1Limit:
-    limit: 40
-    bounciness: 0
-    contactDistance: 0
-  m_Swing2Limit:
-    limit: 40
-    bounciness: 0
-    contactDistance: 0
-  m_EnableProjection: 0
-  m_ProjectionDistance: 0.1
-  m_ProjectionAngle: 180
+  m_Spring: 10
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
 --- !u!1 &36913701083304411
@@ -1559,8 +1537,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4905549461177670559}
-  m_LocalRotation: {x: 0.000000026077027, y: 0.00000017881389, z: 0.0000000065192567,
-    w: 1}
+  m_LocalRotation: {x: 0.000000026077027, y: 0.00000017881389, z: 0.0000000065192567, w: 1}
   m_LocalPosition: {x: 0.0011999512, y: 0.08184, z: 0.016000977}
   m_LocalScale: {x: 0.016000003, y: 0.016000004, z: 0.015999995}
   m_ConstrainProportionsScale: 0
@@ -1876,6 +1853,7 @@ MonoBehaviour:
   rampUpModifier: 1.1
   rampUpOffset: 6
   animatorObj: {fileID: 5248218516902241062}
+  playerInput: {fileID: 0}
 --- !u!82 &-4932516671063088534
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1885,8 +1863,7 @@ AudioSource:
   m_GameObject: {fileID: 5640033094760487906}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -985177103330646316, guid: 8f66882cba96ece47adb40f27043f0d0,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: -985177103330646316, guid: 8f66882cba96ece47adb40f27043f0d0, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5789656830e2d96438b014380c46a576, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
